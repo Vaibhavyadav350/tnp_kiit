@@ -1,0 +1,22 @@
+Pages Created
+{
+Login KIIT MAIL id only
+Basic Profile
+Education
+}
+
+New Page for Preferred skill? How many preferences = 3
+
+Database Created
+{Firestore database connected }
+
+Approval
+{Counter For Approval(Edited)
+ Approved by ??}
+
+New Member
+{Anirudh(New Feature),Shrey(Tech),Sidhant(UI/UX)}
+
+github collaboration
+
+
