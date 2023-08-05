@@ -6,6 +6,7 @@ import 'package:kiit_connect/user/collegeexp.dart';
 import 'package:kiit_connect/user/education.dart';
 import 'package:kiit_connect/user/profesionalexp.dart';
 import 'package:kiit_connect/user/projects.dart';
+import 'package:kiit_connect/user/publiclinks.dart';
 import 'home.dart';
 
 void main() async {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: BasicProfile(),
+      home: PublicProfile(),
     );
   }
 }
