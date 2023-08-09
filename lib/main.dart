@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/page/mainpage.dart';
 import 'package:kiit_connect/service/wrapper.dart';
 import 'package:kiit_connect/user/basicprofile.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PublicProfile(),
+      home: Wrapper(),
     );
   }
 }

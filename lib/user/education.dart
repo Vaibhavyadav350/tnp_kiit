@@ -58,7 +58,7 @@ class _EducationDetailsState extends State<EducationDetails> {
         .set(tripData, SetOptions(merge: true))
         .then((documentRef) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Basic Info Updated!!')),
+        SnackBar(content: Text('Education Info Updated!!')),
       );
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -124,6 +124,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                         child: TextFormField(
                           controller: _Programcontroller,
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.book),
                             labelText: 'Program',
                             border: InputBorder.none,
                           ),
@@ -140,7 +141,9 @@ class _EducationDetailsState extends State<EducationDetails> {
                         child: TextFormField(
                           controller: _branchController,
                           decoration: InputDecoration(
-                              labelText: 'Branch', border: InputBorder.none),
+                              labelText: 'Branch',
+                              prefixIcon: Icon(Icons.computer),
+                              border: InputBorder.none),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter a Branch';
@@ -155,6 +158,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                           controller: _YearofPasscontroller,
                           decoration: InputDecoration(
                               labelText: 'Year of Passing',
+                              prefixIcon: Icon(Icons.date_range),
                               border: InputBorder.none),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -169,6 +173,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                         child: TextFormField(
                           controller: _Backlogcontroller,
                           decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.warning),
                               labelText: 'Backlog', border: InputBorder.none),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -183,6 +188,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                         child: TextFormField(
                           controller: _CGPAcontroller,
                           decoration: const InputDecoration(
+                              prefixIcon: Icon(Icons.code),
                               labelText: 'CGPA', border: InputBorder.none),
                           validator: (value) {
                             if (value == null || value.isEmpty) {

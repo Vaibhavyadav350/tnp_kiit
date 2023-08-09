@@ -1,19 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kiit_connect/user/basicprofile.dart';
 
 import '../theme/neo_box.dart';
 
-class SideDrawer extends StatelessWidget {
-  const SideDrawer({Key? key}) : super(key: key);
+class Devdrawer extends StatelessWidget {
+  const Devdrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
     String? photoUrl = user?.photoURL;
     return Drawer(
-        width: 250,
+        width: 300,
         child: SizedBox(
           height: 100,
           child: NeoBox(
@@ -23,42 +22,41 @@ class SideDrawer extends StatelessWidget {
               DrawerHeader(
                 child: Column(
                   children: [
-                    if (photoUrl != null)
-                      CircleAvatar(
-                        backgroundImage: NetworkImage(photoUrl),
-                        radius: 45.0,
-                      ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(user?.displayName ?? 'Guest',
-                        style: TextStyle(fontSize: 20)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => BasicProfile()),
-                  );
-                },
-                child: NeoBox(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
                     Text(
-                      "Create Profile",
-                      style: TextStyle(fontSize: 20),
+                      "Status",
+                      style: TextStyle(fontSize: 30),
                     ),
-                    Icon(
-                      Icons.favorite_border,
-                      color: Colors.red,
+                    Row(
+                      children: [
+                        if (photoUrl != null)
+                          NeoBox(
+                            child: CircleAvatar(
+                              backgroundImage: NetworkImage(photoUrl),
+                              radius: 30.0,
+                            ),
+                          ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        NeoBox(
+                            child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "Approved ",
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.green),
+                            ),
+                            Icon(
+                              Icons.check,
+                              color: Colors.green,
+                            )
+                          ],
+                        )),
+                      ],
                     )
                   ],
-                )),
+                ),
               ),
               SizedBox(
                 height: 15,
@@ -68,7 +66,41 @@ class SideDrawer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "Internship",
+                    "Your Profile",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Icon(
+                    Icons.favorite_border,
+                    color: Colors.red,
+                  )
+                ],
+              )),
+              SizedBox(
+                height: 15,
+              ),
+              NeoBox(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "ADD POST",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Icon(
+                    Icons.add,
+                    color: Colors.blue,
+                  )
+                ],
+              )),
+              SizedBox(
+                height: 15,
+              ),
+              NeoBox(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Selected Companies",
                     style: TextStyle(fontSize: 20),
                   ),
                   Icon(
@@ -85,64 +117,12 @@ class SideDrawer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    "About TNP",
+                    "Developers",
                     style: TextStyle(fontSize: 20),
                   ),
                   Icon(
                     Icons.graphic_eq,
                     color: Colors.green,
-                  )
-                ],
-              )),
-              SizedBox(
-                height: 15,
-              ),
-              NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Gallery",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.music_note,
-                    color: Colors.pinkAccent,
-                  )
-                ],
-              )),
-              SizedBox(
-                height: 15,
-              ),
-              NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Contact Us",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.call,
-                    color: Colors.blue,
-                  )
-                ],
-              )),
-
-              SizedBox(
-                height: 15,
-              ),
-              NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Logout",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.logout,
-                    color: Colors.grey,
                   )
                 ],
               )),

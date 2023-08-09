@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../drawer/drawer.dart';
 import '../theme/neo_box.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class FormFields {
   TextEditingController roleController = TextEditingController();
@@ -11,6 +15,8 @@ class FormFields {
   TextEditingController companyController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController supportedDocController = TextEditingController();
+  TextEditingController bankStatement = TextEditingController();
+  bool showStipendField = false;
 }
 
 class ProfessionalExperience extends StatefulWidget {
@@ -58,10 +64,49 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
       formFields.monthController.text = experience['Months'] ?? '';
       formFields.descriptionController.text = experience['Description'] ?? '';
       formFields.supportedDocController.text = experience['SupportedDoc'] ?? '';
+      formFields.bankStatement.text = experience['BankStatement'] ?? '';
       return formFields;
     }).toList();
 
     setState(() {});
+  }
+
+  Future<String?> pickAndUploadSupportedDoc() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      Reference ref = FirebaseStorage.instance
+          .ref()
+          .child('docs/${DateTime.now().toIso8601String()}.pdf');
+      await ref.putFile(file);
+      return await ref.getDownloadURL();
+    } else {
+      // User canceled the picker
+      return null;
+    }
+  }
+
+  Future<String?> pickAndUploadBankStatement() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['pdf'],
+    );
+
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      Reference ref = FirebaseStorage.instance
+          .ref()
+          .child('docs/${DateTime.now().toIso8601String()}.pdf');
+      await ref.putFile(file);
+      return await ref.getDownloadURL();
+    } else {
+      // User canceled the picker
+      return null;
+    }
   }
 
   void saveToFirestore() async {
@@ -76,6 +121,7 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
         'Description': formFields.descriptionController.text,
         'Stipend': formFields.stipendController.text,
         'Months': formFields.monthController.text,
+        'BankStatement': formFields.monthController.text,
       };
 
       proexp.add(CollegeExp);
@@ -118,11 +164,19 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
       ),
       body: Form(
         key: _formKey,
-        child: ListView.builder(
-          itemCount: _formsList.length,
-          itemBuilder: (context, index) {
-            return buildForm(index);
-          },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: _formsList.length,
+                itemBuilder: (context, index) {
+                  return buildForm(index);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -152,16 +206,6 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
           },
         ),
         TextFormField(
-          controller: _formsList[index].stipendController,
-          decoration: const InputDecoration(labelText: 'Stipend'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Stipend Amount';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
           controller: _formsList[index].monthController,
           decoration: const InputDecoration(labelText: 'Months'),
           validator: (value) {
@@ -181,20 +225,50 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
             return null;
           },
         ),
-        TextFormField(
-          controller: _formsList[index].supportedDocController,
-          decoration:
-              const InputDecoration(labelText: 'Supported Documents Links'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Documents Links';
-            }
-            return null;
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              _formsList[index].showStipendField =
+                  !_formsList[index].showStipendField; // toggle the field visibility
+            });
           },
+          child: const Text('Paid'),
         ),
+        if (_formsList[index].showStipendField) ...[
+          TextFormField(
+            controller: _formsList[index].stipendController,
+            decoration: const InputDecoration(labelText: 'Stipend'),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Enter Stipend Amount';
+              }
+              return null;
+            },
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              String? url = await pickAndUploadSupportedDoc();
+              if (url != null) {
+                _formsList[index].supportedDocController.text = url;
+                setState(() {}); // to refresh the UI
+              }
+            },
+            child: const Text('Select Supported Document'),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              String? url = await pickAndUploadBankStatement();
+              if (url != null) {
+                _formsList[index].bankStatement.text = url;
+                setState(() {}); // to refresh the UI
+              }
+            },
+            child: const Text('Select Bank Statement'),
+          ),
+        ],
         ElevatedButton(
           onPressed: () => deleteForm(index),
-          child: Text('Delete'),
+          child: const Text('Delete'),
         ),
       ],
     );

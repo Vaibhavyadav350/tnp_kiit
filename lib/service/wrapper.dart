@@ -2,8 +2,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/page/mainpage.dart';
 import 'package:kiit_connect/user/basicprofile.dart';
 
+import '../user/profesionalexp.dart';
 import 'login.dart';
 
 class Wrapper extends StatefulWidget {
@@ -27,7 +29,7 @@ class _WrapperState extends State<Wrapper> {
           if (snapshot.data == null) {
             return Login();
           } else {
-            return BasicProfile();
+            return ProfessionalExperience();
           }
         }
         return Scaffold(

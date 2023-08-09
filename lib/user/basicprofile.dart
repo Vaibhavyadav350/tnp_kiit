@@ -23,15 +23,35 @@ class _BasicProfileState extends State<BasicProfile> {
   final _phonenumber = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _addresscontroller = TextEditingController();
+  List<String> photoUrls = [];
   List<File?> _selectedPhotos = [];
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
   }
+  @override
+  void initState() {
+    super.initState();
+    _fetchFromFirestore();
+  }
 
+  Future<void> _fetchFromFirestore() async {
+    DocumentSnapshot docSnap = await FirebaseFirestore.instance
+        .collection('StudentInfo')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .get();
+
+    Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
+    _namecontroller.text = data['name'] ?? '';
+    _phonenumber.text = data['phone'] ?? '';
+    _emailcontroller.text = data['email'] ?? '';
+    _addresscontroller.text = data['address'] ?? '';
+    photoUrls = List<String>.from(data['photoUrls'] ?? []);
+
+  }
   Future<List<String>> _uploadPhotosToFirebase() async {
-    List<String> photoUrls = [];
+
 
     for (var photo in _selectedPhotos) {
       if (photo != null) {
@@ -228,13 +248,10 @@ class _BasicProfileState extends State<BasicProfile> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => EducationDetails()),
-                              );
-                              // if (_formKey.currentState!.validate()) {
-                              //   _saveToFirestore();
-                              // }
+
+                              if (_formKey.currentState!.validate()) {
+                                _saveToFirestore();
+                              }
                             },
                             child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
