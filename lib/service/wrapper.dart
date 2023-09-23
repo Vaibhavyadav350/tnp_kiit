@@ -3,10 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/page/mainpage.dart';
-import 'package:kiit_connect/user/basicprofile.dart';
+import 'package:kiit_connect/user/member/basicprofile.dart';
+import 'package:kiit_connect/user/member/competency.dart';
 
-import '../user/profesionalexp.dart';
-import '../user/proooooooooooo.dart';
+import '../user/member/profesionalexp.dart';
+import '../user/member/projects.dart';
+import '../user/member/show.dart';
 import 'login.dart';
 
 class Wrapper extends StatefulWidget {
@@ -30,7 +32,7 @@ class _WrapperState extends State<Wrapper> {
           if (snapshot.data == null) {
             return Login();
           } else {
-            return ProfessionalExperience();
+            return MainPage();
           }
         }
         return Scaffold(

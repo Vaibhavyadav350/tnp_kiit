@@ -8,8 +8,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../drawer/drawer.dart';
-import '../theme/neo_box.dart';
+import '../../drawer/drawer.dart';
+import '../../theme/neo_box.dart';
 import 'education.dart';
 
 class BasicProfile extends StatefulWidget {

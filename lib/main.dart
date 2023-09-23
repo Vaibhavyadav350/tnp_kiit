@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/page/mainpage.dart';
 import 'package:kiit_connect/service/wrapper.dart';
-import 'package:kiit_connect/user/basicprofile.dart';
+import 'package:kiit_connect/user/member/basicprofile.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:kiit_connect/user/collegeexp.dart';
-import 'package:kiit_connect/user/education.dart';
-import 'package:kiit_connect/user/profesionalexp.dart';
-import 'package:kiit_connect/user/projects.dart';
-import 'package:kiit_connect/user/publiclinks.dart';
-import 'home.dart';
+import 'package:kiit_connect/user/member/education.dart';
+import 'package:kiit_connect/user/member/profesionalexp.dart';
+import 'package:kiit_connect/user/newscreens/basicdetails.dart';
+import 'package:kiit_connect/user/newscreens/home.dart';
+
+import 'user/newscreens/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,11 +24,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'T&P KIIT',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Wrapper(),
+      home: NewHomePage(),
     );
   }
 }

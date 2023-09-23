@@ -3,8 +3,9 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../drawer/drawer.dart';
-import '../theme/neo_box.dart';
+import 'package:kiit_connect/user/member/projects.dart';
+import '../../drawer/drawer.dart';
+import '../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class FormFields {
@@ -217,6 +218,9 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
             (documentRef) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Info Updated!!')),
+          );
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => PersonalProject()),
           );
         }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(

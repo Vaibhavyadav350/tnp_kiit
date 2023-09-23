@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kiit_connect/user/member/show.dart';
 
 import '../theme/neo_box.dart';
 
@@ -62,19 +63,26 @@ class Devdrawer extends StatelessWidget {
                 height: 15,
               ),
               NeoBox(
-                  child: Row(
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => DataScreen()),
+                      );
+                    },
+                    child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
-                    "Your Profile",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.favorite_border,
-                    color: Colors.red,
-                  )
+                    Text(
+                      "Your Profile",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Icon(
+                      Icons.favorite_border,
+                      color: Colors.red,
+                    )
                 ],
-              )),
+              ),
+                  )),
               SizedBox(
                 height: 15,
               ),

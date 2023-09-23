@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../drawer/drawer.dart';
-import '../theme/neo_box.dart';
+import 'package:kiit_connect/user/member/profesionalexp.dart';
+import '../../drawer/drawer.dart';
+import '../../theme/neo_box.dart';
+import 'competency.dart';
 
 class EducationDetails extends StatefulWidget {
   @override
@@ -60,14 +62,15 @@ class _EducationDetailsState extends State<EducationDetails> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Education Info Updated!!')),
       );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => Competency()),
+      );
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to save information')),
       );
     });
-    // Navigator.of(context).pushReplacement(
-    //   MaterialPageRoute(builder: (context) => Collections()),
-    // );
+
   }
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kiit_connect/user/basicprofile.dart';
+import 'package:kiit_connect/user/member/basicprofile.dart';
 
 import '../theme/neo_box.dart';
 

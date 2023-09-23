@@ -1,16 +1,89 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../drawer/drawer.dart';
-import '../theme/neo_box.dart';
+import 'package:kiit_connect/user/member/publiclinks.dart';
+import '../../drawer/drawer.dart';
+import '../../theme/neo_box.dart';
 
 class FormFields {
   TextEditingController roleController = TextEditingController();
   TextEditingController levelController = TextEditingController();
   TextEditingController githubController = TextEditingController();
-  TextEditingController skillController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   TextEditingController DemoLinkController = TextEditingController();
+  String domains = 'JavaScript';
+  var domainsSkill = [
+    // Programming Languages
+    'JavaScript',
+    'Python',
+    'Java',
+    'C#',
+    'C++',
+    'Swift',
+    'Kotlin',
+    'Ruby',
+    'PHP',
+    'TypeScript',
+
+    // Frameworks/Libraries
+    'React.js',
+    'Angular',
+    'Vue.js',
+    'Node.js',
+    'Express.js',
+    'Django',
+    'Flask',
+    'Spring Boot',
+    '.NET Core',
+
+    // Databases
+    'SQL',
+    'NoSQL',
+    'ORM',
+
+    // Tools
+    'Git & GitHub',
+    'Docker',
+    'Kubernetes',
+    'Jenkins',
+    'Webpack',
+    'Babel',
+
+    // Web Technologies
+    'HTML',
+    'CSS',
+    'Bootstrap',
+    'SASS/SCSS',
+    'GraphQL',
+    'REST APIs',
+
+    // Mobile Development
+    'iOS Development',
+    'Android Development',
+    'React Native',
+    'Flutter',
+
+    // Cloud Services
+    'Amazon Web Services',
+    'Google Cloud Platform',
+    'Microsoft Azure',
+    'Firebase',
+
+    // DevOps & Continuous Integration/Continuous Deployment (CI/CD)
+    'DevOps',
+    'Continuous Integration',
+    'Continuous Deployment',
+
+    // Testing
+    'Unit Testing',
+    'Integration Testing',
+    'End-to-End Testing',
+    'Jest',
+    'Mocha',
+    'JUnit',
+  ];
+
+  List<String> selectedSkills = [];
 }
 
 class PersonalProject extends StatefulWidget {
@@ -52,8 +125,8 @@ class _PersonalProjectState extends State<PersonalProject> {
       Map<String, dynamic> experience = item as Map<String, dynamic>;
       FormFields formFields = FormFields();
       formFields.roleController.text = experience['Project Name'] ?? '';
-      formFields.skillController.text = experience['Skills'] ?? '';
-      formFields.levelController.text = experience['Level'] ?? '';
+      formFields.selectedSkills = List<String>.from(experience['Skills'] ?? []);
+      formFields.levelController.text = experience['level'] ?? '';
       formFields.githubController.text = experience['Github Link'] ?? '';
       formFields.descriptionController.text = experience['Description'] ?? '';
       formFields.DemoLinkController.text = experience['DemoLink'] ?? '';
@@ -70,10 +143,10 @@ class _PersonalProjectState extends State<PersonalProject> {
       final FormFields formFields = _formsList[i];
       final Projectss = {
         'Project Name': formFields.roleController.text,
-        'Skills': formFields.skillController.text,
+        'Skills': formFields.selectedSkills,
         'DemoLink': formFields.DemoLinkController.text,
         'Description': formFields.descriptionController.text,
-        'Level': formFields.levelController.text,
+        'level': formFields.levelController.text,
         'Github Link': formFields.githubController.text,
       };
 
@@ -87,6 +160,9 @@ class _PersonalProjectState extends State<PersonalProject> {
             SetOptions(merge: true)).then((documentRef) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Info Updated!!')),
+      );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => PublicProfile()),
       );
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -130,6 +206,45 @@ class _PersonalProjectState extends State<PersonalProject> {
   Widget buildForm(int index) {
     return Column(
       children: [
+        NeoBox(
+          child: PopupMenuButton<String>(
+            child: ListTile(
+              title: Text('Select Skills'),
+              trailing: Icon(Icons.arrow_drop_down),
+            ),
+            onSelected: (value) {
+              setState(() {
+                if (_formsList[index].selectedSkills.contains(value)) {
+                  _formsList[index].selectedSkills.remove(value);
+                } else {
+                  _formsList[index].selectedSkills.add(value);
+                }
+              });
+            },
+            itemBuilder: (BuildContext context) {
+              return _formsList[index].domainsSkill.map((String skillItem) {
+                return PopupMenuItem<String>(
+                  value: skillItem,
+                  child: CheckboxListTile(
+                    title: Text(skillItem),
+                    value: _formsList[index].selectedSkills.contains(skillItem),
+                    onChanged: (bool? value) {
+                      Navigator.of(context).pop(); // close the menu
+                      if (value != null) {
+                        if (value) {
+                          _formsList[index].selectedSkills.add(skillItem);
+                        } else {
+                          _formsList[index].selectedSkills.remove(skillItem);
+                        }
+                        setState(() {});
+                      }
+                    },
+                  ),
+                );
+              }).toList();
+            },
+          ),
+        ),
         TextFormField(
           controller: _formsList[index].roleController,
           decoration: InputDecoration(labelText: 'Project Name'),
@@ -140,16 +255,7 @@ class _PersonalProjectState extends State<PersonalProject> {
             return null;
           },
         ),
-        TextFormField(
-          controller: _formsList[index].skillController,
-          decoration: const InputDecoration(labelText: 'Skills'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Skills used';
-            }
-            return null;
-          },
-        ),
+
         DropdownButtonFormField<String>(
           value: _formsList[index].levelController.text.isEmpty
               ? null
