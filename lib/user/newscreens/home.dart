@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/user/member/basicprofile.dart';
 
 class NewHomePage extends StatelessWidget {
   const NewHomePage({super.key});
@@ -7,7 +7,7 @@ class NewHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      body: BasicProfile(),
     );
   }
 }

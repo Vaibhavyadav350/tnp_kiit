@@ -1,12 +1,12 @@
 import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:image/image.dart' as Im;
-import 'dart:math' as Math;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kiit_connect/theme/colors.dart';
 
 import '../../drawer/drawer.dart';
 import '../../theme/neo_box.dart';
@@ -30,6 +30,7 @@ class _BasicProfileState extends State<BasicProfile> {
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
   }
+
   @override
   void initState() {
     super.initState();
@@ -37,6 +38,7 @@ class _BasicProfileState extends State<BasicProfile> {
   }
 
   Future<void> _fetchFromFirestore() async {
+    if (Firebase.apps.isEmpty) return;
     DocumentSnapshot docSnap = await FirebaseFirestore.instance
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -48,11 +50,9 @@ class _BasicProfileState extends State<BasicProfile> {
     _emailcontroller.text = data['email'] ?? '';
     _addresscontroller.text = data['address'] ?? '';
     photoUrls = List<String>.from(data['photoUrls'] ?? []);
-
   }
+
   Future<List<String>> _uploadPhotosToFirebase() async {
-
-
     for (var photo in _selectedPhotos) {
       if (photo != null) {
         final Reference storageRef = FirebaseStorage.instance
@@ -114,161 +114,61 @@ class _BasicProfileState extends State<BasicProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: SideDrawer(),
-      backgroundColor: Colors.grey[300],
+      // backgroundColor: Colors.grey[800],
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: NeoBox(
-                        child: IconButton(
-                          icon: Icon(Icons.arrow_back_ios_new),
-                          onPressed: () {
-                            // Handle back button pressed
-                          },
-                        ),
-                      ),
+          child: padWrap(
+              Column(
+                children: [
+                  smallSpacing(),
+                  moveCenter([
+                    Image.asset(
+                      "assets/images/tnpkiit.png",
+                      width: 200,
+                    )
+                  ]),
+                  Text(
+                    "Basic Information",
+                    style: TextStyle(
+                      color: Theme.of(context).secondaryHeaderColor,
+                      fontSize: 30,
                     ),
-                    const Text(
-                      "BASIC PROFILE",
-                      style: TextStyle(letterSpacing: 2),
-                    ),
-                    SizedBox(
-                      height: 60,
-                      width: 60,
-                      child: NeoBox(
-                        child: IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: _openDrawer,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(),
-                      SizedBox(height: 30),
-                      ElevatedButton(
-                        onPressed: () => _pickPhotosFromGallery(),
-                        child: Text('Pick Photos'),
-                      ),
-                      SizedBox(height: 30),
-                      GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: _selectedPhotos.length,
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 10.0,
-                          mainAxisSpacing: 10.0,
-                        ),
-                        itemBuilder: (BuildContext context, int index) {
-                          return _selectedPhotos[index] != null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(100),
-                                  child: Image.file(_selectedPhotos[index]!))
-                              : Placeholder();
-                        },
-                      ),
-                      NeoBox(
-                        child: TextFormField(
-                          controller: _namecontroller,
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            border: InputBorder.none,
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Enter Name';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      NeoBox(
-                        child: TextFormField(
-                          controller: _phonenumber,
-                          decoration: InputDecoration(
-                              labelText: 'Phone Number',
-                              border: InputBorder.none),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a Phone Number';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      NeoBox(
-                        child: TextFormField(
-                          controller: _emailcontroller,
-                          decoration: InputDecoration(
-                              labelText: 'Personal Email',
-                              border: InputBorder.none),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter the  Email';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      NeoBox(
-                        child: TextFormField(
-                          controller: _addresscontroller,
-                          decoration: const InputDecoration(
-                              labelText: 'Address', border: InputBorder.none),
-                          maxLines: 3,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter a Address';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-
-                              if (_formKey.currentState!.validate()) {
-                                _saveToFirestore();
-                              }
-                            },
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Proceed'),
-                                Icon(Icons.arrow_forward),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
-                ),
-              ],
-            ),
-          ),
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        smallSpacing(),
+                        MatTextField(
+                            label: "Full Name", controller: _namecontroller),
+                        MatTextField(
+                            label: "Personal Email Address",
+                            controller: _emailcontroller),
+                        MatTextField(
+                            label: "Phone Number", controller: _phonenumber),
+                        MatTextField(
+                          label: "Address",
+                          controller: _addresscontroller,
+                          maxLines: 3,
+                        ),
+                        smallSpacing(),
+                        MatTextButton(
+                          text: "Proceed",
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              _saveToFirestore();
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              pad: 16.0),
         ),
       ),
     );
