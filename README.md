@@ -21,67 +21,82 @@ To run this project locally, follow these steps:
 4. Run the app using Flutter:
 
 # Student Profiling:
+1. Introduction
 
-Basic Details:
+This document aims to detail the specific requirements for the student profiling section of a Flutter-based application, catering to a college's placement cell.
+This application will allow students to input detailed profiles to aid in the placement process.
+2. Functional Requirements
+2.1 Basic Personal Details
 
-Name
-Roll number
+Profile Picture: Option to upload a professional photograph.
+Full Name
+Roll Number
 Personal Email
-Address
-Academic Achievements:
+Contact Number
+Permanent Address
+Current Address
+Objective/Summary: Text box for a brief career objective or summary.
+2.2 Academic Details
 
-Semester-wise details:
+Current Course: (e.g., BTech in Computer Science)
+
+Enrollment Year
+
+Expected Graduation Year
+
+Semester-wise Details:
+
 Curricular Activities
 Co-Curricular Activities
 Extra-Curricular Activities
-SGPA (Semester Grade Point Average)
-10th Standard Details:
+SGPA
+10th & 12th Standard Details:
 
-Curricular Activities Links
-Co-Curricular Activities Links
-Extra-Curricular Activities Links
-Grade
-Marksheet upload (File Upload)
-Certificate upload (File Upload)
-12th Standard Details:
+Board/Institution
+Percentage/CGPA
+Year of Passing
+2.3 Technical Skills and Expertise
 
-Curricular Activities Links
-Co-Curricular Activities Links
-Extra-Curricular Activities Links
-Grade
-Marksheet upload (File Upload)
-Character Certificate upload (File Upload)
-College Involvement:
+Skill Category: Dropdown/Selection list which includes:
+App Development
+Web Development
+AI/ML
+Cloud Computing
+... (and other categories)
+Expertise Level for each skill: Dropdown with options (Beginner, Intermediate, Advanced, Expert).
+2.4 Workshops, Courses, and Certifications
 
-List of College Societies participated in or contributed to.
-Personal Projects (Semester-wise):
+Course/Workshop Name
+Provider/Platform: (e.g., Coursera, Udemy)
+Duration
+Certificate Link or Upload option
+2.5 Internships and Professional Experience
 
-Name/Title of the Project
-Team Members
-User Base (if any)
-Skills Used
-Domain/Area of the Project
-
-
-Internships (Semester-wise):
-
-Organization Name
-Certificate (File Upload)
-Stipend Amount
-Supporting Document (File Upload)
-Bank Statement (File Upload for verification, if necessary)
-Freelance Projects:
-
-Project Details
-Client Testimonials (if any)
-Payment Proof (File Upload, if necessary)
-Startups:
-
-Name of the Startup
+Company/Organization Name
 Role/Position
-Description and Objective of the Startup
-Achievements/Awards (if any)
-Research:
+Duration (From - To)
+Key Responsibilities
+Technologies/Tools Used
+Certificate or Proof of Experience: Upload option.
+2.6 Personal Projects
+
+Project Title
+Description
+Duration (From - To)
+Technologies/Tools Used
+Project Link: (e.g., GitHub repository, deployed website)
+2.7 Extracurricular Activities
+
+Activity Name/Title
+Role/Position
+Duration
+Description: Brief about contributions or achievements in the role.
+2.8 Achievements and Awards
+
+Achievement/Award Name
+Issuer/Organization
+Date Received
+Description: Context or reason for the award.
 
 Research Topic/Title
 Professor/Advisor Name
