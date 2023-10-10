@@ -1,9 +1,9 @@
 # Student Profiling Application - SRS
-Table of Contents
-Introduction
-Functional Requirements
-User Interface Requirements
-Conclusion
+* Table of Contents
+* Introduction
+* Functional Requirements
+* User Interface Requirements
+* Conclusion
 
 # 1. Introduction
 This document outlines the requirements for the student profiling section of a Flutter-based application for college placements. <br>
