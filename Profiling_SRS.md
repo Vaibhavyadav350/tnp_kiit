@@ -12,52 +12,52 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 # 2. Functional Requirements
 ## 2.1 Basic Personal Details
 * Profile Picture: Upload functionality
-Full Name
-Roll Number
-Personal Email
-Contact Number
-Permanent Address
-Current Address
-Objective/Summary
+* Full Name
+* Roll Number
+* Personal Email
+* Contact Number
+* Permanent Address
+* Current Address
+* Objective/Summary
 ## 2.2 Academic Details
-Current Course and Stream
-Enrollment & Graduation Year
-10th & 12th Standard Details (Board, Percentage/CGPA, Year of Passing)
-Semester-wise SGPA
+* Current Course and Stream
+* Enrollment & Graduation Year
+* 10th & 12th Standard Details (Board, Percentage/CGPA, Year of Passing)
+* Semester-wise SGPA
 ## 2.3 Technical Skills and Expertise
-Skill Category
-Expertise Level
+* Skill Category
+* Expertise Level
 ## 2.4 Workshops, Courses, and Certifications
-Course/Workshop Name
-Provider/Platform
-Duration
-Certificate Link/Upload
+* Course/Workshop Name
+* Provider/Platform
+* Duration
+* Certificate Link/Upload
 ## 2.5 Internships and Professional Experience
 * Company/Organization
-Role/Position
-Duration
-Key Responsibilities
-Technologies/Tools
-Certificate/Proof Upload
+* Role/Position
+* Duration
+* Key Responsibilities
+* Technologies/Tools
+* Certificate/Proof Upload
 ## 2.6 Personal Projects
-Project Title
-Description
-Duration
-Technologies/Tools
-Project Link (e.g., GitHub)
+* Project Title
+* Description
+* Duration
+* Technologies/Tools
+* Project Link (e.g., GitHub)
 ## 2.7 Extracurricular Activities
-Activity Name
-Role/Position
-Duration
-Description
+* Activity Name
+* Role/Position
+* Duration
+* Description
 ## 2.8 Achievements and Awards
-Achievement/Award Name
-Issuer/Organization
-Date
-Description
+* Achievement/Award Name
+* Issuer/Organization
+* Date
+* Description
 ## 2.9 Language Proficiency
-Language Name
-Proficiency Level
+* Language Name
+* Proficiency Level
 ## 2.10 Recommendations and Testimonials
 Recommender's Name
 Relationship/Position
