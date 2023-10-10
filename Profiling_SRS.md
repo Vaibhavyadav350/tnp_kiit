@@ -11,7 +11,7 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 
 # 2. Functional Requirements
 ## 2.1 Basic Personal Details
-Profile Picture: Upload functionality
+* Profile Picture: Upload functionality
 Full Name
 Roll Number
 Personal Email
