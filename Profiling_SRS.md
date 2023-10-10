@@ -33,7 +33,7 @@ Provider/Platform
 Duration
 Certificate Link/Upload
 ## 2.5 Internships and Professional Experience
-Company/Organization
+* Company/Organization
 Role/Position
 Duration
 Key Responsibilities
