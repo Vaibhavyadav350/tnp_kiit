@@ -37,7 +37,9 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Role/Position
 * Duration
 * Key Responsibilities
-* Technologies/Tools
+* TTechnologies/Tools Used:
+** Technology/Tool Name
+** Proficiency Level: Beginner/Intermediate/Advanced/Expert
 * Certificate/Proof Upload
 ## 2.6 Personal Projects
 * Project Title
