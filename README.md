@@ -25,6 +25,6 @@ To run this project locally, follow these steps:
    git clone https://github.com/tnp_kiit/music-player.git
 3. Navigate to the project directory:
    ```shell 
-   cd music-player
+   cd tnp_kiit
    ```
 4. Run the app using Flutter:
