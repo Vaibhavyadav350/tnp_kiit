@@ -1,16 +1,7 @@
-# kiit_connect
-
-A new Flutter project.
+# TNP_KIIT
+## Project for Training and Placement cell KIIT.
 
 ## Getting Started
-
-This project is a starting point for a Training &
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
 
 ![image](https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/7879dcec-4f38-45b7-ab82-1320fa45dc98)
 ## Getting Started
@@ -28,3 +19,71 @@ To run this project locally, follow these steps:
    cd tnp_kiit
    ```
 4. Run the app using Flutter:
+
+# Student Profiling:
+
+Basic Details:
+
+Name
+Roll number
+Personal Email
+Address
+Academic Achievements:
+
+Semester-wise details:
+Curricular Activities
+Co-Curricular Activities
+Extra-Curricular Activities
+SGPA (Semester Grade Point Average)
+10th Standard Details:
+
+Curricular Activities Links
+Co-Curricular Activities Links
+Extra-Curricular Activities Links
+Grade
+Marksheet upload (File Upload)
+Certificate upload (File Upload)
+12th Standard Details:
+
+Curricular Activities Links
+Co-Curricular Activities Links
+Extra-Curricular Activities Links
+Grade
+Marksheet upload (File Upload)
+Character Certificate upload (File Upload)
+College Involvement:
+
+List of College Societies participated in or contributed to.
+Personal Projects (Semester-wise):
+
+Name/Title of the Project
+Team Members
+User Base (if any)
+Skills Used
+Domain/Area of the Project
+
+
+Internships (Semester-wise):
+
+Organization Name
+Certificate (File Upload)
+Stipend Amount
+Supporting Document (File Upload)
+Bank Statement (File Upload for verification, if necessary)
+Freelance Projects:
+
+Project Details
+Client Testimonials (if any)
+Payment Proof (File Upload, if necessary)
+Startups:
+
+Name of the Startup
+Role/Position
+Description and Objective of the Startup
+Achievements/Awards (if any)
+Research:
+
+Research Topic/Title
+Professor/Advisor Name
+Published Link (URL)
+Other Relevant Details or Documents
