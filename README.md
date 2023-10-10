@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Training &
 
 A few resources to get you started if this is your first Flutter project:
 
@@ -13,7 +13,18 @@ A few resources to get you started if this is your first Flutter project:
 
 
 ![image](https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/7879dcec-4f38-45b7-ab82-1320fa45dc98)
+## Getting Started
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+To run this project locally, follow these steps:
+
+1. Ensure that you have Flutter installed on your machine. For installation instructions, refer to the [Flutter documentation](https://flutter.dev/docs/get-started/install).
+
+2. Clone this repository to your local machine using the following command:
+
+   ```shell
+   git clone https://github.com/tnp_kiit/music-player.git
+3. Navigate to the project directory:
+   ```shell 
+   cd music-player
+   ```
+4. Run the app using Flutter:
