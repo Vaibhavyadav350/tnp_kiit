@@ -22,12 +22,13 @@ To run this project locally, follow these steps:
 
 # Student Profiling:
 1. Introduction
-
 This document aims to detail the specific requirements for the student profiling section of a Flutter-based application, catering to a college's placement cell.
 This application will allow students to input detailed profiles to aid in the placement process.
-2. Functional Requirements
-2.1 Basic Personal Details
 
+
+# 2. Functional Requirements
+
+## 2.1 Basic Personal Details
 Profile Picture: Option to upload a professional photograph.
 Full Name
 Roll Number
@@ -36,6 +37,7 @@ Contact Number
 Permanent Address
 Current Address
 Objective/Summary: Text box for a brief career objective or summary.
+
 2.2 Academic Details
 
 Current Course: (e.g., BTech in Computer Science)
