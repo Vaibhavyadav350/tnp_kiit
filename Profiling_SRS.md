@@ -59,36 +59,33 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Language Name
 * Proficiency Level
 ## 2.10 Recommendations and Testimonials
-Recommender's Name
-Relationship/Position
-Testimonial Text
+* Recommender's Name
+* Relationship/Position
+* Testimonial Text
 ## 2.11 Research Papers and Publications
-Paper Title
-Professor/Advisor Name
-Published Journal/Conference
-Publication Date
-Description/Brief Abstract
-Link (if available online)
+* Paper Title
+* Professor/Advisor Name
+* Published Journal/Conference
+* Publication Date
+* Description/Brief Abstract
+* Link (if available online)
 ## 2.12 Competitive Programming Platforms
-Platform Name (e.g., LeetCode, CodeChef)
-Profile Link
-Current Rank/Level (if available)
+* Platform Name (e.g., LeetCode, CodeChef)
+* Profile Link
+* Current Rank/Level (if available)
 ## 2.13 Open Source Contributions
-Project Name/Repository
-Contribution Type (code, documentation, design, etc.)
-Link to Pull Request/Merged Commit
-Brief Description
+* Project Name/Repository
+* Contribution Type (code, documentation, design, etc.)
+* Link to Pull Request/Merged Commit
+* Brief Description
 # 3. User Interface Requirements
 ## 3.1 Profile Creation and Edit View
-Sections: Segregated as per functional requirements, each section collapsible/expandable.
-Save Option: For each section.
-Validation: Mandatory fields and correct data format checks.
-Auto-save: Periodic automatic saving.
+* Sections: Segregated as per functional requirements, each section collapsible/expandable.
+* Save Option: For each section.
+* Validation: Mandatory fields and correct data format checks.
+* Auto-save: Periodic automatic saving.
 ## 3.2 Profile Display View
-Sections: Clearly displayed with optional edit links/buttons.
-Clickable Links: For projects, publications, CP platforms, etc.
-Expand/Collapse: Option for lengthy sections to ensure easy navigation.
+* Sections: Clearly displayed with optional edit links/buttons.* Clickable Links: For projects, publications, CP platforms, etc.
+* Expand/Collapse: Option for lengthy sections to ensure easy navigation.
 # 4. Conclusion
-With this expanded and structured SRS, the development team can build a comprehensive student profiling system that covers a broad range of attributes, making it invaluable for recruiters and placement cells.
-
-To utilize this document on GitHub, simply copy the content and create a new file named README.md (or add to an existing one) in your repository. Markdown syntax is used to structure the content, which GitHub will render properly.
+* With this expanded and structured SRS, the development team can build a comprehensive student profiling system that covers a broad range of attributes, making it invaluable for recruiters and placement cells.
