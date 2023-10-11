@@ -60,8 +60,8 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Duration
 * Key Responsibilities
 * Technologies/Tools Used:
- * Technology/Tool Name
- * Proficiency Level: Beginner/Intermediate/Advanced/Expert
+* * Technology/Tool Name
+* * Proficiency Level: Beginner/Intermediate/Advanced/Expert
 * Certificate/Proof Upload
 ## 2.6 Personal Projects
 * Project Title
@@ -76,8 +76,8 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Role/Position
 * Duration
 * Technologies/Tools Used:
- * Technology/Tool Name
- * Proficiency Level: Beginner/Intermediate/Advanced/Expert
+* * Technology/Tool Name
+* * Proficiency Level: Beginner/Intermediate/Advanced/Expert
 * Description
 ## 2.8 Achievements and Awards
 * Achievement/Award Name
@@ -96,8 +96,8 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Professor/Advisor Name
 * Published Journal/Conference
 * Technologies/Tools Used:
- * Technology/Tool Name
- * Proficiency Level: Beginner/Intermediate/Advanced/Expert
+* * Technology/Tool Name
+* * Proficiency Level: Beginner/Intermediate/Advanced/Expert
 * Publication Date
 * Description/Brief Abstract
 * Link (if available online)
@@ -108,8 +108,8 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 ## 2.13 Open Source Contributions
 * Project Name/Repository
 * Technologies/Tools Used:
- * Technology/Tool Name
- * Proficiency Level: Beginner/Intermediate/Advanced/Expert
+* * Technology/Tool Name
+* * Proficiency Level: Beginner/Intermediate/Advanced/Expert
 * Contribution Type (code, documentation, design, etc.)
 * Link to Pull Request/Merged Commit
 * Brief Description
