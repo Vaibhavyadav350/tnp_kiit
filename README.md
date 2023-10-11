@@ -1,5 +1,5 @@
 # TNP_KIIT
-## Project for Training and Placement cell KIIT.
+<H> Project for Training and Placement cell KIIT.</H>
 
 ## Getting Started
 
