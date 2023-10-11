@@ -120,7 +120,8 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Validation: Mandatory fields and correct data format checks.
 * Auto-save: Periodic automatic saving.
 ## 3.2 Profile Display View
-* Sections: Clearly displayed with optional edit links/buttons.* Clickable Links: For projects, publications, CP platforms, etc.
+* Sections: Clearly displayed with optional edit links/buttons.
+* Clickable Links: For projects, publications, CP platforms, etc.
 * Expand/Collapse: Option for lengthy sections to ensure easy navigation.
 # 4. Conclusion
 * With this expanded and structured SRS, the development team can build a comprehensive student profiling system that covers a broad range of attributes, making it invaluable for recruiters and placement cells.
