@@ -20,7 +20,7 @@ To run this project locally, follow these steps:
    ```
 4. Run the app using Flutter:
 
-# Student Profiling Application - SRS
+# Student Profiling Application - SRS Document
 * Table of Contents
 * Introduction
 * Functional Requirements
