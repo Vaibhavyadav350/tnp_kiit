@@ -6,9 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
-
-
-import '../../page/pdfview.dart';
 // ... [other imports]
 
 class DataScreen extends StatefulWidget {
@@ -104,21 +101,25 @@ class _DataScreenState extends State<DataScreen> {
                 if (details['Paid'] == true)
                   TextButton(
                   child: Text('Supported Doc '),
-                   onPressed: () { Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PDFViewPage(url: details['SupportedDoc']),
-                  ),
-                ); },
+                   onPressed: () {
+                   //  Navigator.of(context).push(
+                     // MaterialPageRoute(
+                     //   builder: (context) => PDFViewPage(url: details['SupportedDoc']),
+                    // ),
+                   // );
+                    },
                 ),
 
 
                 if (details['Paid'] == true) ElevatedButton(
                   child: Text('BankStatement '),
-                  onPressed: () { Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => PDFViewPage(url: details['BankStatement']),
-                  ),
-                ); },
+                  onPressed: () {
+                //     Navigator.of(context).push(
+                //   MaterialPageRoute(
+                //     builder: (context) => PDFViewPage(url: details['BankStatement']),
+                //   ),
+                // );
+                    },
                 ),
 
               ],
