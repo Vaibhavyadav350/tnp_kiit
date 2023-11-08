@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "139710716773",
-    "project_id": "kiitconnects",
-    "storage_bucket": "kiitconnects.appspot.com"
+    "project_number": "351554012505",
+    "project_id": "tnpkiit-66650",
+    "storage_bucket": "tnpkiit-66650.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:139710716773:android:ae888ee96c3eac328fdf8c",
+        "mobilesdk_app_id": "1:351554012505:android:48096c9b140ecd176a7848",
         "android_client_info": {
           "package_name": "com.kiit.kiit_connect"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "139710716773-t5l6inselttl07h7napbi53ou3r2c4cp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBpCg7_YFVex1nLcQJQqaGbf_-_Q17AUL0"
+          "current_key": "AIzaSyBs9Y8j55z0CiN5bnbjbUy75z3M7qE96DE"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "139710716773-t5l6inselttl07h7napbi53ou3r2c4cp.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

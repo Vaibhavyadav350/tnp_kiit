@@ -33,6 +33,7 @@ class MatTextField extends StatelessWidget {
   final controller;
   final maxLines;
   final hintText;
+  final IconData icon;
 
   MatTextField({
     Key? key,
@@ -40,6 +41,7 @@ class MatTextField extends StatelessWidget {
     this.controller,
     this.maxLines = 1,
     this.hintText = "",
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -49,22 +51,30 @@ class MatTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           padWrap(Text(label, style: textAnnotation(context))),
-          padWrap(boxWrap(TextFormField(
-            controller: controller,
-            decoration: InputDecoration.collapsed(
-                hintText: hintText,
-                hintStyle: textAnnotation(context, color: Theme
-                    .of(context)
-                    .primaryColor
-                    .withAlpha(80))),
-            style: textAnnotation(context),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Please enter ${label.toLowerCase()}";
-              }
-              return null;
-            },
-            maxLines: maxLines,
+          padWrap(boxWrap(Row(
+            children: [
+              Icon(icon, color: Theme.of(context).primaryColor),
+              SizedBox(width: 8),
+              Flexible(
+                child: TextFormField(
+                  controller: controller,
+                  decoration: InputDecoration.collapsed(
+                      hintText: hintText,
+                      hintStyle: textAnnotation(context, color: Theme
+                          .of(context)
+                          .primaryColor
+                          .withAlpha(80))),
+                  style: textAnnotation(context),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Please enter ${label.toLowerCase()}";
+                    }
+                    return null;
+                  },
+                  maxLines: maxLines,
+                ),
+              ),
+            ],
           )))
         ],
       ),

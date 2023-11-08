@@ -32,7 +32,7 @@ class _WrapperState extends State<Wrapper> {
           if (snapshot.data == null) {
             return Login();
           } else {
-            return MainPage();
+            return BasicProfile();
           }
         }
         return Scaffold(

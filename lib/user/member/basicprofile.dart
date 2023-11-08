@@ -10,7 +10,7 @@ import 'package:kiit_connect/theme/colors.dart';
 
 import '../../drawer/drawer.dart';
 import '../../theme/neo_box.dart';
-import 'education.dart';
+import 'tenth_ac.dart';
 
 class BasicProfile extends StatefulWidget {
   @override
@@ -89,7 +89,7 @@ class _BasicProfileState extends State<BasicProfile> {
         const SnackBar(content: Text('Basic Info Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => EducationDetails()),
+        MaterialPageRoute(builder: (context) => TenthGradeInfo()),
       );
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -142,14 +142,14 @@ class _BasicProfileState extends State<BasicProfile> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         smallSpacing(),
-                        MatTextField(
+                        MatTextField(icon: Icons.person,
                             label: "Full Name", controller: _namecontroller),
-                        MatTextField(
+                        MatTextField(icon: Icons.email,
                             label: "Personal Email Address",
                             controller: _emailcontroller),
-                        MatTextField(
+                        MatTextField(icon: Icons.phone,
                             label: "Phone Number", controller: _phonenumber),
-                        MatTextField(
+                        MatTextField(icon: Icons.home,
                           label: "Address",
                           controller: _addresscontroller,
                           maxLines: 3,
