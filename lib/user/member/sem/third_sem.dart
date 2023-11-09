@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/user/member/sem/fourth_sem.dart';
 
 import '../../../drawer/drawer.dart';
 import '../../../theme/colors.dart';
@@ -9,12 +10,12 @@ import '../../../theme/neo_box.dart';
 
 
 
-class FirstSemesterPerformance extends StatefulWidget {
+class ThirdSemesterPerformance extends StatefulWidget {
   @override
-  _FirstSemesterPerformanceState createState() => _FirstSemesterPerformanceState();
+  _ThirdSemesterPerformanceState createState() => _ThirdSemesterPerformanceState();
 }
 
-class _FirstSemesterPerformanceState extends State<FirstSemesterPerformance> {
+class _ThirdSemesterPerformanceState extends State<ThirdSemesterPerformance> {
   final _formKey = GlobalKey<FormState>();
   final _sgpaController = TextEditingController();
   final _cgpaController = TextEditingController();
@@ -43,19 +44,19 @@ class _FirstSemesterPerformanceState extends State<FirstSemesterPerformance> {
         .get();
 
     Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
-    if (data.containsKey('firstSemesterPerformance')) {
-      Map<String, dynamic> firstSemesterPerformance = data['firstSemesterPerformance'];
-      _sgpaController.text = firstSemesterPerformance['sgpa'] ?? '';
-      _cgpaController.text = firstSemesterPerformance['cgpa'] ?? '';
-      _markSheetLinkController.text = firstSemesterPerformance['markSheetLink'] ?? '';
-      _coCurricularActivitiesController.text = firstSemesterPerformance['coCurricularActivities'] ?? '';
-      _extraCurricularActivitiesController.text = firstSemesterPerformance['extraCurricularActivities'] ?? '';
-      _volunteeringActivitiesController.text = firstSemesterPerformance['volunteeringActivities'] ?? '';
+    if (data.containsKey('thirdSemesterPerformance')) {
+      Map<String, dynamic> thirdSemesterPerformance = data['thirdSemesterPerformance'];
+      _sgpaController.text = thirdSemesterPerformance['sgpa'] ?? '';
+      _cgpaController.text = thirdSemesterPerformance['cgpa'] ?? '';
+      _markSheetLinkController.text = thirdSemesterPerformance['markSheetLink'] ?? '';
+      _coCurricularActivitiesController.text = thirdSemesterPerformance['coCurricularActivities'] ?? '';
+      _extraCurricularActivitiesController.text = thirdSemesterPerformance['extraCurricularActivities'] ?? '';
+      _volunteeringActivitiesController.text = thirdSemesterPerformance['volunteeringActivities'] ?? '';
     }
   }
 
   void _saveToFirestore() async {
-    final firstSemesterPerformance = {
+    final thirdSemesterPerformance = {
       'sgpa': _sgpaController.text,
       'cgpa': _cgpaController.text,
       'markSheetLink': _markSheetLinkController.text,
@@ -69,13 +70,16 @@ class _FirstSemesterPerformanceState extends State<FirstSemesterPerformance> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set(
       {
-        'firstSemesterPerformance': firstSemesterPerformance,
+        'thirdSemesterPerformance': thirdSemesterPerformance,
       },
       SetOptions(merge: true), // Merge with existing data if it exists
     )
         .then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('1st Semester Performance Updated!!')),
+        const SnackBar(content: Text('3rd Semester Performance Updated!!')),
+      );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FourthSemesterPerformance()),
       );
     })
         .catchError((error) {
@@ -115,7 +119,7 @@ class _FirstSemesterPerformanceState extends State<FirstSemesterPerformance> {
                 ),
                 smallSpacing(),
                 Text(
-                  "1st Semester Performance",
+                  "3rd Semester Performance",
                   style: TextStyle(
                     color: Theme.of(context).secondaryHeaderColor,
                     fontSize: 20,

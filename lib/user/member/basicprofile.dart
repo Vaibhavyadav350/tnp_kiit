@@ -10,7 +10,7 @@ import 'package:kiit_connect/theme/colors.dart';
 
 import '../../drawer/drawer.dart';
 import '../../theme/neo_box.dart';
-import 'tenth_ac.dart';
+import 'school/tenth_ac.dart';
 
 class BasicProfile extends StatefulWidget {
   @override

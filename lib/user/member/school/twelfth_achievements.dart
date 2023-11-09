@@ -2,17 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/user/member/sem/eighth_sem.dart';
+import 'package:kiit_connect/user/member/sem/first_sem.dart';
 
-import '../../drawer/drawer.dart';
-import '../../theme/colors.dart';
-import '../../theme/neo_box.dart';
 
-class TenthGradeAchievements extends StatefulWidget {
+import '../../../drawer/drawer.dart';
+import '../../../theme/colors.dart';
+import '../../../theme/neo_box.dart';
+
+class TwelfthGradeAchievements extends StatefulWidget {
   @override
-  _TenthGradeAchievementsState createState() => _TenthGradeAchievementsState();
+  _TwelfthGradeAchievementsState createState() => _TwelfthGradeAchievementsState();
 }
 
-class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
+class _TwelfthGradeAchievementsState extends State<TwelfthGradeAchievements> {
   final _formKey = GlobalKey<FormState>();
   final _certificateLinkController = TextEditingController();
   final _curricularActivitiesController = TextEditingController();
@@ -40,18 +43,18 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
         .get();
 
     Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
-    if (data.containsKey('tenthGradeAchievements')) {
-      Map<String, dynamic> tenthGradeAchievements = data['tenthGradeAchievements'];
-      _certificateLinkController.text = tenthGradeAchievements['certificateLink'] ?? '';
-      _curricularActivitiesController.text = tenthGradeAchievements['curricularActivities'] ?? '';
-      _coCurricularActivitiesController.text = tenthGradeAchievements['coCurricularActivities'] ?? '';
-      _extraCurricularActivitiesController.text = tenthGradeAchievements['extraCurricularActivities'] ?? '';
-      _volunteeringActivitiesController.text = tenthGradeAchievements['volunteeringActivities'] ?? '';
+    if (data.containsKey('twelfthGradeAchievements')) {
+      Map<String, dynamic> twelfthGradeAchievements = data['twelfthGradeAchievements'];
+      _certificateLinkController.text = twelfthGradeAchievements['certificateLink'] ?? '';
+      _curricularActivitiesController.text = twelfthGradeAchievements['curricularActivities'] ?? '';
+      _coCurricularActivitiesController.text = twelfthGradeAchievements['coCurricularActivities'] ?? '';
+      _extraCurricularActivitiesController.text = twelfthGradeAchievements['extraCurricularActivities'] ?? '';
+      _volunteeringActivitiesController.text = twelfthGradeAchievements['volunteeringActivities'] ?? '';
     }
   }
 
   void _saveToFirestore() async {
-    final tenthGradeAchievements = {
+    final twelfthGradeAchievements = {
       'certificateLink': _certificateLinkController.text,
       'curricularActivities': _curricularActivitiesController.text,
       'coCurricularActivities': _coCurricularActivitiesController.text,
@@ -64,13 +67,16 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set(
       {
-        'tenthGradeAchievements': tenthGradeAchievements,
+        'twelfthGradeAchievements': twelfthGradeAchievements,
       },
       SetOptions(merge: true), // Merge with existing data if it exists
     )
         .then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('10th Grade Achievements Updated!!')),
+      );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FirstSemesterPerformance()),
       );
     })
         .catchError((error) {
@@ -108,6 +114,7 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
                     ),
                   ],
                 ),
+
                 Form(
                   key: _formKey,
                   child: Column(

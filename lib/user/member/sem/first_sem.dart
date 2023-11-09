@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/user/member/sem/second_sem.dart';
 
 import '../../../drawer/drawer.dart';
 import '../../../theme/colors.dart';
@@ -76,6 +77,9 @@ class _FirstSemesterPerformanceState extends State<FirstSemesterPerformance> {
         .then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('1st Semester Performance Updated!!')),
+      );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => SecondSemesterPerformance()),
       );
     })
         .catchError((error) {

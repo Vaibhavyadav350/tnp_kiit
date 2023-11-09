@@ -3,9 +3,9 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kiit_connect/user/member/profesionalexp.dart';
-import '../../drawer/drawer.dart';
-import '../../theme/neo_box.dart';
+import 'package:kiit_connect/user/member/work/profesionalexp.dart';
+import '../../../drawer/drawer.dart';
+import '../../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 class FormFields {

@@ -5,10 +5,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kiit_connect/theme/colors.dart';
-import 'package:kiit_connect/user/member/tenth_achievements.dart';
+import 'package:kiit_connect/user/member/school/tenth_achievements.dart';
 
-import '../../drawer/drawer.dart';
-import '../../theme/neo_box.dart';
+import '../../../drawer/drawer.dart';
+import '../../../theme/neo_box.dart';
 
 class TenthGradeInfo extends StatefulWidget {
   @override

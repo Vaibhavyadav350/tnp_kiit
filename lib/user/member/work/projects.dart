@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kiit_connect/user/member/publiclinks.dart';
-import '../../drawer/drawer.dart';
-import '../../theme/neo_box.dart';
+import 'package:kiit_connect/user/member/skill/publiclinks.dart';
+import '../../../drawer/drawer.dart';
+import '../../../theme/neo_box.dart';
 
 class FormFields {
   TextEditingController roleController = TextEditingController();

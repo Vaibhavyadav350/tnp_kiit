@@ -4,11 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/page/mainpage.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
-import 'package:kiit_connect/user/member/competency.dart';
+import 'package:kiit_connect/user/member/skill/competency.dart';
 
-import '../user/member/profesionalexp.dart';
-import '../user/member/projects.dart';
-import '../user/member/show.dart';
+import '../user/member/work/profesionalexp.dart';
+import '../user/member/work/projects.dart';
+import '../dump/show.dart';
 import 'login.dart';
 
 class Wrapper extends StatefulWidget {

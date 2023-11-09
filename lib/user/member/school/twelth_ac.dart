@@ -2,10 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/user/member/school/twelfth_achievements.dart';
 
-import '../../drawer/drawer.dart';
-import '../../theme/colors.dart';
-import '../../theme/neo_box.dart';
+
+
+import '../../../drawer/drawer.dart';
+import '../../../theme/colors.dart';
+import '../../../theme/neo_box.dart';
 
 class TwelfthGradeInfo extends StatefulWidget {
   @override
@@ -77,6 +80,9 @@ class _TwelfthGradeInfoState extends State<TwelfthGradeInfo> {
         .then((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('12th Grade Info Updated!!')),
+      );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => TwelfthGradeAchievements()),
       );
     })
         .catchError((error) {
