@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:kiit_connect/page/mainpage.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 import 'package:kiit_connect/user/member/skill/competency.dart';
+import 'package:kiit_connect/user/newscreens/home.dart';
 
 import '../user/member/work/profesionalexp.dart';
 import '../user/member/work/projects.dart';
@@ -32,7 +33,7 @@ class _WrapperState extends State<Wrapper> {
           if (snapshot.data == null) {
             return Login();
           } else {
-            return BasicProfile();
+            return NewHomePage();
           }
         }
         return Scaffold(
