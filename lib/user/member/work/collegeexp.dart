@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../../../drawer/drawer.dart';
+import 'package:kiit_connect/theme/colors.dart';
 import '../../../theme/neo_box.dart';
 
 class FormFields {
@@ -93,14 +93,22 @@ class _CollegeExperienceState extends State<CollegeExperience> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('College Experience'),
+        title: SafeArea(
+          child: Row(
+            children: [
+              Image.asset("assets/images/tnpkiit.png", width: 80),
+              Text('College Experience', style: textTitle(context))
+            ],
+          ),
+        ),
+        backgroundColor: darkShadow,
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.add, color: Theme.of(context).primaryColor),
             onPressed: addForm,
           ),
           IconButton(
-            icon: Icon(Icons.save),
+            icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 saveToFirestore();
@@ -124,50 +132,22 @@ class _CollegeExperienceState extends State<CollegeExperience> {
   Widget buildForm(int index) {
     return Column(
       children: [
-        TextFormField(
-          controller: _formsList[index].roleController,
-          decoration: InputDecoration(labelText: 'Role'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Role Name';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          controller: _formsList[index].societyController,
-          decoration: InputDecoration(labelText: 'Society'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Society Name';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          controller: _formsList[index].descriptionController,
-          decoration: InputDecoration(labelText: 'Description'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Description';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          controller: _formsList[index].supportedDocController,
-          decoration:
-              const InputDecoration(labelText: 'Supported Documents Links'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Documents Links';
-            }
-            return null;
-          },
-        ),
-        ElevatedButton(
+        smallSpacing(),
+        MatTextField(
+            label: "Society", controller: _formsList[index].societyController),
+        MatTextField(
+            label: "Description",
+            controller: _formsList[index].descriptionController),
+        MatTextField(
+            label: "Reference Documents",
+            maxLines: 2,
+            controller: _formsList[index].supportedDocController),
+        smallSpacing(),
+        MatTextButton(
+          text: "Delete",
+          isSubmit: false,
+          icon: Icons.delete,
           onPressed: () => deleteForm(index),
-          child: Text('Delete'),
         ),
       ],
     );

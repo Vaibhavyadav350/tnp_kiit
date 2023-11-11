@@ -3,8 +3,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
-import '../../../drawer/drawer.dart';
 import '../../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -133,7 +133,7 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
         .get();
 
     List<dynamic> data =
-    docSnap.get('ProfessionalExperiences') as List<dynamic>;
+        docSnap.get('ProfessionalExperiences') as List<dynamic>;
     _formsList = data.map((item) {
       Map<String, dynamic> experience = item as Map<String, dynamic>;
       FormFields formFields = FormFields();
@@ -216,13 +216,13 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set({'ProfessionalExperiences': proexp}, SetOptions(merge: true)).then(
             (documentRef) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Info Updated!!')),
-          );
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => PersonalProject()),
-          );
-        }).catchError((error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Info Updated!!')),
+      );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => PersonalProject()),
+      );
+    }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to save information')),
       );
@@ -232,7 +232,7 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      // backgroundColor: Colors.grey[300],
       // appBar: AppBar(
       //   title: const Text('Professional Experience'),
       //   actions: [
@@ -256,9 +256,13 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
             saveToFirestore();
           }
         },
-        label: const Text('Proceed',style: TextStyle(color: Colors.green),),
-        icon: const Icon(Icons.keyboard_double_arrow_right,color: Colors.green),
-        backgroundColor: Colors.grey[300],
+        label: Text(
+          'Proceed',
+          style: textAnnotation(context),
+        ),
+        icon:
+            const Icon(Icons.keyboard_double_arrow_right, color: Colors.black),
+        backgroundColor: greenHighlight,
       ),
 
       body: SafeArea(
@@ -275,13 +279,14 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                       SizedBox(
                         height: 60,
                         width: 60,
-                        child: NeoBox(
-                          child: IconButton(
-                            icon: Icon(Icons.arrow_back_ios_new),
-                            onPressed: () {
-                              // Handle back button pressed
-                            },
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios_new,
+                            color: Theme.of(context).primaryColor,
                           ),
+                          onPressed: () {
+                            // Handle back button pressed
+                          },
                         ),
                       ),
                       const Text(
@@ -291,17 +296,15 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                       SizedBox(
                         height: 60,
                         width: 60,
-                        child: NeoBox(
-                          child: IconButton(
-                            icon: Icon(Icons.add),
-                            onPressed: addForm,
-                          ),
+                        child: IconButton(
+                          icon: Icon(Icons.add,
+                              color: Theme.of(context).primaryColor),
+                          onPressed: addForm,
                         ),
                       ),
                     ],
                   ),
                 ),
-
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -319,22 +322,26 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
   }
 
   Widget buildForm(int index) {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: NeoBox(
-        child: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Column(children: [
-              SizedBox(
-                width: double.infinity,
-                child: NeoBox(
-                  child: Center(
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          children: [
+            SizedBox(
+              width: double.infinity,
+              child: boxWrap(
+                  Center(
                     child: DropdownButton<String>(
                       // Initial Value
                       value: _formsList[index].level,
 
+                      style: textAnnotation(context),
+
                       // Down Arrow Icon
-                      icon: const Icon(Icons.keyboard_arrow_down),
+                      icon: Icon(Icons.keyboard_arrow_down,
+                          color: theme.primaryColor),
 
                       // Array list of items
                       items: _formsList[index].items.map((String item) {
@@ -354,14 +361,18 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                       },
                     ),
                   ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: PopupMenuButton<String>(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            boxWrap(
+                PopupMenuButton<String>(
                   child: ListTile(
-                    title: Text('Select Skills'),
-                    trailing: Icon(Icons.arrow_drop_down),
+                    title:
+                        Text('Select Skills', style: textAnnotation(context)),
+                    trailing:
+                        Icon(Icons.arrow_drop_down, color: theme.primaryColor),
                   ),
                   onSelected: (value) {
                     setState(() {
@@ -373,19 +384,25 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                     });
                   },
                   itemBuilder: (BuildContext context) {
-                    return _formsList[index].domainsSkill.map((String skillItem) {
+                    return _formsList[index]
+                        .domainsSkill
+                        .map((String skillItem) {
                       return PopupMenuItem<String>(
                         value: skillItem,
                         child: CheckboxListTile(
                           title: Text(skillItem),
-                          value: _formsList[index].selectedSkills.contains(skillItem),
+                          value: _formsList[index]
+                              .selectedSkills
+                              .contains(skillItem),
                           onChanged: (bool? value) {
                             Navigator.of(context).pop(); // close the menu
                             if (value != null) {
                               if (value) {
                                 _formsList[index].selectedSkills.add(skillItem);
                               } else {
-                                _formsList[index].selectedSkills.remove(skillItem);
+                                _formsList[index]
+                                    .selectedSkills
+                                    .remove(skillItem);
                               }
                               setState(() {});
                             }
@@ -395,127 +412,77 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                     }).toList();
                   },
                 ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: TextFormField(
-                  controller: _formsList[index].roleController,
-                  decoration: InputDecoration(labelText: 'Role', border: InputBorder.none),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter Role Name';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: TextFormField(controller: _formsList[index].companyController,
-                  decoration: const InputDecoration(labelText: 'Company', border: InputBorder.none),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter Company Name';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: TextFormField(controller: _formsList[index].monthController,
-                  decoration: const InputDecoration(labelText: 'Months', border: InputBorder.none),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter number of Months';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: TextFormField(
-                  controller: _formsList[index].descriptionController,
-                  decoration: InputDecoration(labelText: 'Description', border: InputBorder.none),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Enter Description';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: GestureDetector(
-                  onTap: () async {
-                    String? url = await pickAndUploadSupportedDoc();
-                    if (url != null) {
-                      _formsList[index].supportedDocController.text = url;
-                      setState(() {}); // to refresh the UI
-                    }
-                  },
-                  child: Row(
-                    children: [
-                      const Text('Select Supported Document'),
-                    ],
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)),
+            SizedBox(
+              height: 20,
+            ),
+            MatTextField(
+                label: "Role", controller: _formsList[index].roleController),
+            // MatTextField(
+            //   label: "Months", controller: _formsList[index].monthController),
+            // MatTextField(
+            //   label: "Description",maxLines: 2, controller: _formsList[index].descriptionController),
+            padWrap(boxWrap(GestureDetector(
+              onTap: () async {
+                String? url = await pickAndUploadSupportedDoc();
+                if (url != null) {
+                  _formsList[index].supportedDocController.text = url;
+                  setState(() {}); // to refresh the UI
+                }
+              },
+              child: Center(
+                  child: Text(
+                'Select Supported Document',
+                style: textAnnotation(context),
+              )),
+            ))),
+            padWrap(boxWrap(
+                CheckboxListTile(
+                  title: Text(
+                    'Is it paid',
+                    style: textAnnotation(context),
                   ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              NeoBox(
-                child: CheckboxListTile(
-
-                  title: const Text('Paid'),
                   value: _formsList[index].showStipendField,
-                  onChanged: (value) {setState(() {
+                  onChanged: (value) {
+                    setState(() {
                       _formsList[index].showStipendField = value!;
                     });
                   },
                 ),
-              ),
-              SizedBox(height: 20,),
-              if (_formsList[index].showStipendField) ...[
-                NeoBox(
-                  child: TextFormField(
-                    controller: _formsList[index].stipendController,
-                    decoration: const InputDecoration(labelText: 'Stipend', border: InputBorder.none),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Enter Stipend Amount';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                SizedBox(height: 20,),
-                NeoBox(
-                  child: GestureDetector(
-                    onTap: () async {
-                      String? url = await pickAndUploadBankStatement();
-                      if (url != null) {
-                        _formsList[index].bankStatement.text = url;
-                        setState(() {}); // to refresh the UI
-                      }
-                    },
-                    child: Row(
-                      children: [
-                        Text('Select Bank Statement'),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20,),
-              ],
-              NeoBox(
-                child: GestureDetector(
-                  onTap: () => deleteForm(index),
-                  child: const Text('  Delete  ',style: TextStyle(fontSize: 17,color: Colors.redAccent),),
-                ),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0))),
+            SizedBox(
+              height: 20,
+            ),
+            if (_formsList[index].showStipendField) ...[
+              MatTextField(
+                  label: "Stipend",
+                  controller: _formsList[index].stipendController),
+              padWrap(boxWrap(GestureDetector(
+                onTap: () async {
+                  String? url = await pickAndUploadBankStatement();
+                  if (url != null) {
+                    _formsList[index].bankStatement.text = url;
+                    setState(() {}); // to refresh the UI
+                  }
+                },
+                child: Center(
+                    child: Text(
+                  'Select Bank Statement',
+                  style: textAnnotation(context),
+                )),
+              ))),
+              SizedBox(
+                height: 20,
               ),
             ],
-          ),
+            padWrap(boxWrap(GestureDetector(
+              onTap: () => deleteForm(index),
+              child: const Text(
+                '  Delete  ',
+                style: TextStyle(fontSize: 17, color: Colors.redAccent),
+              ),
+            ))),
+          ],
         ),
       ),
     );

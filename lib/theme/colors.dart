@@ -54,10 +54,11 @@ Widget padWrap(widget, {pad}) {
   );
 }
 
-Widget boxWrap(widget, {color}) {
+Widget boxWrap(widget, {padding, color}) {
+  padding = padding ?? const EdgeInsets.fromLTRB(20, 8, 20, 10);
   color = color ?? darkHighlight;
   return Container(
-    padding: const EdgeInsets.fromLTRB(20, 8, 20, 10),
+    padding: padding,
     // TODO: Use theme data
     decoration: BoxDecoration(
       color: color,
@@ -69,6 +70,11 @@ Widget boxWrap(widget, {color}) {
 TextStyle textAnnotation(context, {color}) {
   color ??= Theme.of(context).primaryColor;
   return TextStyle(color: color, fontSize: 20);
+}
+
+TextStyle textTitle(context, {color}) {
+  color ??= Theme.of(context).primaryColor;
+  return TextStyle(color: color, fontSize: 20, fontWeight: FontWeight.bold);
 }
 
 Widget smallSpacing() {

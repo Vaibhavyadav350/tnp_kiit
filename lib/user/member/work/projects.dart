@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/skill/publiclinks.dart';
-import '../../../drawer/drawer.dart';
 import '../../../theme/neo_box.dart';
 
 class FormFields {
@@ -175,14 +175,25 @@ class _PersonalProjectState extends State<PersonalProject> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personal Projects'),
+        title: SafeArea(
+          child: Row(
+            children: [
+              Image.asset("assets/images/tnpkiit.png", width: 80),
+              Text(
+                'Personal Projects',
+                style: textTitle(context),
+              ),
+            ],
+          ),
+        ),
+        backgroundColor: darkShadow,
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: Icon(Icons.add, color: Theme.of(context).primaryColor),
             onPressed: addForm,
           ),
           IconButton(
-            icon: Icon(Icons.save),
+            icon: Icon(Icons.save, color: Theme.of(context).primaryColor),
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 saveToFirestore();
@@ -206,75 +217,84 @@ class _PersonalProjectState extends State<PersonalProject> {
   Widget buildForm(int index) {
     return Column(
       children: [
-        NeoBox(
-          child: PopupMenuButton<String>(
-            child: ListTile(
-              title: Text('Select Skills'),
-              trailing: Icon(Icons.arrow_drop_down),
-            ),
-            onSelected: (value) {
-              setState(() {
-                if (_formsList[index].selectedSkills.contains(value)) {
-                  _formsList[index].selectedSkills.remove(value);
-                } else {
-                  _formsList[index].selectedSkills.add(value);
-                }
-              });
-            },
-            itemBuilder: (BuildContext context) {
-              return _formsList[index].domainsSkill.map((String skillItem) {
-                return PopupMenuItem<String>(
-                  value: skillItem,
-                  child: CheckboxListTile(
-                    title: Text(skillItem),
-                    value: _formsList[index].selectedSkills.contains(skillItem),
-                    onChanged: (bool? value) {
-                      Navigator.of(context).pop(); // close the menu
-                      if (value != null) {
-                        if (value) {
-                          _formsList[index].selectedSkills.add(skillItem);
-                        } else {
-                          _formsList[index].selectedSkills.remove(skillItem);
+        smallSpacing(),
+        padWrap(boxWrap(
+            PopupMenuButton<String>(
+              child: ListTile(
+                title: Text(
+                  'Select Skills',
+                  style: textAnnotation(context),
+                ),
+                trailing: Icon(Icons.arrow_drop_down,
+                    color: Theme.of(context).primaryColor),
+              ),
+              onSelected: (value) {
+                setState(() {
+                  if (_formsList[index].selectedSkills.contains(value)) {
+                    _formsList[index].selectedSkills.remove(value);
+                  } else {
+                    _formsList[index].selectedSkills.add(value);
+                  }
+                });
+              },
+              itemBuilder: (BuildContext context) {
+                return _formsList[index].domainsSkill.map((String skillItem) {
+                  return PopupMenuItem<String>(
+                    value: skillItem,
+                    child: CheckboxListTile(
+                      title: Text(
+                        skillItem,
+                      ),
+                      value:
+                          _formsList[index].selectedSkills.contains(skillItem),
+                      onChanged: (bool? value) {
+                        Navigator.of(context).pop(); // close the menu
+                        if (value != null) {
+                          if (value) {
+                            _formsList[index].selectedSkills.add(skillItem);
+                          } else {
+                            _formsList[index].selectedSkills.remove(skillItem);
+                          }
+                          setState(() {});
                         }
-                        setState(() {});
-                      }
-                    },
-                  ),
-                );
-              }).toList();
-            },
-          ),
-        ),
-        TextFormField(
-          controller: _formsList[index].roleController,
-          decoration: InputDecoration(labelText: 'Project Name'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Project Name Name';
-            }
-            return null;
-          },
-        ),
+                      },
+                    ),
+                  );
+                }).toList();
+              },
+            ),
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0))),
+        MatTextField(
+            label: "Project Name",
+            controller: _formsList[index].roleController),
 
-        DropdownButtonFormField<String>(
-          value: _formsList[index].levelController.text.isEmpty
-              ? null
-              : _formsList[index].levelController.text,
-          decoration: InputDecoration(
-            labelText: 'Level',
-          ),
-          items:
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            padWrap(Text("Level", style: textAnnotation(context))),
+            padWrap(boxWrap(DropdownButtonFormField<String>(
+              value: _formsList[index].levelController.text.isEmpty
+                  ? null
+                  : _formsList[index].levelController.text,
+              decoration: InputDecoration.collapsed(
+                  hintText: "",
+                  hintStyle: textAnnotation(context,
+                      color: Theme.of(context).primaryColor.withAlpha(80))),
+              items:
               <String>['Basic', 'Intermediate', 'Advanced'].map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (String? newValue) {
-            setState(() {
-              _formsList[index].levelController.text = newValue!;
-            });
-          },
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _formsList[index].levelController.text = newValue!;
+                });
+              },
+              style: textAnnotation(context),
+            )))
+          ],
         ),
 
         // TextFormField(
@@ -287,40 +307,20 @@ class _PersonalProjectState extends State<PersonalProject> {
         //     return null;
         //   },
         // ),
-        TextFormField(
-          controller: _formsList[index].githubController,
-          decoration: const InputDecoration(labelText: 'Github Link'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Github Link';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          controller: _formsList[index].descriptionController,
-          decoration: InputDecoration(labelText: 'Description'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Enter Description';
-            }
-            return null;
-          },
-        ),
-        TextFormField(
-          controller: _formsList[index].DemoLinkController,
-          decoration: const InputDecoration(labelText: 'Demo Links'),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Demo Links';
-            }
-            return null;
-          },
-        ),
-        ElevatedButton(
+
+        MatTextField(
+            label: "Github Link", controller: _formsList[index].githubController),
+        MatTextField(
+            label: "Description", controller: _formsList[index].descriptionController),
+        MatTextField(
+            label: "Demo Links", controller: _formsList[index].DemoLinkController),
+        smallSpacing(),
+        MatTextButton(
+          text: "Delete",
+          isSubmit: false,
+          icon: Icons.delete,
           onPressed: () => deleteForm(index),
-          child: Text('Delete'),
-        ),
+        )
       ],
     );
   }
