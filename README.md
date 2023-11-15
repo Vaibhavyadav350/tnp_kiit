@@ -1,6 +1,7 @@
 # TNP_KIIT
 ## Project for Training and Placement cell KIIT.
 ![Group 34](https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/c928b764-a666-4912-bc99-c76c63c5e5a8)
+<img width="1000" alt="Frame 3" src="https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/c928b764-a666-4912-bc99-c76c63c5e5a8">
 
 ## Getting Started
 <img width="2632" alt="Frame 3" src="https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/58ef75af-bdd0-4405-be20-0d5cd25affce">
