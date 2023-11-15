@@ -2,9 +2,6 @@
 ## Project for Training and Placement cell KIIT.
 
 ## Getting Started
-
-![image](https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/7879dcec-4f38-45b7-ab82-1320fa45dc98)
-## Getting Started
 <img width="2632" alt="Frame 3" src="https://github.com/Vaibhavyadav350/tnp_kiit/assets/105127780/58ef75af-bdd0-4405-be20-0d5cd25affce">
 
 To run this project locally, follow these steps:
