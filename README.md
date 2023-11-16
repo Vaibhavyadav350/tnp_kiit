@@ -14,7 +14,7 @@ To run this project locally, follow these steps:
 2. Clone this repository to your local machine using the following command:
 
    ```shell
-   git clone https://github.com/tnp_kiit/music-player.git
+   https://github.com/Vaibhavyadav350/tnp_kiit.git
 3. Navigate to the project directory:
    ```shell 
    cd tnp_kiit
