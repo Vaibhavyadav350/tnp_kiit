@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
+import 'package:kiit_connect/user/newscreens/home.dart';
 import '../../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -286,12 +289,18 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                           ),
                           onPressed: () {
                             // Handle back button pressed
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const NewHomePage(),
+                              ),
+                            );
                           },
                         ),
                       ),
                       const Text(
                         "Professional Experience",
-                        style: TextStyle(letterSpacing: 2),
+                        style: TextStyle(color: Colors.white, letterSpacing: 2),
                       ),
                       SizedBox(
                         height: 60,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 //
-const darkShadow = Color.fromARGB(255, 33, 40, 50);
-const darkHighlight = Color.fromARGB(255, 80, 97, 109);
+const darkShadow = Color.fromARGB(255, 1, 22, 30);
+const darkHighlight = Color.fromARGB(255, 18, 69, 89);
 const greenHighlight = Color.fromARGB(255, 23, 208, 89);
 
 // const primary = Color(0xFF007dff);
