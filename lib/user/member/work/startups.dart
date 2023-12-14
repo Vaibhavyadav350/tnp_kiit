@@ -7,47 +7,23 @@ import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/newscreens/home.dart';
 
 class FormFields {
-  var referenceTypes = [
-    'Bill',
-    'Book',
-    'Book Section',
-    'Case',
-    'Computer Program',
-    'Conference Proceedings',
-    'Encyclopedia Article',
-    'Film',
-    'Hearing',
-    'Journal Article',
-    'Magazine Article',
-    'Newspaper Article',
-    'Patent',
-    'Report',
-    'Statute',
-    'Television Broadcast',
-    'Thesis',
-    'Unspecified',
-    'Web Page',
-    'Working Paper'
+  TextEditingController nameController = TextEditingController();
+  List<TextEditingController> founderNameControllers = [
+    TextEditingController()
   ];
-  String referenceType = 'Journal Article';
-
-  TextEditingController titleController = TextEditingController();
-
-  // Used TextEditingController instead of String to experiment with dynamic and i-mutable lists
-  List<TextEditingController> authorNameControllers = [TextEditingController()];
-
-  TextEditingController abstractController = TextEditingController();
-  TextEditingController yearController = TextEditingController();
-  TextEditingController urlController = TextEditingController();
-  TextEditingController identifierController = TextEditingController();
+  TextEditingController inceptionDateController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController industryController = TextEditingController();
+  TextEditingController uspController = TextEditingController();
+  TextEditingController revenueModelController = TextEditingController();
 }
 
-class AcademicAchievements extends StatefulWidget {
+class StartupInformation extends StatefulWidget {
   @override
-  _AcademicAchievementsState createState() => _AcademicAchievementsState();
+  _StartupInformationState createState() => _StartupInformationState();
 }
 
-class _AcademicAchievementsState extends State<AcademicAchievements> {
+class _StartupInformationState extends State<StartupInformation> {
   final _formKey = GlobalKey<FormState>();
 
   List<FormFields> _formsList = [];
@@ -63,13 +39,13 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
   }
 
   void addNewAuthor(int index) {
-    _formsList[index].authorNameControllers.add(TextEditingController());
+    _formsList[index].founderNameControllers.add(TextEditingController());
     setState(() {});
   }
 
   void removeLastAuthor(int index) {
-    if (_formsList[index].authorNameControllers.length == 1) return;
-    _formsList[index].authorNameControllers.removeLast();
+    if (_formsList[index].founderNameControllers.length == 1) return;
+    _formsList[index].founderNameControllers.removeLast();
     setState(() {});
   }
 
@@ -87,21 +63,22 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
 
-    List<dynamic> data = docSnap.get('AcademicAchievements') as List<dynamic>;
+    List<dynamic> data = docSnap.get('StartupInformation') as List<dynamic>;
     _formsList = data.map((item) {
       Map<String, dynamic> experience = item as Map<String, dynamic>;
       FormFields formFields = FormFields();
-      formFields.referenceType =
-          experience['ReferenceType'] ?? formFields.referenceType;
-      formFields.titleController.value = experience['Title'] ?? '';
-      formFields.authorNameControllers =
-          List<String>.from(experience['AuthorNames'] ?? [])
+      formFields.nameController.value = experience['Name'] ?? '';
+      formFields.founderNameControllers =
+          List<String>.from(experience['FounderNames'] ?? [])
               .map((e) => TextEditingController(text: e))
               .toList();
-      formFields.abstractController.value = experience['Abstract'] ?? '';
-      formFields.yearController.value = experience['Year'] ?? '';
-      formFields.urlController.value = experience['URL'] ?? '';
-      formFields.identifierController.value = experience['Identifier'] ?? '';
+      formFields.inceptionDateController.value =
+          experience['InceptionDate'] ?? '';
+      formFields.descriptionController.value = experience['Description'] ?? '';
+      formFields.industryController.value = experience['Industry'] ?? '';
+      formFields.uspController.value = experience['USP'] ?? '';
+      formFields.revenueModelController.value =
+          experience['RevenueModel'] ?? '';
       return formFields;
     }).toList();
 
@@ -114,14 +91,14 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
     for (int i = 0; i < _formsList.length; i++) {
       final FormFields formFields = _formsList[i];
       final achievements = {
-        'ReferenceType': formFields.referenceType,
-        'Title': formFields.titleController.value,
-        'AuthorNames':
-            formFields.authorNameControllers.map((e) => e.value).toList(),
-        'Abstract': formFields.abstractController.value,
-        'Year': formFields.yearController.value,
-        'URL': formFields.urlController.value,
-        'Identifier': formFields.identifierController.value,
+        'Name': formFields.nameController.text,
+        'FounderNames':
+            formFields.founderNameControllers.map((e) => e.value).toList(),
+        'InceptionDate': formFields.inceptionDateController.value,
+        'Description': formFields.descriptionController.value,
+        'Industry': formFields.industryController.value,
+        'USP': formFields.uspController.value,
+        'RevenueModel': formFields.revenueModelController.value,
       };
       proexp.add(achievements);
     }
@@ -129,7 +106,7 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
     await FirebaseFirestore.instance
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .set({'AcademicAchievements': proexp}, SetOptions(merge: true)).then(
+        .set({'StartupInformation': proexp}, SetOptions(merge: true)).then(
             (documentRef) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Info Updated!!')),
@@ -191,7 +168,7 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
                   ),
                 ),
                 const Text(
-                  "Academic Achievements",
+                  "Startups",
                   style: TextStyle(color: Colors.white, letterSpacing: 2),
                 ),
                 SizedBox(
@@ -226,43 +203,21 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(children: [
-          padWrap(SizedBox(
-              width: double.infinity,
-              child: boxWrap(
-                  Center(
-                      child: DropdownButton<String>(
-                          value: _formsList[index].referenceType,
-                          style: textAnnotation(context),
-                          icon: Icon(Icons.keyboard_arrow_down,
-                              color: theme.primaryColor),
-                          items: _formsList[index]
-                              .referenceTypes
-                              .map((String item) {
-                            return DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            );
-                          }).toList(),
-                          onChanged: (String? newValue) {
-                            if (newValue != null) {
-                              setState(() {
-                                _formsList[index].referenceType = newValue;
-                              });
-                            }
-                          })),
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)))),
+          MatTextField(
+              label: "Startup Name",
+              controller: _formsList[index].nameController),
           SizedBox(height: 20),
           padWrap(Column(children: [
             SizedBox(
                 width: double.infinity,
                 child:
-                    Text("Add Author Names", style: textAnnotation(context))),
+                    Text("Add Founder Names", style: textAnnotation(context))),
             SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: boxWrap(Column(
                 children: _formsList[index]
-                    .authorNameControllers
+                    .founderNameControllers
                     .map((e) => TextField(
                           controller: e,
                           style: textAnnotation(context),
@@ -291,19 +246,26 @@ class _AcademicAchievementsState extends State<AcademicAchievements> {
           ])),
           SizedBox(height: 20),
           MatTextField(
-              label: "Title", controller: _formsList[index].titleController),
+              label: "Inception Date",
+              controller: _formsList[index].inceptionDateController),
           SizedBox(height: 20),
           MatTextField(
-              label: "Year of publication",
-              controller: _formsList[index].yearController),
+            label: "Description",
+            controller: _formsList[index].descriptionController,
+            maxLines: 3,
+          ),
           SizedBox(height: 20),
           MatTextField(
-              label: "URL (Journal or PDF)",
-              controller: _formsList[index].urlController),
+              label: "Industry",
+              controller: _formsList[index].industryController),
           SizedBox(height: 20),
           MatTextField(
-              label: "Identifier (DOI/ArXivID/ISBN...)",
-              controller: _formsList[index].identifierController),
+              label: "Unique Selling Point",
+              controller: _formsList[index].uspController),
+          SizedBox(height: 20),
+          MatTextField(
+              label: "Revenue Model",
+              controller: _formsList[index].revenueModelController),
           SizedBox(height: 20),
           padWrap(boxWrap(GestureDetector(
             onTap: () => deleteForm(index),
