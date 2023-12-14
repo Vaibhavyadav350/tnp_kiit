@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:kiit_connect/service/wrapper.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
+import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
 import 'package:kiit_connect/user/newscreens/home.dart';
 
 void main() async {
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       darkTheme: theme.copyWith(brightness: Brightness.dark),
       themeMode: ThemeMode.dark,
-      home: Wrapper(),
+      home: NewHomePage(),
     );
   }
 }
