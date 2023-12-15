@@ -178,9 +178,9 @@ class _PersonalProjectState extends State<PersonalProject> {
         title: SafeArea(
           child: Row(
             children: [
-              Image.asset("assets/images/tnpkiit.png", width: 80),
+              Image.asset("assets/images/tnpkiit.png", width: 75),
               Text(
-                'Personal Projects',
+                'Personal Project',
                 style: textTitle(context),
               ),
             ],
