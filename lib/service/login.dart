@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../theme/colors.dart';
+
 class Login extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -42,14 +44,86 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign In'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: Text('Sign in with Google'),
-          onPressed: _handleSignIn,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: bgcolor,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 10),
+            Row(
+              children: [
+                Image.asset(
+                  "assets/images/tnpkiit.png",
+                  fit: BoxFit.cover,
+                  height: 100,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/Group 12.png",
+                  fit: BoxFit.cover,
+                  height: 320,
+                ),
+              ],
+            ),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 40,
+                ),
+                Text(
+                  "  Manage your \n  Profile for",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 55,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "  Placements",
+                  style: TextStyle(
+                      color: kiitgreen,
+                      fontSize: 55,
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            SizedBox(height: 40,),
+            Expanded(
+              child: Center(
+                child: SizedBox(
+                  height: 50,width: 300,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: buttoncolor,
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0)),
+                      minimumSize: Size(300, 60), //////// HERE
+                    ),
+                    onPressed: () {
+                      _handleSignIn();
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/Group 13.png",
+                          fit: BoxFit.cover,
+
+                        ),
+                        Text('   Login',style: TextStyle(color: Colors.black),),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
