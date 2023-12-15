@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/user/member/sem/sixth_sem.dart';
-
 import '../../../drawer/drawer.dart';
 import '../../../theme/colors.dart';
 import '../../../theme/neo_box.dart';
