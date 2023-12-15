@@ -37,8 +37,6 @@ class NewHomePage extends StatelessWidget {
           child: padWrap(
             Column(
               children: [
-                smallSpacing(),
-                smallSpacing(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -52,14 +50,27 @@ class NewHomePage extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  // mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       // "Testing....",
                       FirebaseAuth.instance.currentUser!.displayName!,
                       style: TextStyle(color: primary, fontSize: 20),
                     ),
-                    // Image.asset('name')
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BasicProfile()));
+                      },
+                      child: SizedBox(
+                          height: 45,
+                          // decoration: BoxDecoration(
+                          //     borderRadius: BorderRadius.circular(100),
+                          // ),
+                          child: Image.asset('assets/images/profile-edit.png')),
+                    )
                   ],
                 ),
                 smallSpacing(),
@@ -92,121 +103,126 @@ class NewHomePage extends StatelessWidget {
                   ],
                 ),
                 smallSpacing(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //skills button
-                    Column(children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Competency()));
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.white60,
-                                    blurRadius: 4,
-                                    spreadRadius: 2,
-                                  )
-                                ]),
-                            padding: EdgeInsets.all(10),
-                            height: 90,
-                            child: Center(
-                              child: Image.asset('assets/images/user.png'),
-                            )),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Skills',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ]),
-
-                    Column(children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProfessionalExperience()));
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.white60,
-                                    blurRadius: 4,
-                                    spreadRadius: 2,
-                                  )
-                                ]),
-                            padding: EdgeInsets.all(10),
-                            height: 90,
-                            child: Center(
-                              child: Image.asset('assets/images/workspace.png'),
-                            )),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Internships',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ]),
-                    Column(children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PersonalProject()));
-                        },
-                        child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.white60,
-                                    blurRadius: 4,
-                                    spreadRadius: 2,
-                                  )
-                                ]),
-                            padding: EdgeInsets.all(10),
-                            height: 90,
-                            child: Center(
-                              child: Image.asset(
-                                'assets/images/computer.png',
-                                scale: 0.1,
-                              ),
-                            )),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        'Projects',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ])
-                  ],
-                ),
                 Padding(
-                  padding: const EdgeInsets.all(25.0),
+                  padding: EdgeInsets.all(15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      //skills button
+                      Column(children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Competency()));
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade300,
+                                  borderRadius: BorderRadius.circular(15),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.white60,
+                                      blurRadius: 4,
+                                      spreadRadius: 2,
+                                    )
+                                  ]),
+                              padding: EdgeInsets.all(10),
+                              height: 90,
+                              child: Center(
+                                child: Image.asset('assets/images/user.png'),
+                              )),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Skills',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ]),
+
+                      Column(children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfessionalExperience()));
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade300,
+                                  borderRadius: BorderRadius.circular(15),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.white60,
+                                      blurRadius: 4,
+                                      spreadRadius: 2,
+                                    )
+                                  ]),
+                              padding: EdgeInsets.all(10),
+                              height: 90,
+                              child: Center(
+                                child:
+                                    Image.asset('assets/images/workspace.png'),
+                              )),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Internships',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ]),
+                      Column(children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PersonalProject()));
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade300,
+                                  borderRadius: BorderRadius.circular(15),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.white60,
+                                      blurRadius: 4,
+                                      spreadRadius: 2,
+                                    )
+                                  ]),
+                              padding: EdgeInsets.all(10),
+                              height: 90,
+                              child: Center(
+                                child: Image.asset(
+                                  'assets/images/computer.png',
+                                  scale: 0.1,
+                                ),
+                              )),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Projects',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ])
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
                   child: Column(
                     children: [
                       GestureDetector(
@@ -224,7 +240,7 @@ class NewHomePage extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              height: 80,
+                              height: 100,
                               child: Image.asset('assets/images/searching.png'),
                             ),
                             Column(
@@ -233,7 +249,7 @@ class NewHomePage extends StatelessWidget {
                                   "Research Work",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                      color: Colors.white, fontSize: 25),
                                 ),
                                 Text(
                                   textAlign: TextAlign.center,
@@ -264,7 +280,7 @@ class NewHomePage extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              height: 80,
+                              height: 92,
                               // width: 75,
                               child: Image.asset('assets/images/rocket.png'),
                             ),
@@ -274,11 +290,11 @@ class NewHomePage extends StatelessWidget {
                                   "Start Ups",
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
+                                      color: Colors.white, fontSize: 25),
                                 ),
                                 Text(
                                   textAlign: TextAlign.center,
-                                  "Share and update your\nStart-Up projects here",
+                                  " Share and update your\n Start-Up projects here",
                                   style: TextStyle(color: Colors.white),
                                 )
                               ],
