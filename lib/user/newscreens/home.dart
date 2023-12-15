@@ -5,6 +5,7 @@ import 'package:kiit_connect/drawer/drawer.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:kiit_connect/user/member/school/tenth_ac.dart';
 import 'package:kiit_connect/user/member/school/twelfth_achievements.dart';
 import 'package:kiit_connect/user/member/school/twelth_ac.dart';
@@ -47,17 +48,18 @@ class NewHomePage extends StatelessWidget {
                         color: greenHighlight,
                         fontSize: 12,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      // "Testing....", 
+                      // "Testing....",
                       FirebaseAuth.instance.currentUser!.displayName!,
                       style: TextStyle(color: primary, fontSize: 20),
                     ),
+                    // Image.asset('name')
                   ],
                 ),
                 smallSpacing(),
@@ -89,183 +91,209 @@ class NewHomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                // smallSpacing(),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => BasicProfile(),
-                //       ),
-                //     );
-                //   },
-                //   child: Container(
-                //     width: 384,
-                //     height: 125,
-                //     decoration: BoxDecoration(
-                //         color: darkHighlight,
-                //         borderRadius: BorderRadius.circular(10.0)),
-                //     child: Align(
-                //       alignment: Alignment.center,
-                //       child: Text(
-                //         "Basic Profile",
-                //         style: TextStyle(
-                //           fontSize: 25,
-                //           color: primary,
-                //           fontFamily: 'Times New Roman',
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // smallSpacing(),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //         context,
-                //         MaterialPageRoute(
-                //           builder: (context) => PersonalProject(),
-                //         ));
-                //   },
-                //   child: Container(
-                //     width: 384,
-                //     height: 125,
-                //     decoration: BoxDecoration(
-                //         color: darkHighlight,
-                //         borderRadius: BorderRadius.circular(10.0)),
-                //     child: Align(
-                //       alignment: Alignment.center,
-                //       child: Text(
-                //         "Projects",
-                //         style: TextStyle(
-                //           fontSize: 25,
-                //           color: primary,
-                //           fontFamily: 'Times New Roman',
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // smallSpacing(),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => ProfessionalExperience(),
-                //       ),
-                //     );
-                //   },
-                //   child: Container(
-                //     width: 384,
-                //     height: 125,
-                //     decoration: BoxDecoration(
-                //         color: darkHighlight,
-                //         borderRadius: BorderRadius.circular(10.0)),
-                //     child: Align(
-                //       alignment: Alignment.center,
-                //       child: Text(
-                //         "Internship Report",
-                //         style: TextStyle(
-                //           fontSize: 25,
-                //           color: primary,
-                //           fontFamily: 'Times New Roman',
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // smallSpacing(),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => Competency(),
-                //       ),
-                //     );
-                //   },
-                //   child: Container(
-                //     width: 384,
-                //     height: 125,
-                //     decoration: BoxDecoration(
-                //         color: darkHighlight,
-                //         borderRadius: BorderRadius.circular(10.0)),
-                //     child: Align(
-                //       alignment: Alignment.center,
-                //       child: Text(
-                //         "Skill Upgradation",
-                //         style: TextStyle(
-                //           fontSize: 25,
-                //           color: primary,
-                //           fontFamily: 'Times New Roman',
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // smallSpacing(),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => AcademicAchievements(),
-                //       ),
-                //     );
-                //   },
-                //   child: Container(
-                //     width: 384,
-                //     height: 125,
-                //     decoration: BoxDecoration(
-                //         color: darkHighlight,
-                //         borderRadius: BorderRadius.circular(10.0)),
-                //     child: Align(
-                //       alignment: Alignment.center,
-                //       child: Text(
-                //         "Research Work",
-                //         style: TextStyle(
-                //           fontSize: 25,
-                //           color: primary,
-                //           fontFamily: 'Times New Roman',
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // smallSpacing(),
-                // GestureDetector(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => ProfessionalExperience(),
-                //       ),
-                //     );
-                //   },
-                //   child: Container(
-                //     width: 384,
-                //     height: 125,
-                //     decoration: BoxDecoration(
-                //         color: darkHighlight,
-                //         borderRadius: BorderRadius.circular(10.0)),
-                //     child: Align(
-                //       alignment: Alignment.center,
-                //       child: Text(
-                //         "StartUp Information",
-                //         style: TextStyle(
-                //           fontSize: 25,
-                //           color: primary,
-                //           fontFamily: 'Times New Roman',
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 smallSpacing(),
-                smallSpacing(),
-                MyCarousel(),
-                smallSpacing(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    //skills button
+                    Column(children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Competency()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.white60,
+                                    blurRadius: 4,
+                                    spreadRadius: 2,
+                                  )
+                                ]),
+                            padding: EdgeInsets.all(10),
+                            height: 90,
+                            child: Center(
+                              child: Image.asset('assets/images/user.png'),
+                            )),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Skills',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ]),
+
+                    Column(children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ProfessionalExperience()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.white60,
+                                    blurRadius: 4,
+                                    spreadRadius: 2,
+                                  )
+                                ]),
+                            padding: EdgeInsets.all(10),
+                            height: 90,
+                            child: Center(
+                              child: Image.asset('assets/images/workspace.png'),
+                            )),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Internships',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ]),
+                    Column(children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PersonalProject()));
+                        },
+                        child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(15),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.white60,
+                                    blurRadius: 4,
+                                    spreadRadius: 2,
+                                  )
+                                ]),
+                            padding: EdgeInsets.all(10),
+                            height: 90,
+                            child: Center(
+                              child: Image.asset(
+                                'assets/images/computer.png',
+                                scale: 0.1,
+                              ),
+                            )),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Projects',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ])
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      AcademicAchievements()));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              height: 80,
+                              child: Image.asset('assets/images/searching.png'),
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "Research Work",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  "Share and update your\nresearch projects here",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                      smallSpacing(),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => StartupInformation()));
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              height: 80,
+                              // width: 75,
+                              child: Image.asset('assets/images/rocket.png'),
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "Start Ups",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                                Text(
+                                  textAlign: TextAlign.center,
+                                  "Share and update your\nStart-Up projects here",
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                      smallSpacing(),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -275,326 +303,264 @@ class NewHomePage extends StatelessWidget {
   }
 }
 
-class MyCarousel extends StatelessWidget {
-  final List<Map<String, dynamic>> tiles = [
-    {
-      'title': 'Basic Profile',
-      'page': BasicProfile(),
-      'image': 'assets/images/profile.png'
-    },
-    {
-      'title': 'Projects',
-      'page': PersonalProject(),
-      'image': 'assets/images/projects.png'
-    },
-    {
-      'title': 'Internship Report',
-      'page': ProfessionalExperience(),
-      'image': 'assets/images/internships.png'
-    },
-    {
-      'title': 'Skill Upgradation',
-      'page': Competency(),
-      'image': 'assets/images/skills.png'
-    },
-    {
-      'title': 'Research Work',
-      'page': AcademicAchievements(),
-      'image': 'assets/images/research.png'
-    },
-    {
-      'title': 'StartUp Information',
-      'page': StartupInformation(),
-      'image': 'assets/images/startup.png'
-    },
-  ];
-
+class MyIfElseCarousel extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 250.0,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        autoPlayInterval: Duration(seconds: 2),
-      ),
-      items: tiles.map((tile) {
-        return Builder(
-          builder: (BuildContext context) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => tile['page'],
-                  ),
-                );
-              },
-              child: Container(
-                width: 626,
-                height: 626,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(tile['image']),
-                    fit: BoxFit.fill,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                // child: Align(
-                //   alignment: Alignment.bottomCenter,
-                //   child: Text(
-                //     tile['title'],
-                //     style: TextStyle(
-                //       fontSize: 25,
-                //       color: Colors.white,
-                //       fontFamily: 'Times New Roman',
-                //     ),
-                //   ),
-                // ),
-              ),
-            );
-          },
-        );
-      }).toList(),
-    );
-  }
+  State<MyIfElseCarousel> createState() => _MyIfElseCarouselState();
 }
 
-class MyIfElseCarousel extends StatelessWidget {
+class _MyIfElseCarouselState extends State<MyIfElseCarousel> {
+  final _controller = PageController();
   final List<String> titles = [
     'Update 10th/Matric Information',
     'Update 12th/High School Information',
-    // 'Update Internship Information',
     'Update Semester Information'
   ];
-
-  MyIfElseCarousel({super.key});
+  int idx = 0;
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 200.0,
-        enlargeCenterPage: true,
-        autoPlay: true,
-        autoPlayInterval: Duration(seconds: 2),
-      ),
-      items: titles.map((title) {
-        return Builder(
-          builder: (BuildContext context) {
-            return GestureDetector(
-              onTap: () {
-                if (title == 'Update 10th/Matric Information') {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TenthGradeInfo(),
+    return Column(children: [
+      CarouselSlider(
+        options: CarouselOptions(
+            height: 200.0,
+            enlargeCenterPage: true,
+            autoPlay: false,
+            autoPlayInterval: Duration(seconds: 2),
+            onPageChanged: (index, reason) {
+              setState(() {
+                idx = index;
+              });
+            }),
+        items: titles.map((title) {
+          return Builder(
+            builder: (BuildContext context) {
+              return GestureDetector(
+                onTap: () {
+                  if (title == 'Update 10th/Matric Information') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TenthGradeInfo(),
+                      ),
+                    );
+                  } else if (title == 'Update 12th/High School Information') {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TwelfthGradeAchievements(),
+                      ),
+                    );
+                    // Internship details not needed on the educational details section
+                    // } else if (title == 'Update Internship Information') {
+                    //   Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //           builder: (context) => ProfessionalExperience()));
+                    // }
+                  } else if (title == 'Update Semester Information') {
+                    showModalBottomSheet(
+                      backgroundColor: darkShadow,
+                      context: context,
+                      builder: (context) {
+                        return Wrap(
+                          children: [
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 1',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        FirstSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 2',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        SecondSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 3',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ThirdSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 4',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        FourthSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 5',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        FifthSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 6',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        SixthSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 7',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        SeventhSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 8',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        EightSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color(0xFF4EEA00), // Light Green
+                        Color(0xFFF5F106), // Dark Green
+                      ],
                     ),
-                  );
-                } else if (title == 'Update 12th/High School Information') {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TwelfthGradeAchievements(),
-                    ),
-                  );
-                  // Internship details not needed on the educational details section
-                  // } else if (title == 'Update Internship Information') {
-                  //   Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //           builder: (context) => ProfessionalExperience()));
-                  // }
-                } else if (title == 'Update Semester Information') {
-                  showModalBottomSheet(
-                    backgroundColor: darkShadow,
-                    context: context,
-                    builder: (context) {
-                      return Wrap(
-                        children: [
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 1',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      FirstSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 2',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      SecondSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 3',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      ThirdSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 4',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      FourthSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 5',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      FifthSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 6',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      SixthSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 7',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      SeventhSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(
-                              Icons.article_outlined,
-                              color: primary,
-                            ),
-                            title: Text(
-                              'Semester 8',
-                              style: TextStyle(color: primary),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      EightSemesterPerformance(),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(
-                  color: greenHighlight,
-                  borderRadius: BorderRadius.circular(10.0),
-                  // border: Border.all(color: Colors.white, width: 4.0),
-                ),
-                child: Center(
-                  child: Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Times New Roman',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 24.0,
-                      color: loginPrimary,
+                  ),
+                  child: Center(
+                    child: Text(
+                      title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Times New Roman',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24.0,
+                        color: loginPrimary,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          },
-        );
-      }).toList(),
-    );
+              );
+            },
+          );
+        }).toList(),
+      ),
+      smallSpacing(),
+      AnimatedSmoothIndicator(
+        activeIndex: idx,
+        count: titles.length,
+        effect: WormEffect(
+            activeDotColor: Colors.blueAccent, dotHeight: 10, dotWidth: 20),
+      ),
+    ]);
   }
 }
