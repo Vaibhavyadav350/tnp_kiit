@@ -17,7 +17,7 @@ class Login extends StatelessWidget {
 
     // Check for the specific domain
     if (!googleUser!.email.endsWith('@kiit.ac.in')) {
-      print('Invalid domain.Please use a valid @kiit.ac.in email.');
+      print('Invalid domain. Please use a valid @kiit.ac.in email.');
       return;
     }
 
@@ -28,19 +28,31 @@ class Login extends StatelessWidget {
 
     final User? user = (await _auth.signInWithCredential(credential)).user;
 
-    // Save the auth id to Firestore
-    _firestore.collection('users').doc(user?.uid).set({
-      'uid': user?.uid,
-      'kiitemail': user?.email,
-      // add other user information here if needed
-    });
-    _firestore.collection('StudentInfo').doc(user?.uid).set({
-      'kiitemail': user?.email,
-      // add other user information here if needed
-    });
+    // Check if the UID already exists in the 'users' collection
+    final userDoc = await _firestore.collection('users').doc(user?.uid).get();
+    if (!userDoc.exists) {
+      // UID doesn't exist, so save the auth id to Firestore
+      _firestore.collection('users').doc(user?.uid).set({
+        'uid': user?.uid,
+        'kiitemail': user?.email,
+        // add other user information here if needed
+      });
+    }
+
+    // Check if the email already exists in the 'StudentInfo' collection
+    final emailDoc =
+    await _firestore.collection('StudentInfo').doc(user?.uid).get();
+    if (!emailDoc.exists) {
+      // Email doesn't exist, so save the information to Firestore
+      _firestore.collection('StudentInfo').doc(user?.uid).set({
+        'kiitemail': user?.email,
+        // add other user information here if needed
+      });
+    }
 
     print('Signed in as ${user?.displayName}');
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +68,7 @@ class Login extends StatelessWidget {
                 Image.asset(
                   "assets/images/tnpkiit.png",
                   fit: BoxFit.cover,
-                  height: 100,
+                  height: 80,
                 ),
               ],
             ),
@@ -66,7 +78,7 @@ class Login extends StatelessWidget {
                 Image.asset(
                   "assets/images/Group 12.png",
                   fit: BoxFit.cover,
-                  height: 320,
+                  height: 300,
                 ),
               ],
             ),
@@ -74,51 +86,49 @@ class Login extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Text(
                   "  Manage your \n  Profile for",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 55,
+                      fontSize: 45,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
                   "  Placements",
                   style: TextStyle(
                       color: kiitgreen,
-                      fontSize: 55,
+                      fontSize: 45,
                       fontWeight: FontWeight.bold),
                 )
               ],
             ),
             SizedBox(height: 40,),
-            Expanded(
-              child: Center(
-                child: SizedBox(
-                  height: 50,width: 300,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: buttoncolor,
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0)),
-                      minimumSize: Size(300, 60), //////// HERE
-                    ),
-                    onPressed: () {
-                      _handleSignIn();
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/Group 13.png",
-                          fit: BoxFit.cover,
+            Center(
+              child: SizedBox(
+                height: 50,width: 300,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: buttoncolor,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0)),
+                    minimumSize: Size(300, 60), //////// HERE
+                  ),
+                  onPressed: () {
+                    _handleSignIn();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/Group 13.png",
+                        fit: BoxFit.cover,
 
-                        ),
-                        Text('   Login',style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
+                      ),
+                      Text('   Login',style: TextStyle(color: Colors.black),),
+                    ],
                   ),
                 ),
               ),
