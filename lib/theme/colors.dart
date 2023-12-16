@@ -73,7 +73,7 @@ TextStyle textAnnotation(context, {color}) {
 }
 
 TextStyle textTitle(context, {color}) {
-  color ??= Theme.of(context).primaryColor;
+  color ??= Theme.of(context).secondaryHeaderColor;
   return TextStyle(color: color, fontSize: 20, fontWeight: FontWeight.bold);
 }
 
