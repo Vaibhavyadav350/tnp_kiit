@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/user/member/work/profesionalexp.dart';
+import 'package:kiit_connect/user/newscreens/home.dart';
 import '../../../drawer/drawer.dart';
 import '../../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -111,7 +112,6 @@ class _CompetencyState extends State<Competency> {
     }
   }
 
-
   void deleteForm(int index) {
     _formsList.removeAt(index);
     setState(() {});
@@ -138,18 +138,14 @@ class _CompetencyState extends State<Competency> {
         FormFields formFields = FormFields();
 
         formFields.level = experience['level'] ?? 'Basic';
-        formFields.selectedSkills = List<String>.from(experience['Skills'] ?? []);
+        formFields.selectedSkills =
+            List<String>.from(experience['Skills'] ?? []);
         return formFields;
       }).toList();
 
       setState(() {});
     }
   }
-
-
-
-
-
 
   void saveToFirestore() async {
     List<Map<String, dynamic>> proexp = [];
@@ -159,7 +155,6 @@ class _CompetencyState extends State<Competency> {
       final CollegeExp = {
         'level': formFields.level,
         'Skills': formFields.selectedSkills,
-
       };
       proexp.add(CollegeExp);
     }
@@ -169,13 +164,13 @@ class _CompetencyState extends State<Competency> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set({'Competency': proexp}, SetOptions(merge: true)).then(
             (documentRef) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Info Updated!!')),
-          );
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => ProfessionalExperience()),
-          );
-        }).catchError((error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Info Updated!!')),
+      );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => ProfessionalExperience()),
+      );
+    }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Failed to save information')),
       );
@@ -209,8 +204,12 @@ class _CompetencyState extends State<Competency> {
             saveToFirestore();
           }
         },
-        label: const Text('Proceed',style: TextStyle(color: Colors.green),),
-        icon: const Icon(Icons.keyboard_double_arrow_right,color: Colors.green),
+        label: const Text(
+          'Proceed',
+          style: TextStyle(color: Colors.green),
+        ),
+        icon:
+            const Icon(Icons.keyboard_double_arrow_right, color: Colors.green),
         backgroundColor: Colors.grey[300],
       ),
 
@@ -233,6 +232,10 @@ class _CompetencyState extends State<Competency> {
                             icon: Icon(Icons.arrow_back_ios_new),
                             onPressed: () {
                               // Handle back button pressed
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewHomePage()));
                             },
                           ),
                         ),
@@ -254,7 +257,6 @@ class _CompetencyState extends State<Competency> {
                     ],
                   ),
                 ),
-
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -277,99 +279,118 @@ class _CompetencyState extends State<Competency> {
       child: NeoBox(
         child: Padding(
           padding: const EdgeInsets.all(4.0),
-          child: Column(children: [
-            SizedBox(
-              width: double.infinity,
-              child: NeoBox(
-                child: Center(
-                  child: DropdownButton<String>(
-                    // Initial Value
-                    value: _formsList[index].level,
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: NeoBox(
+                  child: Center(
+                    child: DropdownButton<String>(
+                      // Initial Value
+                      value: _formsList[index].level,
 
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),
+                      // Down Arrow Icon
+                      icon: const Icon(Icons.keyboard_arrow_down),
 
-                    // Array list of items
-                    items: _formsList[index].items.map((String item) {
-                      return DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(item),
-                      );
-                    }).toList(),
+                      // Array list of items
+                      items: _formsList[index].items.map((String item) {
+                        return DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        );
+                      }).toList(),
 
-                    // After selecting the desired option, it will change button value to selected value
-                    onChanged: (String? newValue) {
-                      if (newValue != null) {
-                        setState(() {
-                          _formsList[index].level = newValue;
-                        });
-                      }
-                    },
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-          NeoBox(
-            child: PopupMenuButton<String>(
-              child: ListTile(
-                title: Text('Select Skills'),
-                trailing: Icon(Icons.arrow_drop_down),
-              ),
-              onSelected: (value) {}, // No changes here anymore.
-              itemBuilder: (BuildContext context) {
-                return _formsList[index].domainsSkill.map((String skillItem) {
-                  return PopupMenuItem<String>(
-                    value: skillItem,
-                    child: CheckboxListTile(
-                      title: Text(skillItem),
-                      value: _formsList[index].selectedSkills.contains(skillItem),
-                      onChanged: (bool? value) {
-                        Navigator.of(context).pop(); // close the menu
-                        if (value != null) {
-                          if (value) {
-                            if (_formsList[index].selectedSkills.length < 5) {
-                              _formsList[index].selectedSkills.add(skillItem);
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('You can select up to 5 skills only!')),
-                              );
-                            }
-                          } else {
-                            _formsList[index].selectedSkills.remove(skillItem);
-                          }
-                          setState(() {});
+                      // After selecting the desired option, it will change button value to selected value
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          setState(() {
+                            _formsList[index].level = newValue;
+                          });
                         }
                       },
                     ),
-                  );
-                }).toList();
-              },
-            ),
-          ),
-
-            SizedBox(height: 20,),
-            Wrap(
-              spacing: 8.0, // gap between adjacent containers
-              runSpacing: 4.0, // gap between lines
-              children: _formsList[index].selectedSkills.map((skill) {
-                return NeoBox(child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                  child: Text(skill),
-                ));
-              }).toList(),
-            ),
-
-            SizedBox(height: 20,),
-
-            NeoBox(
-              child: GestureDetector(
-                onTap: () => deleteForm(index),
-                child: const Text('  Delete  ',style: TextStyle(fontSize: 17,color: Colors.redAccent),),
+                  ),
+                ),
               ),
-            ),
+              SizedBox(
+                height: 20,
+              ),
+              NeoBox(
+                child: PopupMenuButton<String>(
+                  child: ListTile(
+                    title: Text('Select Skills'),
+                    trailing: Icon(Icons.arrow_drop_down),
+                  ),
+                  onSelected: (value) {}, // No changes here anymore.
+                  itemBuilder: (BuildContext context) {
+                    return _formsList[index]
+                        .domainsSkill
+                        .map((String skillItem) {
+                      return PopupMenuItem<String>(
+                        value: skillItem,
+                        child: CheckboxListTile(
+                          title: Text(skillItem),
+                          value: _formsList[index]
+                              .selectedSkills
+                              .contains(skillItem),
+                          onChanged: (bool? value) {
+                            Navigator.of(context).pop(); // close the menu
+                            if (value != null) {
+                              if (value) {
+                                if (_formsList[index].selectedSkills.length <
+                                    5) {
+                                  _formsList[index]
+                                      .selectedSkills
+                                      .add(skillItem);
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        content: Text(
+                                            'You can select up to 5 skills only!')),
+                                  );
+                                }
+                              } else {
+                                _formsList[index]
+                                    .selectedSkills
+                                    .remove(skillItem);
+                              }
+                              setState(() {});
+                            }
+                          },
+                        ),
+                      );
+                    }).toList();
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Wrap(
+                spacing: 8.0, // gap between adjacent containers
+                runSpacing: 4.0, // gap between lines
+                children: _formsList[index].selectedSkills.map((skill) {
+                  return NeoBox(
+                      child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+                    child: Text(skill),
+                  ));
+                }).toList(),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              NeoBox(
+                child: GestureDetector(
+                  onTap: () => deleteForm(index),
+                  child: const Text(
+                    '  Delete  ',
+                    style: TextStyle(fontSize: 17, color: Colors.redAccent),
+                  ),
+                ),
+              ),
             ],
-
           ),
         ),
       ),
