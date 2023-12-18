@@ -5,6 +5,8 @@ import 'package:kiit_connect/service/wrapper.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 import 'package:kiit_connect/user/newscreens/home.dart';
+import 'package:kiit_connect/user/test_screens/RevampedHomePage.dart';
+import 'package:kiit_connect/user/test_screens/navBar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +45,8 @@ class MyApp extends StatelessWidget {
       theme: theme,
       darkTheme: theme.copyWith(brightness: Brightness.dark),
       themeMode: ThemeMode.dark,
-      home: Wrapper(),
+
+      home: RevampedHome(),
     );
   }
 }

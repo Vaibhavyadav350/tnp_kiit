@@ -57,33 +57,32 @@ class FormBuilder extends StatefulWidget {
     final key = label.toFormattableKey();
     String value = defaultValue.isEmpty ? validValues[0] : defaultValue;
     formItems.add(_FormItem(
-      key,
-      displayTitle,
-      (state, context, theme) => padWrap(SizedBox(
-          width: double.infinity,
-          child: boxWrap(
-              Center(
-                  child: DropdownButton<String>(
-                      value: value,
-                      style: textAnnotation(context),
-                      icon: Icon(Icons.keyboard_arrow_down,
-                          color: theme.primaryColor),
-                      items: validValues.map((String item) {
-                        return DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(item),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        if (newValue != null) {
-                          state.setState(() {
-                            value = newValue;
-                          });
-                        }
-                      })),
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)))),
-      defaultValue: defaultValue
-    ));
+        key,
+        displayTitle,
+        (state, context, theme) => padWrap(SizedBox(
+            width: double.infinity,
+            child: boxWrap(
+                Center(
+                    child: DropdownButton<String>(
+                        value: value,
+                        style: textAnnotation(context),
+                        icon: Icon(Icons.keyboard_arrow_down,
+                            color: theme.primaryColor),
+                        items: validValues.map((String item) {
+                          return DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(item),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          if (newValue != null) {
+                            state.setState(() {
+                              value = newValue;
+                            });
+                          }
+                        })),
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)))),
+        defaultValue: defaultValue));
     return this;
   }
 
