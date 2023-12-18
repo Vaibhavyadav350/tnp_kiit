@@ -8,7 +8,7 @@ class HaveThisCard extends StatelessWidget {
   final double width;
   final String imgPath;
   final double curvature;
-  final LinearGradient gradient;
+  final Gradient gradient;
   final theChild;
 
   const HaveThisCard(

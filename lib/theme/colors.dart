@@ -1,4 +1,55 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+
+const darkBackground = Color(0xFF041D19);
+const mains1 = Color(0xFF2F904D);
+const mains2 = Color(0xFF295E16);
+const mains3 = Color(0xFF93F337);
+const mains4 = Color(0xFF3CFBF3);
+const mains5 = Color(0xFF2DBDB6);
+const darks1 = Color(0xFF297F14);
+const darks2 = Color(0xFF2F7424);
+const darks3 = Color(0xFF29E364);
+const darks4 = Color(0xFF20BD62);
+const darks5 = Color(0xFF228C87);
+
+const roots1 = Color(0xFF29E364);
+const roots2 = Color(0xFFB9F340);
+const roots3 = Color(0xFF39F3A9);
+const roots4 = Color(0xFF3CFBF3);
+
+final randomGenerator = Random();
+
+
+class StatefulColorChain {
+  final colors = [
+    [roots1, roots2],
+    [roots2, roots3],
+    [roots3, roots4]
+  ]
+      .expand((p) => List.generate(5, (i) => i / 4.0)
+          .map((f) => Color.lerp(p[0], p[1], f)))
+      .map((c) => [c!.withAlpha(40), c.withAlpha(10)])
+      .toList();
+  int index = 0;
+
+  StatefulColorChain() {
+    colors.shuffle();
+  }
+
+  List<Color> next() => colors[(index++) % colors.length];
+}
+
+extension ThemeRadialGradient on RadialGradient {
+  static RadialGradient random(colors) => RadialGradient(
+      center: Alignment(
+        (randomGenerator.nextDouble() - 0.5) * 3,
+        (randomGenerator.nextDouble() - 0.5) * 3,
+      ),
+      radius: 1.5,
+      colors: colors);
+}
 
 //
 const darkShadow = Color.fromARGB(255, 1, 22, 30); //color scheme changed

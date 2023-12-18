@@ -101,7 +101,7 @@ class _CollegeExperienceState extends State<CollegeExperience> {
             ],
           ),
         ),
-        backgroundColor: darkShadow,
+        backgroundColor: darkBackground,
         actions: [
           IconButton(
             icon: Icon(Icons.add, color: Theme.of(context).primaryColor),

@@ -29,9 +29,9 @@ class MyApp extends StatelessWidget {
     final ThemeData theme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: greenHighlight,
-        background: darkShadow,
+        background: darkBackground,
         primary: Colors.white70,
-        primaryContainer: darkShadow,
+        primaryContainer: darkBackground,
         secondary: Colors.white70,
         secondaryContainer: darkHighlight,
         tertiary: greenHighlight,
