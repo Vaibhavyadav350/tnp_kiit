@@ -57,32 +57,93 @@ class FormBuilder extends StatefulWidget {
     final key = label.toFormattableKey();
     String value = defaultValue.isEmpty ? validValues[0] : defaultValue;
     formItems.add(_FormItem(
+        key,
+        label,
+        (state, context, theme) =>         Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            padWrap(Text(label, style: textAnnotation(context))),
+            padWrap(boxWrap(DropdownButtonFormField<String>(
+              value: value,
+              decoration: InputDecoration.collapsed(
+                  hintText: "",
+                  hintStyle: textAnnotation(context,
+                      color: Theme.of(context).primaryColor.withAlpha(80))),
+              items:
+              validValues.map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                state.setState(() {
+                  value = newValue!;
+                });
+              },
+              style: textAnnotation(context),
+            )))
+          ],
+        ),
+        defaultValue: defaultValue));
+    return this;
+  }
+
+  FormBuilder addMultiSelectComboBox(String label, List<String> validValues,
+      {defaultValue = ""}) {
+    final key = label.toFormattableKey();
+    final List<String> selectedValues = [];
+    formItems.add(_FormItem(
       key,
-      displayTitle,
-      (state, context, theme) => padWrap(SizedBox(
-          width: double.infinity,
-          child: boxWrap(
-              Center(
-                  child: DropdownButton<String>(
-                      value: value,
-                      style: textAnnotation(context),
-                      icon: Icon(Icons.keyboard_arrow_down,
-                          color: theme.primaryColor),
-                      items: validValues.map((String item) {
-                        return DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(item),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        if (newValue != null) {
-                          state.setState(() {
-                            value = newValue;
-                          });
+      label,
+      (state, context, theme) => padWrap(boxWrap(
+          PopupMenuButton<String>(
+            child: ListTile(
+              title: Text(
+                label,
+                style: textAnnotation(context),
+              ),
+              trailing: Icon(Icons.arrow_drop_down,
+                  color: Theme.of(context).primaryColor),
+            ),
+            onSelected: (value) {
+              state.setState(() {
+                if (selectedValues.contains(value)) {
+                  selectedValues.remove(value);
+                } else {
+                  selectedValues.add(value);
+                }
+              });
+            },
+            itemBuilder: (BuildContext context) {
+              return validValues.map((String skillItem) {
+                return PopupMenuItem<String>(
+                  value: skillItem,
+                  child: CheckboxListTile(
+                    title: Text(
+                      skillItem,
+                    ),
+                    value: selectedValues.contains(skillItem),
+                    onChanged: (bool? value) {
+                      Navigator.of(context).pop(); // close the menu
+                      if (value != null) {
+                        if (value) {
+                          selectedValues.add(skillItem);
+                        } else {
+                          selectedValues.remove(skillItem);
                         }
-                      })),
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)))),
-      defaultValue: defaultValue
+                        state.setState(() {});
+                      }
+                    },
+                  ),
+                );
+              }).toList();
+            },
+          ),
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0))),
+      defaultValue: List<String>.from([]),
+      mapToValue: (m) => List<String>.from(m[key] ?? []),
+      valueToMap: (m, v) => m[key] = v.map((e) => e.value).toList(),
     ));
     return this;
   }
@@ -92,7 +153,7 @@ class FormBuilder extends StatefulWidget {
     final controllers = [TextEditingController()];
     formItems.add(_FormItem(
       key,
-      displayTitle,
+      label,
       (state, context, theme) => padWrap(Column(children: [
         SizedBox(
             width: double.infinity,
