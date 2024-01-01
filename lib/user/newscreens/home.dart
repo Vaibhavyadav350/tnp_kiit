@@ -109,7 +109,6 @@ class NewHomePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        //skills button
                         Column(children: [
                           GestureDetector(
                               onTap: () {
