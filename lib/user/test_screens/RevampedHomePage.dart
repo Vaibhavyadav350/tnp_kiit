@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
+import 'package:kiit_connect/utils/ThemeBackgrounds.dart';
 import 'package:kiit_connect/utils/cards.dart';
 
 import '../member/basicprofile.dart';
@@ -19,7 +20,7 @@ class _RevampedHomeState extends State<RevampedHome> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = StatefulColorChain(); 
+    final colors = StatefulColorChain();
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -63,6 +64,8 @@ class _RevampedHomeState extends State<RevampedHome> {
                         height: 200,
                         width: 400,
                         gradient: ThemeRadialGradient.random(colors.next()),
+                        image: ThemedBackground.home.bigDeco(),
+                        theChild: Text("Home", style: textTitle(context)),
                       ),
                     ),
                     smallSpacing(),
@@ -78,14 +81,20 @@ class _RevampedHomeState extends State<RevampedHome> {
                                   curvature: 20,
                                   height: 150,
                                   width: 180,
-                                  gradient: ThemeRadialGradient.random(colors.next()),
+                                  gradient:
+                                      ThemeRadialGradient.random(colors.next()),
+                                  image: ThemedBackground.basicProfile.smallDeco(),
+                                  theChild: Text("Basic Profile", style: textTitle(context)),
                                 ),
                                 SizedBox(height: 20),
                                 HaveThisCard(
                                   curvature: 20,
                                   height: 300,
                                   width: 180,
-                                  gradient: ThemeRadialGradient.random(colors.next()),
+                                  gradient:
+                                      ThemeRadialGradient.random(colors.next()),
+                                  image: ThemedBackground.competency.smallDeco(),
+                                  theChild: Text("Competency", style: textTitle(context)),
                                 ),
                               ],
                             ),
@@ -97,7 +106,10 @@ class _RevampedHomeState extends State<RevampedHome> {
                                 curvature: 20,
                                 height: 300,
                                 width: 180,
-                                gradient: ThemeRadialGradient.random(colors.next()),
+                                gradient:
+                                    ThemeRadialGradient.random(colors.next()),
+                                image: ThemedBackground.collegeExperience.smallDeco(),
+                                theChild: Text("College Experience", style: textTitle(context)),
                               ),
                               SizedBox(
                                 height: 20,
@@ -106,7 +118,10 @@ class _RevampedHomeState extends State<RevampedHome> {
                                 curvature: 20,
                                 height: 150,
                                 width: 180,
-                                gradient: ThemeRadialGradient.random(colors.next()),
+                                gradient:
+                                    ThemeRadialGradient.random(colors.next()),
+                                image: ThemedBackground.publicLinks.smallDeco(),
+                                theChild: Text("Public Links", style: textTitle(context)),
                               ),
                             ],
                           )

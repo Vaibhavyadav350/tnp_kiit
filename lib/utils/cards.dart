@@ -1,23 +1,23 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/theme/colors.dart';
 
 class HaveThisCard extends StatelessWidget {
   final double height;
   final double width;
-  final String imgPath;
+  final DecorationImage image;
   final double curvature;
   final Gradient gradient;
   final theChild;
 
   const HaveThisCard(
       {super.key,
-      this.imgPath = "",
+      required this.image,
       required this.curvature,
       required this.height,
       required this.width,
-      this.theChild, required this.gradient});
+      this.theChild,
+      required this.gradient});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +27,11 @@ class HaveThisCard extends StatelessWidget {
           width: width,
           height: height,
           color: Colors.transparent,
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: new AssetImage(
+          //             "assets/images/backgrounds/01_home_background.png"),
+          //         fit: BoxFit.cover)),
           child: Stack(children: [
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
@@ -36,11 +41,20 @@ class HaveThisCard extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(curvature),
                   border: Border.all(color: Colors.white.withOpacity(0.13)),
-                  gradient: gradient
-              ),
+                  gradient: gradient,
+                  image: image),
             ),
-            Container(child: theChild)
+            Container(decoration: BoxDecoration(gradient: closer)),
+            Container(alignment: Alignment.bottomLeft, padding: EdgeInsets.all(20.0), child: theChild)
           ])),
     );
   }
 }
+
+const Gradient closer = LinearGradient(
+    begin: Alignment.center,
+    end: Alignment.bottomCenter,
+    colors: [
+      Color.fromARGB(0, 0, 0, 0),
+      Color.fromARGB(255, 0, 0, 0),
+    ]);
