@@ -22,7 +22,7 @@ class TiledButton extends StatelessWidget {
                 decoration: BoxDecoration(
                     // color: Colors.grey.shade300,
                     // color: Color.fromARGB(255, 255, 238, 207),
-                    color: darkBackground,
+                    color: ColorProfile().background,
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(

@@ -20,7 +20,8 @@ class _RevampedHomeState extends State<RevampedHome> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = StatefulColorChain();
+    var profile = ColorProfile();
+    final colors = StatefulColorChain(profile);
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
@@ -63,7 +64,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                         curvature: 20,
                         height: 200,
                         width: 400,
-                        gradient: ThemeRadialGradient.random(colors.next()),
+                        gradient: profile.randomRadialGradient(colors.next()),
                         image: ThemedBackground.home.bigDeco(),
                         theChild: Text("Home", style: textTitle(context)),
                       ),
@@ -82,7 +83,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                                   height: 150,
                                   width: 180,
                                   gradient:
-                                      ThemeRadialGradient.random(colors.next()),
+                                  profile.randomRadialGradient(colors.next()),
                                   image: ThemedBackground.basicProfile.smallDeco(),
                                   theChild: Text("Basic Profile", style: textTitle(context)),
                                 ),
@@ -92,7 +93,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                                   height: 300,
                                   width: 180,
                                   gradient:
-                                      ThemeRadialGradient.random(colors.next()),
+                                  profile.randomRadialGradient(colors.next()),
                                   image: ThemedBackground.competency.smallDeco(),
                                   theChild: Text("Competency", style: textTitle(context)),
                                 ),
@@ -107,7 +108,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                                 height: 300,
                                 width: 180,
                                 gradient:
-                                    ThemeRadialGradient.random(colors.next()),
+                                profile.randomRadialGradient(colors.next()),
                                 image: ThemedBackground.collegeExperience.smallDeco(),
                                 theChild: Text("College Experience", style: textTitle(context)),
                               ),
@@ -119,7 +120,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                                 height: 150,
                                 width: 180,
                                 gradient:
-                                    ThemeRadialGradient.random(colors.next()),
+                                profile.randomRadialGradient(colors.next()),
                                 image: ThemedBackground.publicLinks.smallDeco(),
                                 theChild: Text("Public Links", style: textTitle(context)),
                               ),

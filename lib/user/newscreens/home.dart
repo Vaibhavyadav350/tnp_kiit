@@ -354,7 +354,7 @@ class _MyIfElseCarouselState extends State<MyIfElseCarousel> {
                       );
                     } else if (title == 'Update Semester Information') {
                       showModalBottomSheet(
-                        backgroundColor: darkBackground,
+                        backgroundColor: ColorProfile().background,
                         context: context,
                         builder: (context) {
                           return Wrap(

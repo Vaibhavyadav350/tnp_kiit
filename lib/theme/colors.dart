@@ -2,53 +2,103 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-const darkBackground = Color(0xFF041D19);
-const mains1 = Color(0xFF2F904D);
-const mains2 = Color(0xFF295E16);
-const mains3 = Color(0xFF93F337);
-const mains4 = Color(0xFF3CFBF3);
-const mains5 = Color(0xFF2DBDB6);
-const darks1 = Color(0xFF297F14);
-const darks2 = Color(0xFF2F7424);
-const darks3 = Color(0xFF29E364);
-const darks4 = Color(0xFF20BD62);
-const darks5 = Color(0xFF228C87);
-
-const roots1 = Color(0xFF29E364);
-const roots2 = Color(0xFFB9F340);
-const roots3 = Color(0xFF39F3A9);
-const roots4 = Color(0xFF3CFBF3);
-
-final randomGenerator = Random();
-
-
-class StatefulColorChain {
-  final colors = [
-    [roots1, roots2],
-    [roots2, roots3],
-    [roots3, roots4]
-  ]
-      .expand((p) => List.generate(5, (i) => i / 4.0)
-          .map((f) => Color.lerp(p[0], p[1], f)))
-      .map((c) => [c!.withAlpha(40), c.withAlpha(10)])
-      .toList();
-  int index = 0;
-
-  StatefulColorChain() {
-    colors.shuffle();
-  }
-
-  List<Color> next() => colors[(index++) % colors.length];
+Color highlight(color) {
+  return HSLColor.fromColor(color).withSaturation(1).toColor();
 }
 
-extension ThemeRadialGradient on RadialGradient {
-  static RadialGradient random(colors) => RadialGradient(
+Color variant(color, {hueShift = 0, target = 0, britShift = 0}) {
+  final variant = HSLColor.fromColor(color);
+  return variant
+      .withHue((variant.hue + hueShift) % 360.0)
+      .withLightness(
+          variant.lightness + (target - variant.lightness) * britShift)
+      .toColor();
+}
+
+/// Generate a non random color profile.
+/// Tip: Give bright but not fully saturated colors as roots.
+class ColorProfile {
+  static ColorProfile? instance;
+
+  factory ColorProfile() => instance!;
+
+  final Color background;
+  final Color mains1;
+  final Color mains2;
+  final Color mains3;
+  final Color mains4;
+  final Color mains5;
+  final Color darks1;
+  final Color darks2;
+  final Color darks3;
+  final Color darks4;
+  final Color darks5;
+
+  final Color roots1;
+  final Color roots2;
+  final Color roots3;
+  final Color roots4;
+
+  final randomGenerator = Random();
+
+  late final List<List<Color>> _colors;
+
+  List<List<Color>> get colors {
+    final cols = _colors.toList();
+    cols.shuffle(randomGenerator);
+    return cols;
+  }
+
+  ColorProfile.dark(Color root)
+      : background = variant(root, britShift: 0.85),
+        mains1 = root,
+        mains2 = variant(root, britShift: 0.2),
+        mains3 = variant(root, hueShift: -50),
+        mains4 = variant(root, hueShift: 40),
+        mains5 = variant(root, britShift: 0.4, hueShift: 30),
+        darks1 = variant(root, britShift: 0.5),
+        darks2 = variant(root, britShift: 0.6),
+        darks3 = variant(root, britShift: 0.4, hueShift: -50),
+        darks4 = variant(root, britShift: 0.4, hueShift: 40),
+        darks5 = variant(root, britShift: 0.6, hueShift: 30),
+        roots1 = highlight(root),
+        roots2 = variant(highlight(root), hueShift: -50),
+        roots3 = variant(highlight(root), hueShift: 20),
+        roots4 = variant(highlight(root), hueShift: 40) {
+    _postProcess();
+  }
+
+  // TODO: Implement the following shit
+  //  ColorProfile.light(Color root)
+
+  void _postProcess() {
+    _colors = [
+      [roots1, roots2],
+      [roots2, roots3],
+      [roots3, roots4]
+    ]
+        .expand((p) => List.generate(5, (i) => i / 4.0)
+            .map((f) => Color.lerp(p[0], p[1], f)))
+        .map((c) => [c!.withAlpha(40), c.withAlpha(10)])
+        .toList();
+  }
+
+  Gradient randomRadialGradient(colors) => RadialGradient(
       center: Alignment(
         (randomGenerator.nextDouble() - 0.5) * 3,
         (randomGenerator.nextDouble() - 0.5) * 3,
       ),
       radius: 1.5,
       colors: colors);
+}
+
+class StatefulColorChain {
+  final colors;
+  int index = 0;
+
+  StatefulColorChain(ColorProfile profile) : colors = profile.colors;
+
+  List<Color> next() => colors[(index++) % colors.length];
 }
 
 //
