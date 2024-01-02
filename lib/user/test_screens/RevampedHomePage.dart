@@ -507,7 +507,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           curvature: 20,
                           height: 180,
                           width: 180,
-                          gradient: ThemeRadialGradient.random(colors.next()),
+                          gradient: profile.randomRadialGradient(colors.next()),
                           image: ThemedBackground.personalProjects.smallDeco(),
                           theChild: Text("Projects", style: textTitle(context)),
                         ),
