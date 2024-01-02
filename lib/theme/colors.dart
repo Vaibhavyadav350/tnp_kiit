@@ -42,11 +42,25 @@ class ColorProfile {
   final randomGenerator = Random();
 
   late final List<List<Color>> _colors;
+  late final ColorFilter _mains1Filter;
 
   List<List<Color>> get colors {
     final cols = _colors.toList();
     cols.shuffle(randomGenerator);
     return cols;
+  }
+
+  void _postProcess() {
+    _colors = [
+      [roots1, roots2],
+      [roots2, roots3],
+      [roots3, roots4]
+    ]
+        .expand((p) => List.generate(5, (i) => i / 4.0)
+            .map((f) => Color.lerp(p[0], p[1], f)))
+        .map((c) => [c!.withAlpha(40), c.withAlpha(10)])
+        .toList();
+    _mains1Filter = imageTransformationMatrix(target: mains1);
   }
 
   ColorProfile.dark(Color root)
@@ -71,18 +85,6 @@ class ColorProfile {
   // TODO: Implement the following shit
   //  ColorProfile.light(Color root)
 
-  void _postProcess() {
-    _colors = [
-      [roots1, roots2],
-      [roots2, roots3],
-      [roots3, roots4]
-    ]
-        .expand((p) => List.generate(5, (i) => i / 4.0)
-            .map((f) => Color.lerp(p[0], p[1], f)))
-        .map((c) => [c!.withAlpha(40), c.withAlpha(10)])
-        .toList();
-  }
-
   Gradient randomRadialGradient(colors) => RadialGradient(
       center: Alignment(
         (randomGenerator.nextDouble() - 0.5) * 3,
@@ -90,6 +92,18 @@ class ColorProfile {
       ),
       radius: 1.5,
       colors: colors);
+
+  ColorFilter imageTransformationMatrix({Color? target, double factor = 0.7}) {
+    if (target == null) return _mains1Filter;
+    final inverse = 1 - factor;
+    return ColorFilter.matrix(<double>[
+      factor, 0.0, 0.0, 0.0, inverse * target.red,
+      0.0, factor, 0.0, 0.0, inverse * target.green,
+      0.0, 0.0, factor, 0.0, inverse * target.blue,
+      //
+      0.0, 0.0, 0.0, 1.0, 0.0,
+    ]);
+  }
 }
 
 class StatefulColorChain {

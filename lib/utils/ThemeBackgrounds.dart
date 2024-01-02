@@ -26,27 +26,27 @@ enum ThemedBackground {
   final Alignment alignment;
   final double scale;
 
-  const ThemedBackground(String item, {
+  const ThemedBackground(
+    String item, {
     this.alignment = Alignment.topRight,
     this.scale = 13,
-  })
-      : asset = "assets/images/backgrounds/$item";
+  }) : asset = "assets/images/backgrounds/$item";
 
-  DecorationImage bigDeco() {
+  DecorationImage bigDeco({colorFilter}) {
     return DecorationImage(
-      image: AssetImage(asset),
-      fit: BoxFit.none,
-      scale: scale,
-      alignment: alignment,
-    );
+        image: AssetImage(asset),
+        fit: BoxFit.none,
+        scale: scale,
+        alignment: alignment,
+        colorFilter: colorFilter);
   }
 
-  DecorationImage smallDeco() {
+  DecorationImage smallDeco({colorFilter}) {
     return DecorationImage(
-      image: AssetImage(asset),
-      fit: BoxFit.none,
-      scale: scale * 1.4,
-      alignment: Alignment(-alignment.x, alignment.y),
-    );
+        image: AssetImage(asset),
+        fit: BoxFit.none,
+        scale: scale * 1.4,
+        alignment: Alignment(-alignment.x, alignment.y),
+        colorFilter: colorFilter);
   }
 }

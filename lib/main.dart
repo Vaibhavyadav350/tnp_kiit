@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ColorProfile.instance = ColorProfile.dark(Color.fromARGB(255, 144, 136, 47));
+    ColorProfile.instance = ColorProfile.dark(Color.fromARGB(255, 62, 108, 154));
     final ThemeData theme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: greenHighlight,

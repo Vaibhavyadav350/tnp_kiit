@@ -40,6 +40,7 @@ class _RevampedHomeState extends State<RevampedHome> {
   @override
   Widget build(BuildContext context) {
     var profile = ColorProfile();
+    var filter = null; // profile.imageTransformationMatrix(target: profile.roots1);
     final colors = StatefulColorChain(profile);
     return Scaffold(
         body: SafeArea(
@@ -81,7 +82,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                 child: GestureDetector(
                   onTap: () {
                     showModalBottomSheet(
-                      backgroundColor: darkBackground,
+                      backgroundColor: profile.background,
                       context: context,
                       builder: (context) {
                         return Wrap(
@@ -247,8 +248,8 @@ class _RevampedHomeState extends State<RevampedHome> {
                     curvature: 20,
                     height: 200,
                     width: 400,
-                    gradient: ThemeRadialGradient.random(colors.next()),
-                    image: ThemedBackground.home.bigDeco(),
+                    gradient: profile.randomRadialGradient(colors.next()),
+                    image: ThemedBackground.home.bigDeco(colorFilter: filter),
                     theChild:
                         Text("Semester-Wise Report", style: textTitle(context)),
                   ),
@@ -275,7 +276,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                               height: 150,
                               width: 180,
                               gradient:
-                                  ThemeRadialGradient.random(colors.next()),
+                              profile.randomRadialGradient(colors.next()),
                               image: ThemedBackground.basicProfile.smallDeco(),
                               theChild: Text("Basic Profile",
                                   style: textTitle(context)),
@@ -294,7 +295,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                               height: 300,
                               width: 180,
                               gradient:
-                                  ThemeRadialGradient.random(colors.next()),
+                              profile.randomRadialGradient(colors.next()),
                               image: ThemedBackground.competency.smallDeco(),
                               theChild:
                                   Text("Skills", style: textTitle(context)),
@@ -317,7 +318,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                             curvature: 20,
                             height: 300,
                             width: 180,
-                            gradient: ThemeRadialGradient.random(colors.next()),
+                            gradient: profile.randomRadialGradient(colors.next()),
                             image:
                                 ThemedBackground.collegeExperience.smallDeco(),
                             theChild: Text("College Experience",
@@ -338,7 +339,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                             curvature: 20,
                             height: 150,
                             width: 180,
-                            gradient: ThemeRadialGradient.random(colors.next()),
+                            gradient: profile.randomRadialGradient(colors.next()),
                             image: ThemedBackground.publicLinks.smallDeco(),
                             theChild:
                                 Text("Public Links", style: textTitle(context)),
@@ -368,7 +369,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           curvature: 20,
                           height: 200,
                           width: 300,
-                          gradient: ThemeRadialGradient.random(colors.next()),
+                          gradient: profile.randomRadialGradient(colors.next()),
                           image: ThemedBackground.tenthDetails.bigDeco(),
                           theChild: Text("10th/Matric Academics",
                               style: textTitle(context)),
@@ -388,7 +389,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           curvature: 20,
                           height: 200,
                           width: 300,
-                          gradient: ThemeRadialGradient.random(colors.next()),
+                          gradient: profile.randomRadialGradient(colors.next()),
                           image: ThemedBackground.twelfthDetails.bigDeco(),
                           theChild: Text("12th/Inter Academics",
                               style: textTitle(context)),
@@ -409,7 +410,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           curvature: 20,
                           height: 200,
                           width: 300,
-                          gradient: ThemeRadialGradient.random(colors.next()),
+                          gradient: profile.randomRadialGradient(colors.next()),
                           image: ThemedBackground.tenthAchievements.bigDeco(),
                           theChild: Text("Achievements upto Matric/10th",
                               style: textTitle(context)),
@@ -430,7 +431,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           curvature: 20,
                           height: 200,
                           width: 300,
-                          gradient: ThemeRadialGradient.random(colors.next()),
+                          gradient: profile.randomRadialGradient(colors.next()),
                           // no image was found for twelfthAchievements, kindly handle the next line if image found!
                           image: ThemedBackground.extraCertifications.bigDeco(),
                           theChild: Text("Achievements upto Inter/12th",
@@ -463,7 +464,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                               height: 400,
                               width: 180,
                               gradient:
-                                  ThemeRadialGradient.random(colors.next()),
+                              profile.randomRadialGradient(colors.next()),
                               image: ThemedBackground.discoverSomethingNew
                                   .bigDeco(),
                               theChild: Text("Research Work",
@@ -486,7 +487,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           curvature: 20,
                           height: 200,
                           width: 180,
-                          gradient: ThemeRadialGradient.random(colors.next()),
+                          gradient: profile.randomRadialGradient(colors.next()),
                           image:
                               ThemedBackground.startupInformation.smallDeco(),
                           theChild: Text("StartUps", style: textTitle(context)),
@@ -507,7 +508,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                         curvature: 20,
                         height: 180,
                         width: 180,
-                        gradient: ThemeRadialGradient.random(colors.next()),
+                        gradient: profile.randomRadialGradient(colors.next()),
                         image: ThemedBackground.personalProjects.smallDeco(),
                         theChild: Text("Projects", style: textTitle(context)),
                       ),
