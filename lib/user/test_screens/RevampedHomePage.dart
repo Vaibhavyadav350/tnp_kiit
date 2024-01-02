@@ -491,26 +491,26 @@ class _RevampedHomeState extends State<RevampedHome> {
                           theChild: Text("StartUps", style: textTitle(context)),
                         ),
                       ),
-                    ]),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PersonalProject()));
-                      },
-                      child: HaveThisCard(
-                        curvature: 20,
-                        height: 180,
-                        width: 180,
-                        gradient: ThemeRadialGradient.random(colors.next()),
-                        image: ThemedBackground.personalProjects.smallDeco(),
-                        theChild: Text("Projects", style: textTitle(context)),
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PersonalProject()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 180,
+                          width: 180,
+                          gradient: ThemeRadialGradient.random(colors.next()),
+                          image: ThemedBackground.personalProjects.smallDeco(),
+                          theChild: Text("Projects", style: textTitle(context)),
+                        ),
+                      ),
+                    ]),
                   ],
                 ),
               )
