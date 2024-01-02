@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/user/member/work/profesionalexp.dart';
 import 'package:kiit_connect/user/newscreens/home.dart';
+import 'package:kiit_connect/user/test_screens/RevampedHomePage.dart';
 import '../../../drawer/drawer.dart';
 import '../../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -235,7 +236,7 @@ class _CompetencyState extends State<Competency> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => NewHomePage()));
+                                      builder: (context) => RevampedHome()));
                             },
                           ),
                         ),
