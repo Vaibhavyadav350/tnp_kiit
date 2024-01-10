@@ -260,49 +260,46 @@ class _RevampedHomeState extends State<RevampedHome> {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => BasicProfile()));
-                            },
-                            child: HaveThisCard(
-                              curvature: 20,
-                              height: 150,
-                              width: 180,
-                              gradient:
-                              profile.randomRadialGradient(colors.next()),
-                              image: ThemedBackground.basicProfile.smallDeco(),
-                              theChild: Text("Basic Profile",
-                                  style: textTitle(context)),
-                            ),
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BasicProfile()));
+                          },
+                          child: HaveThisCard(
+                            curvature: 20,
+                            height: 150,
+                            width: 180,
+                            gradient:
+                            profile.randomRadialGradient(colors.next()),
+                            image: ThemedBackground.basicProfile.smallDeco(),
+                            theChild: Text("Basic Profile",
+                                style: textTitle(context)),
                           ),
-                          SizedBox(height: 20),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Competency()));
-                            },
-                            child: HaveThisCard(
-                              curvature: 20,
-                              height: 300,
-                              width: 180,
-                              gradient:
-                              profile.randomRadialGradient(colors.next()),
-                              image: ThemedBackground.competency.smallDeco(),
-                              theChild:
-                                  Text("Skills", style: textTitle(context)),
-                            ),
+                        ),
+                        SizedBox(height: 20),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Competency()));
+                          },
+                          child: HaveThisCard(
+                            curvature: 20,
+                            height: 300,
+                            width: 180,
+                            gradient:
+                            profile.randomRadialGradient(colors.next()),
+                            image: ThemedBackground.competency.smallDeco(),
+                            theChild:
+                                Text("Skills", style: textTitle(context)),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     SizedBox(width: 10),
                     Column(
@@ -447,32 +444,29 @@ class _RevampedHomeState extends State<RevampedHome> {
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          AcademicAchievements()));
-                            },
-                            child: HaveThisCard(
-                              curvature: 20,
-                              height: 400,
-                              width: 180,
-                              gradient:
-                              profile.randomRadialGradient(colors.next()),
-                              image: ThemedBackground.discoverSomethingNew
-                                  .bigDeco(),
-                              theChild: Text("Research Work",
-                                  style: textTitle(context)),
-                            ),
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AcademicAchievements()));
+                          },
+                          child: HaveThisCard(
+                            curvature: 20,
+                            height: 400,
+                            width: 180,
+                            gradient:
+                            profile.randomRadialGradient(colors.next()),
+                            image: ThemedBackground.discoverSomethingNew
+                                .bigDeco(),
+                            theChild: Text("Research Work",
+                                style: textTitle(context)),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     SizedBox(width: 10),
                     Column(children: [
