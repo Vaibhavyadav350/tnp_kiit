@@ -124,6 +124,11 @@ It's aimed to provide comprehensive profiling for students, capturing academic, 
 * Sections: Clearly displayed with optional edit links/buttons.
 * Clickable Links: For projects, publications, CP platforms, etc.
 * Expand/Collapse: Option for lengthy sections to ensure easy navigation.
-# 4. Conclusion
+# 4. Design Document 
+<img width="2632" alt="Frame 4" src="flowtnp.drawio.svg">
+<img width="2632" alt="Frame 4" src="classtnp.drawio.svg">
+<img width="2632" alt="Frame 4" src="sequencetnp.drawio.svg">
+<img width="2632" alt="Frame 4" src="statetnp.drawio.svg">
+# 5. Conclusion
 * With this expanded and structured SRS, the development team can build a comprehensive student profiling system that covers a broad range of attributes, making it invaluable for recruiters and placement cells.
 
