@@ -40,15 +40,46 @@ class FormBuilder extends StatefulWidget {
       {maxLines = 1, hintText = "", IconData? icon, key}) {
     final controller = TextEditingController();
     key ??= label.toFormattableKey();
-    formItems.add(_FormItem(
-        key,
-        label,
-        (state, context, theme) => MatTextField(
-            label: label,
-            controller: controller,
-            maxLines: maxLines,
-            hintText: hintText,
-            icon: icon)));
+    formItems.add(_FormItem(key, label, (state, context, theme, setValue) {
+      controller
+          .addListener(() => state.setState(() => setValue(controller.text)));
+      return MatTextField(
+          label: label,
+          controller: controller,
+          maxLines: maxLines,
+          hintText: hintText,
+          icon: icon);
+    }, defaultValue: controller.text));
+    return this;
+  }
+
+  FormBuilder addConditional({field = "", condition = ""}) {
+    var source = formItems.where((e) => e.displayTitle == field).first;
+    var target = formItems[formItems.length - 1];
+    var equalityStatus = condition == source.defaultValue;
+    print('targetValue');
+    print(condition);
+    print(source.defaultValue);
+    print(equalityStatus);
+
+    var sourceBuilder = source.build;
+    source.build = (state, context, theme, setValue) {
+      var newValueSetter = (value) {
+        equalityStatus = condition == value;
+        setValue(value);
+        print('Hello World');
+        print(equalityStatus);
+      };
+      return sourceBuilder(state, context, theme, newValueSetter);
+    };
+
+    var targetBuilder = target.build;
+    target.build = (state, context, theme, setValue) {
+      return equalityStatus
+          ? targetBuilder(state, context, theme, setValue)
+          : null;
+    };
+
     return this;
   }
 
@@ -59,33 +90,33 @@ class FormBuilder extends StatefulWidget {
     formItems.add(_FormItem(
         key,
         label,
-        (state, context, theme) =>         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            padWrap(Text(label, style: textAnnotation(context))),
-            padWrap(boxWrap(DropdownButtonFormField<String>(
-              value: value,
-              decoration: InputDecoration.collapsed(
-                  hintText: "",
-                  hintStyle: textAnnotation(context,
-                      color: Theme.of(context).primaryColor.withAlpha(80))),
-              items:
-              validValues.map((String value) {
-                return DropdownMenuItem<String>(
+        (state, context, theme, setValue) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                padWrap(Text(label, style: textAnnotation(context))),
+                padWrap(boxWrap(DropdownButtonFormField<String>(
                   value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                state.setState(() {
-                  value = newValue!;
-                });
-              },
-              style: textAnnotation(context),
-            )))
-          ],
-        ),
-        defaultValue: defaultValue));
+                  decoration: InputDecoration.collapsed(
+                      hintText: "",
+                      hintStyle: textAnnotation(context,
+                          color: Theme.of(context).primaryColor.withAlpha(80))),
+                  items: validValues.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    state.setState(() {
+                      value = newValue!;
+                      setValue(newValue);
+                    });
+                  },
+                  style: textAnnotation(context),
+                )))
+              ],
+            ),
+        defaultValue: value));
     return this;
   }
 
@@ -96,7 +127,7 @@ class FormBuilder extends StatefulWidget {
     formItems.add(_FormItem(
       key,
       label,
-      (state, context, theme) => padWrap(boxWrap(
+      (state, context, theme, setValue) => padWrap(boxWrap(
           PopupMenuButton<String>(
             child: ListTile(
               title: Text(
@@ -113,6 +144,7 @@ class FormBuilder extends StatefulWidget {
                 } else {
                   selectedValues.add(value);
                 }
+                setValue(selectedValues);
               });
             },
             itemBuilder: (BuildContext context) {
@@ -132,6 +164,7 @@ class FormBuilder extends StatefulWidget {
                         } else {
                           selectedValues.remove(skillItem);
                         }
+                        setValue(selectedValues);
                         state.setState(() {});
                       }
                     },
@@ -154,7 +187,7 @@ class FormBuilder extends StatefulWidget {
     formItems.add(_FormItem(
       key,
       label,
-      (state, context, theme) => padWrap(Column(children: [
+      (state, context, theme, setValue) => padWrap(Column(children: [
         SizedBox(
             width: double.infinity,
             child: Text("Add " + label, style: textAnnotation(context))),
@@ -175,8 +208,13 @@ class FormBuilder extends StatefulWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-                onPressed: () => state
-                    .setState(() => controllers.add(TextEditingController())),
+                onPressed: () => state.setState(() {
+                      var c = TextEditingController();
+                      controllers.add(c);
+                      c.addListener(
+                          () => state.setState(() => setValue(controllers)));
+                      setValue(controllers);
+                    }),
                 icon: Icon(
                   Icons.add,
                   color: Theme.of(context).primaryColor,
@@ -184,6 +222,7 @@ class FormBuilder extends StatefulWidget {
             IconButton(
                 onPressed: () => state.setState(() {
                       if (controllers.length > 1) controllers.removeLast();
+                      setValue(controllers);
                     }),
                 icon: Icon(
                   Icons.remove,
@@ -205,12 +244,14 @@ class _FormItem {
   String firebaseKey;
   String displayTitle;
   dynamic defaultValue;
-  Widget Function(State<FormBuilder>, BuildContext, ThemeData) build;
+  Widget? Function(
+          State<FormBuilder>, BuildContext, ThemeData, void Function(dynamic))
+      build;
   dynamic Function(Map<String, dynamic>)? mapToValue;
   void Function(Map<String, dynamic>, dynamic)? valueToMap;
 
   _FormItem(this.firebaseKey, this.displayTitle, this.build,
-      {this.mapToValue, this.valueToMap, this.defaultValue = ""}) {
+      {this.mapToValue, this.valueToMap, this.defaultValue}) {
     mapToValue ??= (m) => m[firebaseKey];
     valueToMap ??= (m, v) => m[firebaseKey] = v;
   }
@@ -331,6 +372,10 @@ class _FormBuilderState extends State<FormBuilder> {
       data.add(item);
     }
 
+    print('FIREBASE ACTION: SAVE');
+    print('Attempting to save the following shit:');
+    print(data);
+
     await FirebaseFirestore.instance
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -351,14 +396,18 @@ class _FormBuilderState extends State<FormBuilder> {
 
   Widget buildForm(int index) {
     final theme = Theme.of(context);
+    // final setValue = (value) => _formsList[index]
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Padding(
           padding: const EdgeInsets.all(4.0),
           child: Column(
-              children: widget.formItems
-                      .expand((e) =>
-                          [e.build(this, context, theme), smallSpacing()])
+              children: widget.formItems.indexed
+                      .map((e) => e.$2.build(this, context, theme,
+                          (value) => _formsList[index][e.$1] = value))
+                      // .map((e) => e.build(this, context, theme))
+                      .where((e) => e != null)
+                      .expand((e) => [e!, smallSpacing()])
                       .toList() +
                   [
                     padWrap(boxWrap(GestureDetector(

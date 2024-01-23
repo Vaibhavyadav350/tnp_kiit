@@ -24,7 +24,7 @@ class StartupInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("StartupInformation", (c) => PersonalProject())
+    return FormBuilder("Startup Information", (c) => PersonalProject())
         .addTextField("Name")
         .addMultiTextBox("Founder Names")
         .addTextField("Inception Date")
