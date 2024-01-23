@@ -19,6 +19,10 @@ extension StringExtension on String {
         .map((e) => e.__sentenceCase())
         .join();
   }
+
+  String keywordToSentence() {
+    return split(RegExp("(?=[A-Z])")).join(" ");
+  }
 }
 
 class FormBuilder extends StatefulWidget {
@@ -57,18 +61,12 @@ class FormBuilder extends StatefulWidget {
     var source = formItems.where((e) => e.displayTitle == field).first;
     var target = formItems[formItems.length - 1];
     var equalityStatus = condition == source.defaultValue;
-    print('targetValue');
-    print(condition);
-    print(source.defaultValue);
-    print(equalityStatus);
 
     var sourceBuilder = source.build;
     source.build = (state, context, theme, setValue) {
       var newValueSetter = (value) {
         equalityStatus = condition == value;
         setValue(value);
-        print('Hello World');
-        print(equalityStatus);
       };
       return sourceBuilder(state, context, theme, newValueSetter);
     };
@@ -372,9 +370,9 @@ class _FormBuilderState extends State<FormBuilder> {
       data.add(item);
     }
 
-    print('FIREBASE ACTION: SAVE');
-    print('Attempting to save the following shit:');
-    print(data);
+    // print('FIREBASE ACTION: SAVE');
+    // print('Attempting to save the following shit:');
+    // print(data);
 
     await FirebaseFirestore.instance
         .collection('StudentInfo')
