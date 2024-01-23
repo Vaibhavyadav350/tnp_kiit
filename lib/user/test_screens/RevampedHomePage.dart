@@ -17,7 +17,7 @@ import 'package:kiit_connect/user/member/sem/third_sem.dart';
 import 'package:kiit_connect/user/member/skill/competency.dart';
 import 'package:kiit_connect/user/member/skill/extcourses.dart';
 import 'package:kiit_connect/user/member/skill/publiclinks.dart';
-import 'package:kiit_connect/user/member/work/collegeexp.dart';
+import 'package:kiit_connect/user/member/work/college_experience.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/member/work/startups.dart';
