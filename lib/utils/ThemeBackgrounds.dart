@@ -29,7 +29,7 @@ enum ThemedBackground {
   const ThemedBackground(
     String item, {
     this.alignment = Alignment.topRight,
-    this.scale = 13,
+    this.scale = 3.2,
   }) : asset = "assets/images/backgrounds/$item";
 
   DecorationImage bigDeco({colorFilter}) {
