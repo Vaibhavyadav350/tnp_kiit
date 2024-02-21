@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
-import 'package:kiit_connect/user/member/work/projects.dart';
-import 'package:kiit_connect/user/newscreens/home.dart';
 
 var domainsSkill = [
   // Programming Languages
@@ -86,12 +84,13 @@ class PersonalProject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("Personal Projects", (c) => AcademicAchievements())
+    return FormBuilder()
         .addMultiSelectComboBox("Select Skills", domainsSkill)
         .addTextField("Project Name")
         .addComboBox("Level", projectComplexityLevel)
         .addTextField("Git Repository Link")
         .addTextField("Description", maxLines: 3)
-        .addTextField("Demo Link");
+        .addTextField("Demo Link")
+        .build("Personal Projects", (c) => AcademicAchievements());
   }
 }

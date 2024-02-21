@@ -7,10 +7,11 @@ class ExtraCertifications extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("Extra Certifications", (c) => PersonalProject())
+    return FormBuilder()
         .addTextField("Specialization")
         .addTextField("Organization")
         .addTextField("Certificate Link")
-        .addTextField("Certificate Date ");
+        .addTextField("Certificate Date ")
+        .build("Extra Certifications", (c) => PersonalProject());
   }
 }

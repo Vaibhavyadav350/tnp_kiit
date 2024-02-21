@@ -7,10 +7,10 @@ class RecommendationsAndTestimonials extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("Recommendations", (c) => PersonalProject())
+    return FormBuilder()
         .addTextField("Recommender's Name")
         .addTextField("Relationship")
         .addTextField("Testimonial Text", maxLines: 3)
-        ;
+        .build("Recommendations", (c) => PersonalProject());
   }
 }
