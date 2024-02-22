@@ -142,6 +142,28 @@ class _BasicProfileState extends State<BasicProfile> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         smallSpacing(),
+                        MatTextButton(
+                          text: "Pick Photos",
+                          onPressed: _pickPhotosFromGallery,
+                        ),
+                        smallSpacing(),
+                        GridView.builder(
+                          shrinkWrap: true,
+                          itemCount: _selectedPhotos.length,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 10.0,
+                            mainAxisSpacing: 10.0,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return _selectedPhotos[index] != null
+                                ? ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: Image.file(_selectedPhotos[index]!))
+                                : Placeholder();
+                          },
+                        ),
+                        smallSpacing(),
                         MatTextField(icon: Icons.person,
                             label: "Full Name", controller: _namecontroller),
                         MatTextField(icon: Icons.email,
