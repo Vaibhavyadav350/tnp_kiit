@@ -2,7 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kiit_connect/theme/colors.dart';
+import 'package:kiit_connect/user/member/basicprofile.dart';
 import 'package:kiit_connect/user/member/work/college_experience.dart';
+import 'package:kiit_connect/user/member/work/language_proficiency.dart';
+import 'package:kiit_connect/user/member/work/open_source_contributions.dart';
+import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
+import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/test_screens/RevampedHomePage.dart';
 
 void main() async {
@@ -44,7 +49,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       darkTheme: theme.copyWith(brightness: Brightness.dark),
       themeMode: ThemeMode.dark,
-      home: RevampedHome(),
+      home: BasicProfile(),
     );
   }
 }
