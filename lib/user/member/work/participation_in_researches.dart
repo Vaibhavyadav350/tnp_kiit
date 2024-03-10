@@ -30,13 +30,14 @@ class AcademicAchievements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("Academic Achievements", (c) => PersonalProject())
+    return FormBuilder()
         .addComboBox("Reference Type", referenceTypes,
         defaultValue: "Journal Article")
         .addMultiTextBox("Author Names")
         .addTextField("Title")
         .addTextField("Year of Publication")
-        .addTextField("URL (Publication or PDF)", key: "URL")
-        .addTextField("Identifier (DOI/ArXivID/ISBN)", key: "Identifier");
+        .addTextField("URL (Publication or PDF)", firebaseKey: "URL")
+        .addTextField("Identifier (DOI/ArXivID/ISBN)", firebaseKey: "Identifier")
+    .build("Academic Achievements", (c) => PersonalProject());
   }
 }

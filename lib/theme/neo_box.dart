@@ -89,6 +89,63 @@ class MatTextField extends StatelessWidget {
   }
 }
 
+class MultiTextBox extends StatefulWidget {
+  final label;
+  final List<TextEditingController> controllers;
+
+  MultiTextBox({required this.label, required this.controllers, super.key}) {
+    if (controllers.isEmpty) controllers.add(TextEditingController());
+  }
+
+  @override
+  State<MultiTextBox> createState() => _MultiTextBoxState();
+}
+
+class _MultiTextBoxState extends State<MultiTextBox> {
+  void addNewField() =>
+      setState(() => widget.controllers.add(TextEditingController()));
+
+  void removeLastField() {
+    if (widget.controllers.length > 1)
+      setState(() => widget.controllers.removeLast());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return padWrap(Column(children: [
+      SizedBox(
+          width: double.infinity,
+          child: Text("Add " + widget.label, style: textAnnotation(context))),
+      SizedBox(height: 20),
+      SizedBox(
+          width: double.infinity,
+          child: boxWrap(Column(
+              children: widget.controllers
+                  .map((e) =>
+                      TextField(controller: e, style: textAnnotation(context)))
+                  .toList()))),
+      SizedBox(height: 20),
+      boxWrap(Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+              onPressed: () => addNewField(),
+              icon: Icon(
+                Icons.add,
+                color: Theme.of(context).primaryColor,
+              )),
+          IconButton(
+              onPressed: () => removeLastField(),
+              icon: Icon(
+                Icons.remove,
+                color: Theme.of(context).primaryColor,
+              )),
+        ],
+      ))
+    ]));
+  }
+}
+
 class MatTextButton extends StatelessWidget {
   final text;
   final onPressed;
@@ -115,8 +172,7 @@ class MatTextButton extends StatelessWidget {
         child: boxWrap(
             moveCenter([
               Text(text, style: textAnnotation(context)),
-              Icon(icon,
-                  color: Theme.of(context).primaryColor),
+              Icon(icon, color: Theme.of(context).primaryColor),
             ]),
             color: (isSubmit) ? greenHighlight : darkHighlight),
       )),

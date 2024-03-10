@@ -1,11 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/theme/colors.dart';
-import 'package:kiit_connect/theme/neo_box.dart';
 import 'package:kiit_connect/theme/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
-import 'package:kiit_connect/user/newscreens/home.dart';
 
 class FormFields {
   TextEditingController nameController = TextEditingController();
@@ -24,13 +19,14 @@ class StartupInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("Startup Information", (c) => PersonalProject())
+    return FormBuilder()
         .addTextField("Name")
         .addMultiTextBox("Founder Names")
         .addTextField("Inception Date")
         .addTextField("Description", maxLines: 4)
         .addTextField("Industry")
         .addTextField("USP", maxLines: 2)
-        .addTextField("Revenue Model");
+        .addTextField("Revenue Model")
+        .build("Startup Information", (c) => PersonalProject());
   }
 }

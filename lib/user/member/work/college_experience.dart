@@ -7,9 +7,10 @@ class CollegeExperience extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("College Experience", (c) => PersonalProject())
-        .addTextField("Society Name")
-        .addTextField("Description", maxLines: 2)
-        .addTextField("Reference Document");
+    return FormBuilder()
+        .addTextField("Society Name 2")
+        .addTextField( "Description", maxLines: 2)
+        .addTextField( "Reference Document 2")
+        .build("College Experience", (c) => PersonalProject());
   }
 }

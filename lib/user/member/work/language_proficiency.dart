@@ -8,8 +8,9 @@ enum ProficiencyLevel {
   FullProfessionalProficiency,
   NativeOrBilingualProficiency;
 
-  static final types =
-  ProficiencyLevel.values.map((e) => e.toString().substring(17).keywordToSentence()).toList();
+  static final types = ProficiencyLevel.values
+      .map((e) => e.toString().substring(17).keywordToSentence())
+      .toList();
 }
 
 class LanguageProficiency extends StatelessWidget {
@@ -17,9 +18,9 @@ class LanguageProficiency extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FormBuilder("Language Proficiency", (c) => PersonalProject())
+    return FormBuilder()
         .addTextField("Language Name")
         .addComboBox("Proficiency Level", ProficiencyLevel.types)
-    ;
+        .build("Language Proficiency", (c) => PersonalProject());
   }
 }
