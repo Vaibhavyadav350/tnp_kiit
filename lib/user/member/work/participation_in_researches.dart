@@ -35,7 +35,7 @@ class AcademicAchievements extends StatelessWidget {
         defaultValue: "Journal Article")
         .addMultiTextBox("Author Names")
         .addTextField("Title")
-        .addTextField("Year of Publication")
+        .addTextField("Year of Publication", keyboardType: TextInputType.number)
         .addTextField("URL (Publication or PDF)", firebaseKey: "URL")
         .addTextField("Identifier (DOI/ArXivID/ISBN)", firebaseKey: "Identifier")
     .build("Academic Achievements", (c) => PersonalProject());

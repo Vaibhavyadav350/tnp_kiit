@@ -11,7 +11,7 @@ Color variant(color, {hueShift = 0, target = 0, britShift = 0}) {
   return variant
       .withHue((variant.hue + hueShift) % 360.0)
       .withLightness(
-          variant.lightness + (target - variant.lightness) * britShift)
+      variant.lightness + (target - variant.lightness) * britShift)
       .toColor();
 }
 
@@ -56,7 +56,8 @@ class ColorProfile {
       [roots2, roots3],
       [roots3, roots4]
     ]
-        .expand((p) => List.generate(5, (i) => i / 4.0)
+        .expand((p) =>
+        List.generate(5, (i) => i / 4.0)
             .map((f) => Color.lerp(p[0], p[1], f)))
         .map((c) => [c!.withAlpha(40), c.withAlpha(10)])
         .toList();
@@ -85,13 +86,14 @@ class ColorProfile {
   // TODO: Implement the following shit
   //  ColorProfile.light(Color root)
 
-  Gradient randomRadialGradient(colors) => RadialGradient(
-      center: Alignment(
-        (randomGenerator.nextDouble() - 0.5) * 3,
-        (randomGenerator.nextDouble() - 0.5) * 3,
-      ),
-      radius: 1.5,
-      colors: colors);
+  Gradient randomRadialGradient(colors) =>
+      RadialGradient(
+          center: Alignment(
+            (randomGenerator.nextDouble() - 0.5) * 3,
+            (randomGenerator.nextDouble() - 0.5) * 3,
+          ),
+          radius: 1.5,
+          colors: colors);
 
   ColorFilter imageTransformationMatrix({Color? target, double factor = 0.7}) {
     if (target == null) return _mains1Filter;
@@ -169,12 +171,13 @@ Widget padWrap(widget, {pad}) {
   );
 }
 
-Widget boxWrap(widget, {padding, color}) {
+Widget boxWrap(widget, {padding, color, height}) {
   padding = padding ?? const EdgeInsets.fromLTRB(20, 8, 20, 10);
   color = color ?? darkHighlight;
   return Container(
     padding: padding,
     // TODO: Use theme data
+    height: height,
     decoration: BoxDecoration(
       color: color,
     ),
@@ -182,13 +185,17 @@ Widget boxWrap(widget, {padding, color}) {
   );
 }
 
-TextStyle textAnnotation(context, {color}) {
-  color ??= Theme.of(context).primaryColor;
-  return TextStyle(color: color, fontSize: 20);
+TextStyle textAnnotation(context, {color, height}) {
+  color ??= Theme
+      .of(context)
+      .primaryColor;
+  return TextStyle(color: color, fontSize: 20, height: height);
 }
 
 TextStyle textTitle(context, {color}) {
-  color ??= Theme.of(context).secondaryHeaderColor;
+  color ??= Theme
+      .of(context)
+      .secondaryHeaderColor;
   return TextStyle(color: color, fontSize: 20, fontWeight: FontWeight.bold);
 }
 
