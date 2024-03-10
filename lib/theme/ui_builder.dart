@@ -1,3 +1,5 @@
+// ignore_for_file: curly_braces_in_flow_control_structures
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +72,7 @@ class FormItemSupplier {
 
 class FormBuilder {
   final List<FormItemSupplier> formPress = [];
+  var maximumInstances = 10;
 
   FormBuilder addTextField(displayName,
       {defaultValue = "",
@@ -204,8 +207,7 @@ class FormBuilder {
     return this;
   }
 
-  FormBuilder addMultiTextBox(displayName,
-      {firebaseKey, validatingCondition}) {
+  FormBuilder addMultiTextBox(displayName, {firebaseKey, validatingCondition}) {
     formPress.add(FormItemSupplier(
         displayName: displayName,
         firebaseKey: firebaseKey,
@@ -230,8 +232,13 @@ class FormBuilder {
   }
 
   Talika build(displayTitle, nextPage, {firebaseKey}) {
-    return Talika(Stencil(formPress), displayTitle, nextPage,
+    return Talika(Stencil(formPress), displayTitle, nextPage, maximumInstances,
         firebaseKey: firebaseKey);
+  }
+
+  FormBuilder limitMaximumInstancesTo(int length) {
+    maximumInstances = length;
+    return this;
   }
 }
 
@@ -267,10 +274,11 @@ class Stencil {
 class Talika extends StatefulWidget {
   final Stencil stencil;
   final String displayTitle;
+  final int maximumInstances;
   final Widget Function(BuildContext) nextPage;
   late final String firebaseKey;
 
-  Talika(this.stencil, this.displayTitle, this.nextPage,
+  Talika(this.stencil, this.displayTitle, this.nextPage, this.maximumInstances,
       {firebaseKey, super.key}) {
     firebaseKey = firebaseKey ?? displayTitle.toFormattableKey();
   }
@@ -283,7 +291,13 @@ class _TalikaState extends State<Talika> {
   final _formKey = GlobalKey<FormState>();
   List<List<FormItem2>> forms = [];
 
-  void addForm() => setState(() => forms.add(widget.stencil.newForm(setState)));
+  void addForm() {
+    if (widget.maximumInstances == -1 || forms.length < widget.maximumInstances)
+      setState(() => forms.add(widget.stencil.newForm(setState)));
+    else
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text('Maximum of ${widget.maximumInstances} reached!')));
+  }
 
   void deleteForm(int index) => setState(() => forms.removeAt(index));
 
