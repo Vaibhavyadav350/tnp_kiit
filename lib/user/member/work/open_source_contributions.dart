@@ -38,7 +38,7 @@ class OpenSourceContributions extends StatelessWidget {
         .addComboBox("Interface Designer", interfaceDesigners,
             validatingCondition: fieldEquals("Contribution Type", "Design"))
         .addTextField("Repository Link")
-        .addTextField("A Link to your Commit")
+        .addTextField("Commit URL")
         .build("Open Source Contributions", (c) => PersonalProject());
   }
 }

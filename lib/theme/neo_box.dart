@@ -36,6 +36,7 @@ class MatTextField extends StatelessWidget {
   final maxLines;
   final hintText;
   final IconData? icon;
+  final keyboardType;
 
   MatTextField({
     Key? key,
@@ -44,6 +45,7 @@ class MatTextField extends StatelessWidget {
     this.maxLines = 1,
     this.hintText = "",
     this.icon,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -71,6 +73,7 @@ class MatTextField extends StatelessWidget {
             return null;
           },
           maxLines: maxLines,
+          keyboardType: keyboardType,
         ),
       ),
     ]);
@@ -121,27 +124,33 @@ class _MultiTextBoxState extends State<MultiTextBox> {
           width: double.infinity,
           child: boxWrap(Column(
               children: widget.controllers
-                  .map((e) =>
-                      TextField(controller: e, style: textAnnotation(context)))
+                  .map((e) => SizedBox(
+                    height: 35.0,
+                    child: TextField(
+                        controller: e,
+                        style: textAnnotation(context)),
+                  ))
                   .toList()))),
       SizedBox(height: 20),
-      boxWrap(Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-              onPressed: () => addNewField(),
-              icon: Icon(
-                Icons.add,
-                color: Theme.of(context).primaryColor,
-              )),
-          IconButton(
-              onPressed: () => removeLastField(),
-              icon: Icon(
-                Icons.remove,
-                color: Theme.of(context).primaryColor,
-              )),
-        ],
-      ))
+      boxWrap(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () => addNewField(),
+                  icon: Icon(
+                    Icons.add,
+                    color: Theme.of(context).primaryColor,
+                  )),
+              IconButton(
+                  onPressed: () => removeLastField(),
+                  icon: Icon(
+                    Icons.remove,
+                    color: Theme.of(context).primaryColor,
+                  )),
+            ],
+          ),
+          height: 50.0)
     ]));
   }
 }

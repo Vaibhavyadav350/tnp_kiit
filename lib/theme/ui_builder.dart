@@ -80,6 +80,7 @@ class FormBuilder {
       hintText = "",
       icon,
       firebaseKey,
+      keyboardType,
       validatingCondition}) {
     formPress.add(FormItemSupplier(
         displayName: displayName,
@@ -98,7 +99,8 @@ class FormBuilder {
                     controller: controller,
                     maxLines: maxLines,
                     hintText: hintText,
-                    icon: icon);
+                    icon: icon,
+                    keyboardType: keyboardType);
               });
         }));
     return this;
