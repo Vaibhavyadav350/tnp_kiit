@@ -134,6 +134,8 @@ const bgcolor = Color.fromARGB(
   40,
   50,
 );
+const starBgColor = Color(0xFFf49452);
+const kPrimaryColor = Color(0xFF2e2947);
 Color offWhite = Color(0xFFFFFFF0); // Off-White
 Color beige = Color(0xFFF5F5DC); // Beige
 Color lightGray = Color(0xFFD3D3D3); // Light Gray

@@ -282,7 +282,7 @@ class Talika extends StatefulWidget {
 
   Talika(this.stencil, this.displayTitle, this.nextPage, this.maximumInstances,
       {firebaseKey, super.key}) {
-    firebaseKey = firebaseKey ?? displayTitle.toFormattableKey();
+    this.firebaseKey = firebaseKey ?? displayTitle.toFormattableKey();
   }
 
   @override
