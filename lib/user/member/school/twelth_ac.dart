@@ -6,7 +6,7 @@ import 'package:kiit_connect/user/member/school/twelfth_achievements.dart';
 
 
 
-import '../../../drawer/drawer.dart';
+import '../../../navigation/drawer.dart';
 import '../../../theme/colors.dart';
 import '../../../theme/neo_box.dart';
 

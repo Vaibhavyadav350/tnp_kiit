@@ -1,14 +1,8 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/user/member/basicprofile.dart';
-import 'package:kiit_connect/user/member/skill/competency.dart';
-
-import '../user/member/work/profesionalexp.dart';
-import '../user/member/work/projects.dart';
-import '../dump/show.dart';
-import '../user/newscreens/home.dart';
+import '../navigation/bottomapp.dart';
+import '../user/onboard/splash.dart';
 import 'login.dart';
 
 class Wrapper extends StatefulWidget {
@@ -30,9 +24,9 @@ class _WrapperState extends State<Wrapper> {
         }
         if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.data == null) {
-            return Login();
+            return SpadhScreen();
           } else {
-            return NewHomePage();
+            return MyBottomNavBar();
           }
         }
         return Scaffold(

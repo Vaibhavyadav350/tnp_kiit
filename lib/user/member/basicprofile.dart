@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kiit_connect/theme/colors.dart';
 
-import '../../drawer/drawer.dart';
+import '../../navigation/drawer.dart';
 import '../../theme/neo_box.dart';
 import 'school/tenth_ac.dart';
 

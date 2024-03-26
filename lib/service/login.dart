@@ -5,9 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../theme/colors.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final GoogleSignIn googleSignIn = GoogleSignIn();
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   Future<void> _handleSignIn() async {
@@ -52,7 +59,6 @@ class Login extends StatelessWidget {
 
     print('Signed in as ${user?.displayName}');
   }
-
 
   @override
   Widget build(BuildContext context) {

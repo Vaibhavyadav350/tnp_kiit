@@ -134,12 +134,25 @@ const bgcolor = Color.fromARGB(
   40,
   50,
 );
+Color offWhite = Color(0xFFFFFFF0); // Off-White
+Color beige = Color(0xFFF5F5DC); // Beige
+Color lightGray = Color(0xFFD3D3D3); // Light Gray
+Color paleBlue = Color(0xFFAFEEEE); // Pale Blue
+Color palePink = Color(0xFFFFDAB9); // Pale Pink
+Color paleYellow = Color(0xFFFFFF99); // Pale Yellow
+Color mintGreen = Color(0xFF98FB98); // Mint Green
+Color lavender = Color(0xFFE6E6FA); // Lavender
+Color peach = Color(0xFFFFDAB9); // Peach
+Color lightTaupe = Color(0xFFBEBD7F); // Light Taupe
+
+
 const appBgColorSecondary = Color.fromARGB(255, 255, 82, 82);
 const appBgColorTernary = Colors.yellow;
 const loginPrimary = Colors.black;
 const loginSecondary = Colors.green;
 const bottomBarBgColor = Color(0xFFEEEEEE);
 const inActiveIcon = Color(0xFFABBEEC);
+const boardcolor1 = Color(0x00f8f8ff);
 const upColor = Color(0xFF4bc46d);
 const downColor = Colors.red;
 const stayColor = Colors.black87;

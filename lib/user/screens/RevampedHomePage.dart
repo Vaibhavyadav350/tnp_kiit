@@ -21,9 +21,10 @@ import 'package:kiit_connect/user/member/work/college_experience.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/member/work/startups.dart';
-import 'package:kiit_connect/utils/ThemeBackgrounds.dart';
-import 'package:kiit_connect/utils/cards.dart';
 
+
+import '../../theme/utils/ThemeBackgrounds.dart';
+import '../../theme/utils/cards.dart';
 import '../member/basicprofile.dart';
 
 class RevampedHome extends StatefulWidget {

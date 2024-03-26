@@ -3,11 +3,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kiit_connect/drawer/drawer.dart';
+import 'package:kiit_connect/navigation/drawer.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:kiit_connect/utils/tile_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:kiit_connect/user/member/school/tenth_ac.dart';
 import 'package:kiit_connect/user/member/school/twelfth_achievements.dart';
@@ -26,6 +25,8 @@ import 'package:kiit_connect/user/member/work/profesionalexp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/member/work/startups.dart';
+
+import '../../theme/utils/tile_button.dart';
 
 class NewHomePage extends StatelessWidget {
   const NewHomePage({super.key});
