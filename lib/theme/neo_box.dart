@@ -50,45 +50,75 @@ class MatTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = [];
-    if (icon != null) {
-      children.addAll([
-        Icon(icon, color: Theme.of(context).primaryColor),
-        SizedBox(width: 8),
-      ]);
-    }
-    children.addAll([
-      Flexible(
-        child: TextFormField(
-          controller: controller,
-          decoration: InputDecoration.collapsed(
-              hintText: hintText,
-              hintStyle: textAnnotation(context,
-                  color: Theme.of(context).primaryColor.withAlpha(80))),
-          style: textAnnotation(context),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Please enter ${label.toLowerCase()}";
-            }
-            return null;
-          },
-          maxLines: maxLines,
-          keyboardType: keyboardType,
+    return padWrap(
+       TextFormField(
+        controller: controller,
+        decoration:  InputDecoration(
+          labelStyle: TextStyle(color: Colors.white),
+          labelText: label,
+          prefixIcon: Icon(icon, color: Colors.green),
+          fillColor: Colors.green.withOpacity(0.1),
+          border: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.green),
+          ),
         ),
-      ),
-    ]);
-
-    return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          padWrap(Text(label, style: textAnnotation(context))),
-          padWrap(boxWrap(Row(
-            children: children,
-          )))
-        ],
+        style: textAnnotation(context),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return "Please enter ${label.toLowerCase()}";
+          }
+          return null;
+        },
+        maxLines: maxLines,
+        keyboardType: keyboardType,
       ),
     );
+    // List<Widget> children = [];
+    // if (icon != null) {
+    //   children.addAll([
+    //     Icon(icon, color: Theme.of(context).primaryColor),
+    //     SizedBox(width: 8),
+    //   ]);
+    // }
+    // children.addAll([
+    //   Flexible(
+    //     child: TextFormField(
+    //       controller: controller,
+    //       decoration:  InputDecoration(
+    //         labelStyle: TextStyle(color: Colors.white),
+    //         labelText: label,
+    //         prefixIcon: Icon(icon, color: Colors.green),
+    //         fillColor: Colors.green.withOpacity(0.1),
+    //         border: OutlineInputBorder(),
+    //         focusedBorder: OutlineInputBorder(
+    //           borderSide: BorderSide(color: Colors.green),
+    //         ),
+    //       ),
+    //       style: textAnnotation(context),
+    //       validator: (value) {
+    //         if (value == null || value.isEmpty) {
+    //           return "Please enter ${label.toLowerCase()}";
+    //         }
+    //         return null;
+    //       },
+    //       maxLines: maxLines,
+    //       keyboardType: keyboardType,
+    //     ),
+    //   ),
+    // ]);
+    //
+    // return SizedBox(
+    //   child: Column(
+    //     crossAxisAlignment: CrossAxisAlignment.start,
+    //     children: [
+    //       padWrap(Text(label, style: textAnnotation(context))),
+    //       padWrap(boxWrap(Row(
+    //         children: children,
+    //       )))
+    //     ],
+    //   ),
+    // );
   }
 }
 

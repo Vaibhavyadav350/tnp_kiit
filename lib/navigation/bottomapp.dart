@@ -2,6 +2,8 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:inkblob_navigation_bar/inkblob_navigation_bar.dart';
 import 'package:kiit_connect/theme/colors.dart';
+import '../user/member/chat/feed.dart';
+import '../user/member/chat/uploadproject.dart';
 import '../user/member/job/jobposting.dart';
 import '../user/member/work/college_experience.dart';
 import '../user/member/work/profesionalexp.dart';
@@ -66,8 +68,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
             }
           },
           children: <Widget>[
-            ProfessionalExperience(),
-            CollegeExperience(),
+            UploadProjectPage(),
+            SocialFeed(),
             RevampedHome(),
             JobPostingFetch(),
             ProfessionalExperience(),

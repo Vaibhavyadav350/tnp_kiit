@@ -21,12 +21,12 @@ class ItemData {
 }
 
 /// Example of LiquidSwipe with itemBuilder
-class SpadhScreen extends StatefulWidget {
+class LiquidSplashScreen extends StatefulWidget {
   @override
-  _SpadhScreen createState() => _SpadhScreen();
+  _LiquidSplashScreen createState() => _LiquidSplashScreen();
 }
 
-class _SpadhScreen extends State<SpadhScreen> {
+class _LiquidSplashScreen extends State<LiquidSplashScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -37,39 +37,28 @@ class _SpadhScreen extends State<SpadhScreen> {
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
     final GoogleSignInAuthentication? googleAuth =
     await googleUser?.authentication;
-
-    // Check for the specific domain
     if (!googleUser!.email.endsWith('@kiit.ac.in')) {
       print('Invalid domain. Please use a valid @kiit.ac.in email.');
       return;
     }
-
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-
     final User? user = (await _auth.signInWithCredential(credential)).user;
-
-    // Check if the UID already exists in the 'users' collection
     final userDoc = await _firestore.collection('users').doc(user?.uid).get();
     if (!userDoc.exists) {
-      // UID doesn't exist, so save the auth id to Firestore
       _firestore.collection('users').doc(user?.uid).set({
         'uid': user?.uid,
         'kiitemail': user?.email,
-        // add other user information here if needed
+
       });
     }
-
-    // Check if the email already exists in the 'StudentInfo' collection
     final emailDoc =
     await _firestore.collection('StudentInfo').doc(user?.uid).get();
     if (!emailDoc.exists) {
-      // Email doesn't exist, so save the information to Firestore
       _firestore.collection('StudentInfo').doc(user?.uid).set({
         'kiitemail': user?.email,
-        // add other user information here if needed
       });
     }
 

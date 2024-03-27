@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         ColorProfile.dark(Color.fromARGB(255, 62, 108, 154));
     final ThemeData theme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: greenHighlight,
+         seedColor: greenHighlight,
         background: ColorProfile().background,
         primary: Colors.white70,
         primaryContainer: ColorProfile().background,

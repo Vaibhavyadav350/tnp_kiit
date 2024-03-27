@@ -1,8 +1,12 @@
+import 'dart:async';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import '../../../theme/colors.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class JobListingCard extends StatefulWidget {
   final String jobTitle;
@@ -48,14 +52,50 @@ class JobListingCard extends StatefulWidget {
 class _JobListingCardState extends State<JobListingCard> {
   bool isExpanded = false;
   bool isApplied = false; // Track if the user has already applied
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+  FlutterLocalNotificationsPlugin();
 
   @override
   void initState() {
     super.initState();
     checkAppliedStatus();
   }
+  Future<void> downloadFile() async {
+    if (widget.companyCulture == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Company culture file URL is not available')),
+      );
+      return;
+    }
 
-  // Function to check if the user has already applied
+    final url = widget.companyCulture!;
+    final response = await http.get(Uri.parse(url));
+    final downloadsDirectory = await getExternalStorageDirectory();
+
+    final tnPKIITDirectory = Directory('${downloadsDirectory!.parent.parent.parent.parent.path}/Download');
+    if (!await tnPKIITDirectory.exists()) {
+      await tnPKIITDirectory.create(recursive: true);
+    }
+
+    final file = File('${tnPKIITDirectory.path}/${widget.companyName}JD.pdf');
+    await file.writeAsBytes(response.bodyBytes);
+
+    print('Downloaded file location: ${file.path}');
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'Oh Hey!!',
+          message:
+          'Job Description of ${widget.companyName} downloaded successfully! in Download folder',
+          contentType: ContentType.success,
+        ),
+      ),
+    );
+  }
+
   Future<void> checkAppliedStatus() async {
     String studentEmail = FirebaseAuth.instance.currentUser!.email!;
     var snapshot = await FirebaseFirestore.instance
@@ -64,7 +104,7 @@ class _JobListingCardState extends State<JobListingCard> {
         .get();
     var appliedJobs = snapshot.data()?['AppliedTo'];
     if (appliedJobs != null) {
-      // Check if the current job is in the applied jobs list
+
       for (var job in appliedJobs) {
         if (job['id'] == widget.docid && job['status'] == 'Applied') {
           setState(() {
@@ -76,8 +116,13 @@ class _JobListingCardState extends State<JobListingCard> {
     }
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return Card(
       color: Colors.white,
       elevation: 3,
@@ -208,7 +253,7 @@ class _JobListingCardState extends State<JobListingCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildDetailRow('Job Description', widget.jobDescription),
-                  _buildDetailRow('Company Culture', widget.companyCulture),
+                  // _buildDetailRow('Company Culture', widget.companyCulture),
                   _buildDetailRow('Location', widget.location),
                   _buildDetailRow(
                       'Application Deadline', widget.applicationDeadline),
@@ -222,6 +267,14 @@ class _JobListingCardState extends State<JobListingCard> {
                   _buildDetailRow('Internship Type', widget.internshipType),
                   _buildDetailRow('How to Apply', widget.howToApply),
                   _buildDetailRow('Skills', widget.skills),
+                  if (widget.companyCulture != null) // Check if company culture URL is available
+                    ElevatedButton(
+                      onPressed: () {
+                        downloadFile();
+                         //download pdf from url file
+                      },
+                      child: Text("Download JD",style: TextStyle(color: Colors.green),), // Button text
+                    ),
                 ],
               )
           ],
