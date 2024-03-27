@@ -36,15 +36,18 @@ class _SocialFeedState extends State<SocialFeed> {
                     var projects = snapshot.data!.docs;
                     return Column(
                       children: projects.map((project) {
-                        return buildProjectCard(
-                          projectName: project['projectName'],
-                          projectDescription: project['projectDescription'],
-                          imageUrl: project['imageUrl'],
-                          tags: List<String>.from(project['tags']),
-                          status: project['status'],
-                          links: List<String>.from(project['links']),
-                          userImage: project['uploaded_by_image'],
-                          userEmail:project['uploaded_by']
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: buildProjectCard(
+                            projectName: project['projectName'],
+                            projectDescription: project['projectDescription'],
+                            imageUrl: project['imageUrl'],
+                            tags: List<String>.from(project['tags']),
+                            status: project['status'],
+                            links: List<String>.from(project['links']),
+                            userImage: project['uploaded_by_image'],
+                            userEmail:project['uploaded_by']
+                          ),
                         );
                       }).toList(),
                     );
