@@ -28,7 +28,7 @@ class _SocialFeedState extends State<SocialFeed> {
                 ),
                 smallSpacing(),
                 StreamBuilder<QuerySnapshot>(
-                  stream: FirebaseFirestore.instance.collection('projects').snapshots(),
+                  stream: FirebaseFirestore.instance.collection('projects').orderBy('uplaodTime', descending: true).snapshots(),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return CircularProgressIndicator();

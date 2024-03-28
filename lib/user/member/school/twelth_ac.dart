@@ -123,7 +123,7 @@ class _TwelfthGradeInfoState extends State<TwelfthGradeInfo> {
                 ),
                 smallSpacing(),
                 Text(
-                  "10th/Matriculation Details",
+                  "12th/Matriculation Details",
                   style: TextStyle(
                     color: Theme.of(context).secondaryHeaderColor,
                     fontSize: 20,
