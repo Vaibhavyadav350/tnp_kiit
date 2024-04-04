@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/school/tenth_achievements.dart';
 
-import '../../../drawer/drawer.dart';
+import '../../../navigation/drawer.dart';
 import '../../../theme/neo_box.dart';
 
 class TenthGradeInfo extends StatefulWidget {

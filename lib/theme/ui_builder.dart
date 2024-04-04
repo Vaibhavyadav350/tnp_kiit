@@ -1,5 +1,6 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -282,7 +283,7 @@ class Talika extends StatefulWidget {
 
   Talika(this.stencil, this.displayTitle, this.nextPage, this.maximumInstances,
       {firebaseKey, super.key}) {
-    firebaseKey = firebaseKey ?? displayTitle.toFormattableKey();
+    this.firebaseKey = firebaseKey ?? displayTitle.toFormattableKey();
   }
 
   @override
@@ -323,13 +324,30 @@ class _TalikaState extends State<Talika> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set({widget.firebaseKey: data}, SetOptions(merge: true)).then(
             (documentRef) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Info Updated!!')));
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content:  AwesomeSnackbarContent(
+            title: 'Oh Nice!!',
+            message: 'Info Updated!!',
+            contentType: ContentType.success,
+          ),
+          backgroundColor: Colors.transparent, // Set your desired color
+        ),
+      );
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: widget.nextPage));
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to save information')));
+        SnackBar(
+          content:  AwesomeSnackbarContent(
+            title: 'Oh No!!',
+            message: 'Failed to save information',
+            contentType: ContentType.failure,
+          ),
+          backgroundColor: Colors.transparent, // Set your desired color
+        ),
+      );
     });
   }
 

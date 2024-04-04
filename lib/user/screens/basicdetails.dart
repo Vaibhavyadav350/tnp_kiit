@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/user/newscreens/textfield.dart';
+import 'package:kiit_connect/theme/utils/textfield.dart';
 
 import '../../theme/colors.dart';
 

@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kiit_connect/dump/show.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import '../theme/neo_box.dart';
 
@@ -65,9 +64,9 @@ class Devdrawer extends StatelessWidget {
               NeoBox(
                   child: GestureDetector(
                     onTap: (){
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => DataScreen()),
-                      );
+                      // Navigator.of(context).pushReplacement(
+                      //   MaterialPageRoute(builder: (context) => DataScreen()),
+                      // );
                     },
                     child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

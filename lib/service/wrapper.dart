@@ -1,15 +1,11 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/user/member/basicprofile.dart';
-import 'package:kiit_connect/user/member/skill/competency.dart';
+import 'package:kiit_connect/navigation/bottomapp.dart';
+import '../user/member/chat/feed.dart';
+import '../user/member/chat/uploadproject.dart';
+import '../user/onboard/splash.dart';
 
-import '../user/member/work/profesionalexp.dart';
-import '../user/member/work/projects.dart';
-import '../dump/show.dart';
-import '../user/newscreens/home.dart';
-import 'login.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -30,9 +26,9 @@ class _WrapperState extends State<Wrapper> {
         }
         if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.data == null) {
-            return Login();
+            return LiquidSplashScreen();
           } else {
-            return NewHomePage();
+            return MyBottomNavBar();
           }
         }
         return Scaffold(
