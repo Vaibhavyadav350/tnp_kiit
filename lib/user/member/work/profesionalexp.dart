@@ -7,9 +7,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
-import 'package:kiit_connect/user/screens/RevampedHomePage.dart';
 import '../../../theme/neo_box.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+
+import '../../screens/RevampedHomePage.dart';
+import '../../screens/home.dart';
 
 class FormFields {
   TextEditingController roleController = TextEditingController();
@@ -292,7 +294,7 @@ class _ProfessionalExperienceState extends State<ProfessionalExperience> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const RevampedHome(),
+                                builder: (context) => RevampedHome(),
                               ),
                             );
                           },
