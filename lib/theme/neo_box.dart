@@ -51,18 +51,9 @@ class MatTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return padWrap(
-       TextFormField(
+      TextFormField(
         controller: controller,
-        decoration:  InputDecoration(
-          labelStyle: TextStyle(color: Colors.white),
-          labelText: label,
-          prefixIcon: Icon(icon, color: Colors.green),
-          fillColor: Colors.green.withOpacity(0.1),
-          border: OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green),
-          ),
-        ),
+        decoration: inputDecoration(label: label, icon: icon),
         style: textAnnotation(context),
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -74,51 +65,6 @@ class MatTextField extends StatelessWidget {
         keyboardType: keyboardType,
       ),
     );
-    // List<Widget> children = [];
-    // if (icon != null) {
-    //   children.addAll([
-    //     Icon(icon, color: Theme.of(context).primaryColor),
-    //     SizedBox(width: 8),
-    //   ]);
-    // }
-    // children.addAll([
-    //   Flexible(
-    //     child: TextFormField(
-    //       controller: controller,
-    //       decoration:  InputDecoration(
-    //         labelStyle: TextStyle(color: Colors.white),
-    //         labelText: label,
-    //         prefixIcon: Icon(icon, color: Colors.green),
-    //         fillColor: Colors.green.withOpacity(0.1),
-    //         border: OutlineInputBorder(),
-    //         focusedBorder: OutlineInputBorder(
-    //           borderSide: BorderSide(color: Colors.green),
-    //         ),
-    //       ),
-    //       style: textAnnotation(context),
-    //       validator: (value) {
-    //         if (value == null || value.isEmpty) {
-    //           return "Please enter ${label.toLowerCase()}";
-    //         }
-    //         return null;
-    //       },
-    //       maxLines: maxLines,
-    //       keyboardType: keyboardType,
-    //     ),
-    //   ),
-    // ]);
-    //
-    // return SizedBox(
-    //   child: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       padWrap(Text(label, style: textAnnotation(context))),
-    //       padWrap(boxWrap(Row(
-    //         children: children,
-    //       )))
-    //     ],
-    //   ),
-    // );
   }
 }
 
@@ -152,35 +98,36 @@ class _MultiTextBoxState extends State<MultiTextBox> {
       SizedBox(height: 20),
       SizedBox(
           width: double.infinity,
-          child: boxWrap(Column(
+          child: Column(
               children: widget.controllers
-                  .map((e) => SizedBox(
-                    height: 35.0,
+                  .map((e) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: TextField(
+                        decoration: inputDecoration(),
                         controller: e,
                         style: textAnnotation(context)),
                   ))
-                  .toList()))),
+                  .toList())),
       SizedBox(height: 20),
-      boxWrap(
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                  onPressed: () => addNewField(),
-                  icon: Icon(
-                    Icons.add,
-                    color: Theme.of(context).primaryColor,
-                  )),
-              IconButton(
-                  onPressed: () => removeLastField(),
-                  icon: Icon(
-                    Icons.remove,
-                    color: Theme.of(context).primaryColor,
-                  )),
-            ],
-          ),
-          height: 50.0)
+      Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+                onPressed: () => addNewField(),
+                icon: Icon(
+                  Icons.add,
+                  color: Theme.of(context).primaryColor,
+                )),
+            IconButton(
+                onPressed: () => removeLastField(),
+                icon: Icon(
+                  Icons.remove,
+                  color: Theme.of(context).primaryColor,
+                )),
+          ],
+        ),
+      )
     ]));
   }
 }

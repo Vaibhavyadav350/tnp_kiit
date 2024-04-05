@@ -127,14 +127,9 @@ class FormBuilder {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     padWrap(Text(displayName, style: textAnnotation(context))),
-                    padWrap(boxWrap(DropdownButtonFormField<String>(
+                    padWrap((DropdownButtonFormField<String>(
                       value: selectedValue,
-                      decoration: InputDecoration.collapsed(
-                          hintText: "",
-                          hintStyle: textAnnotation(context,
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withAlpha(80))),
+                      decoration: inputDecoration(),
                       items: validValues.map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -477,7 +472,8 @@ class _TalikaState extends State<Talika> {
           child: Column(
               children: forms[index]
                       .where((e) => e.isValid())
-                      .expand((e) => [e, smallSpacing()])
+                      // .expand((e) => [e, smallSpacing()])
+                      .map((e) => e as Widget)
                       .toList() +
                   [
                     padWrap(boxWrap(GestureDetector(

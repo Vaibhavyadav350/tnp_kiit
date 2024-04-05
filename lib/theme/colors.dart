@@ -224,3 +224,17 @@ Widget moveCenter(widgets) {
     children: widgets,
   );
 }
+
+InputDecoration inputDecoration({label="", icon}) {
+  return InputDecoration(
+    labelStyle: TextStyle(color: Colors.white),
+    labelText: label,
+    prefixIcon: Icon(icon, color: Colors.green),
+    fillColor: Colors.green.withOpacity(0.1),
+    border: OutlineInputBorder(),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.green),
+    ),
+  );
+}
+
