@@ -2,9 +2,11 @@
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
+import 'package:kiit_connect/theme/miscellaneous.dart';
 import 'package:kiit_connect/theme/neo_box.dart';
 
 extension StringExtension on String {
@@ -172,34 +174,30 @@ class FormBuilder {
                         trailing: Icon(Icons.arrow_drop_down,
                             color: Theme.of(context).primaryColor),
                       ),
-                      onSelected: (value) {
-                        setState(() {
-                          if (selectedValues.contains(value)) {
-                            selectedValues.remove(value);
-                          } else {
-                            selectedValues.add(value);
-                          }
-                        });
-                      },
                       itemBuilder: (BuildContext context) {
                         return validValues.map((String skillItem) {
                           return PopupMenuItem<String>(
                             value: skillItem,
-                            child: CheckboxListTile(
-                              title: Text(skillItem),
-                              value: selectedValues.contains(skillItem),
-                              onChanged: (bool? value) {
-                                Navigator.of(context).pop(); // close the menu
-                                if (value != null) {
-                                  if (value) {
-                                    selectedValues.add(skillItem);
-                                  } else {
-                                    selectedValues.remove(skillItem);
+                            child: StatefulBuilder(
+                                builder: (context, innerSetState) {
+                              return CheckboxListTile(
+                                title: Text(skillItem),
+                                value: selectedValues.contains(skillItem),
+                                activeColor: Colors.black,
+                                onChanged: (bool? value) {
+                                  // Navigator.of(context).pop(); // close the menu
+                                  if (value != null) {
+                                    if (value) {
+                                      selectedValues.add(skillItem);
+                                    } else {
+                                      selectedValues.remove(skillItem);
+                                    }
+                                    setState(() {});
+                                    innerSetState(() {});
                                   }
-                                  setState(() {});
-                                }
-                              },
-                            ),
+                                },
+                              );
+                            }),
                           );
                         }).toList();
                       },
@@ -230,6 +228,66 @@ class FormBuilder {
                 return MultiTextBox(
                     label: displayName, controllers: controllers);
               });
+        }));
+    return this;
+  }
+
+  FormBuilder addFileUploadButton(displayName,
+      {firebaseKey,
+      validatingCondition,
+      FileType type = FileType.any,
+      List<String>? allowedExtensions}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        supplier: (setState) {
+          String url = "";
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => url,
+              deserialize: (value) => url = value,
+              builder: (context) => padWrap(boxWrap(GestureDetector(
+                  onTap: () async {
+                    url = (await pickAndUploadSupportedDoc(
+                            type: type,
+                            allowedExtensions: allowedExtensions)) ??
+                        "";
+                    if (url.isNotEmpty) {
+                      setState(() {}); // to refresh the UI
+                    }
+                  },
+                  child: Center(
+                      child: Text('Select ${displayName}',
+                          style: textAnnotation(context)))))));
+        }));
+    return this;
+  }
+
+  FormBuilder addCheckbox(displayName, {firebaseKey, validatingCondition}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        supplier: (setState) {
+          bool state = false;
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => state,
+              deserialize: (value) => state = value,
+              builder: (context) => padWrap(boxWrap(
+                  StatefulBuilder(
+                      builder: (context, iSetState) => CheckboxListTile(
+                        activeColor: Colors.black,
+                            title: Text(
+                              displayName,
+                              style: textAnnotation(context),
+                            ),
+                            value: state,
+                            onChanged: (value) =>
+                                setState(() => iSetState(() => state = value!)),
+                          )),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0))));
         }));
     return this;
   }
@@ -324,10 +382,9 @@ class _TalikaState extends State<Talika> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set({widget.firebaseKey: data}, SetOptions(merge: true)).then(
             (documentRef) {
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content:  AwesomeSnackbarContent(
+          content: AwesomeSnackbarContent(
             title: 'Oh Nice!!',
             message: 'Info Updated!!',
             contentType: ContentType.success,
@@ -340,7 +397,7 @@ class _TalikaState extends State<Talika> {
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content:  AwesomeSnackbarContent(
+          content: AwesomeSnackbarContent(
             title: 'Oh No!!',
             message: 'Failed to save information',
             contentType: ContentType.failure,
