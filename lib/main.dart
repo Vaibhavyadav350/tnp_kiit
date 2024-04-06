@@ -11,6 +11,7 @@ import 'package:kiit_connect/user/member/work/open_source_contributions.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/onboard/splash.dart';
+import 'package:kiit_connect/user/screens/RevampedHomePage.dart';
 
 
 void main() async {

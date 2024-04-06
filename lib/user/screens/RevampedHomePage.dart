@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
@@ -18,8 +18,12 @@ import 'package:kiit_connect/user/member/skill/competency.dart';
 import 'package:kiit_connect/user/member/skill/extcourses.dart';
 import 'package:kiit_connect/user/member/skill/publiclinks.dart';
 import 'package:kiit_connect/user/member/work/college_experience.dart';
+import 'package:kiit_connect/user/member/work/language_proficiency.dart';
+import 'package:kiit_connect/user/member/work/open_source_contributions.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
+import 'package:kiit_connect/user/member/work/profesionalexp.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
+import 'package:kiit_connect/user/member/work/recommendations_and_testimonials.dart';
 import 'package:kiit_connect/user/member/work/startups.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../theme/utils/ThemeBackgrounds.dart';
@@ -33,15 +37,22 @@ class RevampedHome extends StatefulWidget {
   State<RevampedHome> createState() => _RevampedHomeState();
 }
 
+
 class _RevampedHomeState extends State<RevampedHome> {
   PageController pageController = PageController();
   int selectedIndex = -1; // -1 means no icon is selected
+  
 
   @override
   Widget build(BuildContext context) {
     var profile = ColorProfile();
+    double width = MediaQuery.of(context).size.width;
+    double width_7 = 411.00;
+    double invWidth7 = 1/width_7;
     var filter = null; // profile.imageTransformationMatrix(target: profile.roots1);
     final colors = StatefulColorChain(profile);
+
+
     return Scaffold(
         body: SafeArea(
       child: SingleChildScrollView(
@@ -58,27 +69,19 @@ class _RevampedHomeState extends State<RevampedHome> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("    ${FirebaseAuth.instance.currentUser!.displayName!}"
-
-                     ,
+                  Text("    ${FirebaseAuth.instance.currentUser!.displayName!}" ,
                     style: TextStyle(color: primary, fontSize: 20),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BasicProfile()));
-                    },
-                    child: SizedBox(
-                        height: 45,
-                        child: Image.asset('assets/images/profile-edit.png')),
-                  ),
+
+                  // Text("    Hello Tester!" ,
+                  //   style: TextStyle(color: primary, fontSize: 20),
+                  // ),
+                  
                 ],
               ),
               smallSpacing(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+                padding:  EdgeInsets.symmetric(horizontal: (15.00 * invWidth7)*width),
                 child: GestureDetector(
                   onTap: () {
                     showModalBottomSheet(
@@ -257,7 +260,7 @@ class _RevampedHomeState extends State<RevampedHome> {
               ),
               smallSpacing(),
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(left: 10*invWidth7*width, right: 10*invWidth7*width),
                 child: Row(
                   children: [
                     Column(
@@ -272,7 +275,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           child: HaveThisCard(
                             curvature: 20,
                             height: 150,
-                            width: 180,
+                            width: 180*invWidth7*width,
                             gradient:
                             profile.randomRadialGradient(colors.next()),
                             image: ThemedBackground.basicProfile.smallDeco(),
@@ -291,7 +294,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           child: HaveThisCard(
                             curvature: 20,
                             height: 300,
-                            width: 180,
+                            width: 180*invWidth7*width,
                             gradient:
                             profile.randomRadialGradient(colors.next()),
                             image: ThemedBackground.competency.smallDeco(),
@@ -301,7 +304,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 10*invWidth7*width),
                     Column(
                       children: [
                         GestureDetector(
@@ -314,7 +317,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           child: HaveThisCard(
                             curvature: 20,
                             height: 300,
-                            width: 180,
+                            width: 180*invWidth7*width,
                             gradient: profile.randomRadialGradient(colors.next()),
                             image:
                                 ThemedBackground.collegeExperience.smallDeco(),
@@ -335,7 +338,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           child: HaveThisCard(
                             curvature: 20,
                             height: 150,
-                            width: 180,
+                            width: 180*invWidth7*width,
                             gradient: profile.randomRadialGradient(colors.next()),
                             image: ThemedBackground.publicLinks.smallDeco(),
                             theChild:
@@ -441,7 +444,7 @@ class _RevampedHomeState extends State<RevampedHome> {
               ),
               smallSpacing(),
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(left: 10*invWidth7*width, right: 10*invWidth7*width),
                 child: Row(
                   children: [
                     Column(
@@ -457,7 +460,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                           child: HaveThisCard(
                             curvature: 20,
                             height: 400,
-                            width: 180,
+                            width: 180*invWidth7*width,
                             gradient:
                             profile.randomRadialGradient(colors.next()),
                             image: ThemedBackground.discoverSomethingNew
@@ -468,7 +471,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                         ),
                       ],
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 10*invWidth7*width),
                     Column(children: [
                       GestureDetector(
                         onTap: () {
@@ -480,7 +483,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                         child: HaveThisCard(
                           curvature: 20,
                           height: 200,
-                          width: 180,
+                          width: 180*invWidth7*width,
                           gradient: profile.randomRadialGradient(colors.next()),
                           image:
                               ThemedBackground.startupInformation.smallDeco(),
@@ -500,7 +503,7 @@ class _RevampedHomeState extends State<RevampedHome> {
                         child: HaveThisCard(
                           curvature: 20,
                           height: 180,
-                          width: 180,
+                          width: 180*invWidth7*width,
                           gradient: profile.randomRadialGradient(colors.next()),
                           image: ThemedBackground.personalProjects.smallDeco(),
                           theChild: Text("Projects", style: textTitle(context)),
@@ -509,7 +512,141 @@ class _RevampedHomeState extends State<RevampedHome> {
                     ]),
                   ],
                 ),
-              )
+              ),
+              smallSpacing(),
+              // 2nd Horiozontal ListView
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfessionalExperience()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 200,
+                          width: 200,
+                          gradient: profile.randomRadialGradient(colors.next()),
+                          image: ThemedBackground.tenthDetails.bigDeco(),
+                          theChild: Text("Professional Experience",
+                              style: textTitle(context)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExtraCertifications()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 200,
+                          width: 200,
+                          gradient: profile.randomRadialGradient(colors.next()),
+                          image: ThemedBackground.twelfthDetails.bigDeco(),
+                          theChild: Text("Certifications",
+                              style: textTitle(context)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      RecommendationsAndTestimonials()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 200,
+                          width: 200,
+                          gradient: profile.randomRadialGradient(colors.next()),
+                          image: ThemedBackground.tenthAchievements.bigDeco(),
+                          theChild: Text("Recommendations",
+                              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LanguageProficiency()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 200,
+                          width: 200,
+                          gradient: profile.randomRadialGradient(colors.next()),
+                          image: ThemedBackground.extraCertifications.bigDeco(),
+                          theChild: Text("Language Proficiency",
+                              style: textTitle(context)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      LanguageProficiency()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 200,
+                          width: 200,
+                          gradient: profile.randomRadialGradient(colors.next()),
+                          image: ThemedBackground.extraCertifications.bigDeco(),
+                          theChild: Text("Language Proficiency",
+                              style: textTitle(context)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      OpenSourceContributions()));
+                        },
+                        child: HaveThisCard(
+                          curvature: 20,
+                          height: 200,
+                          width: 200,
+                          gradient: profile.randomRadialGradient(colors.next()),
+                          image: ThemedBackground.extraCertifications.bigDeco(),
+                          theChild: Text("Open Source Contributions",
+                              style: textTitle(context)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
