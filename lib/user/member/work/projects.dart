@@ -80,7 +80,7 @@ const projectComplexityLevel = [
 ];
 
 class PersonalProject extends StatelessWidget {
-  const PersonalProject({Key? key}) : super(key: key);
+  const PersonalProject({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +91,6 @@ class PersonalProject extends StatelessWidget {
         .addTextField("Git Repository Link")
         .addTextField("Description", maxLines: 3)
         .addTextField("Demo Link")
-        .build("Personal Projects", (c) => AcademicAchievements());
+        .build("Personal Projects", (c) => const AcademicAchievements());
   }
 }

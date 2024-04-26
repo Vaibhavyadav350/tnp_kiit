@@ -10,6 +10,8 @@ import '../../../theme/neo_box.dart';
 
 
 class FifthSemesterPerformance extends StatefulWidget {
+  const FifthSemesterPerformance({super.key});
+
   @override
   _FifthSemesterPerformanceState createState() => _FifthSemesterPerformanceState();
 }
@@ -23,7 +25,7 @@ class _FifthSemesterPerformanceState extends State<FifthSemesterPerformance> {
   final _extraCurricularActivitiesController = TextEditingController();
   final _volunteeringActivitiesController = TextEditingController();
 
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
@@ -78,12 +80,12 @@ class _FifthSemesterPerformanceState extends State<FifthSemesterPerformance> {
         const SnackBar(content: Text('5th Semester Performance Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => SixthSemesterPerformance()),
+        MaterialPageRoute(builder: (context) => const SixthSemesterPerformance()),
       );
     })
         .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save information')),
+        const SnackBar(content: Text('Failed to save information')),
       );
     });
   }
@@ -91,11 +93,11 @@ class _FifthSemesterPerformanceState extends State<FifthSemesterPerformance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: SideDrawer(),
+      endDrawer: const SideDrawer(),
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [

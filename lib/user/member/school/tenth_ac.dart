@@ -9,6 +9,8 @@ import '../../../navigation/drawer.dart';
 import '../../../theme/neo_box.dart';
 
 class TenthGradeInfo extends StatefulWidget {
+  const TenthGradeInfo({super.key});
+
   @override
   _TenthGradeInfoState createState() => _TenthGradeInfoState();
 }
@@ -22,7 +24,7 @@ class _TenthGradeInfoState extends State<TenthGradeInfo> {
   final _characterCertificateLinkController = TextEditingController();
   final _markSheetLinkController = TextEditingController();
 
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   List<String> years = List.generate(11, (index) => (2015 + index).toString());
 
@@ -80,12 +82,12 @@ class _TenthGradeInfoState extends State<TenthGradeInfo> {
         const SnackBar(content: Text('10th Grade Info Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => TenthGradeAchievements()),
+        MaterialPageRoute(builder: (context) => const TenthGradeAchievements()),
       );
     })
         .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save information')),
+        const SnackBar(content: Text('Failed to save information')),
       );
     });
   }
@@ -95,11 +97,11 @@ class _TenthGradeInfoState extends State<TenthGradeInfo> {
   Widget build(BuildContext context) {
     _yearPassingController.text = "2015";
     return Scaffold(
-      endDrawer: SideDrawer(),
+      endDrawer: const SideDrawer(),
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 class UploadDataPage extends StatefulWidget {
+  const UploadDataPage({super.key});
+
   @override
   _UploadDataPageState createState() => _UploadDataPageState();
 }
 
 class _UploadDataPageState extends State<UploadDataPage> {
-  Map<String, bool> _fieldValues = {
+  final Map<String, bool> _fieldValues = {
     'Basic Personal Details': false,
     'Academic Details': false,
     'Technical Skills and Expertise': false,
@@ -27,10 +29,10 @@ class _UploadDataPageState extends State<UploadDataPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upload Data'),
+        title: const Text('Upload Data'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _buildCheckboxes(),
@@ -38,7 +40,7 @@ class _UploadDataPageState extends State<UploadDataPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _uploadData,
-        child: Icon(Icons.save),
+        child: const Icon(Icons.save),
       ),
     );
   }
@@ -75,7 +77,7 @@ class _UploadDataPageState extends State<UploadDataPage> {
       await FirebaseFirestore.instance.collection('StudentInfo').doc(FirebaseAuth.instance.currentUser?.uid).set(data);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Data uploaded successfully'),
           duration: Duration(seconds: 2),
         ),
@@ -83,7 +85,7 @@ class _UploadDataPageState extends State<UploadDataPage> {
     } catch (e) {
       print('Error uploading data: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Failed to upload data'),
           duration: Duration(seconds: 2),
         ),

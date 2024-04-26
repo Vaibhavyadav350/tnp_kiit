@@ -13,6 +13,8 @@ import '../../theme/neo_box.dart';
 import 'school/tenth_ac.dart';
 
 class BasicProfile extends StatefulWidget {
+  const BasicProfile({super.key});
+
   @override
   _BasicProfileState createState() => _BasicProfileState();
 }
@@ -25,7 +27,7 @@ class _BasicProfileState extends State<BasicProfile> {
   final _addresscontroller = TextEditingController();
   String? photoUrl;
   File? _selectedPhoto;
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
@@ -87,11 +89,11 @@ class _BasicProfileState extends State<BasicProfile> {
           const SnackBar(content: Text('Basic Info Updated!!')),
         );
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => TenthGradeInfo()),
+          MaterialPageRoute(builder: (context) => const TenthGradeInfo()),
         );
       }).catchError((error) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to save information')),
+          const SnackBar(content: Text('Failed to save information')),
         );
       });
     }
@@ -116,11 +118,11 @@ class _BasicProfileState extends State<BasicProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: SideDrawer(),
+      endDrawer: const SideDrawer(),
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [

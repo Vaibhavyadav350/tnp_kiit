@@ -12,7 +12,7 @@ class DynamicForm extends StatefulWidget {
   final Map<String, dynamic> fields;
   final CollectionReference firestoreCollection;
 
-  const DynamicForm({required this.fields, required this.firestoreCollection});
+  const DynamicForm({super.key, required this.fields, required this.firestoreCollection});
 
   @override
   _DynamicFormState createState() => _DynamicFormState();
@@ -69,17 +69,17 @@ class _DynamicFormState extends State<DynamicForm> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Form data saved successfully')),
+        const SnackBar(content: Text('Form data saved successfully')),
       );
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
 
       // Navigate to the HomePage after saving the form data
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => MyBottomNavBar()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const MyBottomNavBar()));
 
     } catch (error) {
       print('Failed to save form data: $error');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save form data')),
+        const SnackBar(content: Text('Failed to save form data')),
       );
     }
   }
@@ -92,7 +92,7 @@ class _DynamicFormState extends State<DynamicForm> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: widget.fields.keys.map<Widget>((key) {
@@ -122,12 +122,12 @@ class _DynamicFormState extends State<DynamicForm> {
               children: [
                 ElevatedButton(
                   onPressed: _handleImagePick,
-                  child: Text('Pick Image'),
+                  child: const Text('Pick Image'),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 _imageFile != null
                     ? Image.file(_imageFile!)
-                    : SizedBox(),
+                    : const SizedBox(),
               ],
             );
           } else {
@@ -135,14 +135,14 @@ class _DynamicFormState extends State<DynamicForm> {
           }
 
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: formField,
           );
         }).toList()..add(
           // Upload button
           ElevatedButton(
             onPressed: _handleSubmit,
-            child: Text('Upload'),
+            child: const Text('Upload'),
           ),
         ),
       ),

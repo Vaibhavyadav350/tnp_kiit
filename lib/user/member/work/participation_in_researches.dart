@@ -26,7 +26,7 @@ const referenceTypes = [
 ];
 
 class AcademicAchievements extends StatelessWidget {
-  const AcademicAchievements({Key? key}) : super(key: key);
+  const AcademicAchievements({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +38,6 @@ class AcademicAchievements extends StatelessWidget {
         .addTextField("Year of Publication", keyboardType: TextInputType.number)
         .addTextField("URL (Publication or PDF)", firebaseKey: "URL")
         .addTextField("Identifier (DOI/ArXivID/ISBN)", firebaseKey: "Identifier")
-    .build("Academic Achievements", (c) => PersonalProject());
+    .build("Academic Achievements", (c) => const PersonalProject());
   }
 }

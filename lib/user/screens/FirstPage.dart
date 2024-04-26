@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
 
@@ -53,7 +52,7 @@ class FirstPage extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 40,),
+          const SizedBox(height: 40,),
           Center(
             child: SizedBox(
               height: 50,width: 300,
@@ -63,7 +62,7 @@ class FirstPage extends StatelessWidget {
                   elevation: 3,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0)),
-                  minimumSize: Size(300, 60), //////// HERE
+                  minimumSize: const Size(300, 60), //////// HERE
                 ),
                 onPressed: () {},
                 child: Row(
@@ -74,7 +73,7 @@ class FirstPage extends StatelessWidget {
                       fit: BoxFit.cover,
 
                     ),
-                    Text('   Login',style: TextStyle(color: Colors.black),),
+                    const Text('   Login',style: TextStyle(color: Colors.black),),
                   ],
                 ),
               ),

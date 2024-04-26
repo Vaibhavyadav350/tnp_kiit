@@ -22,6 +22,8 @@ class ItemData {
 
 /// Example of LiquidSwipe with itemBuilder
 class LiquidSplashScreen extends StatefulWidget {
+  const LiquidSplashScreen({super.key});
+
   @override
   _LiquidSplashScreen createState() => _LiquidSplashScreen();
 }
@@ -92,13 +94,13 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
       ),
     );
     double zoom = 1.0 + (2.0 - 1.0) * selectedness;
-    return Container(
+    return SizedBox(
       width: 25.0,
       child: Center(
         child: Material(
           color: Colors.white,
           type: MaterialType.circle,
-          child: Container(
+          child: SizedBox(
             width: 8.0 * zoom,
             height: 8.0 * zoom,
           ),
@@ -139,16 +141,16 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                           children: <Widget>[
                             Text(
                               data[index].text1,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 34,
                                 fontFamily: "Billy",
                                 fontWeight: FontWeight.bold,
                               ),textAlign: TextAlign.center,
                             ),
-                            SizedBox(height: 20,),
+                            const SizedBox(height: 20,),
                             Text(
                               data[index].text2,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontFamily: "Billy",
                                 fontWeight: FontWeight.w500,
@@ -156,7 +158,7 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                             ),
                             Text(
                               data[index].text3,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontFamily: "Billy",
                                 fontWeight: FontWeight.normal,
@@ -171,7 +173,7 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                                     elevation: 3,
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(5.0)),
-                                    minimumSize: Size(300, 60), //////// HERE
+                                    minimumSize: const Size(300, 60), //////// HERE
                                   ),
                                   
                                   onPressed: () {
@@ -185,7 +187,7 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                                         fit: BoxFit.cover,
 
                                       ),
-                                      Text('   Login',style: TextStyle(color: Colors.black),),
+                                      const Text('   Login',style: TextStyle(color: Colors.black),),
                                     ],
                                   ),
                                 ),
@@ -198,7 +200,7 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                 );
               },
               positionSlideIcon: 0.8,
-              slideIconWidget: Icon(Icons.arrow_back_ios,color: Colors.white,),
+              slideIconWidget: const Icon(Icons.arrow_back_ios,color: Colors.white,),
               onPageChangeCallback: pageChangeCallback,
               waveType: WaveType.liquidReveal,
               liquidController: liquidController,
@@ -209,10 +211,10 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
               ignoreUserGestureWhileAnimating: true,
             ),
             Padding(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: <Widget>[
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List<Widget>.generate(data.length, _buildDot),
@@ -234,7 +236,7 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
 }
 
 class ExampleSlider extends StatefulWidget {
-  const ExampleSlider({Key? key}) : super(key: key);
+  const ExampleSlider({super.key});
 
   @override
   State<ExampleSlider> createState() => _ExampleSliderState();

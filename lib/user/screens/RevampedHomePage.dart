@@ -49,7 +49,7 @@ class _RevampedHomeState extends State<RevampedHome> {
     double width = MediaQuery.of(context).size.width;
     double width_7 = 411.00;
     double invWidth7 = 1/width_7;
-    var filter = null; // profile.imageTransformationMatrix(target: profile.roots1);
+    var filter; // profile.imageTransformationMatrix(target: profile.roots1);
     final colors = StatefulColorChain(profile);
 
 

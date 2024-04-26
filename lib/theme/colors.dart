@@ -136,16 +136,16 @@ const bgcolor = Color.fromARGB(
 );
 const starBgColor = Color(0xFFf49452);
 const kPrimaryColor = Color(0xFF2e2947);
-Color offWhite = Color(0xFFFFFFF0); // Off-White
-Color beige = Color(0xFFF5F5DC); // Beige
-Color lightGray = Color(0xFFD3D3D3); // Light Gray
-Color paleBlue = Color(0xFFAFEEEE); // Pale Blue
-Color palePink = Color(0xFFFFDAB9); // Pale Pink
-Color paleYellow = Color(0xFFFFFF99); // Pale Yellow
-Color mintGreen = Color(0xFF98FB98); // Mint Green
-Color lavender = Color(0xFFE6E6FA); // Lavender
-Color peach = Color(0xFFFFDAB9); // Peach
-Color lightTaupe = Color(0xFFBEBD7F); // Light Taupe
+Color offWhite = const Color(0xFFFFFFF0); // Off-White
+Color beige = const Color(0xFFF5F5DC); // Beige
+Color lightGray = const Color(0xFFD3D3D3); // Light Gray
+Color paleBlue = const Color(0xFFAFEEEE); // Pale Blue
+Color palePink = const Color(0xFFFFDAB9); // Pale Pink
+Color paleYellow = const Color(0xFFFFFF99); // Pale Yellow
+Color mintGreen = const Color(0xFF98FB98); // Mint Green
+Color lavender = const Color(0xFFE6E6FA); // Lavender
+Color peach = const Color(0xFFFFDAB9); // Peach
+Color lightTaupe = const Color(0xFFBEBD7F); // Light Taupe
 
 
 const appBgColorSecondary = Color.fromARGB(255, 255, 82, 82);
@@ -227,14 +227,42 @@ Widget moveCenter(widgets) {
 
 InputDecoration inputDecoration({label="", icon}) {
   return InputDecoration(
-    labelStyle: TextStyle(color: Colors.white),
+    labelStyle: const TextStyle(color: Colors.white),
     labelText: label,
     prefixIcon: Icon(icon, color: Colors.green),
     fillColor: Colors.green.withOpacity(0.1),
-    border: OutlineInputBorder(),
-    focusedBorder: OutlineInputBorder(
+    border: const OutlineInputBorder(),
+    focusedBorder: const OutlineInputBorder(
       borderSide: BorderSide(color: Colors.green),
     ),
   );
 }
 
+class Constants {
+  // Constant Color
+  static const Color kPinkColor = Color(0xFFFE53BB);
+  static const Color kCyanColor = Color(0xFF08F7FE);
+  static const Color kGreenColor = Color(0xFF09FBD3);
+  static const Color kBlackColor = Color(0xFF19191B);
+  static const Color kYellowColor = Color(0xFFF2A33A);
+  static const Color kWhiteColor = Color(0xFFFFFFFF);
+  static const Color kGreyColor = Color(0xFF767680);
+
+  // Constant Icon
+  static const String kIconHome = 'assets/svg/icon-home.svg';
+  static const String kIconPlayOnTv = 'assets/svg/icon-playtv.svg';
+  static const String kIconPlus = 'assets/svg/icon-plus.svg';
+  static const String kIconCategories = 'assets/svg/icon-categories.svg';
+  static const String kIconDownload = 'assets/svg/icon-download.svg';
+  static const String kIconSearch = 'assets/svg/icon-search.svg';
+  static const String kIconMic = 'assets/svg/icon-mic.svg';
+  static const String kIconPlay = 'assets/svg/icon-play.svg';
+  static const String kIconBack = 'assets/svg/icon-back.svg';
+  static const String kIconMenu = 'assets/svg/icon-menu.svg';
+
+  // Constant Mask
+  static const String kMaskFirstIndex = 'assets/mask/mask_firstIndex.png';
+  static const String kMaskLastIndex = 'assets/mask/mask_lastIndex.png';
+  static const String kMaskCenter = 'assets/mask/mask.png';
+  static const String kMaskCast = 'assets/mask/mask_cast.png';
+}

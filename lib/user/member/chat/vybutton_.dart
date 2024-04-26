@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget VyButton(String text, IconData icon, Function() onPressed) {
@@ -18,7 +17,7 @@ Widget VyButton(String text, IconData icon, Function() onPressed) {
               end: Alignment.bottomCenter,
             ),
           ),
-          padding: EdgeInsets.symmetric(vertical: 15),
+          padding: const EdgeInsets.symmetric(vertical: 15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -26,10 +25,10 @@ Widget VyButton(String text, IconData icon, Function() onPressed) {
                 icon,
                 color: Colors.white,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Text(
                 text,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

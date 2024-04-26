@@ -15,7 +15,7 @@ enum CompetencyLevel {
 }
 
 class Competency extends StatelessWidget {
-  const Competency({Key? key}) : super(key: key);
+  const Competency({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +23,6 @@ class Competency extends StatelessWidget {
         .addComboBox("Competency", CompetencyLevel.types)
         .addMultiSelectComboBox("Skills", domainsSkill)
         .limitMaximumInstancesTo(CompetencyLevel.types.length)
-        .build("Skills", (c) => ProfessionalExperience());
+        .build("Skills", (c) => const ProfessionalExperience());
   }
 }

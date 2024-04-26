@@ -14,13 +14,13 @@ enum ProficiencyLevel {
 }
 
 class LanguageProficiency extends StatelessWidget {
-  const LanguageProficiency({Key? key}) : super(key: key);
+  const LanguageProficiency({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FormBuilder()
         .addTextField("Language Name")
         .addComboBox("Proficiency Level", ProficiencyLevel.types)
-        .build("Language Proficiency", (c) => PersonalProject());
+        .build("Language Proficiency", (c) => const PersonalProject());
   }
 }

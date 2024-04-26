@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/user/member/sem/eighth_sem.dart';
 import 'package:kiit_connect/user/member/sem/first_sem.dart';
 
 
@@ -11,6 +10,8 @@ import '../../../theme/colors.dart';
 import '../../../theme/neo_box.dart';
 
 class TwelfthGradeAchievements extends StatefulWidget {
+  const TwelfthGradeAchievements({super.key});
+
   @override
   _TwelfthGradeAchievementsState createState() => _TwelfthGradeAchievementsState();
 }
@@ -23,7 +24,7 @@ class _TwelfthGradeAchievementsState extends State<TwelfthGradeAchievements> {
   final _extraCurricularActivitiesController = TextEditingController();
   final _volunteeringActivitiesController = TextEditingController();
 
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
@@ -76,12 +77,12 @@ class _TwelfthGradeAchievementsState extends State<TwelfthGradeAchievements> {
         const SnackBar(content: Text('10th Grade Achievements Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => FirstSemesterPerformance()),
+        MaterialPageRoute(builder: (context) => const FirstSemesterPerformance()),
       );
     })
         .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save information')),
+        const SnackBar(content: Text('Failed to save information')),
       );
     });
   }
@@ -89,11 +90,11 @@ class _TwelfthGradeAchievementsState extends State<TwelfthGradeAchievements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: SideDrawer(),
+      endDrawer: const SideDrawer(),
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [

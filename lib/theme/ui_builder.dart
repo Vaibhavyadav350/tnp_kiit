@@ -37,7 +37,7 @@ class FormItem2 extends StatelessWidget {
   bool Function() isValid = () => true;
 
   FormItem2(
-      {required this.displayName,
+      {super.key, required this.displayName,
       required this.serialize,
       required this.deserialize,
       required this.builder});
@@ -253,7 +253,7 @@ class FormBuilder {
                     }
                   },
                   child: Center(
-                      child: Text('Select ${displayName}',
+                      child: Text('Select $displayName',
                           style: textAnnotation(context)))))));
         }));
     return this;
@@ -371,7 +371,7 @@ class _TalikaState extends State<Talika> {
   void saveToFirestore() async {
     List<Map<String, dynamic>> data =
         forms.map((e) => widget.stencil.serialize(e)).toList();
-    print("SAVING THE FOLLOWING TO FIRESTORE!!" + data.toString());
+    print("SAVING THE FOLLOWING TO FIRESTORE!!$data");
     await FirebaseFirestore.instance
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)

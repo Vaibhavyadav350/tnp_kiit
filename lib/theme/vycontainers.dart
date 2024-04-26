@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class VaibhavContainerBig extends StatelessWidget {
@@ -8,7 +7,7 @@ class VaibhavContainerBig extends StatelessWidget {
   final String description;
   final AssetImage image;
 
-  const VaibhavContainerBig({
+  const VaibhavContainerBig({super.key, 
     required this.height,
     required this.width,
     required this.title,
@@ -51,16 +50,16 @@ class VaibhavContainerBig extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Text(
                       description,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,
                       ),
@@ -82,7 +81,7 @@ class VaibhavContainerSmall extends StatelessWidget {
 
   final AssetImage image;
 
-  const VaibhavContainerSmall({
+  const VaibhavContainerSmall({super.key, 
     required this.height,
     required this.width,
     required this.title,
@@ -125,7 +124,7 @@ class VaibhavContainerSmall extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,

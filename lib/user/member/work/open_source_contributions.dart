@@ -23,7 +23,7 @@ const interfaceDesigners = [
 ];
 
 class OpenSourceContributions extends StatelessWidget {
-  const OpenSourceContributions({Key? key}) : super(key: key);
+  const OpenSourceContributions({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,6 @@ class OpenSourceContributions extends StatelessWidget {
             validatingCondition: fieldEquals("Contribution Type", "Design"))
         .addTextField("Repository Link")
         .addTextField("Commit URL")
-        .build("Open Source Contributions", (c) => PersonalProject());
+        .build("Open Source Contributions", (c) => const PersonalProject());
   }
 }

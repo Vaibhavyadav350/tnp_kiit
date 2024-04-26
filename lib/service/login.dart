@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../theme/colors.dart';
 
 class Login extends StatefulWidget {
+  const Login({super.key});
+
   @override
   State<Login> createState() => _LoginState();
 }
@@ -68,7 +70,7 @@ class _LoginState extends State<Login> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Row(
               children: [
                 Image.asset(
@@ -110,7 +112,7 @@ class _LoginState extends State<Login> {
                 )
               ],
             ),
-            SizedBox(height: 40,),
+            const SizedBox(height: 40,),
             Center(
               child: SizedBox(
                 height: 50,width: 300,
@@ -120,7 +122,7 @@ class _LoginState extends State<Login> {
                     elevation: 3,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0)),
-                    minimumSize: Size(300, 60), //////// HERE
+                    minimumSize: const Size(300, 60), //////// HERE
                   ),
                   onPressed: () {
                     _handleSignIn();
@@ -133,7 +135,7 @@ class _LoginState extends State<Login> {
                         fit: BoxFit.cover,
 
                       ),
-                      Text('   Login',style: TextStyle(color: Colors.black),),
+                      const Text('   Login',style: TextStyle(color: Colors.black),),
                     ],
                   ),
                 ),

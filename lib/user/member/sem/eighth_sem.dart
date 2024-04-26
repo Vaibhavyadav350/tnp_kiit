@@ -10,6 +10,8 @@ import '../../../theme/neo_box.dart';
 
 
 class EightSemesterPerformance extends StatefulWidget {
+  const EightSemesterPerformance({super.key});
+
   @override
   _EightSemesterPerformanceState createState() => _EightSemesterPerformanceState();
 }
@@ -23,7 +25,7 @@ class _EightSemesterPerformanceState extends State<EightSemesterPerformance> {
   final _extraCurricularActivitiesController = TextEditingController();
   final _volunteeringActivitiesController = TextEditingController();
 
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
@@ -80,7 +82,7 @@ class _EightSemesterPerformanceState extends State<EightSemesterPerformance> {
     })
         .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save information')),
+        const SnackBar(content: Text('Failed to save information')),
       );
     });
   }
@@ -88,11 +90,11 @@ class _EightSemesterPerformanceState extends State<EightSemesterPerformance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: SideDrawer(),
+      endDrawer: const SideDrawer(),
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [

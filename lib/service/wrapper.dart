@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/navigation/bottomapp.dart';
-import '../user/member/chat/feed.dart';
-import '../user/member/chat/uploadproject.dart';
 import '../user/onboard/splash.dart';
 
 
 class Wrapper extends StatefulWidget {
-  const Wrapper({Key? key}) : super(key: key);
+  const Wrapper({super.key});
 
   @override
   State<Wrapper> createState() => _WrapperState();
@@ -26,12 +23,12 @@ class _WrapperState extends State<Wrapper> {
         }
         if (snapshot.connectionState == ConnectionState.active) {
           if (snapshot.data == null) {
-            return LiquidSplashScreen();
+            return const LiquidSplashScreen();
           } else {
-            return MyBottomNavBar();
+            return const MyBottomNavBar();
           }
         }
-        return Scaffold(
+        return const Scaffold(
           body: Center(child: CircularProgressIndicator()),
         );
       },

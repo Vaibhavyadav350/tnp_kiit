@@ -10,6 +10,8 @@ import '../../../theme/colors.dart';
 import '../../../theme/neo_box.dart';
 
 class TenthGradeAchievements extends StatefulWidget {
+  const TenthGradeAchievements({super.key});
+
   @override
   _TenthGradeAchievementsState createState() => _TenthGradeAchievementsState();
 }
@@ -22,7 +24,7 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
   final _extraCurricularActivitiesController = TextEditingController();
   final _volunteeringActivitiesController = TextEditingController();
 
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
     _scaffoldKey.currentState?.openEndDrawer();
@@ -75,12 +77,12 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
         const SnackBar(content: Text('10th Grade Achievements Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => TwelfthGradeInfo()),
+        MaterialPageRoute(builder: (context) => const TwelfthGradeInfo()),
       );
     })
         .catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save information')),
+        const SnackBar(content: Text('Failed to save information')),
       );
     });
   }
@@ -88,11 +90,11 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: SideDrawer(),
+      endDrawer: const SideDrawer(),
       key: _scaffoldKey,
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [

@@ -1,12 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: const Text('Settings'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -14,63 +15,63 @@ class SettingsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'General Settings',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SwitchListTile(
-                title: Text('Dark Mode'),
+                title: const Text('Dark Mode'),
                 value: false, // Add logic to toggle dark mode
                 onChanged: (value) {}, // Add logic to handle switch state change
               ),
               ListTile(
-                title: Text('Language'),
-                subtitle: Text('English'),
-                trailing: Icon(Icons.arrow_forward_ios),
+                title: const Text('Language'),
+                subtitle: const Text('English'),
+                trailing: const Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   // Navigate to language settings page
                 },
               ),
-              Divider(),
-              Text(
+              const Divider(),
+              const Text(
                 'Notification Settings',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SwitchListTile(
-                title: Text('Push Notifications'),
+                title: const Text('Push Notifications'),
                 value: true, // Add logic to toggle push notifications
                 onChanged: (value) {}, // Add logic to handle switch state change
               ),
               SwitchListTile(
-                title: Text('Email Notifications'),
+                title: const Text('Email Notifications'),
                 value: true, // Add logic to toggle email notifications
                 onChanged: (value) {}, // Add logic to handle switch state change
               ),
-              Divider(),
-              Text(
+              const Divider(),
+              const Text(
                 'Account Settings',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               ListTile(
-                title: Text('Change Password'),
+                title: const Text('Change Password'),
                 onTap: () {
                   // Navigate to change password page
                 },
               ),
               ListTile(
-                title: Text('Logout'),
+                title: const Text('Logout'),
                 onTap: () {
                   // Add logout functionality
                 },

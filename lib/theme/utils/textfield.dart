@@ -1,6 +1,4 @@
-import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
 
@@ -28,20 +26,20 @@ Widget customTextField({required String hintText}) {
 
     decoration: InputDecoration(
       hintText: hintText,
-      hintStyle: TextStyle(color: Colors.white),
+      hintStyle: const TextStyle(color: Colors.white),
       filled: true,
-      fillColor: Color.fromARGB(255, 69, 90, 100),
+      fillColor: const Color.fromARGB(255, 69, 90, 100),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0), // Rounded edges here
       ),
 
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0), // Keep edges rounded when field is focused
-        borderSide: BorderSide(color: kiitgreen),
+        borderSide: const BorderSide(color: kiitgreen),
       ),
       prefixIcon: iconData != null ? Icon(iconData, color: Colors.white) : null,
     ),
-    style: TextStyle(
+    style: const TextStyle(
       color: Colors.white,
     ),
   );

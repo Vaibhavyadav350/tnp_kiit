@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
@@ -6,7 +5,7 @@ import 'package:kiit_connect/user/member/basicprofile.dart';
 import '../theme/neo_box.dart';
 
 class SideDrawer extends StatelessWidget {
-  const SideDrawer({Key? key}) : super(key: key);
+  const SideDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,24 +27,24 @@ class SideDrawer extends StatelessWidget {
                         backgroundImage: NetworkImage(photoUrl),
                         radius: 45.0,
                       ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(user?.displayName ?? 'Guest',
-                        style: TextStyle(fontSize: 20)),
+                        style: const TextStyle(fontSize: 20)),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               GestureDetector(
                 onTap: (){
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => BasicProfile()),
+                    MaterialPageRoute(builder: (context) => const BasicProfile()),
                   );
                 },
-                child: NeoBox(
+                child: const NeoBox(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -60,10 +59,10 @@ class SideDrawer extends StatelessWidget {
                   ],
                 )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              NeoBox(
+              const NeoBox(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -77,10 +76,10 @@ class SideDrawer extends StatelessWidget {
                   )
                 ],
               )),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              NeoBox(
+              const NeoBox(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -94,10 +93,10 @@ class SideDrawer extends StatelessWidget {
                   )
                 ],
               )),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              NeoBox(
+              const NeoBox(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -111,10 +110,10 @@ class SideDrawer extends StatelessWidget {
                   )
                 ],
               )),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              NeoBox(
+              const NeoBox(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -129,10 +128,10 @@ class SideDrawer extends StatelessWidget {
                 ],
               )),
 
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              NeoBox(
+              const NeoBox(
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

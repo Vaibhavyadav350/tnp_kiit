@@ -6,7 +6,7 @@ import 'package:kiit_connect/theme/colors.dart';
 class NeoBox extends StatelessWidget {
   final child;
 
-  const NeoBox({Key? key, required this.child}) : super(key: key);
+  const NeoBox({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +38,15 @@ class MatTextField extends StatelessWidget {
   final IconData? icon;
   final keyboardType;
 
-  MatTextField({
-    Key? key,
+  const MatTextField({
+    super.key,
     this.label,
     this.controller,
     this.maxLines = 1,
     this.hintText = "",
     this.icon,
     this.keyboardType,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -85,8 +85,9 @@ class _MultiTextBoxState extends State<MultiTextBox> {
       setState(() => widget.controllers.add(TextEditingController()));
 
   void removeLastField() {
-    if (widget.controllers.length > 1)
+    if (widget.controllers.length > 1) {
       setState(() => widget.controllers.removeLast());
+    }
   }
 
   @override
@@ -138,13 +139,13 @@ class MatTextButton extends StatelessWidget {
   final icon;
   final isSubmit;
 
-  MatTextButton({
-    Key? key,
+  const MatTextButton({
+    super.key,
     this.text,
     this.onPressed,
     this.icon = Icons.arrow_forward,
     this.isSubmit = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:io';
-import 'package:http/http.dart' as http;
-import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class JobListingCard extends StatefulWidget {
   final String jobTitle;
@@ -26,7 +24,7 @@ class JobListingCard extends StatefulWidget {
   final String? skills;
   final String? docid;
 
-  JobListingCard({
+  const JobListingCard({super.key, 
     required this.jobTitle,
     required this.jobDescription,
     this.companyName,
@@ -60,41 +58,8 @@ class _JobListingCardState extends State<JobListingCard> {
     super.initState();
     checkAppliedStatus();
   }
-  Future<void> downloadFile() async {
-    if (widget.companyCulture == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Company culture file URL is not available')),
-      );
-      return;
-    }
 
-    final url = widget.companyCulture!;
-    final response = await http.get(Uri.parse(url));
-    final downloadsDirectory = await getExternalStorageDirectory();
 
-    final tnPKIITDirectory = Directory('${downloadsDirectory!.parent.parent.parent.parent.path}/Download');
-    if (!await tnPKIITDirectory.exists()) {
-      await tnPKIITDirectory.create(recursive: true);
-    }
-
-    final file = File('${tnPKIITDirectory.path}/${widget.companyName}JD.pdf');
-    await file.writeAsBytes(response.bodyBytes);
-
-    print('Downloaded file location: ${file.path}');
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        elevation: 0,
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Colors.transparent,
-        content: AwesomeSnackbarContent(
-          title: 'Oh Hey!!',
-          message:
-          'Job Description of ${widget.companyName} downloaded successfully! in Download folder',
-          contentType: ContentType.success,
-        ),
-      ),
-    );
-  }
 
   Future<void> checkAppliedStatus() async {
     String studentEmail = FirebaseAuth.instance.currentUser!.email!;
@@ -126,7 +91,7 @@ class _JobListingCardState extends State<JobListingCard> {
     return Card(
       color: Colors.white,
       elevation: 3,
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -140,19 +105,19 @@ class _JobListingCardState extends State<JobListingCard> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       widget.jobTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.blue,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           "Company: ",
                           style: TextStyle(
                             fontSize: 16,
@@ -161,8 +126,8 @@ class _JobListingCardState extends State<JobListingCard> {
                           ),
                         ),
                         Text(
-                          "${widget.companyName!}",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          widget.companyName!,
+                          style: const TextStyle(fontSize: 16, color: Colors.black),
                         ),
                       ],
                     ),
@@ -170,7 +135,7 @@ class _JobListingCardState extends State<JobListingCard> {
                 ),
               ],
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -180,7 +145,7 @@ class _JobListingCardState extends State<JobListingCard> {
                       isExpanded = !isExpanded;
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     "Details",
                     style: TextStyle(
                       color: Colors.blue,
@@ -244,7 +209,7 @@ class _JobListingCardState extends State<JobListingCard> {
                       });
                     },
                     child:
-                        Text("Apply Now", style: TextStyle(color: Colors.blue)),
+                        const Text("Apply Now", style: TextStyle(color: Colors.blue)),
                   ),
               ],
             ),
@@ -268,13 +233,21 @@ class _JobListingCardState extends State<JobListingCard> {
                   _buildDetailRow('How to Apply', widget.howToApply),
                   _buildDetailRow('Skills', widget.skills),
                   if (widget.companyCulture != null) // Check if company culture URL is available
-                    ElevatedButton(
-                      onPressed: () {
-                        downloadFile();
-                         //download pdf from url file
+                    InkWell(
+                      onTap: () async {
+                        final url = widget.companyCulture!;
+                        print('Opening URL in browser: $url');
+                        await launch(url, forceSafariVC: false, forceWebView: false);
                       },
-                      child: Text("Download JD",style: TextStyle(color: Colors.green),), // Button text
-                    ),
+                      child: const ElevatedButton(
+                        onPressed: null,
+                        child: Text(
+                          "Download JD",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                    )
+
                 ],
               )
           ],
@@ -292,7 +265,7 @@ class _JobListingCardState extends State<JobListingCard> {
               children: [
                 Text(
                   '$label: ',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -301,12 +274,12 @@ class _JobListingCardState extends State<JobListingCard> {
                 Expanded(
                   child: Text(
                     value,
-                    style: TextStyle(fontSize: 14, color: Colors.black),
+                    style: const TextStyle(fontSize: 14, color: Colors.black),
                   ),
                 ),
               ],
             ),
           )
-        : SizedBox();
+        : const SizedBox();
   }
 }

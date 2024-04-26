@@ -2,16 +2,15 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:inkblob_navigation_bar/inkblob_navigation_bar.dart';
 import 'package:kiit_connect/theme/colors.dart';
+import 'package:kiit_connect/user/member/setting/nosettings.dart';
 import '../user/member/chat/feed.dart';
 import '../user/member/chat/uploadproject.dart';
 import '../user/member/job/jobposting.dart';
-import '../user/member/work/college_experience.dart';
-import '../user/member/work/profesionalexp.dart';
 import '../user/screens/RevampedHomePage.dart';
 
 
 class MyBottomNavBar extends StatefulWidget {
-  const MyBottomNavBar({Key? key}) : super(key: key);
+  const MyBottomNavBar({super.key});
 
   @override
   State<MyBottomNavBar> createState() => _MyBottomNavBarState();
@@ -67,12 +66,12 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               });
             }
           },
-          children: <Widget>[
+          children: const <Widget>[
             UploadProjectPage(),
             SocialFeed(),
             RevampedHome(),
             JobPostingFetch(),
-            ProfessionalExperience(),
+            SettingsPage(),
           ],
         ),
       ),
@@ -85,8 +84,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
         animationDuration: const Duration(milliseconds: 500),
         items: <InkblobBarItem>[
           InkblobBarItem(
-            filledIcon: Icon(FluentIcons.camera_16_filled,size: 28),
-            emptyIcon: Icon(FluentIcons.add_12_regular),
+            filledIcon: const Icon(FluentIcons.camera_16_filled,size: 28),
+            emptyIcon: const Icon(FluentIcons.add_12_regular),
             color: Colors.blue
           ),
           InkblobBarItem(

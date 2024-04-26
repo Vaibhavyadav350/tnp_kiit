@@ -3,7 +3,7 @@ import 'package:kiit_connect/theme/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 
 class StartupInformation extends StatelessWidget {
-  const StartupInformation({Key? key}) : super(key: key);
+  const StartupInformation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,6 @@ class StartupInformation extends StatelessWidget {
         .addTextField("Industry")
         .addTextField("USP", maxLines: 2)
         .addTextField("Revenue Model")
-        .build("Startup Information", (c) => PersonalProject());
+        .build("Startup Information", (c) => const PersonalProject());
   }
 }

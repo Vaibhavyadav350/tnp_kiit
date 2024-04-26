@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/utils/textfield.dart';
 
 import '../../theme/colors.dart';
 
 class BasicDetails extends StatefulWidget {
+  const BasicDetails({super.key});
+
   @override
   _BasicDetailsState createState() => _BasicDetailsState();
 }
@@ -26,16 +27,16 @@ class _BasicDetailsState extends State<BasicDetails> {
                 fit: BoxFit.cover,
                 height: 200,
               ),
-              Text("Basic Information",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 40),),
-              SizedBox(height: 16),
+              const Text("Basic Information",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 40),),
+              const SizedBox(height: 16),
               customTextField(hintText: 'Name'),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               customTextField(hintText: 'Address'),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               customTextField(hintText: 'Phone Number'),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               customTextField(hintText: 'Personal Email'),
-              SizedBox(height: 64),
+              const SizedBox(height: 64),
               Center(
                 child: SizedBox(
                   height: 50,width: 300,
@@ -45,7 +46,7 @@ class _BasicDetailsState extends State<BasicDetails> {
                       elevation: 3,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0)),
-                      minimumSize: Size(300, 60), //////// HERE
+                      minimumSize: const Size(300, 60), //////// HERE
                     ),
                     onPressed: () {},
                     child: const Row(

@@ -44,8 +44,8 @@ class HaveThisCard extends StatelessWidget {
                   gradient: gradient,
                   image: image),
             ),
-            Container(decoration: BoxDecoration(gradient: closer)),
-            Container(alignment: Alignment.bottomLeft, padding: EdgeInsets.all(20.0), child: theChild)
+            Container(decoration: const BoxDecoration(gradient: closer)),
+            Container(alignment: Alignment.bottomLeft, padding: const EdgeInsets.all(20.0), child: theChild)
           ])),
     );
   }

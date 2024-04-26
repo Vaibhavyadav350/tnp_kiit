@@ -3,7 +3,7 @@ import 'package:kiit_connect/theme/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 
 class RecommendationsAndTestimonials extends StatelessWidget {
-  const RecommendationsAndTestimonials({Key? key}) : super(key: key);
+  const RecommendationsAndTestimonials({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +11,6 @@ class RecommendationsAndTestimonials extends StatelessWidget {
         .addTextField("Recommender's Name")
         .addTextField("Relationship")
         .addTextField("Testimonial Text", maxLines: 3)
-        .build("Recommendations", (c) => PersonalProject());
+        .build("Recommendations", (c) => const PersonalProject());
   }
 }

@@ -5,6 +5,8 @@ import 'package:kiit_connect/user/member/chat/project_card.dart';
 import '../../../theme/colors.dart';
 
 class SocialFeed extends StatefulWidget {
+  const SocialFeed({super.key});
+
   @override
   _SocialFeedState createState() => _SocialFeedState();
 }
@@ -15,7 +17,7 @@ class _SocialFeedState extends State<SocialFeed> {
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: padWrap(
             Column(
               children: [
@@ -31,7 +33,7 @@ class _SocialFeedState extends State<SocialFeed> {
                   stream: FirebaseFirestore.instance.collection('projects').orderBy('uplaodTime', descending: true).snapshots(),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     }
                     var projects = snapshot.data!.docs;
                     return Column(

@@ -12,6 +12,8 @@ import '../../../theme/colors.dart';
 
 
 class UploadProjectPage extends StatefulWidget {
+  const UploadProjectPage({super.key});
+
   @override
   _UploadProjectPageState createState() => _UploadProjectPageState();
 }
@@ -46,10 +48,6 @@ class _UploadProjectPageState extends State<UploadProjectPage>
   }
 
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   Future<void> _pickImage() async {
     final pickedFile =
@@ -150,7 +148,7 @@ class _UploadProjectPageState extends State<UploadProjectPage>
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

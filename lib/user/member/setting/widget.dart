@@ -3,21 +3,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:timelines/timelines.dart'; // Import Firestore package
 import 'package:firebase_auth/firebase_auth.dart';
 class PackageDeliveryTrackingPage extends StatelessWidget {
+  const PackageDeliveryTrackingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Center(
-          child: Container(
+          child: SizedBox(
             width: 360.0,
             child: Card(
-              margin: EdgeInsets.all(20.0),
+              margin: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
+                  const Padding(
+                    padding: EdgeInsets.all(20.0),
                     child: Text(
                       'Profiling Status',
                       style: TextStyle(
@@ -25,7 +27,7 @@ class PackageDeliveryTrackingPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Divider(height: 1.0),
+                  const Divider(height: 1.0),
                   _DeliveryProcesses(),
                 ],
               ),
@@ -45,7 +47,7 @@ class _DeliveryProcesses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xff9b9b9b),
         fontSize: 12.5,
       ),
@@ -61,7 +63,7 @@ class _DeliveryProcesses extends StatelessWidget {
 
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               default:
                 final Map<String, dynamic>? data = snapshot.data?.data() as Map<String, dynamic>?;
                 List<Map<String, dynamic>> completedItems = [];
@@ -82,7 +84,7 @@ class _DeliveryProcesses extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildTimeline(completedItems),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     _buildTimeline(notCompletedItems),
                   ],
                 );
@@ -97,12 +99,12 @@ class _DeliveryProcesses extends StatelessWidget {
     return FixedTimeline.tileBuilder(
       theme: TimelineThemeData(
         nodePosition: 0,
-        color: Color(0xff989898),
-        indicatorTheme: IndicatorThemeData(
+        color: const Color(0xff989898),
+        indicatorTheme: const IndicatorThemeData(
           position: 0,
           size: 20.0,
         ),
-        connectorTheme: ConnectorThemeData(
+        connectorTheme: const ConnectorThemeData(
           thickness: 2.5,
         ),
       ),
@@ -114,19 +116,19 @@ class _DeliveryProcesses extends StatelessWidget {
           final completed = items[index][process]['completed'];
 
           return Padding(
-            padding: EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(left: 8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   process,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18.0,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(completed ? 'Completed' : 'Not Completed'),
                 ),
               ],
@@ -137,7 +139,7 @@ class _DeliveryProcesses extends StatelessWidget {
           final completed = items[index][items[index].keys.first]['completed'];
 
           return completed
-              ? DotIndicator(
+              ? const DotIndicator(
             color: Color(0xff66c97f),
             child: Icon(
               Icons.check,
@@ -145,7 +147,7 @@ class _DeliveryProcesses extends StatelessWidget {
               size: 12.0,
             ),
           )
-              : OutlinedDotIndicator(
+              : const OutlinedDotIndicator(
             borderWidth: 2.5,
           );
         },
@@ -153,7 +155,7 @@ class _DeliveryProcesses extends StatelessWidget {
           final completed = items[index][items[index].keys.first]['completed'];
 
           return completed
-              ? SolidLineConnector(
+              ? const SolidLineConnector(
             color: Color(0xff66c97f), // Green connector color for completed items
           )
               : null; // Null for incomplete items

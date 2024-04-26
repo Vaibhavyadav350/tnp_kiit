@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kiit_connect/theme/colors.dart';
@@ -18,17 +17,17 @@ class JobPostingFetch extends StatelessWidget {
               FirebaseFirestore.instance.collection('job_postings').snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             }
             if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-              return Text('No data available');
+              return const Text('No data available');
             }
             var jobinfos = snapshot.data!.docs;
             return SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   smallSpacing(),

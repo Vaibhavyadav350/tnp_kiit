@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../theme/neo_box.dart';
 
 class Devdrawer extends StatelessWidget {
-  const Devdrawer({Key? key}) : super(key: key);
+  const Devdrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
