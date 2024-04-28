@@ -85,12 +85,13 @@ class PersonalProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilder()
-        .addMultiSelectComboBox("Select Skills", domainsSkill)
+
         .addTextField("Project Name")
         .addComboBox("Level", projectComplexityLevel)
-        .addTextField("Git Repository Link")
+        .addMultiSelectComboBox("Select Skills", domainsSkill)
+        // .addTextField("Git Repository Link")
         .addGitHubRepoInput("Github")
-        .addTextField("Description", maxLines: 3)
+        // .addTextField("Description", maxLines: 3)
         .addTextField("Demo Link")
         .build("Personal Projects", (c) => const AcademicAchievements());
   }

@@ -13,6 +13,8 @@ import 'package:kiit_connect/theme/miscellaneous.dart';
 import 'package:kiit_connect/theme/neo_box.dart';
 import 'package:kiit_connect/theme/vytext.dart';
 
+import '../user/member/chat/vybutton_.dart';
+
 extension StringExtension on String {
   static final nonVerbalStuff = RegExp("[^\\w]+");
 
@@ -106,53 +108,58 @@ class FormBuilder {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MatTextField(
-                      label: displayName,
-                      controller: controller,
-                    ),
                     SizedBox(height: 10),
-                    MatTextButton(
-                      text: 'Get Project Description',
-                      onPressed: () async {
+                    Row(
+                      children: [
+                        VyTextsmall(
+                            controller,"Github Repo",Icons.code
+                        ),
+                        VyButtonsmall(
+                          "Fetch",Icons.download,
+                                ()async{
 
-                        try {
-                          final repoUrl = controller.text.trim();
-                          Uri uri = Uri.parse(repoUrl);
-                          List<String> pathSegments = uri.pathSegments;
-                          String username = pathSegments[0];
-                          String repository = pathSegments[1];
-                          http.Response response = await http.get(
-                            Uri.https('api.github.com', '/repos/$username/$repository'),
-                          );
+                          try {
+                            final repoUrl = controller.text.trim();
+                            Uri uri = Uri.parse(repoUrl);
+                            List<String> pathSegments = uri.pathSegments;
+                            String username = pathSegments[0];
+                            String repository = pathSegments[1];
+                            http.Response response = await http.get(
+                              Uri.https('api.github.com', '/repos/$username/$repository'),
+                            );
 
-                          Map<String, dynamic> data = json.decode(response.body);
+                            Map<String, dynamic> data = json.decode(response.body);
 
-                          http.Response contributorsResponse = await http.get(
-                            Uri.https('api.github.com', '/repos/$username/$repository/contributors'),
-                          );
-                          List<dynamic> contributorsData = json.decode(contributorsResponse.body);
-                          setState(() {
-                            _contributors = contributorsData.map<Map<String, dynamic>>((contributor) => {
-                              'login': contributor['login'],
-                              'contributions': contributor['contributions'],
-                            }).toList();
-                            _repositoryName = data['name'];
-                            _description = data['description'];
-                            _language = data['language'];
-                            _stars = data['stargazers_count'];
-                            _forks = data['forks_count'];
-                            _watchers = data['watchers_count'];
-                            _topics = List<String>.from(data['topics']);
-                            print(_contributors);print(_description);
-                            _error = ''; // Reset error message
-                          });
-                        } catch (e) {
-                          setState(() {
-                            _error = 'Error: Unable to fetch project information.';
-                          });
+                            http.Response contributorsResponse = await http.get(
+                              Uri.https('api.github.com', '/repos/$username/$repository/contributors'),
+                            );
+                            List<dynamic> contributorsData = json.decode(contributorsResponse.body);
+                            setState(() {
+                              _contributors = contributorsData.map<Map<String, dynamic>>((contributor) => {
+                                'login': contributor['login'],
+                                'contributions': contributor['contributions'],
+                              }).toList();
+                              _repositoryName = data['name'];
+                              _description = data['description'];
+                              _language = data['language'];
+                              _stars = data['stargazers_count'];
+                              _forks = data['forks_count'];
+                              _watchers = data['watchers_count'];
+                              _topics = List<String>.from(data['topics']);
+                              print(_contributors);print(_description);
+                              _error = ''; // Reset error message
+                            });
+                          } catch (e) {
+                            setState(() {
+                              _error = 'Error: Unable to fetch project information.';
+                            });
+                          }
                         }
-                      },
+                        ),
+                      ],
                     ),
+
+
                     SizedBox(height: 10),
                     if (_repositoryName.isNotEmpty) ...[
                       BoldText('Repository Name: ',_repositoryName),
