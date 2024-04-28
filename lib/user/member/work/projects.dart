@@ -89,6 +89,7 @@ class PersonalProject extends StatelessWidget {
         .addTextField("Project Name")
         .addComboBox("Level", projectComplexityLevel)
         .addTextField("Git Repository Link")
+        .addGitHubRepoInput("Github")
         .addTextField("Description", maxLines: 3)
         .addTextField("Demo Link")
         .build("Personal Projects", (c) => const AcademicAchievements());

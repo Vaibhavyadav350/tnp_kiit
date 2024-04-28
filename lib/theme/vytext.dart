@@ -19,3 +19,26 @@ Widget VyText(TextEditingController controller, String label, IconData icon) {
     ),
   );
 }
+class BoldText extends StatelessWidget {
+  const BoldText(this.lable, this.value, {Key? key}) : super(key: key);
+
+  final String value;
+  final String lable;
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: [
+        Text(
+          '$lable',
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+        Text(
+          '$value',
+          style: TextStyle(color: Colors.white, fontSize: 15),
+        ),
+      ],
+    );
+  }
+}

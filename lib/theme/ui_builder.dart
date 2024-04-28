@@ -1,13 +1,17 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/theme/miscellaneous.dart';
 import 'package:kiit_connect/theme/neo_box.dart';
+import 'package:kiit_connect/theme/vytext.dart';
 
 extension StringExtension on String {
   static final nonVerbalStuff = RegExp("[^\\w]+");
@@ -76,7 +80,113 @@ class FormItemSupplier {
 class FormBuilder {
   final List<FormItemSupplier> formPress = [];
   var maximumInstances = 10;
+  FormBuilder addGitHubRepoInput(displayName, {firebaseKey, validatingCondition}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        supplier: (setState) {
+          final TextEditingController controller = TextEditingController();
+          String projectDescription = '';
+          List<Map<String, dynamic>> _contributors = [];
+          String _repositoryName = '';
+          String _description = '';
+          String _language = '';
+          int _stars = 0;
+          int _forks = 0;
+          int _watchers = 0;
+          List<String> _topics = [];
+          String _error = '';
 
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => controller.text,
+              deserialize: (value) => controller.text = value,
+              builder: (context) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MatTextField(
+                      label: displayName,
+                      controller: controller,
+                    ),
+                    SizedBox(height: 10),
+                    MatTextButton(
+                      text: 'Get Project Description',
+                      onPressed: () async {
+
+                        try {
+                          final repoUrl = controller.text.trim();
+                          Uri uri = Uri.parse(repoUrl);
+                          List<String> pathSegments = uri.pathSegments;
+                          String username = pathSegments[0];
+                          String repository = pathSegments[1];
+                          http.Response response = await http.get(
+                            Uri.https('api.github.com', '/repos/$username/$repository'),
+                          );
+
+                          Map<String, dynamic> data = json.decode(response.body);
+
+                          http.Response contributorsResponse = await http.get(
+                            Uri.https('api.github.com', '/repos/$username/$repository/contributors'),
+                          );
+                          List<dynamic> contributorsData = json.decode(contributorsResponse.body);
+                          setState(() {
+                            _contributors = contributorsData.map<Map<String, dynamic>>((contributor) => {
+                              'login': contributor['login'],
+                              'contributions': contributor['contributions'],
+                            }).toList();
+                            _repositoryName = data['name'];
+                            _description = data['description'];
+                            _language = data['language'];
+                            _stars = data['stargazers_count'];
+                            _forks = data['forks_count'];
+                            _watchers = data['watchers_count'];
+                            _topics = List<String>.from(data['topics']);
+                            print(_contributors);print(_description);
+                            _error = ''; // Reset error message
+                          });
+                        } catch (e) {
+                          setState(() {
+                            _error = 'Error: Unable to fetch project information.';
+                          });
+                        }
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    if (_repositoryName.isNotEmpty) ...[
+                      BoldText('Repository Name: ',_repositoryName),
+                      BoldText('Description:',' $_description'),
+                      BoldText('Language:',' $_language'),
+                      BoldText('Stars: ','$_stars'),
+                      BoldText('Forks:',' $_forks'),
+                      BoldText('Watchers:',' $_watchers'),
+
+                      Row(
+
+                        children: [
+                          Wrap(
+                            children: _topics.map((topic) => Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 4),
+                              child: Chip(label: Text(topic,style: TextStyle(color: Colors.white),)),
+                            )).toList(),
+                          ),
+                        ],
+                      ),
+                      if (_contributors.isNotEmpty)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: _contributors.map((contributor) => BoldText('${contributor['login']} -',' ${contributor['contributions']} contributions')).toList(),
+                        )
+                      else
+                        Text('No contributors found.'),
+                    ],
+                  ],
+                );
+              });
+        }));
+    return this;
+  }
   FormBuilder addTextField(displayName,
       {defaultValue = "",
       maxLines = 1,
@@ -298,6 +408,8 @@ class FormBuilder {
   }
 }
 
+
+
 class Stencil {
   final List<FormItemSupplier> formPress;
 
@@ -432,6 +544,8 @@ class _TalikaState extends State<Talika> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
+
             SizedBox(
                 height: 60,
                 width: 60,
