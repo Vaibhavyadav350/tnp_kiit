@@ -12,7 +12,7 @@ Widget buildProjectCard({
   List<String>? links,
 }) {
   return Card(
-    color: darkShadow,
+    color: Colors.black,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

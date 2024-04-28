@@ -6,6 +6,7 @@ import 'package:kiit_connect/user/member/setting/nosettings.dart';
 import '../user/member/chat/feed.dart';
 import '../user/member/chat/uploadproject.dart';
 import '../user/member/job/jobposting.dart';
+import '../user/member/setting/timeline.dart';
 import '../user/screens/RevampedHomePage.dart';
 
 
@@ -66,12 +67,12 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               });
             }
           },
-          children: const <Widget>[
+          children:  <Widget>[
             UploadProjectPage(),
             SocialFeed(),
             RevampedHome(),
             JobPostingFetch(),
-            SettingsPage(),
+            TimelineScreen(),
           ],
         ),
       ),

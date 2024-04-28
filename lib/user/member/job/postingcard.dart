@@ -24,7 +24,7 @@ class JobListingCard extends StatefulWidget {
   final String? skills;
   final String? docid;
 
-  const JobListingCard({super.key, 
+  const JobListingCard({super.key,
     required this.jobTitle,
     required this.jobDescription,
     this.companyName,
@@ -67,7 +67,7 @@ class _JobListingCardState extends State<JobListingCard> {
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
-    var appliedJobs = snapshot.data()?['AppliedTo'];
+    var appliedJobs = snapshot.data()?['Apply Companies'];
     if (appliedJobs != null) {
 
       for (var job in appliedJobs) {
@@ -182,7 +182,7 @@ class _JobListingCardState extends State<JobListingCard> {
                           .collection('StudentInfo')
                           .doc(FirebaseAuth.instance.currentUser?.uid)
                           .update({
-                        'AppliedTo': FieldValue.arrayUnion([
+                        'Apply Companies': FieldValue.arrayUnion([
                           {
                             'id': widget.docid,
                             'company': widget.companyName,

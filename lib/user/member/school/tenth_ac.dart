@@ -46,8 +46,8 @@ class _TenthGradeInfoState extends State<TenthGradeInfo> {
         .get();
 
     Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
-    if (data.containsKey('tenthGradeData')) {
-      Map<String, dynamic> tenthGradeData = data['tenthGradeData'];
+    if (data.containsKey('Tenth Grade Data')) {
+      Map<String, dynamic> tenthGradeData = data['Tenth Grade Data'];
       _yearPassingController.text = tenthGradeData['10thYearPassing'] ?? '';
       _rollNumberController.text = tenthGradeData['10thRollNumber'] ?? '';
       _cgpaController.text = tenthGradeData['10thCGPA'] ?? '';
@@ -73,7 +73,7 @@ class _TenthGradeInfoState extends State<TenthGradeInfo> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set(
       {
-        'tenthGradeData': tenthGradeData,
+        'Tenth Grade Data': tenthGradeData,
       },
       SetOptions(merge: true), // Merge with existing data if it exists
     )

@@ -44,8 +44,8 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
         .get();
 
     Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
-    if (data.containsKey('tenthGradeAchievements')) {
-      Map<String, dynamic> tenthGradeAchievements = data['tenthGradeAchievements'];
+    if (data.containsKey('Tenth Grade Achievements')) {
+      Map<String, dynamic> tenthGradeAchievements = data['Tenth Grade Achievements'];
       _certificateLinkController.text = tenthGradeAchievements['certificateLink'] ?? '';
       _curricularActivitiesController.text = tenthGradeAchievements['curricularActivities'] ?? '';
       _coCurricularActivitiesController.text = tenthGradeAchievements['coCurricularActivities'] ?? '';
@@ -68,7 +68,7 @@ class _TenthGradeAchievementsState extends State<TenthGradeAchievements> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set(
       {
-        'tenthGradeAchievements': tenthGradeAchievements,
+        'Tenth Grade Achievements': tenthGradeAchievements,
       },
       SetOptions(merge: true), // Merge with existing data if it exists
     )

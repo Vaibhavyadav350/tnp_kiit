@@ -48,8 +48,8 @@ class _TwelfthGradeInfoState extends State<TwelfthGradeInfo> {
         .get();
 
     Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
-    if (data.containsKey('twelfthGradeData')) {
-      Map<String, dynamic> twelfthGradeData = data['twelfthGradeData'];
+    if (data.containsKey('Twelfth Grade Data')) {
+      Map<String, dynamic> twelfthGradeData = data['Twelfth Grade Data'];
       _yearPassingController.text = twelfthGradeData['12thYearPassing'] ?? '';
       _rollNumberController.text = twelfthGradeData['12thRollNumber'] ?? '';
       _cgpaController.text = twelfthGradeData['12thCGPA'] ?? '';
@@ -75,7 +75,7 @@ class _TwelfthGradeInfoState extends State<TwelfthGradeInfo> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set(
       {
-        'twelfthGradeData': twelfthGradeData,
+        'Twelfth Grade Data': twelfthGradeData,
       },
       SetOptions(merge: true), // Merge with existing data if it exists
     )
