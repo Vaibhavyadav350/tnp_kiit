@@ -1,8 +1,11 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 
 import '../theme/neo_box.dart';
+import '../user/developers/developer.dart';
+import '../user/member/job/jobposting.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({super.key});
@@ -11,6 +14,7 @@ class SideDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
     String? photoUrl = user?.photoURL;
+
     return Drawer(
         width: 250,
         child: SizedBox(
@@ -31,7 +35,7 @@ class SideDrawer extends StatelessWidget {
                       height: 10,
                     ),
                     Text(user?.displayName ?? 'Guest',
-                        style: const TextStyle(fontSize: 20)),
+                        style: const TextStyle(fontSize: 20,color: Colors.white)),
                   ],
                 ),
               ),
@@ -50,7 +54,7 @@ class SideDrawer extends StatelessWidget {
                   children: [
                     Text(
                       "Create Profile",
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 20,color: Colors.white),
                     ),
                     Icon(
                       Icons.favorite_border,
@@ -62,89 +66,124 @@ class SideDrawer extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              const NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Internship",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.auto_graph,
-                    color: Colors.purpleAccent,
-                  )
-                ],
-              )),
+              GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const JobPostingFetch()),
+                  );
+                },
+                child: const NeoBox(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Internship",
+                      style: TextStyle(fontSize: 20,color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.auto_graph,
+                      color: Colors.purpleAccent,
+                    )
+                  ],
+                )),
+              ),
               const SizedBox(
                 height: 15,
               ),
-              const NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "About TNP",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.graphic_eq,
-                    color: Colors.green,
-                  )
-                ],
-              )),
+              GestureDetector(
+                onTap: (){
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (context) => const BasicProfile()),
+                  // );
+                },
+                child: const NeoBox(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "About TNP",
+                      style: TextStyle(fontSize: 20,color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.graphic_eq,
+                      color: Colors.green,
+                    )
+                  ],
+                )),
+              ),
               const SizedBox(
                 height: 15,
               ),
-              const NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Gallery",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.music_note,
-                    color: Colors.pinkAccent,
-                  )
-                ],
-              )),
+              GestureDetector(
+                onTap: (){
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (context) => const BasicProfile()),
+                  // );
+                },
+                child: const NeoBox(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Gallery",
+                      style: TextStyle(fontSize: 20,color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.music_note,
+                      color: Colors.pinkAccent,
+                    )
+                  ],
+                )),
+              ),
               const SizedBox(
                 height: 15,
               ),
-              const NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Contact Us",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.call,
-                    color: Colors.blue,
-                  )
-                ],
-              )),
+              GestureDetector(
+                onTap: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Developers()),
+                  );
+                },
+                child: const NeoBox(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Developers",
+                      style: TextStyle(fontSize: 20,color: Colors.white),
+                    ),
+                    Icon(
+                      FluentIcons.code_24_filled,
+                      color: Colors.blue,
+                    )
+                  ],
+                )),
+              ),
 
               const SizedBox(
                 height: 15,
               ),
-              const NeoBox(
-                  child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Logout",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  Icon(
-                    Icons.logout,
-                    color: Colors.grey,
-                  )
-                ],
-              )),
+              GestureDetector(
+                onTap: (){
+                  // Navigator.of(context).push(
+                  //   MaterialPageRoute(builder: (context) => const BasicProfile()),
+                  // );
+                },
+                child: const NeoBox(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Logout",
+                      style: TextStyle(fontSize: 20,color: Colors.white),
+                    ),
+                    Icon(
+                      Icons.logout,
+                      color: Colors.grey,
+                    )
+                  ],
+                )),
+              ),
             ],
           )),
         ));

@@ -15,15 +15,15 @@ class NeoBox extends StatelessWidget {
         padding: EdgeInsets.all(9),
         child: child,
         decoration: BoxDecoration(
-            color: Colors.grey[300],
+            color: darkShadow,
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                  color: Colors.grey.shade500,
+                  color: darkShadow,
                   blurRadius: 15,
                   offset: Offset(5, 5)),
               BoxShadow(
-                  color: Colors.white, blurRadius: 15, offset: Offset(-5, -5))
+                  color: Colors.black, blurRadius: 15, offset: Offset(-5, -5))
             ]),
       ),
     );

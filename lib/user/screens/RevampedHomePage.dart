@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_local_variable
 
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/school/tenth_ac.dart';
@@ -26,6 +27,7 @@ import 'package:kiit_connect/user/member/work/projects.dart';
 import 'package:kiit_connect/user/member/work/recommendations_and_testimonials.dart';
 import 'package:kiit_connect/user/member/work/startups.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../../navigation/drawer.dart';
 import '../../theme/utils/ThemeBackgrounds.dart';
 import '../../theme/utils/cards.dart';
 import '../member/basicprofile.dart';
@@ -39,12 +41,18 @@ class RevampedHome extends StatefulWidget {
 
 
 class _RevampedHomeState extends State<RevampedHome> {
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState?.openDrawer();
+  }
   PageController pageController = PageController();
   int selectedIndex = -1; // -1 means no icon is selected
   
 
   @override
   Widget build(BuildContext context) {
+
     var profile = ColorProfile();
     double width = MediaQuery.of(context).size.width;
     double width_7 = 411.00;
@@ -54,6 +62,8 @@ class _RevampedHomeState extends State<RevampedHome> {
 
 
     return Scaffold(
+      drawer: SideDrawer(),
+        key: _scaffoldKey,
         body: SafeArea(
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -63,20 +73,24 @@ class _RevampedHomeState extends State<RevampedHome> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text("    Welcome Back!", style: textTitle(context)),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("    ${FirebaseAuth.instance.currentUser!.displayName!}" ,
-                    style: TextStyle(color: primary, fontSize: 20),
-                  ),
+                  SizedBox(
+                    height: 60,
+                    width: 60,
+                    child:IconButton(
+                      icon: Icon(FluentIcons.list_24_filled,color: Colors.white,),
+                      onPressed:_openDrawer,
 
-                  // Text("    Hello Tester!" ,
-                  //   style: TextStyle(color: primary, fontSize: 20),
-                  // ),
-                  
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Welcome Back!", style: textTitle(context)),
+                      Text("${FirebaseAuth.instance.currentUser!.displayName!}" ,
+                        style: TextStyle(color: primary, fontSize: 20),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               smallSpacing(),

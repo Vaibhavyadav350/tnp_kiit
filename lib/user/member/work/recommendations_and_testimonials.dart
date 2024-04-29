@@ -10,6 +10,7 @@ class RecommendationsAndTestimonials extends StatelessWidget {
     return FormBuilder()
         .addTextField("Recommender's Name")
         .addTextField("Relationship")
+        .addTextField("Email")
         .addTextField("Testimonial Text", maxLines: 3)
         .build("Recommendations", (c) => const PersonalProject());
   }

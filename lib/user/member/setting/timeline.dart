@@ -14,7 +14,6 @@ bool valid = false;
 
 class _TimelineScreenState extends State<TimelineScreen> {
   Future<DocumentSnapshot<Map<String, dynamic>>> _fetchTimelineData() async {
-    // Replace 'your_collection' with the actual collection name in your Firestore
     return FirebaseFirestore.instance
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -75,15 +74,12 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         child: Text('Error: ${snapshot.error}'),
                       );
                     } else {
-                      // Parse data from Firestore
                       final data = snapshot.data?.data();
                       if (data == null || data.isEmpty) {
                         return Center(
                           child: Text('No data available'),
                         );
                       }
-
-                      // Get all array names inside the document
                       final arrayNames = data.keys
                           .where((key) => data[key] is List || data[key] is Map)
                           .toList();
@@ -91,18 +87,17 @@ class _TimelineScreenState extends State<TimelineScreen> {
                       return FixedTimeline.tileBuilder(
                         theme: TimelineThemeData(
                           nodePosition: 0,
-                          color: Colors.lightGreenAccent,
-                          // Light green color for timeline
+                          color: Colors.green,
                           indicatorTheme: IndicatorThemeData(
                             size: 20.0,
                             position: 0.0,
                             color: Colors
-                                .lightGreenAccent, // Light green color for timeline indicators
+                                .green,
                           ),
                           connectorTheme: ConnectorThemeData(
                             thickness: 2.5,
                             color: Colors
-                                .lightGreenAccent, // Light green color for connectors
+                                .green,
                           ),
                         ),
                         builder: TimelineTileBuilder.fromStyle(
@@ -116,7 +111,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
                                 title: Text(arrayName,
                                     style: TextStyle(
                                         color: Colors.green, fontSize: 16)),
-                                // You can add onTap functionality if needed
                               ),
                             );
                           },
