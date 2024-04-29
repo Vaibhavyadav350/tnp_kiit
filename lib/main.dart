@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kiit_connect/service/wrapper.dart';
+import 'package:kiit_connect/user/onboard/wrapper.dart';
 import 'package:kiit_connect/theme/colors.dart';
 
 

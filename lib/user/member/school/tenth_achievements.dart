@@ -7,7 +7,7 @@ import 'package:kiit_connect/user/member/school/twelth_ac.dart';
 
 import '../../../navigation/drawer.dart';
 import '../../../theme/colors.dart';
-import '../../../theme/neo_box.dart';
+import '../../../theme/utils/text/neo_box.dart';
 
 class TenthGradeAchievements extends StatefulWidget {
   const TenthGradeAchievements({super.key});

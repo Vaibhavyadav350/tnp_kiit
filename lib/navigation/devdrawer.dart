@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import '../theme/neo_box.dart';
+import '../theme/utils/text/neo_box.dart';
 
 class Devdrawer extends StatelessWidget {
   const Devdrawer({super.key});

@@ -2,12 +2,11 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:inkblob_navigation_bar/inkblob_navigation_bar.dart';
 import 'package:kiit_connect/theme/colors.dart';
-import 'package:kiit_connect/user/member/setting/nosettings.dart';
 import '../user/member/chat/feed.dart';
 import '../user/member/chat/uploadproject.dart';
 import '../user/member/job/jobposting.dart';
 import '../user/member/setting/timeline.dart';
-import '../user/screens/RevampedHomePage.dart';
+import '../user/screens/HomePage.dart';
 
 
 class MyBottomNavBar extends StatefulWidget {
@@ -71,7 +70,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
           children:  <Widget>[
             UploadProjectPage(),
             SocialFeed(),
-            RevampedHome(),
+            HomePage(),
             JobPostingFetch(),
             TimelineScreen(),
           ],

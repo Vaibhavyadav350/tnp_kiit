@@ -2,7 +2,7 @@
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/theme/ui_builder.dart';
+import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
 import 'package:kiit_connect/user/member/skill/competency.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 

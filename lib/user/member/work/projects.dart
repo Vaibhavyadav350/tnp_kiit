@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kiit_connect/theme/ui_builder.dart';
+import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
 
 var domainsSkill = [

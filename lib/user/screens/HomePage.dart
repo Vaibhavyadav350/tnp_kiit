@@ -28,19 +28,19 @@ import 'package:kiit_connect/user/member/work/recommendations_and_testimonials.d
 import 'package:kiit_connect/user/member/work/startups.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../navigation/drawer.dart';
-import '../../theme/utils/ThemeBackgrounds.dart';
-import '../../theme/utils/cards.dart';
+import '../../theme/ThemeBackgrounds.dart';
+import '../../theme/utils/builder/cards.dart';
 import '../member/basicprofile.dart';
 
-class RevampedHome extends StatefulWidget {
-  const RevampedHome({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<RevampedHome> createState() => _RevampedHomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 
-class _RevampedHomeState extends State<RevampedHome> {
+class _HomePageState extends State<HomePage> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
@@ -48,7 +48,7 @@ class _RevampedHomeState extends State<RevampedHome> {
   }
   PageController pageController = PageController();
   int selectedIndex = -1; // -1 means no icon is selected
-  
+
 
   @override
   Widget build(BuildContext context) {

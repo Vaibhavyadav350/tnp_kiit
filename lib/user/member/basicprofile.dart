@@ -11,7 +11,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kiit_connect/theme/colors.dart';
 
 import '../../navigation/drawer.dart';
-import '../../theme/neo_box.dart';
+import '../../theme/utils/text/neo_box.dart';
 import 'school/tenth_ac.dart';
 
 class BasicProfile extends StatefulWidget {

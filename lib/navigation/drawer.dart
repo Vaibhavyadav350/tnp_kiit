@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 
-import '../theme/neo_box.dart';
+import '../theme/utils/text/neo_box.dart';
 import '../user/developers/developer.dart';
 import '../user/member/job/jobposting.dart';
 

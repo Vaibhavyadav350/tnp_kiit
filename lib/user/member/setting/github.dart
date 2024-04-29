@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../theme/vytext.dart';
+import '../../../theme/utils/text/vytext.dart';
 class GitHubProjectInfoPage extends StatefulWidget {
   @override
   _GitHubProjectInfoPageState createState() => _GitHubProjectInfoPageState();

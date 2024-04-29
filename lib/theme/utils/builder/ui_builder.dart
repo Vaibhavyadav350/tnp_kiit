@@ -9,11 +9,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kiit_connect/theme/colors.dart';
-import 'package:kiit_connect/theme/miscellaneous.dart';
-import 'package:kiit_connect/theme/neo_box.dart';
-import 'package:kiit_connect/theme/vytext.dart';
+import 'package:kiit_connect/theme/utils/builder/miscellaneous.dart';
+import 'package:kiit_connect/theme/utils/text/neo_box.dart';
+import 'package:kiit_connect/theme/utils/text/vytext.dart';
 
-import '../user/member/chat/vybutton_.dart';
+import '../button/vybutton_.dart';
 
 extension StringExtension on String {
   static final nonVerbalStuff = RegExp("[^\\w]+");

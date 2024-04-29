@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../../navigation/drawer.dart';
 import '../../../theme/colors.dart';
-import '../../../theme/neo_box.dart';
+import '../../../theme/utils/text/neo_box.dart';
 
 
 
