@@ -150,18 +150,22 @@ class MatTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: padWrap(TextButton(
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all(RoundedRectangleBorder()),
-          padding: MaterialStateProperty.all(EdgeInsets.zero),
+      child: padWrap(Container(
+        
+        width: 200,
+        child: TextButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all(RoundedRectangleBorder()),
+            padding: MaterialStateProperty.all(EdgeInsets.zero),
+          ),
+          onPressed: onPressed,
+          child: boxWrap(
+              moveCenter([
+                Text(text, style: textAnnotation(context)),
+                Icon(icon, color: Theme.of(context).primaryColor),
+              ]),
+              color: (isSubmit) ? greenHighlight : darkHighlight),
         ),
-        onPressed: onPressed,
-        child: boxWrap(
-            moveCenter([
-              Text(text, style: textAnnotation(context)),
-              Icon(icon, color: Theme.of(context).primaryColor),
-            ]),
-            color: (isSubmit) ? greenHighlight : darkHighlight),
       )),
     );
   }

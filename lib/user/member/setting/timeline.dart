@@ -1,5 +1,7 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:kiit_connect/navigation/drawer.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/user/member/chat/vybutton_.dart';
 import 'package:timelines/timelines.dart';
@@ -13,6 +15,11 @@ class TimelineScreen extends StatefulWidget {
 bool valid = false;
 
 class _TimelineScreenState extends State<TimelineScreen> {
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState?.openEndDrawer();
+  }
   Future<DocumentSnapshot<Map<String, dynamic>>> _fetchTimelineData() async {
     return FirebaseFirestore.instance
         .collection('StudentInfo')
@@ -48,21 +55,30 @@ class _TimelineScreenState extends State<TimelineScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: darkShadow,
-          title: Text(
-            "   Filled Data",
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.info))],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              children: [
-                FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+        endDrawer: SideDrawer(),
+        key: _scaffoldKey,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("     Filled Data", style: textTitle(context)),
+                  SizedBox(
+                    height: 60,
+
+                    child:IconButton(
+                      icon: Icon(FluentIcons.list_rtl_20_filled,color: Colors.white,),
+                      onPressed:_openDrawer,
+
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 10),
+                child: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
                   future: _fetchTimelineData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
@@ -119,84 +135,84 @@ class _TimelineScreenState extends State<TimelineScreen> {
                     }
                   },
                 ),
-                if (valid)
-                  VyButton("Data Sent for Validation!", Icons.upcoming, () {}),
-                if (!valid)
-                  VyButton("Send Data for Validation", Icons.upcoming,
-                      () async {
-                    bool confirm = await showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text(
-                          'Confirmation',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        content: Text(
-                            'After sending the data for validation, it cannot be modified or supplemented without TNP Dept permission.',
-                            style: TextStyle(color: Colors.white)),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, false),
-                            child: Text('Cancel'),
-                          ),
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, true),
-                            child: Text('Confirm'),
-                          ),
-                        ],
+              ),
+              if (valid)
+                VyButton("Data Sent for Validation!", Icons.upcoming, () {}),
+              if (!valid)
+                VyButton("Send Data for Validation", Icons.upcoming,
+                    () async {
+                  bool confirm = await showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text(
+                        'Confirmation',
+                        style: TextStyle(color: Colors.white),
                       ),
-                    );
+                      content: Text(
+                          'After sending the data for validation, it cannot be modified or supplemented without TNP Dept permission.',
+                          style: TextStyle(color: Colors.white)),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, false),
+                          child: Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, true),
+                          child: Text('Confirm'),
+                        ),
+                      ],
+                    ),
+                  );
 
-                    if (confirm != null && confirm) {
-                      try {
-                        // Get reference to the current user's document in 'StudentInfo' collection
-                        DocumentReference<Map<String, dynamic>> userDocRef =
-                            FirebaseFirestore.instance
-                                .collection('StudentInfo')
-                                .doc(FirebaseAuth.instance.currentUser?.uid);
+                  if (confirm != null && confirm) {
+                    try {
+                      // Get reference to the current user's document in 'StudentInfo' collection
+                      DocumentReference<Map<String, dynamic>> userDocRef =
+                          FirebaseFirestore.instance
+                              .collection('StudentInfo')
+                              .doc(FirebaseAuth.instance.currentUser?.uid);
 
-                        // Get the data from the user's document
-                        DocumentSnapshot<Map<String, dynamic>> userData =
-                            await userDocRef.get();
+                      // Get the data from the user's document
+                      DocumentSnapshot<Map<String, dynamic>> userData =
+                          await userDocRef.get();
 
-                        // Save the data to a new document in the 'validdata' sub-collection
-                        await FirebaseFirestore.instance
-                            .collection('StudentInfo')
-                            .doc(FirebaseAuth.instance.currentUser?.uid)
-                            .collection('validdata')
-                            .doc(FirebaseAuth.instance.currentUser?.uid)
-                            .set(userData.data() ?? {});
-
-                        // Show a success message
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content:
-                                Text('Data sent for validation successfully!'),
-                          ),
-                        );
-                      } catch (error) {
-                        // Show an error message if something goes wrong
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Error: $error'),
-                          ),
-                        );
-                      }
-
-                      // Update the validation status to 'Applied'
+                      // Save the data to a new document in the 'validdata' sub-collection
                       await FirebaseFirestore.instance
                           .collection('StudentInfo')
                           .doc(FirebaseAuth.instance.currentUser?.uid)
-                          .update({'validate': 'Applied'});
+                          .collection('validdata')
+                          .doc(FirebaseAuth.instance.currentUser?.uid)
+                          .set(userData.data() ?? {});
 
-                      // Update the UI
-                      setState(() {
-                        valid = true;
-                      });
+                      // Show a success message
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content:
+                              Text('Data sent for validation successfully!'),
+                        ),
+                      );
+                    } catch (error) {
+                      // Show an error message if something goes wrong
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Error: $error'),
+                        ),
+                      );
                     }
-                  })
-              ],
-            ),
+
+                    // Update the validation status to 'Applied'
+                    await FirebaseFirestore.instance
+                        .collection('StudentInfo')
+                        .doc(FirebaseAuth.instance.currentUser?.uid)
+                        .update({'validate': 'Applied'});
+
+                    // Update the UI
+                    setState(() {
+                      valid = true;
+                    });
+                  }
+                })
+            ],
           ),
         ),
       ),

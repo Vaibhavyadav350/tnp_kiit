@@ -67,6 +67,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
               });
             }
           },
+          physics: NeverScrollableScrollPhysics(),
           children:  <Widget>[
             UploadProjectPage(),
             SocialFeed(),

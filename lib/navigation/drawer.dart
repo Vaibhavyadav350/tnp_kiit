@@ -169,20 +169,25 @@ class SideDrawer extends StatelessWidget {
                   //   MaterialPageRoute(builder: (context) => const BasicProfile()),
                   // );
                 },
-                child: const NeoBox(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Logout",
-                      style: TextStyle(fontSize: 20,color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.logout,
-                      color: Colors.grey,
-                    )
-                  ],
-                )),
+                child: GestureDetector(
+                  onTap: ()async{
+                    await FirebaseAuth.instance.signOut();
+                  },
+                  child: const NeoBox(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "Logout",
+                        style: TextStyle(fontSize: 20,color: Colors.white),
+                      ),
+                      Icon(
+                        Icons.logout,
+                        color: Colors.grey,
+                      )
+                    ],
+                  )),
+                ),
               ),
             ],
           )),

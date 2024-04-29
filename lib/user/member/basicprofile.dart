@@ -1,9 +1,11 @@
 import 'dart:io';
 
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kiit_connect/theme/colors.dart';
@@ -71,7 +73,7 @@ class _BasicProfileState extends State<BasicProfile> {
   void _saveToFirestore() async {
     if (_selectedPhoto != null) {
       await _uploadPhotoToFirebase(_selectedPhoto!);
-
+    }
       final basicdata = {
         'name': _namecontroller.text,
         'phone': _phonenumber.text,
@@ -79,24 +81,42 @@ class _BasicProfileState extends State<BasicProfile> {
         'address': _addresscontroller.text,
         'photoUrl': photoUrl,
       };
-
       await FirebaseFirestore.instance
           .collection('StudentInfo')
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .update(basicdata)
           .then((documentRef) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Basic Info Updated!!')),
+          SnackBar(
+            elevation: 0,
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.transparent,
+            content: AwesomeSnackbarContent(
+              title: 'Oh Hey!!',
+              message:
+              'Basic Profile Info Saved',
+              contentType: ContentType.success,
+            ),
+          ),
         );
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const TenthGradeInfo()),
         );
       }).catchError((error) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to save information')),
+          SnackBar(
+            elevation: 0,
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.transparent,
+            content: AwesomeSnackbarContent(
+              title: 'Oh No!!',
+              message:
+              'Failed to Save Data!',
+              contentType: ContentType.failure,
+            ),
+          ),
         );
       });
-    }
   }
 
   Future<void> _pickPhotoFromGallery() async {
@@ -180,22 +200,22 @@ class _BasicProfileState extends State<BasicProfile> {
                       ),
                       smallSpacing(),
                       MatTextField(
-                        icon: Icons.person,
+                        icon: FluentIcons.person_48_regular,
                         label: "Full Name",
                         controller: _namecontroller,
                       ),
                       MatTextField(
-                        icon: Icons.email,
+                        icon: FluentIcons.mail_48_regular,
                         label: "Personal Email Address",
                         controller: _emailcontroller,
                       ),
                       MatTextField(
-                        icon: Icons.phone,
+                        icon: FluentIcons.call_48_regular,
                         label: "Phone Number",
                         controller: _phonenumber,
                       ),
                       MatTextField(
-                        icon: Icons.home,
+                        icon: FluentIcons.home_48_regular,
                         label: "Address",
                         controller: _addresscontroller,
                         maxLines: 3,

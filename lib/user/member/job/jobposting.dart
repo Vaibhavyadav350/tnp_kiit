@@ -1,4 +1,5 @@
 
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:kiit_connect/theme/colors.dart';
@@ -30,15 +31,21 @@ class JobPostingFetch extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  smallSpacing(),
-
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("    Welcome Back!", style: textTitle(context)),
+                      Text("     Opportunities ", style: textTitle(context)),
+                      SizedBox(
+                        height: 60,
+
+                        child:IconButton(
+                          icon: Icon(FluentIcons.filter_32_regular,color: Colors.white,),
+                          onPressed:(){},
+
+                        ),
+                      ),
                     ],
                   ),
-                  smallSpacing(),
                   Column(
                     children: jobinfos.map((jobinfo) {
                       return Padding(
