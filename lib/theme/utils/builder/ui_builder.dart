@@ -84,6 +84,30 @@ class FormBuilder {
   final List<FormItemSupplier> formPress = [];
   var maximumInstances = 10;
 
+  // GUIDE FOR ADDING MORE UI ELEMENT BUILDERS
+//   FormBuilder add<ElementName>(displayName,
+//       {
+//        defaultValue = "",
+//        firebaseKey,
+//        validatingCondition,
+//        ... other args
+//       }) {
+//     formPress.add(FormItemSupplier(
+//         displayName: displayName,
+//         firebaseKey: firebaseKey,
+//         validatingCondition: validatingCondition,
+//         supplier: (setState) {
+//           <CREATE MUTABLE VARIABLE HERE>
+//           return FormItem2(
+//               displayName: displayName,
+//               serialize: () => VARIABLE,
+//               deserialize: (value) => VARIABLE = value,
+//               builder: (context) {
+//                 return <YOUR UI ELEMENT WHICH USES THE VARIABLE>;
+//         }));
+//     return this;
+//   }
+
   FormBuilder addGitHubRepoInput(displayName,
       {firebaseKey, validatingCondition}) {
     formPress.add(FormItemSupplier(
@@ -105,8 +129,32 @@ class FormBuilder {
 
           return FormItem2(
               displayName: displayName,
-              serialize: () => controller.text,
-              deserialize: (value) => controller.text = value,
+              serialize: () => {
+                    'controller': controller.text,
+                    'projectDescription': projectDescription,
+                    '_contributors': _contributors,
+                    '_repositoryName': _repositoryName,
+                    '_description': _description,
+                    '_language': _language,
+                    '_stars': _stars,
+                    '_forks': _forks,
+                    '_watchers': _watchers,
+                    '_topics': _topics,
+                    '_error': _error,
+                  },
+              deserialize: (value) {
+                controller.text = value['controller'];
+                projectDescription = value['projectDescription'];
+                _contributors = value['_contributors'];
+                _repositoryName = value['_repositoryName'];
+                _description = value['_description'];
+                _language = value['_language'];
+                _stars = value['_stars'];
+                _forks = value['_forks'];
+                _watchers = value['_watchers'];
+                _topics = value['_topics'];
+                _error = value['_error'];
+              },
               builder: (context) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
