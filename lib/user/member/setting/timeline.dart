@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -136,8 +137,8 @@ class _TimelineScreenState extends State<TimelineScreen> {
                   },
                 ),
               ),
-              if (valid)
-                VyButton("Data Sent for Validation!", Icons.upcoming, () {}),
+              // if (valid)
+              //   VyButton("Data Sent for Validation!", Icons.upcoming, () {}),
               if (!valid)
                 VyButton("Send Data for Validation", Icons.upcoming,
                     () async {
@@ -178,24 +179,37 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
                       // Save the data to a new document in the 'validdata' sub-collection
                       await FirebaseFirestore.instance
-                          .collection('StudentInfo')
-                          .doc(FirebaseAuth.instance.currentUser?.uid)
-                          .collection('validdata')
+                          .collection('DataForValidation')
                           .doc(FirebaseAuth.instance.currentUser?.uid)
                           .set(userData.data() ?? {});
 
                       // Show a success message
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content:
-                              Text('Data sent for validation successfully!'),
+                          elevation: 0,
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Colors.transparent,
+                          content: AwesomeSnackbarContent(
+                            title: 'Oh Hey!!',
+                            message:
+                            'Data Sent for Validation',
+                            contentType: ContentType.success,
+                          ),
                         ),
                       );
                     } catch (error) {
                       // Show an error message if something goes wrong
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Error: $error'),
+                          elevation: 0,
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Colors.transparent,
+                          content: AwesomeSnackbarContent(
+                            title: 'Oh No!!',
+                            message:
+                            'Failed to Save Data!',
+                            contentType: ContentType.failure,
+                          ),
                         ),
                       );
                     }
