@@ -141,10 +141,14 @@ class _TwelfthGradeInfoState extends State<TwelfthGradeInfo> {
                         icon: Icons.numbers,
                         label: "Roll Number",
                         controller: _rollNumberController,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+
                       ),
                       MatTextField(
                         label: "CGPA",
                         controller: _cgpaController,icon: Icons.grade,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+
                       ),
                       MatTextField(
                           label: "Board Name",

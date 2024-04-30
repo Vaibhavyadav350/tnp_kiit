@@ -213,6 +213,8 @@ class _BasicProfileState extends State<BasicProfile> {
                         icon: FluentIcons.call_48_regular,
                         label: "Phone Number",
                         controller: _phonenumber,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+
                       ),
                       MatTextField(
                         icon: FluentIcons.home_48_regular,
