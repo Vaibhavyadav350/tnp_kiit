@@ -1,13 +1,13 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:kiit_connect/theme/utils/builder/miscellaneous.dart';
 import 'package:kiit_connect/theme/utils/text/neo_box.dart';
@@ -43,7 +43,8 @@ class FormItem2 extends StatelessWidget {
   bool Function() isValid = () => true;
 
   FormItem2(
-      {super.key, required this.displayName,
+      {super.key,
+      required this.displayName,
       required this.serialize,
       required this.deserialize,
       required this.builder});
@@ -82,7 +83,9 @@ class FormItemSupplier {
 class FormBuilder {
   final List<FormItemSupplier> formPress = [];
   var maximumInstances = 10;
-  FormBuilder addGitHubRepoInput(displayName, {firebaseKey, validatingCondition}) {
+
+  FormBuilder addGitHubRepoInput(displayName,
+      {firebaseKey, validatingCondition}) {
     formPress.add(FormItemSupplier(
         displayName: displayName,
         firebaseKey: firebaseKey,
@@ -111,13 +114,8 @@ class FormBuilder {
                     SizedBox(height: 10),
                     Row(
                       children: [
-                        VyTextsmall(
-                            controller,"Github Repo",Icons.code
-                        ),
-                        VyButtonsmall(
-                          "Fetch",Icons.download,
-                                ()async{
-
+                        VyTextsmall(controller, "Github Repo", Icons.code),
+                        VyButtonsmall("Fetch", Icons.download, () async {
                           try {
                             final repoUrl = controller.text.trim();
                             Uri uri = Uri.parse(repoUrl);
@@ -125,20 +123,27 @@ class FormBuilder {
                             String username = pathSegments[0];
                             String repository = pathSegments[1];
                             http.Response response = await http.get(
-                              Uri.https('api.github.com', '/repos/$username/$repository'),
+                              Uri.https('api.github.com',
+                                  '/repos/$username/$repository'),
                             );
 
-                            Map<String, dynamic> data = json.decode(response.body);
+                            Map<String, dynamic> data =
+                                json.decode(response.body);
 
                             http.Response contributorsResponse = await http.get(
-                              Uri.https('api.github.com', '/repos/$username/$repository/contributors'),
+                              Uri.https('api.github.com',
+                                  '/repos/$username/$repository/contributors'),
                             );
-                            List<dynamic> contributorsData = json.decode(contributorsResponse.body);
+                            List<dynamic> contributorsData =
+                                json.decode(contributorsResponse.body);
                             setState(() {
-                              _contributors = contributorsData.map<Map<String, dynamic>>((contributor) => {
-                                'login': contributor['login'],
-                                'contributions': contributor['contributions'],
-                              }).toList();
+                              _contributors = contributorsData
+                                  .map<Map<String, dynamic>>((contributor) => {
+                                        'login': contributor['login'],
+                                        'contributions':
+                                            contributor['contributions'],
+                                      })
+                                  .toList();
                               _repositoryName = data['name'];
                               _description = data['description'];
                               _language = data['language'];
@@ -146,44 +151,52 @@ class FormBuilder {
                               _forks = data['forks_count'];
                               _watchers = data['watchers_count'];
                               _topics = List<String>.from(data['topics']);
-                              print(_contributors);print(_description);
+                              print(_contributors);
+                              print(_description);
                               _error = ''; // Reset error message
                             });
                           } catch (e) {
                             setState(() {
-                              _error = 'Error: Unable to fetch project information.';
+                              _error =
+                                  'Error: Unable to fetch project information.';
                             });
                           }
-                        }
-                        ),
+                        }),
                       ],
                     ),
-
-
                     SizedBox(height: 10),
                     if (_repositoryName.isNotEmpty) ...[
-                      BoldText('Repository Name: ',_repositoryName),
-                      BoldText('Description:',' $_description'),
-                      BoldText('Language:',' $_language'),
-                      BoldText('Stars: ','$_stars'),
-                      BoldText('Forks:',' $_forks'),
-                      BoldText('Watchers:',' $_watchers'),
-
+                      BoldText('Repository Name: ', _repositoryName),
+                      BoldText('Description:', ' $_description'),
+                      BoldText('Language:', ' $_language'),
+                      BoldText('Stars: ', '$_stars'),
+                      BoldText('Forks:', ' $_forks'),
+                      BoldText('Watchers:', ' $_watchers'),
                       Row(
-
                         children: [
                           Wrap(
-                            children: _topics.map((topic) => Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 4),
-                              child: Chip(label: Text(topic,style: TextStyle(color: Colors.white),)),
-                            )).toList(),
+                            children: _topics
+                                .map((topic) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4),
+                                      child: Chip(
+                                          label: Text(
+                                        topic,
+                                        style: TextStyle(color: Colors.white),
+                                      )),
+                                    ))
+                                .toList(),
                           ),
                         ],
                       ),
                       if (_contributors.isNotEmpty)
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: _contributors.map((contributor) => BoldText('${contributor['login']} -',' ${contributor['contributions']} contributions')).toList(),
+                          children: _contributors
+                              .map((contributor) => BoldText(
+                                  '${contributor['login']} -',
+                                  ' ${contributor['contributions']} contributions'))
+                              .toList(),
                         )
                       else
                         Text('No contributors found.'),
@@ -194,6 +207,7 @@ class FormBuilder {
         }));
     return this;
   }
+
   FormBuilder addTextField(displayName,
       {defaultValue = "",
       maxLines = 1,
@@ -390,7 +404,7 @@ class FormBuilder {
               builder: (context) => padWrap(boxWrap(
                   StatefulBuilder(
                       builder: (context, iSetState) => CheckboxListTile(
-                        activeColor: Colors.black,
+                            activeColor: Colors.black,
                             title: Text(
                               displayName,
                               style: textAnnotation(context),
@@ -414,8 +428,6 @@ class FormBuilder {
     return this;
   }
 }
-
-
 
 class Stencil {
   final List<FormItemSupplier> formPress;
@@ -476,14 +488,25 @@ class _TalikaState extends State<Talika> {
 
   void deleteForm(int index) => setState(() => forms.removeAt(index));
 
+  @override
+  void initState() {
+    super.initState();
+    fetchFromFirestore();
+  }
+
   Future<void> fetchFromFirestore() async {
     DocumentSnapshot docSnap = await FirebaseFirestore.instance
         .collection('StudentInfo')
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .get();
+    print("HERERREE: " + docSnap.toString());
     setState(() {
-      var data = docSnap.get(widget.firebaseKey) as List<Map<String, String>>;
-      forms = data.map((e) => widget.stencil.deserialize(e, setState)).toList();
+      // var data = docSnap.get(widget.firebaseKey) as List<Map<String, String>>;
+      var data = docSnap.get(widget.firebaseKey) as List<dynamic>;
+      forms = data
+          .map((e) =>
+              widget.stencil.deserialize(e as Map<String, dynamic>, setState))
+          .toList();
     });
   }
 
@@ -551,8 +574,6 @@ class _TalikaState extends State<Talika> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
-
             SizedBox(
                 height: 60,
                 width: 60,
