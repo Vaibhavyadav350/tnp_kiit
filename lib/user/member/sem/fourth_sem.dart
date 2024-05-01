@@ -137,11 +137,15 @@ class _FourthSemesterPerformanceState extends State<FourthSemesterPerformance> {
                         label: "SGPA",
                         controller: _sgpaController,
                         icon: Icons.equalizer, // Icon for SGPA
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+
                       ),
                       MatTextField(
                         label: "CGPA",
                         controller: _cgpaController,
                         icon: Icons.equalizer, // Icon for CGPA
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+
                       ),
                       MatTextField(
                         label: "Marksheet Link",
