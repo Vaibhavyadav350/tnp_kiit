@@ -14,13 +14,13 @@ class MajorProject extends StatelessWidget {
         .addTextField("Objective")
         .addTextField("Teacher")
         .addTextField("Teacher Kiit Email Id")
-        .addTextField("displayName")
+        .addTextField("Objective")
         .addTextField("Your Role")
         .addTextField("PPT Link")
-        .addFileUploadButton("MinorReport",
+        .addFileUploadButton("Major Project",
         type: FileType.custom,
         allowedExtensions: [
           "pdf"
-        ]).build("Minor Project",(c) => const EightSemesterPerformance());
+        ]).build("Major Project",(c) => const EightSemesterPerformance());
   }
 }

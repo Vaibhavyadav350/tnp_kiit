@@ -10,10 +10,10 @@ class MinorProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilder()
-        .addTextField("Objective")
+        .addTextField("Project Name")
         .addTextField("Teacher")
         .addTextField("Teacher Kiit Email Id")
-        .addTextField("displayName")
+        .addTextField("Objective")
         .addTextField("Your Role")
         .addTextField("PPT Link")
         .addFileUploadButton("MinorReport",

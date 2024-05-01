@@ -101,202 +101,205 @@ class _HomePageState extends State<HomePage> {
                 child: GestureDetector(
                   onTap: () {
                     showModalBottomSheet(
+                      elevation: 40,
                       backgroundColor: profile.background,
                       context: context,
                       builder: (context) {
-                        return Wrap(
-                          children: [
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
+                        return SingleChildScrollView(
+                          child: Wrap(
+                            children: [
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 1',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          FirstSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              title: Text(
-                                'Semester 1',
-                                style: TextStyle(color: primary),
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 2',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          SecondSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        FirstSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 3',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ThirdSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              title: Text(
-                                'Semester 2',
-                                style: TextStyle(color: primary),
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 4',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          FourthSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        SecondSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 5',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          FifthSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              title: Text(
-                                'Semester 3',
-                                style: TextStyle(color: primary),
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 6',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          SixthSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ThirdSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Minor Project',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          MinorProject()
+                                    ),
+                                  );
+                                },
                               ),
-                              title: Text(
-                                'Semester 4',
-                                style: TextStyle(color: primary),
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 7',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          SeventhSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        FourthSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Major Project',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          MajorProject()
+                                    ),
+                                  );
+                                },
                               ),
-                              title: Text(
-                                'Semester 5',
-                                style: TextStyle(color: primary),
+                              ListTile(
+                                leading: Icon(
+                                  FluentIcons.book_32_regular,
+                                  color: primary,
+                                ),
+                                title: Text(
+                                  'Semester 8',
+                                  style: TextStyle(color: primary),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          EightSemesterPerformance(),
+                                    ),
+                                  );
+                                },
                               ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        FifthSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
-                              ),
-                              title: Text(
-                                'Semester 6',
-                                style: TextStyle(color: primary),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        SixthSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
-                              ),
-                              title: Text(
-                                'Minor Project',
-                                style: TextStyle(color: primary),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        MinorProject()
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
-                              ),
-                              title: Text(
-                                'Semester 7',
-                                style: TextStyle(color: primary),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        SeventhSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
-                              ),
-                              title: Text(
-                                'Semester 7',
-                                style: TextStyle(color: primary),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        MajorProject()
-                                  ),
-                                );
-                              },
-                            ),
-                            ListTile(
-                              leading: Icon(
-                                Icons.article_outlined,
-                                color: primary,
-                              ),
-                              title: Text(
-                                'Semester 8',
-                                style: TextStyle(color: primary),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        EightSemesterPerformance(),
-                                  ),
-                                );
-                              },
-                            ),
-                          ],
+                            ],
+                          ),
                         );
                       },
                     );
