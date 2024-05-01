@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kiit_connect/user/member/sem/minorproject.dart';
 import 'package:kiit_connect/user/member/sem/seventh_sem.dart';
 
 import '../../../navigation/drawer.dart';
@@ -81,7 +82,7 @@ class _SixthSemesterPerformanceState extends State<SixthSemesterPerformance> {
         const SnackBar(content: Text('6th Semester Performance Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) =>const SeventhSemesterPerformance()),
+        MaterialPageRoute(builder: (context) =>MinorProject()),
       );
     })
         .catchError((error) {

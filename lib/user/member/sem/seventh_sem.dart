@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/user/member/sem/eighth_sem.dart';
+import 'package:kiit_connect/user/member/sem/majorproject.dart';
 
 import '../../../navigation/drawer.dart';
 import '../../../theme/colors.dart';
@@ -81,7 +82,7 @@ class _SeventhSemesterPerformanceState extends State<SeventhSemesterPerformance>
         const SnackBar(content: Text('7th Semester Performance Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const EightSemesterPerformance()),
+        MaterialPageRoute(builder: (context) => const MajorProject()),
       );
     })
         .catchError((error) {

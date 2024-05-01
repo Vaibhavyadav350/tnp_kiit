@@ -11,6 +11,8 @@ import 'package:kiit_connect/user/member/sem/eighth_sem.dart';
 import 'package:kiit_connect/user/member/sem/fifth_sem.dart';
 import 'package:kiit_connect/user/member/sem/first_sem.dart';
 import 'package:kiit_connect/user/member/sem/fourth_sem.dart';
+import 'package:kiit_connect/user/member/sem/majorproject.dart';
+import 'package:kiit_connect/user/member/sem/minorproject.dart';
 import 'package:kiit_connect/user/member/sem/second_sem.dart';
 import 'package:kiit_connect/user/member/sem/seventh_sem.dart';
 import 'package:kiit_connect/user/member/sem/sixth_sem.dart';
@@ -224,6 +226,25 @@ class _HomePageState extends State<HomePage> {
                                 color: primary,
                               ),
                               title: Text(
+                                'Minor Project',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        MinorProject()
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
                                 'Semester 7',
                                 style: TextStyle(color: primary),
                               ),
@@ -233,6 +254,25 @@ class _HomePageState extends State<HomePage> {
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         SeventhSemesterPerformance(),
+                                  ),
+                                );
+                              },
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                Icons.article_outlined,
+                                color: primary,
+                              ),
+                              title: Text(
+                                'Semester 7',
+                                style: TextStyle(color: primary),
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        MajorProject()
                                   ),
                                 );
                               },

@@ -8,6 +8,8 @@ import 'package:kiit_connect/theme/utils/button/vybutton_.dart';
 import 'package:timelines/timelines.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../../navigation/devdrawer.dart';
+
 class TimelineScreen extends StatefulWidget {
   @override
   _TimelineScreenState createState() => _TimelineScreenState();
@@ -56,7 +58,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        endDrawer: SideDrawer(),
+        endDrawer:Notifi(),
         key: _scaffoldKey,
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -70,7 +72,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
                     height: 60,
 
                     child:IconButton(
-                      icon: Icon(FluentIcons.list_rtl_20_filled,color: Colors.white,),
+                      icon: Icon(FluentIcons.alert_48_regular ,color: Colors.white,),
                       onPressed:_openDrawer,
 
                     ),

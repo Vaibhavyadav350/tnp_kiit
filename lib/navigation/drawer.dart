@@ -1,6 +1,8 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:kiit_connect/navigation/noc.dart';
+import 'package:kiit_connect/navigation/query.dart';
 import 'package:kiit_connect/user/member/basicprofile.dart';
 
 import '../theme/utils/text/neo_box.dart';
@@ -57,7 +59,7 @@ class SideDrawer extends StatelessWidget {
                       style: TextStyle(fontSize: 20,color: Colors.white),
                     ),
                     Icon(
-                      Icons.favorite_border,
+                      FluentIcons.heart_48_regular,
                       color: Colors.red,
                     )
                   ],
@@ -96,40 +98,47 @@ class SideDrawer extends StatelessWidget {
                   //   MaterialPageRoute(builder: (context) => const BasicProfile()),
                   // );
                 },
-                child: const NeoBox(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "About TNP",
-                      style: TextStyle(fontSize: 20,color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.graphic_eq,
-                      color: Colors.green,
-                    )
-                  ],
-                )),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Query()),
+                    );
+                  },
+                  child: const NeoBox(
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "Query",
+                        style: TextStyle(fontSize: 20,color: Colors.white),
+                      ),
+                      Icon(
+                        FluentIcons.city_24_regular,
+                        color: Colors.green,
+                      )
+                    ],
+                  )),
+                ),
               ),
               const SizedBox(
                 height: 15,
               ),
               GestureDetector(
                 onTap: (){
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(builder: (context) => const BasicProfile()),
-                  // );
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Noc()),
+                  );
                 },
                 child: const NeoBox(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      "Gallery",
+                      "Apply NOC",
                       style: TextStyle(fontSize: 20,color: Colors.white),
                     ),
                     Icon(
-                      Icons.music_note,
+                      FluentIcons.certificate_32_regular,
                       color: Colors.pinkAccent,
                     )
                   ],
