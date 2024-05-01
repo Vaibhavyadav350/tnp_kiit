@@ -50,19 +50,21 @@ class MatTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return padWrap(
-      TextFormField(
-        controller: controller,
-        decoration: inputDecoration(label: label, icon: icon),
-        style: textAnnotation(context),
-        validator: (value) {
-          if (value == null || value.isEmpty) {
-            return "Please enter ${label.toLowerCase()}";
-          }
-          return null;
-        },
-        maxLines: maxLines,
-        keyboardType: keyboardType,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+      child: TextFormField(
+          controller: controller,
+          decoration: inputDecoration(label: label, icon: icon),
+          style: textAnnotation(context),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Please enter ${label.toLowerCase()}";
+            }
+            return null;
+          },
+          maxLines: maxLines,
+          keyboardType: keyboardType,
+
       ),
     );
   }

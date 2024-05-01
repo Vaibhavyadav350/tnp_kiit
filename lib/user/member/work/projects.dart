@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/participation_in_researches.dart';
@@ -86,7 +87,7 @@ class PersonalProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilder()
 
-        .addTextField("Project Name")
+        .addTextField("Project Name",icon: FluentIcons.icons_20_filled)
         .addComboBox("Level", projectComplexityLevel)
         .addMultiSelectComboBox("Select Skills", domainsSkill)
         // .addTextField("Git Repository Link")
