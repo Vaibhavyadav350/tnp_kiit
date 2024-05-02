@@ -4,6 +4,9 @@ import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
 
 import '../../home/HomePage.dart';
 
+const PUBLIC_PROFILE_NAME = "Public Profile";
+final PUBLIC_PROFILE_KEY = PUBLIC_PROFILE_NAME.toFormattableKey();
+
 class PublicProfile extends StatelessWidget {
   const PublicProfile({super.key});
 
@@ -14,6 +17,6 @@ class PublicProfile extends StatelessWidget {
         .addTextField("Github Link")
         .addTextField("Linkedin Id")
         .addTextField("Others Link", maxLines: 2)
-        .build("Public Profile", (c) => const HomePage());
+        .build(PUBLIC_PROFILE_NAME, (c) => const HomePage(), firebaseKey: PUBLIC_PROFILE_KEY);
   }
 }

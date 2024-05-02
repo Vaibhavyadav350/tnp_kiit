@@ -109,7 +109,7 @@ class FormBuilder {
 //   }
 
   FormBuilder addGitHubRepoInput(displayName,
-      {firebaseKey, validatingCondition}) {
+      {restrictGHUID, firebaseKey, validatingCondition}) {
     formPress.add(FormItemSupplier(
         displayName: displayName,
         firebaseKey: firebaseKey,
@@ -117,15 +117,15 @@ class FormBuilder {
         supplier: (setState) {
           final TextEditingController controller = TextEditingController();
           String projectDescription = '';
-          List<Map<String, dynamic>> _contributors = [];
-          String _repositoryName = '';
-          String _description = '';
-          String _language = '';
-          int _stars = 0;
-          int _forks = 0;
-          int _watchers = 0;
-          List<String> _topics = [];
-          String _error = '';
+          dynamic _contributors = [];
+          dynamic _repositoryName = '';
+          dynamic _description = '';
+          dynamic _language = '';
+          dynamic _stars = 0;
+          dynamic _forks = 0;
+          dynamic _watchers = 0;
+          dynamic _topics = [];
+          dynamic _error = '';
 
           return FormItem2(
               displayName: displayName,
@@ -156,100 +156,122 @@ class FormBuilder {
                 _error = value['_error'];
               },
               builder: (context) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 10),
-                    Row(
-                      children: [
-                        VyTextsmall(controller, "Github Repo", Icons.code),
-                        VyButtonsmall("Fetch", Icons.download, () async {
-                          try {
-                            final repoUrl = controller.text.trim();
-                            Uri uri = Uri.parse(repoUrl);
-                            List<String> pathSegments = uri.pathSegments;
-                            String username = pathSegments[0];
-                            String repository = pathSegments[1];
-                            http.Response response = await http.get(
-                              Uri.https('api.github.com',
-                                  '/repos/$username/$repository'),
-                            );
-
-                            Map<String, dynamic> data =
-                                json.decode(response.body);
-
-                            http.Response contributorsResponse = await http.get(
-                              Uri.https('api.github.com',
-                                  '/repos/$username/$repository/contributors'),
-                            );
-                            List<dynamic> contributorsData =
-                                json.decode(contributorsResponse.body);
-                            setState(() {
-                              _contributors = contributorsData
-                                  .map<Map<String, dynamic>>((contributor) => {
-                                        'login': contributor['login'],
-                                        'contributions':
-                                            contributor['contributions'],
-                                      })
-                                  .toList();
-                              _repositoryName = data['name'];
-                              _description = data['description'];
-                              _language = data['language'];
-                              _stars = data['stargazers_count'];
-                              _forks = data['forks_count'];
-                              _watchers = data['watchers_count'];
-                              _topics = List<String>.from(data['topics']);
-                              print(_contributors);
-                              print(_description);
-                              _error = ''; // Reset error message
-                            });
-                          } catch (e) {
-                            setState(() {
-                              _error =
-                                  'Error: Unable to fetch project information.';
-                            });
-                          }
-                        }),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    if (_repositoryName.isNotEmpty) ...[
-                      BoldText('Repository Name: ', _repositoryName),
-                      BoldText('Description:', ' $_description'),
-                      BoldText('Language:', ' $_language'),
-                      BoldText('Stars: ', '$_stars'),
-                      BoldText('Forks:', ' $_forks'),
-                      BoldText('Watchers:', ' $_watchers'),
+                return StatefulBuilder(
+                  builder: (ccd, setState2) => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 10),
                       Row(
                         children: [
-                          Wrap(
-                            children: _topics
-                                .map((topic) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 4),
-                                      child: Chip(
-                                          label: Text(
-                                        topic,
-                                        style: TextStyle(color: Colors.white),
-                                      )),
-                                    ))
-                                .toList(),
-                          ),
+                          VyTextsmall(controller, "Github Repo", Icons.code),
+                          VyButtonsmall("Fetch", Icons.download, () async {
+                            try {
+                              final repoUrl = controller.text.trim();
+                              Uri uri = Uri.parse(repoUrl);
+                              List<String> pathSegments = uri.pathSegments;
+                              String username = pathSegments[0];
+
+                              if (restrictGHUID !=
+                                  null) if (!restrictGHUID(username))
+                                throw FormatException();
+
+                              String repository = pathSegments[1];
+                              http.Response response = await http.get(
+                                Uri.https('api.github.com',
+                                    '/repos/$username/$repository'),
+                              );
+
+                              Map<String, dynamic> data =
+                                  json.decode(response.body);
+
+                              http.Response contributorsResponse =
+                                  await http.get(
+                                Uri.https('api.github.com',
+                                    '/repos/$username/$repository/contributors'),
+                              );
+                              List<dynamic> contributorsData =
+                                  json.decode(contributorsResponse.body);
+                              setState(() => setState2(() {
+                                    _contributors = contributorsData
+                                        .map<Map<String, dynamic>>(
+                                            (contributor) => {
+                                                  'login': contributor['login'],
+                                                  'contributions': contributor[
+                                                      'contributions'],
+                                                })
+                                        .toList();
+                                    _repositoryName = data['name'];
+                                    _description = data['description'];
+                                    _language = data['language'];
+                                    _stars = data['stargazers_count'];
+                                    _forks = data['forks_count'];
+                                    _watchers = data['watchers_count'];
+                                    _topics = List<String>.from(data['topics']);
+                                    print(_contributors);
+                                    print(_description);
+                                    _error = ''; // Reset error message
+                                  }));
+                            } on FormatException catch (e) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: AwesomeSnackbarContent(
+                                    title: 'Wrong Project!!',
+                                    message:
+                                        'You are not a contributor to this project!!',
+                                    contentType: ContentType.failure,
+                                  ),
+                                  backgroundColor: Colors
+                                      .transparent, // Set your desired color
+                                ),
+                              );
+                            } catch (e) {
+                              setState(() {
+                                _error =
+                                    'Error: Unable to fetch project information.';
+                              });
+                            }
+                          }),
                         ],
                       ),
-                      if (_contributors.isNotEmpty)
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: _contributors
-                              .map((contributor) => BoldText(
-                                  '${contributor['login']} -',
-                                  ' ${contributor['contributions']} contributions'))
-                              .toList(),
-                        )
-                      else
-                        Text('No contributors found.'),
+                      SizedBox(height: 10),
+                      if (_repositoryName.isNotEmpty) ...[
+                        BoldText('Repository Name: ', _repositoryName),
+                        BoldText('Description:', ' $_description'),
+                        BoldText('Language:', ' $_language'),
+                        BoldText('Stars: ', '$_stars'),
+                        BoldText('Forks:', ' $_forks'),
+                        BoldText('Watchers:', ' $_watchers'),
+                        Row(
+                          children: [
+                            Wrap(
+                              children: _topics
+                                  .map<Widget>((topic) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 4),
+                                        child: Chip(
+                                            label: Text(
+                                          topic,
+                                          style: TextStyle(color: Colors.white),
+                                        )),
+                                      ))
+                                  .toList(),
+                            ),
+                          ],
+                        ),
+                        if (_contributors.isNotEmpty)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: _contributors
+                                .map<Widget>((contributor) => BoldText(
+                                    '${contributor['login']} -',
+                                    ' ${contributor['contributions']} contributions'))
+                                .toList(),
+                          )
+                        else
+                          Text('No contributors found.'),
+                      ],
                     ],
-                  ],
+                  ),
                 );
               });
         }));
