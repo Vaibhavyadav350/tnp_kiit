@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/user/member/sem/first_sem.dart';
+import 'package:kiit_connect/user/member/skill/publiclinks.dart';
 
 
 import '../../../navigation/drawer.dart';
@@ -77,7 +78,7 @@ class _TwelfthGradeAchievementsState extends State<TwelfthGradeAchievements> {
         const SnackBar(content: Text('10th Grade Achievements Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => const FirstSemesterPerformance()),
+        MaterialPageRoute(builder: (context) => const PublicProfile()),
       );
     })
         .catchError((error) {

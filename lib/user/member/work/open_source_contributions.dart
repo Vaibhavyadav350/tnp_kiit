@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
+import 'package:kiit_connect/user/member/work/recommendations_and_testimonials.dart';
 
 enum ContributionType {
   Code,
@@ -39,6 +40,6 @@ class OpenSourceContributions extends StatelessWidget {
             validatingCondition: fieldEquals("Contribution Type", "Design"))
         .addTextField("Repository Link")
         .addTextField("Commit URL")
-        .build("Open Source Contributions", (c) => const PersonalProject());
+        .build("Open Source Contributions", (c) => const RecommendationsAndTestimonials());
   }
 }

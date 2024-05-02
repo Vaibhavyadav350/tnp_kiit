@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
+import 'package:kiit_connect/user/member/work/college_experience.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 
 const referenceTypes = [
@@ -38,6 +39,6 @@ class AcademicAchievements extends StatelessWidget {
         .addTextField("Year of Publication", keyboardType: TextInputType.number)
         .addTextField("URL (Publication or PDF)", firebaseKey: "URL")
         .addTextField("Identifier (DOI/ArXivID/ISBN)", firebaseKey: "Identifier")
-    .build("Academic Achievements", (c) => const PersonalProject());
+    .build("Academic Achievements", (c) => const CollegeExperience());
   }
 }

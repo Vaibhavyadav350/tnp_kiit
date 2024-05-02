@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
+import 'package:kiit_connect/user/member/work/open_source_contributions.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 
 class ExtraCertifications extends StatelessWidget {
@@ -12,6 +13,6 @@ class ExtraCertifications extends StatelessWidget {
         .addTextField("Organization")
         .addTextField("Certificate Link")
         .addTextField("Certificate Date ")
-        .build("Extra Certifications", (c) => const PersonalProject());
+        .build("Extra Certifications", (c) => const OpenSourceContributions());
   }
 }

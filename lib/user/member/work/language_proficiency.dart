@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/theme/utils/builder/ui_builder.dart';
+import 'package:kiit_connect/user/member/skill/extcourses.dart';
+import 'package:kiit_connect/user/member/work/open_source_contributions.dart';
 import 'package:kiit_connect/user/member/work/projects.dart';
 
 enum ProficiencyLevel {
@@ -21,6 +23,6 @@ class LanguageProficiency extends StatelessWidget {
     return FormBuilder()
         .addTextField("Language Name")
         .addComboBox("Proficiency Level", ProficiencyLevel.types)
-        .build("Language Proficiency", (c) => const PersonalProject());
+        .build("Language Proficiency", (c) => const ExtraCertifications());
   }
 }
