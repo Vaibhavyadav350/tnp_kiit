@@ -520,7 +520,7 @@ class _HomePageState extends State<HomePage> {
                             width: 180*invWidth7*width,
                             gradient:
                             profile.randomRadialGradient(colors.next()),
-                            image: ThemedBackground.discoverSomethingNew
+                            image: ThemedBackground.academicAchievements
                                 .bigDeco(),
                             theChild: Text("Research Work",
                                 style: textTitle(context)),
@@ -635,27 +635,6 @@ class _HomePageState extends State<HomePage> {
                           image: ThemedBackground.tenthAchievements.bigDeco(),
                           theChild: Text("Recommendations",
                               style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      LanguageProficiency()));
-                        },
-                        child: HaveThisCard(
-                          curvature: 20,
-                          height: 200,
-                          width: 200,
-                          gradient: profile.randomRadialGradient(colors.next()),
-                          image: ThemedBackground.extraCertifications.bigDeco(),
-                          theChild: Text("Language Proficiency",
-                              style: textTitle(context)),
                         ),
                       ),
                     ),
