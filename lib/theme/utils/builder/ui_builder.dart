@@ -171,10 +171,6 @@ class FormBuilder {
                               List<String> pathSegments = uri.pathSegments;
                               String username = pathSegments[0];
 
-                              if (restrictGHUID !=
-                                  null) if (!restrictGHUID(username))
-                                throw FormatException();
-
                               String repository = pathSegments[1];
                               http.Response response = await http.get(
                                 Uri.https('api.github.com',
@@ -191,6 +187,18 @@ class FormBuilder {
                               );
                               List<dynamic> contributorsData =
                                   json.decode(contributorsResponse.body);
+
+                              BLOCK:
+                              if (restrictGHUID != null) {
+                                for (int i = 0;
+                                    i < contributorsData.length;
+                                    i++) {
+                                  if (restrictGHUID(
+                                      contributorsData[i]['login']))
+                                    break BLOCK;
+                                }
+                                throw FormatException();
+                              }
                               setState(() => setState2(() {
                                     _contributors = contributorsData
                                         .map<Map<String, dynamic>>(
