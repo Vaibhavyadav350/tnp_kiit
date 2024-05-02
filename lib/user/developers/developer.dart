@@ -2,7 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:flutter_slimy_card/flutter_slimy_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kiit_connect/theme/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,25 +20,25 @@ class Developers extends StatelessWidget {
         children: <Widget>[
           smallSpacing(),
           FlutterSlimyCard(
-            color: Colors.green,
-            topCardHeight: 250,
-            bottomCardHeight: 200,
+            color: Colors.transparent,
+            topCardHeight: 350,
+            bottomCardHeight: 270,
             topCardWidget: topWidgetAnirudh(),
             bottomCardWidget: bottomWidgetAnirudh(),
           ),
           smallSpacing(),
           FlutterSlimyCard(
-            color: Colors.blue,
-            topCardHeight: 250,
-            bottomCardHeight: 200,
+            color: Colors.transparent,
+            topCardHeight: 350,
+            bottomCardHeight: 270,
             topCardWidget: topWidgetShrey(),
             bottomCardWidget: bottomWidgetShrey(),
           ),
           smallSpacing(),
           FlutterSlimyCard(
-            color: Colors.red,
-            topCardHeight: 250,
-            bottomCardHeight: 160,
+            color: Colors.transparent,
+            topCardHeight: 350,
+            bottomCardHeight: 270,
             topCardWidget: topWidgetVaibhav(),
             bottomCardWidget: bottomWidgetVaibhav(),
           ),
@@ -46,85 +49,60 @@ class Developers extends StatelessWidget {
     ));
   }
 
-  topWidgetVaibhav() {
-    return Container(
-      child: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Container(
-                  child: Image(image: AssetImage('assets/images/vaibhav.png')),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Text(
-              'Vaibhav Yadav',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    launchUrl(Uri.parse('https://github.com/Vaibhavyadav350'));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    child: Image.asset('assets/images/github.png', height: 70),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    launchUrl(Uri.parse(
-                        'https://www.linkedin.com/in/vaibhav-yadav-b20045213/'));
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    child:
-                        Image.asset('assets/images/linkedin.png', height: 75),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   topWidgetAnirudh() {
     return Container(
+      decoration: BoxDecoration(
+          color: Colors.black26, borderRadius: BorderRadius.circular(15.0)),
       child: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: 100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Container(
-                  child: Image(image: AssetImage('assets/images/ani.png')),
-                ),
-              ),
-            ),
             SizedBox(
-              height: 5,
+              height: 20,
             ),
-            Text(
+            Stack(alignment: Alignment.center,
+             children: [
+              
+              Container(
+                height: 110,
+                width: 110,
+                decoration: BoxDecoration(
+                    color: greenHighlight,
+                    borderRadius: BorderRadius.circular(100)),
+              ),
+              Container(
+                height: 100,
+                child: ClipOval(
+                  child: Container(
+                    child: Image(image: AssetImage('assets/images/ani.png')),
+                  ),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: 20,
+            ),
+
+            Stack(alignment: Alignment.topCenter,
+            children: [
+              Positioned(
+                child: Text(
+                'Developer',
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 51.0,
+                  color: Colors.white24
+                ),
+                softWrap: false,
+
+              )
+              ),
+              Text(
               'Anirudh Sharma',
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
-            SizedBox(
-              height: 5,
-            ),
+            ],)
+            ,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -134,7 +112,7 @@ class Developers extends StatelessWidget {
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    child: Image.asset('assets/images/github.png', height: 70),
+                    child: Image.asset('assets/images/github.png', height: 40),
                   ),
                 ),
                 GestureDetector(
@@ -145,7 +123,111 @@ class Developers extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
                     child:
-                        Image.asset('assets/images/linkedin.png', height: 75),
+                        Image.asset('assets/images/linkedin.png', height: 40),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse(
+                        'https://www.instagram.com/minecraftian14as/'));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    child: Image.asset('assets/images/ig.png', height: 30),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  
+  topWidgetShrey() {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.teal.shade900, borderRadius: BorderRadius.circular(15.0)),
+      child: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Stack(alignment: Alignment.center,
+             children: [
+              
+              Container(
+                height: 110,
+                width: 110,
+                decoration: BoxDecoration(
+                    color: greenHighlight,
+                    borderRadius: BorderRadius.circular(100)),
+              ),
+              Container(
+                height: 100,
+                child: ClipOval(
+                  child: Container(
+                    child: Image(image: AssetImage('assets/images/shrey.png')),
+                  ),
+                ),
+              )
+            ]),
+            SizedBox(
+              height: 20,
+            ),
+
+            Stack(alignment: Alignment.topCenter,
+            children: [
+              Positioned(
+                child: Text(
+                'Brewer',
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 70.0,
+                  color: Colors.white24
+                ),
+                softWrap: false,
+
+              )
+              ),
+              Text(
+              'Shreya Shashank',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
+            ],)
+            ,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse('https://github.com/Ayushh1023'));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    child: Image.asset('assets/images/github.png', height: 40),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse(
+                        'https://www.linkedin.com/in/ssha512/'));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    child:
+                        Image.asset('assets/images/linkedin.png', height: 40),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse(
+                        'https://www.instagram.com/shawshank_shrey2310/'));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    child: Image.asset('assets/images/ig.png', height: 30),
                   ),
                 ),
               ],
@@ -156,52 +238,93 @@ class Developers extends StatelessWidget {
     );
   }
 
-  topWidgetShrey() {
+
+
+
+  topWidgetVaibhav() {
     return Container(
+      decoration: BoxDecoration(
+          color: Colors.brown.shade900, borderRadius: BorderRadius.circular(15.0)),
       child: SafeArea(
         child: Column(
           children: [
-            Container(
-              height: 100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: Container(
-                  child: Image(image: AssetImage('assets/images/shrey.png')
+            SizedBox(
+              height: 20,
+            ),
+            Stack(alignment: Alignment.center,
+             children: [
+              
+              Container(
+                height: 110,
+                width: 110,
+                decoration: BoxDecoration(
+                    color: greenHighlight,
+                    borderRadius: BorderRadius.circular(100)),
+              ),
+              Container(
+                height: 100,
+                child: ClipOval(
+                  child: Container(
+                    child: Image(image: AssetImage('assets/images/vaibhav.png')),
                   ),
                 ),
-              ),
-            ),
+              )
+            ]),
             SizedBox(
-              height: 5,
+              height: 20,
             ),
-            Text(
-              'Shreya Shashank',
+
+            Stack(alignment: Alignment.topCenter,
+            children: [
+              Positioned(
+                child: Text(
+                'Lead',
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 70.0,
+                  color: Colors.white24
+                ),
+                softWrap: false,
+
+              )
+              ),
+              Text(
+              'Vaibhav Yadav',
               style: TextStyle(color: Colors.white, fontSize: 18),
             ),
-            SizedBox(
-              height: 5,
-            ),
+            ],)
+            ,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
                   onTap: () {
-                    launchUrl(Uri.parse('https://github.com/Ayushh1023'));
+                    launchUrl(Uri.parse('https://github.com/Vaibhavyadav350'));
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                    child: Image.asset('assets/images/github.png', height: 70),
+                    child: Image.asset('assets/images/github.png', height: 40),
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
-                    launchUrl(
-                        Uri.parse('https://www.linkedin.com/in/ssha512/'));
+                    launchUrl(Uri.parse(
+                        'https://www.linkedin.com/in/vaibhav-yadav-b20045213/'));
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
                     child:
-                        Image.asset('assets/images/linkedin.png', height: 75),
+                        Image.asset('assets/images/linkedin.png', height: 40),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    launchUrl(Uri.parse(
+                        'https://www.instagram.com/iamvaibhav.dev/'));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                    child: Image.asset('assets/images/ig.png', height: 30),
                   ),
                 ),
               ],
@@ -211,6 +334,9 @@ class Developers extends StatelessWidget {
       ),
     );
   }
+
+
+
 
   bottomWidgetVaibhav() {
     return Container(
@@ -234,11 +360,18 @@ class Developers extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 10),
-          Flexible(
-              child: Text(
-            'Abstracted UI code for reusability, creating classes for elements like text fields and multi-select checkboxes. Centralized font settings and padding for easier maintenance. Implemented Factory design pattern to serialize the user interface using Fluent design, significantly reducing the codebase size.',
-            style: TextStyle(color: Colors.white),
-          ))
+          Expanded(
+            child: Container(
+              color: Colors.black26, // Background color
+              padding: EdgeInsets.all(10), // Adjust padding as needed
+              child: Flexible(
+                child: Text(
+                  'Abstracted UI code for reusability, creating classes for elements like text fields and multi-select checkboxes. Centralized font settings and padding for easier maintenance. Implemented Factory design pattern to serialize the user interface using Fluent design, significantly reducing the codebase size.',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
