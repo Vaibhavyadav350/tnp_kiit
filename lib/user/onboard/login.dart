@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
@@ -40,8 +41,30 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
     final GoogleSignInAuthentication? googleAuth =
     await googleUser?.authentication;
     if (!googleUser!.email.endsWith('@kiit.ac.in')) {
-      print('Invalid domain. Please use a valid @kiit.ac.in email.');
-      return;
+      SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'Oh Hey!!',
+          message:
+          'Thank you For Sign In',
+          contentType: ContentType.success,
+        ),
+      );
+    }
+    else{
+      SnackBar(
+        elevation: 0,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        content: AwesomeSnackbarContent(
+          title: 'Oh No!',
+          message:
+          'Sign In With KIIT Email ID',
+          contentType: ContentType.warning,
+        ),
+      );
     }
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
