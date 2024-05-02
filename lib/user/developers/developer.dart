@@ -38,7 +38,7 @@ class Developers extends StatelessWidget {
           FlutterSlimyCard(
             color: Colors.transparent,
             topCardHeight: 350,
-            bottomCardHeight: 270,
+            bottomCardHeight: 200,
             topCardWidget: topWidgetVaibhav(),
             bottomCardWidget: bottomWidgetVaibhav(),
           ),
@@ -238,9 +238,6 @@ class Developers extends StatelessWidget {
     );
   }
 
-
-
-
   topWidgetVaibhav() {
     return Container(
       decoration: BoxDecoration(
@@ -338,21 +335,7 @@ class Developers extends StatelessWidget {
 
 
 
-  bottomWidgetVaibhav() {
-    return Container(
-      margin: EdgeInsets.only(top: 5),
-      child: Column(
-        children: const [
-          SizedBox(height: 10),
-          Flexible(
-              child: Text(
-            "As team leader, he guided the development, designed the initial code base for Android and web, handled major refactoring, managed the GitHub repo, integrated Firebase, and worked on application subsystems.",
-            style: TextStyle(color: Colors.white),
-          ))
-        ],
-      ),
-    );
-  }
+
 
   bottomWidgetAnirudh() {
     return Container(
@@ -362,8 +345,8 @@ class Developers extends StatelessWidget {
           SizedBox(height: 10),
           Expanded(
             child: Container(
-              color: Colors.black26, // Background color
-              padding: EdgeInsets.all(10), // Adjust padding as needed
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.black26),
+              padding: EdgeInsets.all(10), 
               child: Flexible(
                 child: Text(
                   'Abstracted UI code for reusability, creating classes for elements like text fields and multi-select checkboxes. Centralized font settings and padding for easier maintenance. Implemented Factory design pattern to serialize the user interface using Fluent design, significantly reducing the codebase size.',
@@ -377,17 +360,49 @@ class Developers extends StatelessWidget {
     );
   }
 
+
   bottomWidgetShrey() {
     return Container(
       margin: EdgeInsets.only(top: 5),
       child: Column(
         children: [
           SizedBox(height: 10),
-          Flexible(
-              child: Text(
-            "Instituted UI framework, structured color classes, and app aesthetics. Crafted home screen with smooth navigation between forms. Developed landing pages for Android and web. Ensured code consistency across branches, resolved conflicts, and optimized UI for various screen sizes.",
-            style: TextStyle(color: Colors.white),
-          ))
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.teal.shade900),
+              padding: EdgeInsets.all(10), 
+              child: Flexible(
+                child: Text(
+                  'Instituted UI framework, structured color classes, and app aesthetics. Crafted home screen with smooth navigation between forms. Developed landing pages for Android and web. Ensured code consistency across branches, resolved conflicts, and optimized UI for various screen sizes.',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  bottomWidgetVaibhav() {
+    return Container(
+      margin: EdgeInsets.only(top: 5),
+      child: Column(
+        children: [
+          SizedBox(height: 10),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.brown.shade900),
+              padding: EdgeInsets.all(10), 
+              child: Flexible(
+                child: Text(
+                  'As team leader, he guided the development, designed the initial code base for Android and web, handled major refactoring, managed the GitHub repo, integrated Firebase, and worked on application subsystems.',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
