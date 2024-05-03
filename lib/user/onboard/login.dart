@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kiit_connect/user/developers/about.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -188,33 +190,52 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                               ),textAlign: TextAlign.center,
                             ),
                             if (index == data.length - 1)
-                              SizedBox(
-                                height: 50,width: 300,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: buttoncolor,
-                                    elevation: 3,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5.0)),
-                                    minimumSize: const Size(300, 60), //////// HERE
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height: 50,width: 300,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: buttoncolor,
+                                        elevation: 3,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(5.0)),
+                                        minimumSize: const Size(300, 60), //////// HERE
+                                      ),
+
+                                      onPressed: () {
+                                        _handleSignIn();
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            "assets/images/Group 13.png",
+                                            fit: BoxFit.cover,
+
+                                          ),
+                                          const Text('   Login',style: TextStyle(color: Colors.black),),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                  
-                                  onPressed: () {
-                                    _handleSignIn();
-                                  },
-                                  child: Row(
+                                  SizedBox(height: 10,),
+                                  Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Image.asset(
-                                        "assets/images/Group 13.png",
-                                        fit: BoxFit.cover,
-
-                                      ),
-                                      const Text('   Login',style: TextStyle(color: Colors.black),),
+                                      const Text('Login from ',style: TextStyle(color: Colors.black),),
+                                      GestureDetector(
+                                          onTap:(){
+                                            Navigator.of(context).push(
+                                              MaterialPageRoute(builder: (context) => const AboutTNP()),
+                                            );
+                                          },
+                                          child: const Text('Guest User',style: TextStyle(color: Colors.blue),)),
                                     ],
                                   ),
-                                ),
+                                ],
                               ),
+
                           ],
                         ),
                       ),
