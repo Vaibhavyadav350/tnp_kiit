@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Welcome Back!", style: textTitle(context)),
-                      Text("${FirebaseAuth.instance.currentUser!.displayName!}" ,
+                      Text("${FirebaseAuth.instance.currentUser?.displayName ?? 'Guest'}",
                         style: TextStyle(color: primary, fontSize: 20),
                       ),
                     ],
