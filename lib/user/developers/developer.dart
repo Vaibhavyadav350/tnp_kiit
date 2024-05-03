@@ -181,10 +181,10 @@ class Developers extends StatelessWidget {
             children: [
               Positioned(
                 child: Text(
-                'Brewer',
+                'Developer',
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w700,
-                  fontSize: 70.0,
+                  fontSize: 51.0,
                   color: Colors.white24
                 ),
                 softWrap: false,
