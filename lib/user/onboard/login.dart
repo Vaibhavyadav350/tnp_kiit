@@ -11,6 +11,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../theme/colors.dart';
+import '../developers/admin.dart';
 
 /// Class to hold data for itembuilder in Withbuilder app.
 class ItemData {
@@ -223,14 +224,14 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Text('Login from ',style: TextStyle(color: Colors.black),),
+                                      const Text('Login as ',style: TextStyle(color: Colors.black),),
                                       GestureDetector(
                                           onTap:(){
                                             Navigator.of(context).push(
-                                              MaterialPageRoute(builder: (context) => const AboutTNP()),
+                                              MaterialPageRoute(builder: (context) => AdminPageLogin()),
                                             );
                                           },
-                                          child: const Text('Guest User',style: TextStyle(color: Colors.blue),)),
+                                          child: const Text('Admin',style: TextStyle(color: Colors.blue),)),
                                     ],
                                   ),
                                 ],
