@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:kiit_connect/user/onboard/wrapper.dart';
 import 'package:kiit_connect/theme/colors.dart';
@@ -14,7 +15,6 @@ void main() async {
     print(
         "WARNING: Firebase not connected. If you are testing, ignore this message.");
   }
-
   runApp(const MyApp());
 }
 
@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'T&P KIIT',
       theme: theme,
       darkTheme: theme.copyWith(brightness: Brightness.dark),

@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,9 +9,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../theme/colors.dart';
-import '../developers/admin.dart';
-
-/// Class to hold data for itembuilder in Withbuilder app.
 class ItemData {
   final Color color;
   final String image;
@@ -206,10 +201,10 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
                                       GestureDetector(
                                           onTap:(){
                                             Navigator.of(context).push(
-                                              MaterialPageRoute(builder: (context) => AdminPageLogin()),
+                                              MaterialPageRoute(builder: (context) => AboutTNP()),
                                             );
                                           },
-                                          child: const Text('Admin',style: TextStyle(color: Colors.blue),)),
+                                          child: const Text('Guest User',style: TextStyle(color: Colors.blue),)),
                                     ],
                                   ),
                                 ],

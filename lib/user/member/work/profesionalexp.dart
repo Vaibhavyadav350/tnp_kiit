@@ -13,12 +13,13 @@ class ProfessionalExperience extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilder()
-        .addComboBox("Competency", CompetencyLevel.types)
+        .addComboBox("Professional Experience", CompetencyLevel.types)
         .addMultiSelectComboBox("Skills", domainsSkill)
         .addTextField("Role")
         .addFileUploadButton("Supporting Document", type: FileType.custom, allowedExtensions: ["pdf"])
         .addTextField("Company")
-        .addTextField("Duration")
+        .addTextField("From Date",hintText: "dd/mm/yy")
+        .addTextField("To Date",hintText: "dd/mm/yy")
         .addTextField("Starting Date")
         .addTextField("Description")
         .addCheckbox("Is It Paid")

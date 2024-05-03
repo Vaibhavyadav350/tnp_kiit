@@ -6,6 +6,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:kiit_connect/theme/colors.dart';
@@ -675,7 +676,7 @@ class _TalikaState extends State<Talika> {
                 height: 60,
                 width: 60,
                 child: IconButton(
-                  icon: Icon(Icons.add, color: Theme.of(context).primaryColor),
+                  icon: Icon(FluentIcons.add_48_filled,color: Colors.blue,),
                   onPressed: addForm,
                 ),
               )

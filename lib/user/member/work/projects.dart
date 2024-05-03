@@ -132,12 +132,14 @@ class _PersonalProjectState extends State<PersonalProject> {
   Widget build(BuildContext context) {
     return FormBuilder()
         .addTextField("Project Name", icon: FluentIcons.icons_20_filled)
+        .addTextField("From Date",hintText: "dd/mm/yy",icon:FluentIcons.calendar_edit_32_regular)
+        .addTextField("To Date",hintText: "dd/mm/yy",icon:FluentIcons.calendar_edit_32_filled)
         .addComboBox("Level", projectComplexityLevel)
         .addMultiSelectComboBox("Select Skills", domainsSkill)
         // .addTextField("Git Repository Link")
         .addGitHubRepoInput("Github", restrictGHUID: (s) => s==gh_user_id)
         // .addTextField("Description", maxLines: 3)
-        .addTextField("Demo Link")
+        .addTextField("Demo Link",icon: FluentIcons.video_48_regular)
         .build("Personal Projects", (c) => const AcademicAchievements());
   }
 }

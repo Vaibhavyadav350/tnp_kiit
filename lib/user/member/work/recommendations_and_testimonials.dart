@@ -13,6 +13,7 @@ class RecommendationsAndTestimonials extends StatelessWidget {
         .addTextField("Relationship")
         .addTextField("Email")
         .addTextField("Testimonial Text", maxLines: 3)
+        .addTextField("Reference Document Link")
         .build("Recommendations", (c) => const HomePage());
   }
 }

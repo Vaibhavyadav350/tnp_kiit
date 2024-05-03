@@ -10,8 +10,9 @@ class CollegeExperience extends StatelessWidget {
   Widget build(BuildContext context) {
     return FormBuilder()
         .addTextField("Society Name")
+        .addTextField("Position")
         .addTextField("Description", maxLines: 2)
-        .addTextField("Reference Document")
+        .addTextField("Reference Document Link")
         .addMultiSelectComboBox("Skills", domainsSkill)
         .build("College Experience", (c) => const LanguageProficiency());
   }

@@ -25,7 +25,7 @@ class _SocialFeedState extends State<SocialFeed> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("    TNP Social", style: textTitle(context)),
+                    Text("    KONCAT Social", style: textTitle(context)),
                   ],
                 ),
                 smallSpacing(),
