@@ -44,30 +44,8 @@ class _LiquidSplashScreen extends State<LiquidSplashScreen> {
     final GoogleSignInAuthentication? googleAuth =
     await googleUser?.authentication;
     if (!googleUser!.email.endsWith('@kiit.ac.in')) {
-      SnackBar(
-        elevation: 0,
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Colors.transparent,
-        content: AwesomeSnackbarContent(
-          title: 'Oh Hey!!',
-          message:
-          'Thank you For Sign In',
-          contentType: ContentType.success,
-        ),
-      );
-    }
-    else{
-      SnackBar(
-        elevation: 0,
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Colors.transparent,
-        content: AwesomeSnackbarContent(
-          title: 'Oh No!',
-          message:
-          'Sign In With KIIT Email ID',
-          contentType: ContentType.warning,
-        ),
-      );
+      print('Invalid domain. Please use a valid @kiit.ac.in email.');
+      return;
     }
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
