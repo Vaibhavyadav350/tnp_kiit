@@ -646,6 +646,12 @@ class _TalikaState extends State<Talika> {
   }
 
   Widget mainBody(BuildContext context) {
+    List<String> exclusionList = [
+      "Public Profile",
+      "Minor Project",
+      "Major Project"
+    ];
+    bool showAddIcon = !exclusionList.contains(widget.displayTitle);
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(10.0),
@@ -662,14 +668,17 @@ class _TalikaState extends State<Talika> {
                   onPressed: () => Navigator.pop(context),
                 )),
             Text(widget.displayTitle, style: textTitle(context)),
-            SizedBox(
-              height: 60,
-              width: 60,
-              child: IconButton(
-                icon: Icon(Icons.add, color: Theme.of(context).primaryColor),
-                onPressed: addForm,
-              ),
-            )
+            if(!showAddIcon)
+              SizedBox(width: 60,),
+            if (showAddIcon) 
+              SizedBox(
+                height: 60,
+                width: 60,
+                child: IconButton(
+                  icon: Icon(Icons.add, color: Theme.of(context).primaryColor),
+                  onPressed: addForm,
+                ),
+              )
           ],
         ),
       ),
