@@ -24,6 +24,8 @@ class BasicProfile extends StatefulWidget {
 class _BasicProfileState extends State<BasicProfile> {
   final _formKey = GlobalKey<FormState>();
   final _namecontroller = TextEditingController();
+  final _rollcontroller = TextEditingController();
+  final _yearcontroller = TextEditingController();
   final _phonenumber = TextEditingController();
   final _emailcontroller = TextEditingController();
   final _addresscontroller = TextEditingController();
@@ -38,6 +40,12 @@ class _BasicProfileState extends State<BasicProfile> {
   @override
   void initState() {
     super.initState();
+    _rollcontroller.addListener(() {
+      print("YIYOYOYO" + _rollcontroller.text);
+      if (_rollcontroller.text.length >= 2)
+        _yearcontroller.text =
+            (int.parse(_rollcontroller.text.substring(0, 2)) + 2000).toString();
+    });
     _fetchFromFirestore();
   }
 
@@ -50,6 +58,8 @@ class _BasicProfileState extends State<BasicProfile> {
 
     Map<String, dynamic> data = docSnap.data() as Map<String, dynamic>;
     _namecontroller.text = data['name'] ?? '';
+    _rollcontroller.text = data['roll'] ?? '';
+    _yearcontroller.text = data['year'] ?? '';
     _phonenumber.text = data['phone'] ?? '';
     _emailcontroller.text = data['email'] ?? '';
     _addresscontroller.text = data['address'] ?? '';
@@ -69,54 +79,53 @@ class _BasicProfileState extends State<BasicProfile> {
     photoUrl = await storageRef.getDownloadURL(); // Update photoUrl with new URL
   }
 
-
   void _saveToFirestore() async {
     if (_selectedPhoto != null) {
       await _uploadPhotoToFirebase(_selectedPhoto!);
     }
-      final basicdata = {
-        'name': _namecontroller.text,
-        'phone': _phonenumber.text,
-        'email': _emailcontroller.text,
-        'address': _addresscontroller.text,
-        'photoUrl': photoUrl,
-      };
-      await FirebaseFirestore.instance
-          .collection('StudentInfo')
-          .doc(FirebaseAuth.instance.currentUser?.uid)
-          .update(basicdata)
-          .then((documentRef) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            elevation: 0,
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.transparent,
-            content: AwesomeSnackbarContent(
-              title: 'Oh Hey!!',
-              message:
-              'Basic Profile Info Saved',
-              contentType: ContentType.success,
-            ),
+    final basicdata = {
+      'name': _namecontroller.text,
+      'roll': _rollcontroller.text,
+      'year': _yearcontroller.text,
+      'phone': _phonenumber.text,
+      'email': _emailcontroller.text,
+      'address': _addresscontroller.text,
+      'photoUrl': photoUrl,
+    };
+    await FirebaseFirestore.instance
+        .collection('StudentInfo')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .update(basicdata)
+        .then((documentRef) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          elevation: 0,
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          content: AwesomeSnackbarContent(
+            title: 'Oh Hey!!',
+            message: 'Basic Profile Info Saved',
+            contentType: ContentType.success,
           ),
-        );
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const TenthGradeInfo()),
-        );
-      }).catchError((error) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            elevation: 0,
-            behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.transparent,
-            content: AwesomeSnackbarContent(
-              title: 'Oh No!!',
-              message:
-              'Failed to Save Data!',
-              contentType: ContentType.failure,
-            ),
+        ),
+      );
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const TenthGradeInfo()),
+      );
+    }).catchError((error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          elevation: 0,
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          content: AwesomeSnackbarContent(
+            title: 'Oh No!!',
+            message: 'Failed to Save Data!',
+            contentType: ContentType.failure,
           ),
-        );
-      });
+        ),
+      );
+    });
   }
 
   Future<void> _pickPhotoFromGallery() async {
@@ -175,25 +184,24 @@ class _BasicProfileState extends State<BasicProfile> {
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
                               shape: BoxShape.circle,
-                              image:_selectedPhoto != null
+                              image: _selectedPhoto != null
                                   ? DecorationImage(
-                                image: FileImage(_selectedPhoto!),
-                                fit: BoxFit.cover,
-                              )
+                                      image: FileImage(_selectedPhoto!),
+                                      fit: BoxFit.cover,
+                                    )
                                   : photoUrl != null
-                                  ? DecorationImage(
-                                image: NetworkImage(photoUrl!),
-                                fit: BoxFit.cover,
-                              )
-
-                                  : null,
+                                      ? DecorationImage(
+                                          image: NetworkImage(photoUrl!),
+                                          fit: BoxFit.cover,
+                                        )
+                                      : null,
                             ),
                             child: _selectedPhoto == null && photoUrl == null
                                 ? Icon(
-                              Icons.add_a_photo,
-                              size: 40,
-                              color: Colors.grey[600],
-                            )
+                                    Icons.add_a_photo,
+                                    size: 40,
+                                    color: Colors.grey[600],
+                                  )
                                 : null,
                           ),
                         ),
@@ -205,6 +213,18 @@ class _BasicProfileState extends State<BasicProfile> {
                         controller: _namecontroller,
                       ),
                       MatTextField(
+                        icon: FluentIcons.fingerprint_48_regular,
+                        label: "Roll Number",
+                        controller: _rollcontroller,
+                        keyboardType: TextInputType.number,
+                      ),
+                      MatTextField(
+                        icon: FluentIcons.calendar_48_regular,
+                        label: "Joining Year",
+                        controller: _yearcontroller,
+                        keyboardType: TextInputType.number,
+                      ),
+                      MatTextField(
                         icon: FluentIcons.mail_48_regular,
                         label: "Personal Email Address",
                         controller: _emailcontroller,
@@ -213,8 +233,8 @@ class _BasicProfileState extends State<BasicProfile> {
                         icon: FluentIcons.call_48_regular,
                         label: "Phone Number",
                         controller: _phonenumber,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true),
                       ),
                       MatTextField(
                         icon: FluentIcons.home_48_regular,
