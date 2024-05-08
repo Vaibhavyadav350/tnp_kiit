@@ -1,6 +1,7 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -33,6 +34,34 @@ extension StringExtension on String {
 
   String keywordToSentence() {
     return split(RegExp("(?=[A-Z])")).join(" ");
+  }
+}
+
+class Ransom {
+  static final rng = Random(1114);
+
+  static String string() {
+    return "string_${rng.nextInt(1000)}";
+  }
+
+  static bool boolean() {
+    return rng.nextBool();
+  }
+
+  static int integer() {
+    return rng.nextInt(1000);
+  }
+
+  static List<T> some<T>(T Function() supplier) {
+    return List.generate(rng.nextInt(4), (index) => supplier());
+  }
+
+  static String oneOf(List<String> list) {
+    return list[rng.nextInt(list.length)];
+  }
+
+  static List<String> someOf(List<String> list) {
+    return list.takeWhile((value) => rng.nextBool()).toList();
   }
 }
 
@@ -70,11 +99,13 @@ class FormItemSupplier {
   late final String firebaseKey;
   final FormItem2 Function(void Function(VoidCallback fn)) supplier;
   bool Function(List<FormItem2>) validatingCondition = (_) => true;
+  dynamic Function() randomizer;
 
   FormItemSupplier(
       {required this.supplier,
       String? displayName,
       validatingCondition,
+      required this.randomizer,
       firebaseKey}) {
     this.firebaseKey = firebaseKey ?? displayName!.toFormattableKey();
     this.validatingCondition = validatingCondition ?? this.validatingCondition;
@@ -82,6 +113,7 @@ class FormItemSupplier {
 }
 
 class FormBuilder {
+  static final List<Talika> talikaoKiTalika = [];
   final List<FormItemSupplier> formPress = [];
   var maximumInstances = 10;
 
@@ -109,12 +141,241 @@ class FormBuilder {
 //     return this;
 //   }
 
+  FormBuilder addTextField(displayName,
+      {defaultValue = "",
+      maxLines = 1,
+      hintText = "",
+      icon,
+      firebaseKey,
+      keyboardType,
+      validatingCondition}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        randomizer: Ransom.string,
+        supplier: (setState) {
+          final TextEditingController controller =
+              TextEditingController(text: defaultValue);
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => controller.text,
+              deserialize: (value) => controller.text = value,
+              builder: (context) {
+                return MatTextField(
+                    label: displayName,
+                    controller: controller,
+                    maxLines: maxLines,
+                    hintText: hintText,
+                    icon: icon,
+                    keyboardType: keyboardType);
+              });
+        }));
+    return this;
+  }
+
+  FormBuilder addComboBox(displayName, List<String> validValues,
+      {defaultValue, firebaseKey, validatingCondition}) {
+    defaultValue = defaultValue ?? validValues[0];
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        randomizer: () => Ransom.oneOf(validValues),
+        validatingCondition: validatingCondition,
+        supplier: (setState) {
+          String selectedValue = defaultValue;
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => selectedValue,
+              deserialize: (value) => selectedValue = value,
+              builder: (context) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    padWrap(Text(displayName, style: textAnnotation(context))),
+                    padWrap((DropdownButtonFormField<String>(
+                      value: selectedValue,
+                      decoration: inputDecoration(),
+                      items: validValues.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) =>
+                          setState(() => selectedValue = newValue!),
+                      style: textAnnotation(context),
+                    )))
+                  ],
+                );
+              });
+        }));
+    return this;
+  }
+
+  FormBuilder addMultiSelectComboBox(displayName, List<String> validValues,
+      {firebaseKey, validatingCondition}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        randomizer: () => Ransom.someOf(validValues),
+        supplier: (setState) {
+          List<String> selectedValues = [];
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => selectedValues,
+              deserialize: (value) =>
+                  selectedValues = List<String>.from(value ?? []),
+              builder: (context) {
+                return padWrap(boxWrap(
+                    PopupMenuButton<String>(
+                      child: ListTile(
+                        title:
+                            Text(displayName, style: textAnnotation(context)),
+                        trailing: Icon(Icons.arrow_drop_down,
+                            color: Theme.of(context).primaryColor),
+                      ),
+                      itemBuilder: (BuildContext context) {
+                        return validValues.map((String skillItem) {
+                          return PopupMenuItem<String>(
+                            value: skillItem,
+                            child: StatefulBuilder(
+                                builder: (context, innerSetState) {
+                              return CheckboxListTile(
+                                title: Text(skillItem),
+                                value: selectedValues.contains(skillItem),
+                                activeColor: Colors.black,
+                                onChanged: (bool? value) {
+                                  // Navigator.of(context).pop(); // close the menu
+                                  if (value != null) {
+                                    if (value) {
+                                      selectedValues.add(skillItem);
+                                    } else {
+                                      selectedValues.remove(skillItem);
+                                    }
+                                    setState(() {});
+                                    innerSetState(() {});
+                                  }
+                                },
+                              );
+                            }),
+                          );
+                        }).toList();
+                      },
+                    ),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)));
+              });
+        }));
+    return this;
+  }
+
+  FormBuilder addMultiTextBox(displayName, {firebaseKey, validatingCondition}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        randomizer: () => Ransom.some(Ransom.string),
+        supplier: (setState) {
+          final controllers = [TextEditingController()];
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => controllers.map((e) => e.text).toList(),
+              deserialize: (value) {
+                controllers.clear();
+                value
+                    .map((e) => TextEditingController(text: e))
+                    .forEach((e) => controllers.add(e));
+              },
+              builder: (context) {
+                return MultiTextBox(
+                    label: displayName, controllers: controllers);
+              });
+        }));
+    return this;
+  }
+
+  FormBuilder addFileUploadButton(displayName,
+      {firebaseKey,
+      validatingCondition,
+      FileType type = FileType.any,
+      List<String>? allowedExtensions}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        randomizer: Ransom.string,
+        supplier: (setState) {
+          String url = "";
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => url,
+              deserialize: (value) => url = value,
+              builder: (context) => padWrap(boxWrap(GestureDetector(
+                  onTap: () async {
+                    url = (await pickAndUploadSupportedDoc(
+                            type: type,
+                            allowedExtensions: allowedExtensions)) ??
+                        "";
+                    if (url.isNotEmpty) {
+                      setState(() {}); // to refresh the UI
+                    }
+                  },
+                  child: Center(
+                      child: Text('Select $displayName',
+                          style: textAnnotation(context)))))));
+        }));
+    return this;
+  }
+
+  FormBuilder addCheckbox(displayName, {firebaseKey, validatingCondition}) {
+    formPress.add(FormItemSupplier(
+        displayName: displayName,
+        firebaseKey: firebaseKey,
+        validatingCondition: validatingCondition,
+        randomizer: Ransom.boolean,
+        supplier: (setState) {
+          bool state = false;
+          return FormItem2(
+              displayName: displayName,
+              serialize: () => state,
+              deserialize: (value) => state = value,
+              builder: (context) => padWrap(boxWrap(
+                  StatefulBuilder(
+                      builder: (context, iSetState) => CheckboxListTile(
+                            activeColor: Colors.black,
+                            title: Text(
+                              displayName,
+                              style: textAnnotation(context),
+                            ),
+                            value: state,
+                            onChanged: (value) =>
+                                setState(() => iSetState(() => state = value!)),
+                          )),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0))));
+        }));
+    return this;
+  }
+
   FormBuilder addGitHubRepoInput(displayName,
       {restrictGHUID, firebaseKey, validatingCondition}) {
     formPress.add(FormItemSupplier(
         displayName: displayName,
         firebaseKey: firebaseKey,
         validatingCondition: validatingCondition,
+        randomizer: () => {
+              'controller': Ransom.string(),
+              'projectDescription': Ransom.string(),
+              '_contributors': Ransom.some(Ransom.string),
+              '_repositoryName': Ransom.string(),
+              '_description': Ransom.string(),
+              '_language': Ransom.string(),
+              '_stars': Ransom.integer(),
+              '_forks': Ransom.integer(),
+              '_watchers': Ransom.integer(),
+              '_topics': Ransom.some(Ransom.string),
+              '_error': '',
+            },
         supplier: (setState) {
           final TextEditingController controller = TextEditingController();
           String projectDescription = '';
@@ -287,219 +548,12 @@ class FormBuilder {
     return this;
   }
 
-  FormBuilder addTextField(displayName,
-      {defaultValue = "",
-      maxLines = 1,
-      hintText = "",
-      icon,
-      firebaseKey,
-      keyboardType,
-      validatingCondition}) {
-    formPress.add(FormItemSupplier(
-        displayName: displayName,
-        firebaseKey: firebaseKey,
-        validatingCondition: validatingCondition,
-        supplier: (setState) {
-          final TextEditingController controller =
-              TextEditingController(text: defaultValue);
-          return FormItem2(
-              displayName: displayName,
-              serialize: () => controller.text,
-              deserialize: (value) => controller.text = value,
-              builder: (context) {
-                return MatTextField(
-                    label: displayName,
-                    controller: controller,
-                    maxLines: maxLines,
-                    hintText: hintText,
-                    icon: icon,
-                    keyboardType: keyboardType);
-              });
-        }));
-    return this;
-  }
-
-  FormBuilder addComboBox(displayName, List<String> validValues,
-      {defaultValue, firebaseKey, validatingCondition}) {
-    defaultValue = defaultValue ?? validValues[0];
-    formPress.add(FormItemSupplier(
-        displayName: displayName,
-        firebaseKey: firebaseKey,
-        validatingCondition: validatingCondition,
-        supplier: (setState) {
-          String selectedValue = defaultValue;
-          return FormItem2(
-              displayName: displayName,
-              serialize: () => selectedValue,
-              deserialize: (value) => selectedValue = value,
-              builder: (context) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    padWrap(Text(displayName, style: textAnnotation(context))),
-                    padWrap((DropdownButtonFormField<String>(
-                      value: selectedValue,
-                      decoration: inputDecoration(),
-                      items: validValues.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) =>
-                          setState(() => selectedValue = newValue!),
-                      style: textAnnotation(context),
-                    )))
-                  ],
-                );
-              });
-        }));
-    return this;
-  }
-
-  FormBuilder addMultiSelectComboBox(displayName, List<String> validValues,
-      {firebaseKey, validatingCondition}) {
-    formPress.add(FormItemSupplier(
-        displayName: displayName,
-        firebaseKey: firebaseKey,
-        validatingCondition: validatingCondition,
-        supplier: (setState) {
-          List<String> selectedValues = [];
-          return FormItem2(
-              displayName: displayName,
-              serialize: () => selectedValues,
-              deserialize: (value) =>
-                  selectedValues = List<String>.from(value ?? []),
-              builder: (context) {
-                return padWrap(boxWrap(
-                    PopupMenuButton<String>(
-                      child: ListTile(
-                        title:
-                            Text(displayName, style: textAnnotation(context)),
-                        trailing: Icon(Icons.arrow_drop_down,
-                            color: Theme.of(context).primaryColor),
-                      ),
-                      itemBuilder: (BuildContext context) {
-                        return validValues.map((String skillItem) {
-                          return PopupMenuItem<String>(
-                            value: skillItem,
-                            child: StatefulBuilder(
-                                builder: (context, innerSetState) {
-                              return CheckboxListTile(
-                                title: Text(skillItem),
-                                value: selectedValues.contains(skillItem),
-                                activeColor: Colors.black,
-                                onChanged: (bool? value) {
-                                  // Navigator.of(context).pop(); // close the menu
-                                  if (value != null) {
-                                    if (value) {
-                                      selectedValues.add(skillItem);
-                                    } else {
-                                      selectedValues.remove(skillItem);
-                                    }
-                                    setState(() {});
-                                    innerSetState(() {});
-                                  }
-                                },
-                              );
-                            }),
-                          );
-                        }).toList();
-                      },
-                    ),
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)));
-              });
-        }));
-    return this;
-  }
-
-  FormBuilder addMultiTextBox(displayName, {firebaseKey, validatingCondition}) {
-    formPress.add(FormItemSupplier(
-        displayName: displayName,
-        firebaseKey: firebaseKey,
-        validatingCondition: validatingCondition,
-        supplier: (setState) {
-          final controllers = [TextEditingController()];
-          return FormItem2(
-              displayName: displayName,
-              serialize: () => controllers.map((e) => e.text).toList(),
-              deserialize: (value) {
-                controllers.clear();
-                value
-                    .map((e) => TextEditingController(text: e))
-                    .forEach((e) => controllers.add(e));
-              },
-              builder: (context) {
-                return MultiTextBox(
-                    label: displayName, controllers: controllers);
-              });
-        }));
-    return this;
-  }
-
-  FormBuilder addFileUploadButton(displayName,
-      {firebaseKey,
-      validatingCondition,
-      FileType type = FileType.any,
-      List<String>? allowedExtensions}) {
-    formPress.add(FormItemSupplier(
-        displayName: displayName,
-        firebaseKey: firebaseKey,
-        validatingCondition: validatingCondition,
-        supplier: (setState) {
-          String url = "";
-          return FormItem2(
-              displayName: displayName,
-              serialize: () => url,
-              deserialize: (value) => url = value,
-              builder: (context) => padWrap(boxWrap(GestureDetector(
-                  onTap: () async {
-                    url = (await pickAndUploadSupportedDoc(
-                            type: type,
-                            allowedExtensions: allowedExtensions)) ??
-                        "";
-                    if (url.isNotEmpty) {
-                      setState(() {}); // to refresh the UI
-                    }
-                  },
-                  child: Center(
-                      child: Text('Select $displayName',
-                          style: textAnnotation(context)))))));
-        }));
-    return this;
-  }
-
-  FormBuilder addCheckbox(displayName, {firebaseKey, validatingCondition}) {
-    formPress.add(FormItemSupplier(
-        displayName: displayName,
-        firebaseKey: firebaseKey,
-        validatingCondition: validatingCondition,
-        supplier: (setState) {
-          bool state = false;
-          return FormItem2(
-              displayName: displayName,
-              serialize: () => state,
-              deserialize: (value) => state = value,
-              builder: (context) => padWrap(boxWrap(
-                  StatefulBuilder(
-                      builder: (context, iSetState) => CheckboxListTile(
-                            activeColor: Colors.black,
-                            title: Text(
-                              displayName,
-                              style: textAnnotation(context),
-                            ),
-                            value: state,
-                            onChanged: (value) =>
-                                setState(() => iSetState(() => state = value!)),
-                          )),
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0))));
-        }));
-    return this;
-  }
-
   Talika build(displayTitle, nextPage, {firebaseKey}) {
-    return Talika(Stencil(formPress), displayTitle, nextPage, maximumInstances,
+    final talika = Talika(
+        Stencil(formPress), displayTitle, nextPage, maximumInstances,
         firebaseKey: firebaseKey);
+    talikaoKiTalika.add(talika);
+    return talika;
   }
 
   FormBuilder limitMaximumInstancesTo(int length) {
@@ -515,6 +569,17 @@ class Stencil {
 
   List<FormItem2> newForm(void Function(VoidCallback fn) setState) {
     var formItems = formPress.map((e) => e.supplier(setState)).toList();
+    for (var i = 0; i < formPress.length; i++)
+      formItems[i].isValid = () => formPress[i].validatingCondition(formItems);
+    return formItems;
+  }
+
+  List<FormItem2> newRandomForm(void Function(VoidCallback fn) setState) {
+    var formItems = formPress.map((e) {
+      final form = e.supplier(setState);
+      form.deserialize(e.randomizer());
+      return form;
+    }).toList();
     for (var i = 0; i < formPress.length; i++)
       formItems[i].isValid = () => formPress[i].validatingCondition(formItems);
     return formItems;
@@ -554,6 +619,7 @@ class Talika extends StatefulWidget {
 }
 
 class _TalikaState extends State<Talika> {
+  static final randomize = false;
   final _formKey = GlobalKey<FormState>();
   List<List<FormItem2>> forms = [];
 
@@ -570,7 +636,20 @@ class _TalikaState extends State<Talika> {
   @override
   void initState() {
     super.initState();
-    fetchFromFirestore();
+    if (randomize)
+      fetchFromGod();
+    else
+      fetchFromFirestore();
+  }
+
+  void fetchFromGod() {
+    final count = widget.maximumInstances == -1
+        ? Ransom.rng.nextInt(5)
+        : Ransom.rng.nextInt(widget.maximumInstances);
+    setState(() {
+      for (int i = 0; i < count; i++)
+        forms.add(widget.stencil.newRandomForm(setState));
+    });
   }
 
   Future<void> fetchFromFirestore() async {
@@ -589,7 +668,7 @@ class _TalikaState extends State<Talika> {
     });
   }
 
-  void saveToFirestore() async {
+  void saveToFirestore({showSuccess = true}) async {
     List<Map<String, dynamic>> data =
         forms.map((e) => widget.stencil.serialize(e)).toList();
     print("SAVING THE FOLLOWING TO FIRESTORE!!$data");
@@ -598,18 +677,20 @@ class _TalikaState extends State<Talika> {
         .doc(FirebaseAuth.instance.currentUser?.uid)
         .set({widget.firebaseKey: data}, SetOptions(merge: true)).then(
             (documentRef) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: AwesomeSnackbarContent(
-            title: 'Oh Nice!!',
-            message: 'Info Updated!!',
-            contentType: ContentType.success,
+      if (showSuccess) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: AwesomeSnackbarContent(
+              title: 'Oh Nice!!',
+              message: 'Info Updated!!',
+              contentType: ContentType.success,
+            ),
+            backgroundColor: Colors.transparent, // Set your desired color
           ),
-          backgroundColor: Colors.transparent, // Set your desired color
-        ),
-      );
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: widget.nextPage));
+        );
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: widget.nextPage));
+      }
     }).catchError((error) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -669,14 +750,13 @@ class _TalikaState extends State<Talika> {
                   onPressed: () => Navigator.pop(context),
                 )),
             Text(widget.displayTitle, style: textTitle(context)),
-            if(!showAddIcon)
-              SizedBox(width: 60,),
-            if (showAddIcon) 
+            if (!showAddIcon) SizedBox(width: 60),
+            if (showAddIcon)
               SizedBox(
                 height: 60,
                 width: 60,
                 child: IconButton(
-                  icon: Icon(FluentIcons.add_48_filled,color: Colors.blue,),
+                  icon: Icon(FluentIcons.add_48_filled, color: Colors.blue),
                   onPressed: addForm,
                 ),
               )
