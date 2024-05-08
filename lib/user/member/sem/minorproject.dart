@@ -5,7 +5,8 @@ import 'package:kiit_connect/user/member/sem/eighth_sem.dart';
 import 'package:kiit_connect/user/member/sem/seventh_sem.dart';
 
 class MinorProject extends StatelessWidget {
-  const MinorProject({super.key});
+  final Widget Function(BuildContext) nextPage;
+  const MinorProject(this.nextPage, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,8 @@ class MinorProject extends StatelessWidget {
             type: FileType.custom,
             allowedExtensions: [
           "pdf"
-        ]).build("Minor Project",(c) => const EightSemesterPerformance());
+        ])
+        .limitMaximumInstancesTo(1)
+        .build("Minor Project",nextPage);
   }
 }

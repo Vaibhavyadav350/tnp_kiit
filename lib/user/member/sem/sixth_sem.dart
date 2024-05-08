@@ -82,7 +82,7 @@ class _SixthSemesterPerformanceState extends State<SixthSemesterPerformance> {
         const SnackBar(content: Text('6th Semester Performance Updated!!')),
       );
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) =>MinorProject()),
+        MaterialPageRoute(builder: (context) =>MinorProject((p0) => SixthSemesterPerformance())),
       );
     })
         .catchError((error) {

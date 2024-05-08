@@ -88,10 +88,10 @@ class PersonalProject extends StatefulWidget {
   const PersonalProject({super.key});
 
   @override
-  State<PersonalProject> createState() => _PersonalProjectState();
+  State<PersonalProject> createState() => PersonalProjectState();
 }
 
-class _PersonalProjectState extends State<PersonalProject> {
+class PersonalProjectState extends State<PersonalProject> {
   String gh_user_id = "";
 
   @override

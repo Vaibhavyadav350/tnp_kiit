@@ -1,6 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:kiit_connect/user/member/sem/seventh_sem.dart';
+import 'package:kiit_connect/user/home/HomePage.dart';
 
 import '../../../theme/utils/builder/ui_builder.dart';
 import 'eighth_sem.dart';
@@ -18,9 +18,8 @@ class MajorProject extends StatelessWidget {
         .addTextField("Your Role")
         .addTextField("PPT Link")
         .addFileUploadButton("Major Project",
-        type: FileType.custom,
-        allowedExtensions: [
-          "pdf"
-        ]).build("Major Project",(c) => const EightSemesterPerformance());
+            type: FileType.custom, allowedExtensions: ["pdf"])
+        .limitMaximumInstancesTo(1)
+        .build("Major Project", (c) => const HomePage());
   }
 }

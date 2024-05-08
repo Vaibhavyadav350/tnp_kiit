@@ -52,6 +52,10 @@ class Ransom {
     return rng.nextInt(1000);
   }
 
+  static String integerString() {
+    return integer().toString();
+  }
+
   static List<T> some<T>(T Function() supplier) {
     return List.generate(rng.nextInt(4), (index) => supplier());
   }
@@ -153,7 +157,7 @@ class FormBuilder {
         displayName: displayName,
         firebaseKey: firebaseKey,
         validatingCondition: validatingCondition,
-        randomizer: Ransom.string,
+        randomizer: keyboardType?.index == 2 ? Ransom.integerString : Ransom.string,
         supplier: (setState) {
           final TextEditingController controller =
               TextEditingController(text: defaultValue);
@@ -615,11 +619,12 @@ class Talika extends StatefulWidget {
   }
 
   @override
-  State<Talika> createState() => _TalikaState();
+  State<Talika> createState() => TalikaState();
 }
 
-class _TalikaState extends State<Talika> {
-  static final randomize = false;
+bool randomizeFormContent = false;
+
+class TalikaState extends State<Talika> {
   final _formKey = GlobalKey<FormState>();
   List<List<FormItem2>> forms = [];
 
@@ -635,17 +640,18 @@ class _TalikaState extends State<Talika> {
 
   @override
   void initState() {
-    super.initState();
-    if (randomize)
+    if (randomizeFormContent)
       fetchFromGod();
-    else
+    else {
+      super.initState();
       fetchFromFirestore();
+    }
   }
 
   void fetchFromGod() {
     final count = widget.maximumInstances == -1
         ? Ransom.rng.nextInt(5)
-        : Ransom.rng.nextInt(widget.maximumInstances);
+        : 1 + Ransom.rng.nextInt(widget.maximumInstances);
     setState(() {
       for (int i = 0; i < count; i++)
         forms.add(widget.stencil.newRandomForm(setState));
@@ -728,12 +734,7 @@ class _TalikaState extends State<Talika> {
   }
 
   Widget mainBody(BuildContext context) {
-    List<String> exclusionList = [
-      "Public Profile",
-      "Minor Project",
-      "Major Project"
-    ];
-    bool showAddIcon = !exclusionList.contains(widget.displayTitle);
+    bool showAddIcon = widget.maximumInstances > 1;
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(10.0),
