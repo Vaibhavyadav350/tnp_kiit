@@ -21,7 +21,7 @@ import 'package:kiit_connect/user/member/work/recommendations_and_testimonials.d
 import 'package:kiit_connect/user/member/work/startups.dart';
 import 'package:kiit_connect/user/onboard/wrapper.dart';
 
-final bool __AddRandomStudents = true;
+final bool __AddRandomStudents = false;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
