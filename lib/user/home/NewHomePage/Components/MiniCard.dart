@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 Widget miniCard({
+   double bottomPos = -40,
   required String title,
   required String imgPath,
   required double height,
   required double width,
-  required double pos,
+  required double rightPos,
+  double imgwidth =180,
   required String hexColorCode, // optional background color
 }) {
 
@@ -42,15 +44,14 @@ Widget miniCard({
           ),
           Positioned(
 
-            bottom: -40,
-            right: pos,
+            bottom: bottomPos,
+            right: rightPos,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
                 imgPath,
-                 // Adjust the image height as needed
-                width: width, // Ensure the image takes the full width of the container
-                fit: BoxFit.cover, // Ensure the image covers the entire space without distortion
+                width: imgwidth,
+                fit: BoxFit.cover,
               ),
             ),
           ),

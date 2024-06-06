@@ -23,56 +23,90 @@ class NewHomePage extends StatelessWidget {
             textcolor:'37474F',
             hexColorCode: 'E1D4C3'),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            miniCard(
-                title: 'Basic Profile',
-                imgPath: 'assets/vector/Achievement-amico.png',
-                height: 180,
-                width: 180,
-                pos: 20,
-                hexColorCode: 'D3E3D6'),
-            miniCard(
-                title: 'Basic Profile',
-                imgPath: 'assets/vector/Studying-amico.png',
-                height: 180,
-                width: 180,
-                pos: -40,
-                hexColorCode: 'EFC4B9'),
+            Column(
+              children: [
+                miniCard(
+                    title: 'Basic Profile',
+                    imgPath: 'assets/vector/basicpro.png',
+                    height: 180,
+                    width: 180,
+                    rightPos: 0,
+                    bottomPos: -20,
+                    imgwidth: 200,
+                    hexColorCode: 'D3E3D6'),
+                miniCard(
+                    title: 'Basic Profile',
+                    imgPath: 'assets/vector/Recommendation letter-amico.png',
+                    height: 300,
+                    width: 180,
+                    imgwidth: 230,
+                    rightPos: 0,
+                    bottomPos: -20,
+                    hexColorCode: 'FDBC96'),
+              ],
+            ),
+            Column(
+              children: [
+                miniCard(
+                    title: 'College \nExperience',
+                    imgPath: 'assets/vector/college project-pana.png',
+                    height: 300,
+                    width: 180,
+                    imgwidth: 230,
+                    rightPos: -20,
+                    bottomPos: -20,
+                    hexColorCode: 'EFC4B9'),
+                miniCard(
+                    title: 'Basic Profile',
+                    imgPath: 'assets/vector/Studying-pana.png',
+                    height: 180,
+                    width: 180,
+                    rightPos: 0,
+                    hexColorCode: 'BAC9CE'),
+              ],
+            ),
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             miniCard(
                 title: 'Basic Profile',
                 imgPath: 'assets/vector/Studying-pana.png',
                 height: 180,
                 width: 180,
-                pos: 0,
+                rightPos: 0,
                 hexColorCode: 'FDBC96'),
             miniCard(
                 title: 'Basic Profile',
                 imgPath: 'assets/vector/Webinar-amico.png',
                 height: 180,
                 width: 180,
-                pos: 0,
+                rightPos: 0,
                 hexColorCode: 'DAC2CF'),
           ],
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             miniCard(
                 title: 'Basic Profile',
                 imgPath: 'assets/vector/Research paper-amico.png',
                 height: 180,
                 width: 180,
-                pos: 0,
+                rightPos: 0,
                 hexColorCode: 'E1D4C3'),
             miniCard(
                 title: 'Basic Profile',
                 imgPath: 'assets/vector/Recommendation letter-amico.png',
                 height: 180,
                 width: 180,
-                pos: 0,
+                rightPos: 0,
                 hexColorCode: 'BAC9CE'),
           ],
         ),
