@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:kiit_connect/user/home/HomePage.dart';
 import 'package:kiit_connect/user/home/NewHomePage/NewHomePage.dart';
-import 'package:kiit_connect/user/home/nav/bottam.dart';
+import 'package:kiit_connect/user/home/nav/newbottom.dart';
 import 'package:kiit_connect/user/home/nav/newhomescreen.dart';
 import 'package:kiit_connect/user/onboard/wrapper.dart';
 import 'package:kiit_connect/theme/colors.dart';

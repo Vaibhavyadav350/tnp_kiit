@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                       child: SvgPicture.asset(
                           fit: BoxFit.fitWidth,
                           width: 230,
-                          "assets/vector/work.svg"),
+                          "assets/vector/greeenfreepik--Character--inject-205.svg"),
                     ),
                     Positioned(
                       right: 10,
