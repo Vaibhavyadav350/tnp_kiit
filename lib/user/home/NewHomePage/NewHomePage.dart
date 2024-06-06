@@ -2,13 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/user/home/NewHomePage/Components/MiniCard.dart';
 
+import 'Components/HeroCard.dart';
+
 class NewHomePage extends StatelessWidget {
   const NewHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
+
       children: [
+        HeroCard(
+            title: 'Semester\nWise\nReport',
+            imgPath: 'assets/vector/Research paper-amico.png',
+            height: 180,
+            width: 400,
+            pos: -160,
+            titlepos: 50,
+            titleSize: 25,
+            textcolor:'37474F',
+            hexColorCode: 'E1D4C3'),
         Row(
           children: [
             miniCard(
