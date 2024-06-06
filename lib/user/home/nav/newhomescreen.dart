@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       right: 10,
                       top: 130,
                       child: Text(
-                        "Sabka Sath \nSabka Vikas",
+                        "Good Morning\nVaibhav",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,

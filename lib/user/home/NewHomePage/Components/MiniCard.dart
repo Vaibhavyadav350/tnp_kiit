@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Widget miniCard({
    double bottomPos = -40,
@@ -35,10 +36,10 @@ Widget miniCard({
             left: 20,
             child: Text(
               title,
-              style: TextStyle(
-                color: TextColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+              style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 22.0,
+                  color: TextColor
               ),
             ),
           ),

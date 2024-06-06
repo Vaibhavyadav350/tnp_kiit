@@ -52,7 +52,7 @@ class NewHomePage extends StatelessWidget {
               children: [
                 miniCard(
                     title: 'College \nExperience',
-                    imgPath: 'assets/vector/college project-pana.png',
+                    imgPath: 'assets/vector/boy on graduation-cuate.png',
                     height: 300,
                     width: 180,
                     imgwidth: 230,
