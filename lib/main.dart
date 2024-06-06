@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:kiit_connect/user/home/HomePage.dart';
 import 'package:kiit_connect/user/home/NewHomePage/NewHomePage.dart';
 import 'package:kiit_connect/user/home/nav/bottam.dart';
+import 'package:kiit_connect/user/home/nav/newhomescreen.dart';
 import 'package:kiit_connect/user/onboard/wrapper.dart';
 import 'package:kiit_connect/theme/colors.dart';
 
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       darkTheme: theme.copyWith(brightness: Brightness.dark),
       themeMode: ThemeMode.dark,
-      home: HomeScreen()
+      home:  MyNewBottomNavBar()
     );
   }
 }
