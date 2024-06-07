@@ -11,7 +11,6 @@ import 'package:kiit_connect/theme/colors.dart';
 
 import 'navigation/bottomapp.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         ColorProfile.dark(const Color.fromARGB(255, 62, 108, 154));
     final ThemeData theme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
-         seedColor: greenHighlight,
+        seedColor: greenHighlight,
         background: ColorProfile().background,
         primary: Colors.white70,
         primaryContainer: ColorProfile().background,
@@ -46,12 +45,11 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'T&P KIIT',
-      theme: theme,
-      darkTheme: theme.copyWith(brightness: Brightness.dark),
-      themeMode: ThemeMode.dark,
-      home:  MyNewBottomNavBar()
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'T&P KIIT',
+        theme: theme,
+        darkTheme: theme.copyWith(brightness: Brightness.dark),
+        themeMode: ThemeMode.dark,
+        home: MyNewBottomNavBar());
   }
 }

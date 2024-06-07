@@ -11,9 +11,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -22,15 +22,15 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 height: 350,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
                         colors: [Color(0xFF3383CD), Color(0xFF11249F)]),
                     image: DecorationImage(
                         image: AssetImage(
-                          "assets/vector/Doodle.png",
-                        ))),
+                      "assets/vector/Doodle.png",
+                    ))),
                 child: Stack(
                   children: <Widget>[
                     Positioned(
@@ -41,11 +41,11 @@ class HomeScreen extends StatelessWidget {
                           width: 230,
                           "assets/vector/greeenfreepik--Character--inject-205.svg"),
                     ),
-                    Positioned(
+                    const Positioned(
                       right: 10,
                       top: 130,
                       child: Text(
-                        "Good Morning\nVaibhav",
+                        "Good Morning\n TnP Developer",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            NewHomePage(),
+            const NewHomePage(),
           ],
         ),
       ),
