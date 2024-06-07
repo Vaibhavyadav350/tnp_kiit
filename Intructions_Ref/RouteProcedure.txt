@@ -1,0 +1,18 @@
+Below is the Route Procedure of the app page by page
+
+- 10th Marks
+- 10th Achievements
+- 12th Marks
+- 12th Achievements
+
+- Public Links
+- competency
+- profexp
+- Personal Projects
+- Research Academic
+- College Experience
+- Languages
+- Extra Certifications
+- Open SOurce
+- Recommendations
+- back to HomePage

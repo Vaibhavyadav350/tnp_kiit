@@ -76,7 +76,8 @@ class _BasicProfileState extends State<BasicProfile> {
 
     final UploadTask uploadTask = storageRef.putFile(photo);
     await uploadTask.whenComplete(() {});
-    photoUrl = await storageRef.getDownloadURL(); // Update photoUrl with new URL
+    photoUrl =
+        await storageRef.getDownloadURL(); // Update photoUrl with new URL
   }
 
   void _saveToFirestore() async {

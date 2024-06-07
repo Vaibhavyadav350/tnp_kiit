@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kiit_connect/user/home/utils/device_variables.dart';
 
-Widget miniCard({
-  double bottomPos = -40,
-  required String title,
-  required String imgPath,
-  required double height,
-  required double width,
-  required double rightPos,
-  double imgwidth = 180,
-  required String hexColorCode,
-}) {
+Widget miniCard(
+    {required BuildContext context,
+    double bottomPos = -40,
+    required String title,
+    required String imgPath,
+    required double height,
+    required double width,
+    required double rightPos,
+    double imgwidth = 180,
+    required String hexColorCode,
+    Widget? nextRoute}) {
   Color backgroundColor = Color(int.parse('0xFF$hexColorCode'));
   Color textColor = Color(int.parse('0xFF240750'));
+
+    final deviceVariables = DeviceVariables.fromBuildContext(context);
+    double testW = 411.00;
+    double testInvW = 1/testW;
+    double devW = deviceVariables.screenWidth;
+    double adjust = testInvW*devW;
+    
+    width*=adjust;
 
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -51,6 +61,15 @@ Widget miniCard({
                   fit: BoxFit.cover,
                 ),
               ),
+              if (nextRoute != null)
+                Positioned.fill(
+                    child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => nextRoute));
+                  },
+                  behavior: HitTestBehavior.translucent,
+                ))
             ],
           ),
         ),
