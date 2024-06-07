@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       right: 10,
                       top: 130,
                       child: Text(
-                        "Good Morning\n TnP Developer",
+                        "Welcome\n TnP Developer",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
