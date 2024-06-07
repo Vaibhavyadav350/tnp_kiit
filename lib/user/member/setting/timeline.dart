@@ -2,8 +2,7 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:kiit_connect/navigation/drawer.dart';
-import 'package:kiit_connect/theme/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kiit_connect/theme/utils/button/vybutton_.dart';
 import 'package:timelines/timelines.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -58,6 +57,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         endDrawer:Notifi(),
         key: _scaffoldKey,
         body: SingleChildScrollView(
@@ -67,7 +67,12 @@ class _TimelineScreenState extends State<TimelineScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("     Filled Data", style: textTitle(context)),
+                  Text("     Filled Data",
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22.0,
+                      color: Colors.purple,
+                    ),),
                   SizedBox(
                     height: 60,
 
@@ -79,6 +84,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
                   ),
                 ],
               ),
+              Image.asset("assets/vector/Verified-rafiki.png"),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 10),
                 child: FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
@@ -106,17 +112,17 @@ class _TimelineScreenState extends State<TimelineScreen> {
                       return FixedTimeline.tileBuilder(
                         theme: TimelineThemeData(
                           nodePosition: 0,
-                          color: Colors.green,
+                          color: Colors.purple,
                           indicatorTheme: IndicatorThemeData(
                             size: 20.0,
                             position: 0.0,
                             color: Colors
-                                .green,
+                                .purple,
                           ),
                           connectorTheme: ConnectorThemeData(
                             thickness: 2.5,
                             color: Colors
-                                .green,
+                                .purple.shade200,
                           ),
                         ),
                         builder: TimelineTileBuilder.fromStyle(
@@ -125,11 +131,11 @@ class _TimelineScreenState extends State<TimelineScreen> {
                           contentsBuilder: (context, index) {
                             final arrayName = arrayNames[index];
                             return Card(
-                              color: Colors.white,
+                              color: Colors.purple.shade50,
                               child: ListTile(
                                 title: Text(arrayName,
                                     style: TextStyle(
-                                        color: Colors.green, fontSize: 16)),
+                                        color: Colors.purple, fontSize: 16)),
                               ),
                             );
                           },
@@ -139,8 +145,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
                   },
                 ),
               ),
-              // if (valid)
-              //   VyButton("Data Sent for Validation!", Icons.upcoming, () {}),
               if (!valid)
                 VyButton("Send Data for Validation", Icons.upcoming,
                     () async {

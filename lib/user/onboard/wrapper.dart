@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kiit_connect/navigation/bottomapp.dart';
+import '../home/nav/newbottom.dart';
 import 'login.dart';
 
 
@@ -25,7 +26,7 @@ class _WrapperState extends State<Wrapper> {
           if (snapshot.data == null) {
             return const LiquidSplashScreen();
           } else {
-            return const MyBottomNavBar();
+            return MyNewBottomNavBar();
           }
         }
         return const Scaffold(
