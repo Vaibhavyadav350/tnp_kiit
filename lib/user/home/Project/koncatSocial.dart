@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../NewHomePage/NewHomePage.dart';
 
 class KoncatSocial extends StatelessWidget {
   const KoncatSocial({super.key});
@@ -23,13 +20,11 @@ class KoncatSocial extends StatelessWidget {
               child: Container(
                 height: 300,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topRight,
                       end: Alignment.bottomLeft,
-                      colors: [   Color(0xFFE57373),
-                        Color(0xFFF44336), // Soft Red
-                        ]),
+                      colors: [Colors.pink, Colors.red]),
                 ),
                 child: Stack(
                   children: <Widget>[
