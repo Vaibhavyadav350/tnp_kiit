@@ -277,7 +277,7 @@ class FormBuilder {
                                 .toList(),
                           )
                         else
-                          Text('No contributors found.'),
+                          const Text('No contributors found.'),
                       ],
                     ],
                   ),
@@ -669,14 +669,19 @@ class _TalikaState extends State<Talika> {
                   onPressed: () => Navigator.pop(context),
                 )),
             Text(widget.displayTitle, style: textTitle(context)),
-            if(!showAddIcon)
-              SizedBox(width: 60,),
-            if (showAddIcon) 
+            if (!showAddIcon)
+              SizedBox(
+                width: 60,
+              ),
+            if (showAddIcon)
               SizedBox(
                 height: 60,
                 width: 60,
                 child: IconButton(
-                  icon: Icon(FluentIcons.add_48_filled,color: Colors.blue,),
+                  icon: Icon(
+                    FluentIcons.add_48_filled,
+                    color: Colors.blue,
+                  ),
                   onPressed: addForm,
                 ),
               )
