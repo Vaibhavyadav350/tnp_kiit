@@ -1,0 +1,2432 @@
+<questions>
+    <question id="flutter">
+        <text>What is Flutter?</text>
+        <option>Framework for building UI for mobile applications</option>
+        <option>Framework for building backend services</option>
+        <option>Database management system</option>
+        <option>Web development framework</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>Which programming language is used in Flutter?</text>
+        <option>Dart</option>
+        <option>Java</option>
+        <option>Python</option>
+        <option>Kotlin</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is a widget in Flutter?</text>
+        <option>A piece of code</option>
+        <option>A visual element</option>
+        <option>An API call</option>
+        <option>A database table</option>
+        <correct>1</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the main function in a Flutter app?</text>
+        <option>runApp()</option>
+        <option>main()</option>
+        <option>start()</option>
+        <option>initialize()</option>
+        <correct>1</correct>
+    </question>
+    <question id="flutter">
+        <text>Which widget is used to create a button in Flutter?</text>
+        <option>Text</option>
+        <option>Button</option>
+        <option>FlatButton</option>
+        <option>Container</option>
+        <correct>2</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of MaterialApp widget in Flutter?</text>
+        <option>To define the entry point of the application</option>
+        <option>To create a material design style app</option>
+        <option>To handle routing and navigation</option>
+        <option>To define the layout of the app</option>
+        <correct>1</correct>
+    </question>
+    <question id="flutter">
+        <text>What is a StatelessWidget in Flutter?</text>
+        <option>A widget that can change its state during runtime</option>
+        <option>A widget that cannot change its state during runtime</option>
+        <option>A widget that defines the layout of the app</option>
+        <option>A widget that handles user input</option>
+        <correct>1</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of setState() method in Flutter?</text>
+        <option>To rebuild the widget tree</option>
+        <option>To initialize the state of a widget</option>
+        <option>To create a new widget</option>
+        <option>To handle user interactions</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the difference between hot reload and hot restart in Flutter?</text>
+        <option>Hot reload only updates the modified parts of the app, while hot restart rebuilds
+            the entire app
+        </option>
+        <option>Hot reload restarts the app, while hot restart updates the modified parts of the
+            app
+        </option>
+        <option>Hot reload rebuilds the entire app, while hot restart only updates the modified
+            parts of the app
+        </option>
+        <option>There is no difference between hot reload and hot restart</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of MaterialApp's home property in Flutter?</text>
+        <option>To specify the title of the app</option>
+        <option>To specify the initial route of the app</option>
+        <option>To define the layout of the app</option>
+        <option>To specify the widget to be displayed as the home screen</option>
+        <correct>3</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of Scaffold widget in Flutter?</text>
+        <option>To create a scrolling list of items</option>
+        <option>To implement bottom navigation</option>
+        <option>To define the structure and layout of the app's UI</option>
+        <option>To handle asynchronous tasks</option>
+        <correct>2</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of GlobalKey in Flutter?</text>
+        <option>To access the state of a widget from outside its hierarchy</option>
+        <option>To uniquely identify a widget in the widget tree</option>
+        <option>To define the layout of a widget</option>
+        <option>To handle navigation between screens</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of initState() method in Flutter?</text>
+        <option>To initialize the state of a StatefulWidget</option>
+        <option>To build the widget tree</option>
+        <option>To handle user input</option>
+        <option>To rebuild the widget tree</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of const keyword in Flutter?</text>
+        <option>To create a constant value</option>
+        <option>To define a new widget</option>
+        <option>To handle user interactions</option>
+        <option>To manage state in the app</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of crossAxisAlignment property in Flutter?</text>
+        <option>To specify how children should be placed along the cross axis in a Flex container
+        </option>
+        <option>To specify how children should be placed along the main axis in a Flex container
+        </option>
+        <option>To specify the width of a widget</option>
+        <option>To specify the height of a widget</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of InkWell widget in Flutter?</text>
+        <option>To create a button with a ripple effect</option>
+        <option>To handle text input from the user</option>
+        <option>To display images</option>
+        <option>To create a scrollable list of items</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of ClipRRect widget in Flutter?</text>
+        <option>To create rounded corners on a widget</option>
+        <option>To clip a widget to a custom shape</option>
+        <option>To create a scrollable list of items</option>
+        <option>To display images</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of Expanded widget in Flutter?</text>
+        <option>To specify how much space a child should occupy in a Flex container</option>
+        <option>To specify the alignment of a child in a Flex container</option>
+        <option>To specify the width of a widget</option>
+        <option>To specify the height of a widget</option>
+        <correct>0</correct>
+    </question>
+    <question id="flutter">
+        <text>What is the purpose of SingleChildScrollView widget in Flutter?</text>
+        <option>To create a scrollable list of items</option>
+        <option>To create a scrollable area that can contain multiple widgets</option>
+        <option>To create a layout with multiple columns</option>
+        <option>To create a layout with multiple rows</option>
+        <correct>1</correct>
+    </question>
+    <question id="react">
+        <text>What is React?</text>
+        <option>A JavaScript library for building user interfaces</option>
+        <option>A programming language</option>
+        <option>A database management system</option>
+        <option>A server-side framework</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What are components in React?</text>
+        <option>Functions that return HTML elements</option>
+        <option>Objects that store data</option>
+        <option>Database tables</option>
+        <option>Server-side scripts</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is JSX in React?</text>
+        <option>JavaScript XML, a syntax extension for JavaScript</option>
+        <option>JavaScript XHR, a method for making HTTP requests</option>
+        <option>JavaScript XL, a lightweight JavaScript library</option>
+        <option>JavaScript XLS, a data format for spreadsheets</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is the purpose of state in React?</text>
+        <option>To store data that may change over time</option>
+        <option>To define the structure of components</option>
+        <option>To manage routing and navigation</option>
+        <option>To handle user authentication</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is the role of props in React?</text>
+        <option>To pass data from parent to child components</option>
+        <option>To define the initial state of a component</option>
+        <option>To handle user interactions</option>
+        <option>To control the layout of components</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is a higher-order component (HOC) in React?</text>
+        <option>A function that takes a component and returns a new component</option>
+        <option>A built-in React component for handling forms</option>
+        <option>An advanced routing mechanism in React</option>
+        <option>A method for styling React components</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is the virtual DOM in React?</text>
+        <option>A lightweight version of the Document Object Model (DOM)</option>
+        <option>A concept used for routing in React applications</option>
+        <option>A representation of the actual DOM in memory</option>
+        <option>A data structure that tracks changes to the DOM</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is the purpose of lifecycle methods in React?</text>
+        <option>To perform actions at specific points in a component's lifecycle</option>
+        <option>To define the structure of components</option>
+        <option>To manage application state</option>
+        <option>To handle user authentication</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is Redux in React?</text>
+        <option>A predictable state container for JavaScript apps</option>
+        <option>A built-in React component for handling forms</option>
+        <option>An advanced routing mechanism in React</option>
+        <option>A method for styling React components</option>
+        <correct>0</correct>
+    </question>
+    <question id="react">
+        <text>What is the purpose of React Router?</text>
+        <option>To handle navigation and routing in React applications</option>
+        <option>To manage application state</option>
+        <option>To define the structure of components</option>
+        <option>To handle user authentication</option>
+        <correct>0</correct>
+    </question>
+
+    <question id="frontendweb">
+        <text>What is HTML?</text>
+        <option>Hypertext Markup Language</option>
+        <option>Hyperlink and Text Markup Language</option>
+        <option>Highly Typed Markup Language</option>
+        <option>Home Text Markup Language</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is CSS used for?</text>
+        <option>Database querying</option>
+        <option>Styling web pages</option>
+        <option>Server-side scripting</option>
+        <option>Interactivity</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which of the following is NOT a JavaScript framework or library?</text>
+        <option>React</option>
+        <option>Vue</option>
+        <option>Angular</option>
+        <option>SQL</option>
+        <correct>3</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What does CSS stand for?</text>
+        <option>Cascading Style Sheets</option>
+        <option>Central Style System</option>
+        <option>Colorful Style Sheets</option>
+        <option>Computer Style Sheets</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of JavaScript?</text>
+        <option>Database management</option>
+        <option>Client-side scripting</option>
+        <option>Server-side scripting</option>
+        <option>Styling web pages</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the standard markup language for creating web pages?</text>
+        <option>XML</option>
+        <option>HTML</option>
+        <option>JSON</option>
+        <option>YAML</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of a CSS framework?</text>
+        <option>To facilitate faster coding</option>
+        <option>To manage databases</option>
+        <option>To create animations</option>
+        <option>To execute server-side scripts</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which HTML element is used to link external JavaScript files?</text>
+        <option>&lt;link&gt;</option>
+        <option>&lt;script&gt;</option>
+        <option>&lt;style&gt;</option>
+        <option>&lt;a&gt;</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What does DOM stand for?</text>
+        <option>Data Object Model</option>
+        <option>Document Object Model</option>
+        <option>Dynamic Object Model</option>
+        <option>Design Object Model</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which of the following is NOT a valid CSS unit of measurement?</text>
+        <option>Pixel (px)</option>
+        <option>Centimeter (cm)</option>
+        <option>Decibel (dB)</option>
+        <option>Percentage (%)</option>
+        <correct>2</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of media queries in CSS?</text>
+        <option>To create animations</option>
+        <option>To query databases</option>
+        <option>To apply styles based on device characteristics</option>
+        <option>To manage server-side scripts</option>
+        <correct>2</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which of the following is a valid color representation in CSS?</text>
+        <option>Bluish</option>
+        <option>#12345</option>
+        <option>rgb(255, 0, 0)</option>
+        <option>Blue</option>
+        <correct>2</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is a selector in CSS?</text>
+        <option>A method for querying databases</option>
+        <option>A JavaScript framework</option>
+        <option>An element that matches a specific pattern</option>
+        <option>A server-side scripting language</option>
+        <correct>2</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the "alt" attribute in HTML?</text>
+        <option>To specify an alternative stylesheet</option>
+        <option>To define an alternative text for an image</option>
+        <option>To link to an alternate webpage</option>
+        <option>To provide alternative styles for different devices</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is a JavaScript variable?</text>
+        <option>A value that cannot be changed</option>
+        <option>A container for storing data values</option>
+        <option>A constant value</option>
+        <option>A function that returns a value</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the HTML &lt;canvas&gt; element?</text>
+        <option>To draw graphics using JavaScript</option>
+        <option>To link external stylesheets</option>
+        <option>To create hyperlinks</option>
+        <option>To define the document's body</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which CSS property is used to change the text color of an element?</text>
+        <option>color</option>
+        <option>background-color</option>
+        <option>font-color</option>
+        <option>text-color</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the "href" attribute in HTML?</text>
+        <option>To specify the height of an element</option>
+        <option>To define a hyperlink reference</option>
+        <option>To hide an element</option>
+        <option>To style an element</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What does API stand for?</text>
+        <option>Advanced Programming Interface</option>
+        <option>Application Programming Interface</option>
+        <option>Automated Programming Interface</option>
+        <option>Array Programming Interface</option>
+        <correct>1</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the "type" attribute in the &lt;script&gt; element?</text>
+        <option>To define the scripting language</option>
+        <option>To specify the text type</option>
+        <option>To set the script's source</option>
+        <option>To define the script's function</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the HTML &lt;meta&gt; tag?</text>
+        <option>To define metadata about an HTML document</option>
+        <option>To create a hyperlink</option>
+        <option>To define a list</option>
+        <option>To embed multimedia</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which of the following is NOT a semantic HTML element?</text>
+        <option>&lt;div&gt;</option>
+        <option>&lt;header&gt;</option>
+        <option>&lt;nav&gt;</option>
+        <option>&lt;span&gt;</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the CSS property "display: none;"?</text>
+        <option>To hide an element</option>
+        <option>To make an element visible</option>
+        <option>To apply a border to an element</option>
+        <option>To change the font of an element</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What does the term "responsive web design" refer to?</text>
+        <option>Designing websites for mobile devices only</option>
+        <option>Designing websites with fixed layouts</option>
+        <option>Designing websites that adapt to different screen sizes</option>
+        <option>Designing websites without images</option>
+        <correct>2</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which HTML element is used for creating a numbered list?</text>
+        <option>&lt;ol&gt;</option>
+        <option>&lt;ul&gt;</option>
+        <option>&lt;li&gt;</option>
+        <option>&lt;list&gt;</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the CSS property "margin"?</text>
+        <option>To add space outside an element</option>
+        <option>To add space inside an element</option>
+        <option>To set the background color of an element</option>
+        <option>To change the font size of an element</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What does the "float" property in CSS do?</text>
+        <option>Floats an element to the left or right of its container</option>
+        <option>Changes the font style of an element</option>
+        <option>Centers an element horizontally</option>
+        <option>Applies animation to an element</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>What is the purpose of the "src" attribute in the &lt;img&gt; element?</text>
+        <option>To specify the image source URL</option>
+        <option>To set the image size</option>
+        <option>To define the image caption</option>
+        <option>To apply styles to the image</option>
+        <correct>0</correct>
+    </question>
+    <question id="frontendweb">
+        <text>Which CSS property is used to change the font size of an element?</text>
+        <option>font-size</option>
+        <option>text-size</option>
+        <option>size</option>
+        <option>font-style</option>
+        <correct>0</correct>
+    </question>
+
+
+    <question id="machinelearning">
+        <text>What is machine learning?</text>
+        <option>A branch of artificial intelligence focused on training machines to learn from
+            data
+        </option>
+        <option>A type of programming language</option>
+        <option>A form of robotics</option>
+        <option>An advanced form of data visualization</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is supervised learning?</text>
+        <option>A type of learning where the algorithm learns from labeled data</option>
+        <option>A type of learning where the algorithm learns without any guidance</option>
+        <option>A type of learning where the algorithm learns from rewards</option>
+        <option>A type of learning where the algorithm learns from past experiences</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is unsupervised learning?</text>
+        <option>A type of learning where the algorithm learns from labeled data</option>
+        <option>A type of learning where the algorithm learns without any guidance</option>
+        <option>A type of learning where the algorithm learns from rewards</option>
+        <option>A type of learning where the algorithm learns from past experiences</option>
+        <correct>1</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is reinforcement learning?</text>
+        <option>A type of learning where the algorithm learns from labeled data</option>
+        <option>A type of learning where the algorithm learns without any guidance</option>
+        <option>A type of learning where the algorithm learns from rewards</option>
+        <option>A type of learning where the algorithm learns from past experiences</option>
+        <correct>2</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is overfitting in machine learning?</text>
+        <option>When the model performs well on training data but poorly on unseen data</option>
+        <option>When the model performs poorly on both training and unseen data</option>
+        <option>When the model performs well on unseen data but poorly on training data</option>
+        <option>When the model performs perfectly on both training and unseen data</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is underfitting in machine learning?</text>
+        <option>When the model performs well on training data but poorly on unseen data</option>
+        <option>When the model performs poorly on both training and unseen data</option>
+        <option>When the model performs well on unseen data but poorly on training data</option>
+        <option>When the model performs perfectly on both training and unseen data</option>
+        <correct>1</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a decision tree in machine learning?</text>
+        <option>A tree-like model of decisions and their possible consequences</option>
+        <option>A tree structure used to organize datasets</option>
+        <option>A type of neural network</option>
+        <option>An algorithm that learns from rewards</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of feature scaling in machine learning?</text>
+        <option>To standardize the range of independent variables or features of the data</option>
+        <option>To add more features to the dataset</option>
+        <option>To remove irrelevant features from the dataset</option>
+        <option>To increase the complexity of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between classification and regression in machine learning?
+        </text>
+        <option>Classification is about predicting categories, while regression is about predicting
+            continuous values
+        </option>
+        <option>Classification is about predicting continuous values, while regression is about
+            predicting categories
+        </option>
+        <option>Classification is unsupervised learning, while regression is supervised learning
+        </option>
+        <option>Classification is supervised learning, while regression is unsupervised learning
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is bias-variance tradeoff in machine learning?</text>
+        <option>A tradeoff between the bias and variance of a model, balancing underfitting and
+            overfitting
+        </option>
+        <option>A tradeoff between the training time and accuracy of a model</option>
+        <option>A tradeoff between precision and recall in classification tasks</option>
+        <option>A tradeoff between the number of features and the complexity of a model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is cross-validation in machine learning?</text>
+        <option>A technique used to evaluate the performance of machine learning models by training
+            and testing on multiple subsets of the data
+        </option>
+        <option>A technique used to validate the accuracy of machine learning models by using a
+            separate validation dataset
+        </option>
+        <option>A technique used to visualize the performance of machine learning models</option>
+        <option>A technique used to tune hyperparameters of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is gradient descent in machine learning?</text>
+        <option>An optimization algorithm used to minimize the loss function of a model by adjusting
+            its parameters iteratively
+        </option>
+        <option>A method used to visualize high-dimensional data</option>
+        <option>A technique used to regularize machine learning models</option>
+        <option>A technique used to evaluate the performance of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a neural network in machine learning?</text>
+        <option>A network of interconnected neurons inspired by the structure of the human brain,
+            used for learning tasks
+        </option>
+        <option>A network used to classify data into predefined categories</option>
+        <option>A network used to cluster data into groups</option>
+        <option>A network used to predict continuous values</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is feature engineering in machine learning?</text>
+        <option>The process of selecting and transforming features to improve the performance of
+            machine learning models
+        </option>
+        <option>The process of visualizing features in high-dimensional space</option>
+        <option>The process of training machine learning models on large datasets</option>
+        <option>The process of evaluating the performance of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is ensemble learning in machine learning?</text>
+        <option>A technique that combines multiple models to improve the performance of machine
+            learning algorithms
+        </option>
+        <option>A technique that trains machine learning models on multiple subsets of the data
+        </option>
+        <option>A technique that visualizes the decision boundaries of machine learning models
+        </option>
+        <option>A technique that evaluates the importance of features in machine learning models
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between bagging and boosting in ensemble learning?</text>
+        <option>Bagging trains multiple models independently and combines their predictions, while
+            boosting trains models sequentially, where each model tries to correct the errors of its
+            predecessor
+        </option>
+        <option>Bagging trains models sequentially, where each model tries to correct the errors of
+            its predecessor, while boosting trains multiple models independently and combines their
+            predictions
+        </option>
+        <option>Bagging trains models on multiple subsets of the data, while boosting combines the
+            predictions of multiple models
+        </option>
+        <option>Bagging combines the predictions of multiple models, while boosting trains models on
+            multiple subsets of the data
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a confusion matrix in machine learning?</text>
+        <option>A table that is used to evaluate the performance of a classification model</option>
+        <option>A matrix that represents the relationships between features in a dataset</option>
+        <option>A matrix that is used to visualize high-dimensional data</option>
+        <option>A table that is used to evaluate the performance of a regression model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is precision in machine learning?</text>
+        <option>The ratio of true positive predictions to the total number of positive predictions
+        </option>
+        <option>The ratio of true positive predictions to the total number of actual positive
+            instances
+        </option>
+        <option>The ratio of true negative predictions to the total number of negative predictions
+        </option>
+        <option>The ratio of true negative predictions to the total number of actual negative
+            instances
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is recall in machine learning?</text>
+        <option>The ratio of true positive predictions to the total number of positive predictions
+        </option>
+        <option>The ratio of true positive predictions to the total number of actual positive
+            instances
+        </option>
+        <option>The ratio of true negative predictions to the total number of negative predictions
+        </option>
+        <option>The ratio of true negative predictions to the total number of actual negative
+            instances
+        </option>
+        <correct>1</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is F1 score in machine learning?</text>
+        <option>The harmonic mean of precision and recall</option>
+        <option>The arithmetic mean of precision and recall</option>
+        <option>The geometric mean of precision and recall</option>
+        <option>The product of precision and recall</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of regularization in machine learning?</text>
+        <option>To prevent overfitting by adding a penalty term to the loss function</option>
+        <option>To increase the complexity of the model</option>
+        <option>To decrease the training time of the model</option>
+        <option>To decrease the variance of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between L1 and L2 regularization?</text>
+        <option>L1 regularization adds the absolute values of the coefficients to the loss function,
+            while L2 regularization adds the squared values of the coefficients
+        </option>
+        <option>L1 regularization adds the squared values of the coefficients to the loss function,
+            while L2 regularization adds the absolute values of the coefficients
+        </option>
+        <option>L1 regularization adds a penalty term to the loss function, while L2 regularization
+            adds a constraint to the weights of the model
+        </option>
+        <option>L1 regularization penalizes large coefficients more than small ones, while L2
+            regularization penalizes large coefficients equally
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of hyperparameter tuning in machine learning?</text>
+        <option>To optimize the performance of machine learning models by selecting the best
+            hyperparameters
+        </option>
+        <option>To increase the complexity of the model</option>
+        <option>To decrease the training time of the model</option>
+        <option>To decrease the variance of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the bias of an estimator in machine learning?</text>
+        <option>The difference between the expected value of the estimator and the true value of the
+            parameter being estimated
+        </option>
+        <option>The variance of the estimator</option>
+        <option>The mean squared error of the estimator</option>
+        <option>The standard deviation of the estimator</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the variance of an estimator in machine learning?</text>
+        <option>The average deviation of the estimator from its expected value</option>
+        <option>The difference between the expected value of the estimator and the true value of the
+            parameter being estimated
+        </option>
+        <option>The spread of the estimator's values around the mean</option>
+        <option>The mean squared error of the estimator</option>
+        <correct>2</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between classification and clustering in machine learning?
+        </text>
+        <option>Classification is about predicting categories, while clustering is about grouping
+            similar data points together
+        </option>
+        <option>Classification is about grouping similar data points together, while clustering is
+            about predicting categories
+        </option>
+        <option>Classification is a supervised learning task, while clustering is an unsupervised
+            learning task
+        </option>
+        <option>Classification is an unsupervised learning task, while clustering is a supervised
+            learning task
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the elbow method used for in machine learning?</text>
+        <option>To determine the optimal number of clusters in a dataset</option>
+        <option>To evaluate the performance of a classification model</option>
+        <option>To visualize the decision boundaries of a classification model</option>
+        <option>To visualize the feature importances of a dataset</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is one-hot encoding in machine learning?</text>
+        <option>A technique used to convert categorical variables into binary vectors</option>
+        <option>A technique used to scale numerical variables to a similar range</option>
+        <option>A technique used to handle missing values in a dataset</option>
+        <option>A technique used to reduce the dimensionality of a dataset</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is cross-entropy loss in machine learning?</text>
+        <option>A measure of the difference between two probability distributions</option>
+        <option>A measure of the distance between two data points</option>
+        <option>A measure of the complexity of a model</option>
+        <option>A measure of the variance of a model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of feature selection in machine learning?</text>
+        <option>To identify the most relevant features in a dataset</option>
+        <option>To increase the complexity of the model</option>
+        <option>To decrease the training time of the model</option>
+        <option>To decrease the variance of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a support vector machine (SVM) in machine learning?</text>
+        <option>A supervised learning algorithm used for classification and regression tasks
+        </option>
+        <option>An unsupervised learning algorithm used for clustering tasks</option>
+        <option>A reinforcement learning algorithm used for sequential decision-making tasks
+        </option>
+        <option>A type of neural network architecture</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of a kernel in support vector machines?</text>
+        <option>To transform data into a higher-dimensional space to make it more separable</option>
+        <option>To reduce the dimensionality of the data</option>
+        <option>To calculate the distance between data points</option>
+        <option>To regularize the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of a confusion matrix in machine learning?</text>
+        <option>To evaluate the performance of a classification model</option>
+        <option>To visualize the decision boundaries of a classification model</option>
+        <option>To measure the variance of a regression model</option>
+        <option>To calculate the accuracy of a clustering model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a hyperparameter in machine learning?</text>
+        <option>A parameter of the model that is learned from the data</option>
+        <option>A parameter of the model that is set before training and remains constant during
+            training
+        </option>
+        <option>A parameter of the model that is updated during training</option>
+        <option>A parameter of the model that is used to control the learning process</option>
+        <correct>1</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of the activation function in a neural network?</text>
+        <option>To introduce non-linearity into the network</option>
+        <option>To regularize the model</option>
+        <option>To reduce the dimensionality of the data</option>
+        <option>To calculate the gradient of the loss function</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between batch gradient descent and stochastic gradient
+            descent?
+        </text>
+        <option>Batch gradient descent computes the gradient of the loss function using the entire
+            dataset, while stochastic gradient descent computes the gradient using a single randomly
+            chosen data point
+        </option>
+        <option>Batch gradient descent updates the model parameters after processing the entire
+            dataset, while stochastic gradient descent updates the model parameters after processing
+            each data point
+        </option>
+        <option>Batch gradient descent updates the model parameters after processing each data
+            point, while stochastic gradient descent updates the model parameters after processing
+            the entire dataset
+        </option>
+        <option>Batch gradient descent computes the gradient of the loss function using a random
+            subset of the dataset, while stochastic gradient descent computes the gradient using the
+            entire dataset
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of the dropout regularization technique in neural networks?</text>
+        <option>To prevent overfitting by randomly dropping out a fraction of neurons during
+            training
+        </option>
+        <option>To increase the complexity of the model</option>
+        <option>To decrease the training time of the model</option>
+        <option>To increase the interpretability of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between generative and discriminative models in machine
+            learning?
+        </text>
+        <option>Generative models learn the joint probability distribution of the input and output
+            variables, while discriminative models learn the conditional probability distribution of
+            the output variable given the input
+        </option>
+        <option>Generative models learn the conditional probability distribution of the output
+            variable given the input, while discriminative models learn the joint probability
+            distribution of the input and output variables
+        </option>
+        <option>Generative models generate new data samples, while discriminative models classify
+            data samples into predefined categories
+        </option>
+        <option>Generative models predict continuous values, while discriminative models predict
+            discrete values
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of a loss function in machine learning?</text>
+        <option>To measure the difference between the predicted output and the true output</option>
+        <option>To regularize the model</option>
+        <option>To reduce the dimensionality of the data</option>
+        <option>To calculate the gradient of the model parameters</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between L1 and L2 regularization in machine learning?</text>
+        <option>L1 regularization adds the absolute values of the coefficients to the loss function,
+            while L2 regularization adds the squared values of the coefficients
+        </option>
+        <option>L1 regularization adds the squared values of the coefficients to the loss function,
+            while L2 regularization adds the absolute values of the coefficients
+        </option>
+        <option>L1 regularization adds a penalty term to the loss function, while L2 regularization
+            adds a constraint to the weights of the model
+        </option>
+        <option>L1 regularization penalizes large coefficients more than small ones, while L2
+            regularization penalizes large coefficients equally
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between bagging and boosting in ensemble learning?</text>
+        <option>Bagging trains multiple models independently and combines their predictions, while
+            boosting trains models sequentially, where each model tries to correct the errors of its
+            predecessor
+        </option>
+        <option>Bagging trains models sequentially, where each model tries to correct the errors of
+            its predecessor, while boosting trains multiple models independently and combines their
+            predictions
+        </option>
+        <option>Bagging trains models on multiple subsets of the data, while boosting combines the
+            predictions of multiple models
+        </option>
+        <option>Bagging combines the predictions of multiple models, while boosting trains models on
+            multiple subsets of the data
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between precision and recall in machine learning?</text>
+        <option>Precision measures the ratio of true positive predictions to the total number of
+            positive predictions, while recall measures the ratio of true positive predictions to
+            the total number of actual positive instances
+        </option>
+        <option>Precision measures the ratio of true positive predictions to the total number of
+            actual positive instances, while recall measures the ratio of true positive predictions
+            to the total number of positive predictions
+        </option>
+        <option>Precision measures the ratio of true negative predictions to the total number of
+            negative predictions, while recall measures the ratio of true positive predictions to
+            the total number of actual positive instances
+        </option>
+        <option>Precision measures the ratio of true positive predictions to the total number of
+            actual positive instances, while recall measures the ratio of true negative predictions
+            to the total number of actual negative instances
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the F1 score in machine learning?</text>
+        <option>The harmonic mean of precision and recall</option>
+        <option>The arithmetic mean of precision and recall</option>
+        <option>The geometric mean of precision and recall</option>
+        <option>The product of precision and recall</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of k-fold cross-validation in machine learning?</text>
+        <option>To evaluate the performance of a model by training and testing it on multiple
+            subsets of the data
+        </option>
+        <option>To train a model on a single subset of the data and test it on the remaining
+            subset
+        </option>
+        <option>To visualize the performance of a model</option>
+        <option>To tune the hyperparameters of a model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between precision and accuracy in machine learning?</text>
+        <option>Precision measures the ratio of true positive predictions to the total number of
+            positive predictions, while accuracy measures the ratio of correct predictions to the
+            total number of predictions
+        </option>
+        <option>Precision measures the ratio of true positive predictions to the total number of
+            actual positive instances, while accuracy measures the ratio of correct predictions to
+            the total number of predictions
+        </option>
+        <option>Precision measures the ratio of true negative predictions to the total number of
+            negative predictions, while accuracy measures the ratio of correct predictions to the
+            total number of actual instances
+        </option>
+        <option>Precision measures the ratio of true positive predictions to the total number of
+            actual positive instances, while accuracy measures the ratio of true negative
+            predictions to the total number of actual negative instances
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the bias-variance tradeoff in machine learning?</text>
+        <option>The tradeoff between the bias and variance of a model, balancing underfitting and
+            overfitting
+        </option>
+        <option>The tradeoff between the training time and accuracy of a model</option>
+        <option>The tradeoff between precision and recall in classification tasks</option>
+        <option>The tradeoff between the number of features and the complexity of a model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of regularization in machine learning?</text>
+        <option>To prevent overfitting by adding a penalty term to the loss function</option>
+        <option>To increase the complexity of the model</option>
+        <option>To decrease the training time of the model</option>
+        <option>To decrease the variance of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between L1 and L2 regularization in machine learning?</text>
+        <option>L1 regularization adds the absolute values of the coefficients to the loss function,
+            while L2 regularization adds the squared values of the coefficients
+        </option>
+        <option>L1 regularization adds the squared values of the coefficients to the loss function,
+            while L2 regularization adds the absolute values of the coefficients
+        </option>
+        <option>L1 regularization adds a penalty term to the loss function, while L2 regularization
+            adds a constraint to the weights of the model
+        </option>
+        <option>L1 regularization penalizes large coefficients more than small ones, while L2
+            regularization penalizes large coefficients equally
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is cross-validation in machine learning?</text>
+        <option>A technique used to evaluate the performance of machine learning models by training
+            and testing on multiple subsets of the data
+        </option>
+        <option>A technique used to validate the accuracy of machine learning models by using a
+            separate validation dataset
+        </option>
+        <option>A technique used to visualize the performance of machine learning models</option>
+        <option>A technique used to tune hyperparameters of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is feature engineering in machine learning?</text>
+        <option>The process of selecting and transforming features to improve the performance of
+            machine learning models
+        </option>
+        <option>The process of visualizing features in high-dimensional space</option>
+        <option>The process of training machine learning models on large datasets</option>
+        <option>The process of evaluating the performance of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is ensemble learning in machine learning?</text>
+        <option>A technique that combines multiple models to improve the performance of machine
+            learning algorithms
+        </option>
+        <option>A technique that trains machine learning models on multiple subsets of the data
+        </option>
+        <option>A technique that visualizes the decision boundaries of machine learning models
+        </option>
+        <option>A technique that evaluates the importance of features in machine learning models
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is gradient descent in machine learning?</text>
+        <option>An optimization algorithm used to minimize the loss function of a model by adjusting
+            its parameters iteratively
+        </option>
+        <option>A method used to visualize high-dimensional data</option>
+        <option>A technique used to regularize machine learning models</option>
+        <option>A technique used to evaluate the performance of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a neural network in machine learning?</text>
+        <option>A network of interconnected neurons inspired by the structure of the human brain,
+            used for learning tasks
+        </option>
+        <option>A network used to classify data into predefined categories</option>
+        <option>A network used to cluster data into groups</option>
+        <option>A network used to predict continuous values</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is feature selection in machine learning?</text>
+        <option>The process of selecting the most relevant features from a dataset</option>
+        <option>The process of transforming features to a similar scale</option>
+        <option>The process of generating new features from existing ones</option>
+        <option>The process of evaluating the performance of machine learning models</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the curse of dimensionality in machine learning?</text>
+        <option>A phenomenon where algorithms perform poorly in high-dimensional spaces due to
+            sparsity of data
+        </option>
+        <option>A phenomenon where algorithms become overly complex with increasing dimensionality
+        </option>
+        <option>A phenomenon where algorithms suffer from computational inefficiency in
+            high-dimensional spaces
+        </option>
+        <option>A phenomenon where algorithms are unable to capture complex relationships between
+            features
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is transfer learning in machine learning?</text>
+        <option>A technique where knowledge gained from solving one problem is applied to a
+            different but related problem
+        </option>
+        <option>A technique where knowledge from one domain is applied to a completely unrelated
+            domain
+        </option>
+        <option>A technique where features learned from one dataset are directly transferred to
+            another dataset
+        </option>
+        <option>A technique where model parameters are transferred between different layers of a
+            neural network
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of a validation set in machine learning?</text>
+        <option>To evaluate the performance of a model during training and tune hyperparameters
+        </option>
+        <option>To train the model on a separate dataset to avoid overfitting</option>
+        <option>To test the final performance of the trained model</option>
+        <option>To visualize the decision boundaries of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between classification and regression?</text>
+        <option>Classification predicts discrete labels, while regression predicts continuous
+            values
+        </option>
+        <option>Classification predicts continuous values, while regression predicts discrete
+            labels
+        </option>
+        <option>Classification is unsupervised learning, while regression is supervised learning
+        </option>
+        <option>Classification is supervised learning, while regression is unsupervised learning
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is a decision boundary in machine learning?</text>
+        <option>A dividing line that separates different classes in a classification problem
+        </option>
+        <option>A threshold for making decisions in a regression problem</option>
+        <option>A boundary that defines the range of acceptable predictions in a clustering
+            problem
+        </option>
+        <option>A boundary that separates training data from testing data in cross-validation
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of a confusion matrix in classification?</text>
+        <option>To visualize the performance of a classification model</option>
+        <option>To evaluate the accuracy of a regression model</option>
+        <option>To measure the variance of a clustering model</option>
+        <option>To calculate the bias of a classification model</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of batch normalization in neural networks?</text>
+        <option>To improve the stability and speed of training by normalizing the inputs of each
+            layer
+        </option>
+        <option>To reduce the dimensionality of the input data</option>
+        <option>To regularize the model and prevent overfitting</option>
+        <option>To increase the depth of the network and capture more complex features</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between overfitting and underfitting?</text>
+        <option>Overfitting occurs when a model is too complex and learns noise in the training
+            data, while underfitting occurs when a model is too simple and fails to capture the
+            underlying patterns
+        </option>
+        <option>Overfitting occurs when a model is too simple and fails to capture the underlying
+            patterns, while underfitting occurs when a model is too complex and learns noise in the
+            training data
+        </option>
+        <option>Overfitting occurs when a model performs well on training data but poorly on unseen
+            data, while underfitting occurs when a model performs poorly on both training and unseen
+            data
+        </option>
+        <option>Overfitting occurs when a model performs poorly on both training and unseen data,
+            while underfitting occurs when a model performs well on unseen data but poorly on
+            training data
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between precision and recall?</text>
+        <option>Precision measures the proportion of positive predictions that are correct, while
+            recall measures the proportion of actual positives that are correctly predicted
+        </option>
+        <option>Precision measures the proportion of actual positives that are correctly predicted,
+            while recall measures the proportion of positive predictions that are correct
+        </option>
+        <option>Precision measures the proportion of true negatives that are correctly predicted,
+            while recall measures the proportion of false negatives that are correctly predicted
+        </option>
+        <option>Precision measures the proportion of false negatives that are correctly predicted,
+            while recall measures the proportion of true negatives that are correctly predicted
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the purpose of early stopping in training neural networks?</text>
+        <option>To prevent overfitting by stopping training when the performance on a validation set
+            starts to degrade
+        </option>
+        <option>To speed up training by terminating the process early</option>
+        <option>To increase the complexity of the model by training for longer</option>
+        <option>To reduce the bias of the model by training for longer</option>
+        <correct>0</correct>
+    </question>
+    <question id="machinelearning">
+        <text>What is the difference between batch gradient descent and stochastic gradient
+            descent?
+        </text>
+        <option>Batch gradient descent computes the gradient using the entire training dataset,
+            while stochastic gradient descent computes the gradient using a single randomly chosen
+            data point
+        </option>
+        <option>Batch gradient descent updates the model parameters after processing the entire
+            training dataset, while stochastic gradient descent updates the model parameters after
+            processing each individual data point
+        </option>
+        <option>Batch gradient descent updates the model parameters after processing each individual
+            data point, while stochastic gradient descent updates the model parameters after
+            processing the entire training dataset
+        </option>
+        <option>Batch gradient descent computes the gradient using a random subset of the training
+            dataset, while stochastic gradient descent computes the gradient using the entire
+            training dataset
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is deep learning?</text>
+        <option>A subset of machine learning that uses neural networks with multiple layers to learn
+            complex representations of data
+        </option>
+        <option>A type of unsupervised learning algorithm</option>
+        <option>A technique for dimensionality reduction</option>
+        <option>A method for reinforcement learning</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is a neural network?</text>
+        <option>A network of interconnected artificial neurons that process information</option>
+        <option>A network used for clustering data</option>
+        <option>A network used for reinforcement learning</option>
+        <option>A network used for dimensionality reduction</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is an activation function in a neural network?</text>
+        <option>A function that determines the output of a neuron based on its input</option>
+        <option>A function that calculates the error between the predicted output and the true
+            output
+        </option>
+        <option>A function that adjusts the weights of the connections between neurons</option>
+        <option>A function that calculates the gradient of the loss function</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is backpropagation?</text>
+        <option>An algorithm used to train neural networks by adjusting the weights based on the
+            error of the output
+        </option>
+        <option>An algorithm used to initialize the weights of a neural network</option>
+        <option>An algorithm used to optimize the hyperparameters of a neural network</option>
+        <option>An algorithm used to regularize the weights of a neural network</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is a convolutional neural network (CNN)?</text>
+        <option>A type of neural network designed for processing data with grid-like topology
+        </option>
+        <option>A type of neural network used for sequence prediction tasks</option>
+        <option>A type of neural network used for unsupervised learning</option>
+        <option>A type of neural network used for dimensionality reduction</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is pooling in convolutional neural networks?</text>
+        <option>A technique used to reduce the dimensionality of feature maps by selecting the
+            maximum value within each region
+        </option>
+        <option>A technique used to increase the dimensionality of feature maps by adding new
+            features
+        </option>
+        <option>A technique used to regularize the weights of a neural network</option>
+        <option>A technique used to initialize the weights of a neural network</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is transfer learning in deep learning?</text>
+        <option>A technique where knowledge gained from solving one problem is applied to a
+            different but related problem
+        </option>
+        <option>A technique where features learned from one dataset are directly transferred to
+            another dataset
+        </option>
+        <option>A technique where model parameters are transferred between different layers of a
+            neural network
+        </option>
+        <option>A technique where model parameters are transferred between different neural
+            networks
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is a recurrent neural network (RNN)?</text>
+        <option>A type of neural network designed for processing sequential data</option>
+        <option>A type of neural network used for image recognition tasks</option>
+        <option>A type of neural network used for dimensionality reduction</option>
+        <option>A type of neural network used for unsupervised learning</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the vanishing gradient problem?</text>
+        <option>A problem that occurs during training of deep neural networks where gradients become
+            extremely small, making learning difficult
+        </option>
+        <option>A problem that occurs when the learning rate of a neural network is too high,
+            causing oscillations in the training process
+        </option>
+        <option>A problem that occurs when the learning rate of a neural network is too low, causing
+            slow convergence
+        </option>
+        <option>A problem that occurs when the weights of a neural network become too large, causing
+            numerical instability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is dropout in neural networks?</text>
+        <option>A regularization technique where randomly selected neurons are ignored during
+            training
+        </option>
+        <option>A technique used to adjust the learning rate during training</option>
+        <option>A technique used to initialize the weights of a neural network</option>
+        <option>A technique used to reduce the dimensionality of input data</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is batch normalization?</text>
+        <option>A technique used to normalize the inputs of each layer in a neural network to
+            improve training stability
+        </option>
+        <option>A technique used to normalize the outputs of each layer in a neural network to
+            improve training stability
+        </option>
+        <option>A technique used to normalize the gradients during backpropagation to improve
+            training stability
+        </option>
+        <option>A technique used to normalize the weights of a neural network to improve training
+            stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is a generative adversarial network (GAN)?</text>
+        <option>A type of neural network architecture consisting of two networks, a generator and a
+            discriminator, that are trained adversarially
+        </option>
+        <option>A type of neural network designed for processing sequential data</option>
+        <option>A type of neural network used for unsupervised learning</option>
+        <option>A type of neural network used for reinforcement learning</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is a loss function in deep learning?</text>
+        <option>A function that quantifies the difference between the predicted output and the true
+            output
+        </option>
+        <option>A function that calculates the gradient of the model parameters</option>
+        <option>A function that adjusts the weights of the connections between neurons</option>
+        <option>A function that determines the output of a neuron based on its input</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the purpose of an optimizer in deep learning?</text>
+        <option>To minimize the loss function and update the weights of the neural network</option>
+        <option>To initialize the weights of the neural network</option>
+        <option>To normalize the inputs of the neural network</option>
+        <option>To adjust the learning rate during training</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between supervised and unsupervised learning?</text>
+        <option>In supervised learning, the model is trained on labeled data, while in unsupervised
+            learning, the model is trained on unlabeled data
+        </option>
+        <option>In supervised learning, the model predicts continuous values, while in unsupervised
+            learning, the model predicts discrete labels
+        </option>
+        <option>In supervised learning, the model uses neural networks, while in unsupervised
+            learning, the model uses decision trees
+        </option>
+        <option>In supervised learning, the model is evaluated using precision and recall, while in
+            unsupervised learning, the model is evaluated using accuracy
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between deep learning and machine learning?</text>
+        <option>Deep learning is a subset of machine learning that uses neural networks with
+            multiple layers to learn complex representations of data
+        </option>
+        <option>Deep learning is a type of unsupervised learning algorithm, while machine learning
+            includes both supervised and unsupervised learning algorithms
+        </option>
+        <option>Deep learning is a technique for dimensionality reduction, while machine learning is
+            a technique for feature selection
+        </option>
+        <option>Deep learning is a method for reinforcement learning, while machine learning is a
+            method for supervised learning
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between deep learning and traditional machine learning
+            algorithms?
+        </text>
+        <option>Deep learning algorithms can automatically learn hierarchical representations of
+            data, while traditional machine learning algorithms require manual feature engineering
+        </option>
+        <option>Deep learning algorithms require less computational resources compared to
+            traditional machine learning algorithms
+        </option>
+        <option>Deep learning algorithms are less prone to overfitting compared to traditional
+            machine learning algorithms
+        </option>
+        <option>Deep learning algorithms are less interpretable compared to traditional machine
+            learning algorithms
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between a feedforward neural network and a recurrent neural
+            network?
+        </text>
+        <option>A feedforward neural network has no feedback connections, while a recurrent neural
+            network has feedback connections that allow it to process sequential data
+        </option>
+        <option>A feedforward neural network has feedback connections, while a recurrent neural
+            network has no feedback connections
+        </option>
+        <option>A feedforward neural network is trained using backpropagation, while a recurrent
+            neural network is trained using reinforcement learning
+        </option>
+        <option>A feedforward neural network is designed for unsupervised learning, while a
+            recurrent neural network is designed for supervised learning
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between a feedforward neural network and a convolutional neural network?
+        </text>
+        <option>A feedforward neural network processes data sequentially, while a convolutional neural network processes data with grid-like topology
+        </option>
+        <option>A feedforward neural network uses pooling layers, while a convolutional neural network does not
+        </option>
+        <option>A feedforward neural network is designed for unsupervised learning, while a convolutional neural network is designed for supervised learning
+        </option>
+        <option>A feedforward neural network is trained using reinforcement learning, while a convolutional neural network is trained using backpropagation
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the purpose of hyperparameters in deep learning?</text>
+        <option>To control the learning process of the neural network, such as learning rate and batch size
+        </option>
+        <option>To control the architecture of the neural network, such as the number of layers and neurons
+        </option>
+        <option>To control the regularization of the neural network, such as dropout rate and weight decay
+        </option>
+        <option>To control the optimization of the neural network, such as the choice of optimizer and loss function
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of the output layer in a neural network?</text>
+        <option>To produce the final output of the neural network</option>
+        <option>To compute the error between the predicted output and the true output</option>
+        <option>To adjust the weights of the connections between neurons</option>
+        <option>To determine the activation function used in the hidden layers</option>
+        <correct>0</correct>
+    </question>
+
+    <question id="deep_learning">
+        <text>What is the role of the activation function in a neural network?</text>
+        <option>To introduce non-linearity into the network, allowing it to learn complex patterns
+        </option>
+        <option>To compute the error between the predicted output and the true output</option>
+        <option>To adjust the weights of the connections between neurons</option>
+        <option>To determine the architecture of the network, such as the number of layers and
+            neurons
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between a dense layer and a convolutional layer?</text>
+        <option>A dense layer connects every neuron in one layer to every neuron in the next layer,
+            while a convolutional layer connects only nearby neurons
+        </option>
+        <option>A dense layer is used for processing sequential data, while a convolutional layer is used for processing grid-like data
+        </option>
+        <option>A dense layer uses the dot product operation, while a convolutional layer uses the convolution operation
+        </option>
+        <option>A dense layer is used for unsupervised learning, while a convolutional layer is used for supervised learning
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of padding in convolutional neural networks?</text>
+        <option>To preserve the spatial dimensions of the input volume</option>
+        <option>To reduce the spatial dimensions of the input volume</option>
+        <option>To increase the depth of the input volume</option>
+        <option>To regularize the weights of the input volume</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of strides in convolutional neural networks?</text>
+        <option>To specify the amount by which the filter is moved across the input volume</option>
+        <option>To adjust the learning rate during training</option>
+        <option>To reduce the number of parameters in the network</option>
+        <option>To determine the activation function used in the convolutional layers</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the purpose of dropout regularization in deep learning?</text>
+        <option>To prevent overfitting by randomly dropping neurons during training</option>
+        <option>To increase the learning rate during training</option>
+        <option>To decrease the learning rate during training</option>
+        <option>To normalize the inputs of each layer in the network</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the difference between L1 and L2 regularization?</text>
+        <option>L1 regularization adds the absolute values of the weights to the loss function,
+            while L2 regularization adds the squared values of the weights
+        </option>
+        <option>L1 regularization adds the squared values of the weights to the loss function, while L2 regularization adds the absolute values of the weights
+        </option>
+        <option>L1 regularization penalizes large weights more than small ones, while L2 regularization penalizes large weights equally
+        </option>
+        <option>L1 regularization penalizes small weights more than large ones, while L2 regularization penalizes small weights equally
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of learning rate scheduling in deep learning?</text>
+        <option>To adjust the learning rate during training to improve convergence</option>
+        <option>To increase the learning rate during training to speed up convergence</option>
+        <option>To decrease the learning rate during training to prevent overshooting the minimum</option>
+        <option>To maintain a constant learning rate during training to ensure stability</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the purpose of batch normalization in deep learning?</text>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <option>To reduce the number of parameters in the network</option>
+        <option>To adjust the learning rate during training</option>
+        <option>To prevent overfitting by randomly dropping neurons during training</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of momentum in gradient descent optimization?</text>
+        <option>To accelerate the learning process by adding a fraction of the previous update to the current update</option>
+        <option>To slow down the learning process by reducing the magnitude of the parameter updates
+        </option>
+        <option>To adjust the learning rate during training based on the gradient magnitude</option>
+        <option>To prevent overfitting by adding noise to the parameter updates</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of weight initialization in deep learning?</text>
+        <option>To set the initial values of the weights in the network to ensure stable training
+        </option>
+        <option>To adjust the learning rate during training to improve convergence</option>
+        <option>To prevent overfitting by randomly dropping neurons during training</option>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of the output activation function in a neural network?</text>
+        <option>To produce the final output of the network in the desired range</option>
+        <option>To introduce non-linearity into the network, allowing it to learn complex patterns
+        </option>
+        <option>To adjust the learning rate during training based on the gradient magnitude</option>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of the loss function in a neural network?</text>
+        <option>To quantify the difference between the predicted output and the true output</option>
+        <option>To adjust the learning rate during training to improve convergence</option>
+        <option>To introduce non-linearity into the network, allowing it to learn complex patterns
+        </option>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of a validation set in deep learning?</text>
+        <option>To evaluate the performance of the model during training and tune hyperparameters
+        </option>
+        <option>To train the model on a separate dataset to avoid overfitting</option>
+        <option>To test the final performance of the trained model</option>
+        <option>To visualize the decision boundaries of the model</option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of the input layer in a neural network?</text>
+        <option>To receive the input data and pass it to the next layer</option>
+        <option>To adjust the learning rate during training based on the gradient magnitude</option>
+        <option>To introduce non-linearity into the network, allowing it to learn complex patterns
+        </option>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of the hidden layers in a neural network?</text>
+        <option>To extract features from the input data and learn representations</option>
+        <option>To produce the final output of the network</option>
+        <option>To adjust the learning rate during training based on the gradient magnitude</option>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="deep_learning">
+        <text>What is the role of the output layer in a neural network?</text>
+        <option>To produce the final output of the network</option>
+        <option>To adjust the learning rate during training based on the gradient magnitude</option>
+        <option>To introduce non-linearity into the network, allowing it to learn complex patterns
+        </option>
+        <option>To normalize the inputs of each layer in the network to improve training stability
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is Pandas?</text>
+        <option>A Python library for data manipulation and analysis</option>
+        <option>A Python framework for building web applications</option>
+        <option>A Python library for machine learning</option>
+        <option>A Python library for natural language processing</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is a DataFrame in Pandas?</text>
+        <option>A two-dimensional labeled data structure with columns of potentially different
+            types
+        </option>
+        <option>A one-dimensional labeled array capable of holding any data type</option>
+        <option>A three-dimensional labeled data structure with rows and columns of potentially
+            different types
+        </option>
+        <option>A data structure used for storing hierarchical data</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>How can you create a DataFrame from a dictionary in Pandas?</text>
+        <option>Using the pd.DataFrame() function and passing the dictionary as an argument</option>
+        <option>Using the pd.read_csv() function and passing the dictionary as an argument</option>
+        <option>Using the pd.from_dict() function and passing the dictionary as an argument</option>
+        <option>Using the pd.DataFrame.from_dict() function and passing the dictionary as an
+            argument
+        </option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the primary data structure in Pandas for handling time-series data?</text>
+        <option>DateTimeIndex</option>
+        <option>Series</option>
+        <option>DataFrame</option>
+        <option>Index</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the loc accessor in Pandas?</text>
+        <option>To access a group of rows and columns by label(s) or a boolean array</option>
+        <option>To access elements of a DataFrame by position</option>
+        <option>To access elements of a DataFrame by integer-location based indexing</option>
+        <option>To access a single value for a row/column label pair</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>How can you check for missing values in a DataFrame in Pandas?</text>
+        <option>Using the isnull() method</option>
+        <option>Using the missing() method</option>
+        <option>Using the nan() method</option>
+        <option>Using the null() method</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the dropna() method in Pandas?</text>
+        <option>To remove missing values from a DataFrame</option>
+        <option>To drop columns from a DataFrame</option>
+        <option>To drop rows from a DataFrame</option>
+        <option>To drop both rows and columns from a DataFrame</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the groupby() method in Pandas?</text>
+        <option>To split the data into groups based on some criteria</option>
+        <option>To apply a function to each group independently</option>
+        <option>To combine the results of the split and apply into a DataFrame</option>
+        <option>All of the above</option>
+        <correct>3</correct>
+    </question>
+    <question id="pandas">
+        <text>How can you merge two DataFrames in Pandas?</text>
+        <option>Using the merge() function</option>
+        <option>Using the concat() function</option>
+        <option>Using the join() function</option>
+        <option>All of the above</option>
+        <correct>3</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the pivot_table() method in Pandas?</text>
+        <option>To create a spreadsheet-style pivot table as a DataFrame</option>
+        <option>To compute a cross-tabulation of two (or more) factors</option>
+        <option>To stack multiple DataFrame objects horizontally or vertically</option>
+        <option>To transform one or more columns into rows or vice versa</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the apply() method in Pandas?</text>
+        <option>To apply a function along an axis of the DataFrame</option>
+        <option>To apply a function element-wise on a DataFrame</option>
+        <option>To apply a function to each row or column of the DataFrame</option>
+        <option>All of the above</option>
+        <correct>3</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the value_counts() method in Pandas?</text>
+        <option>To count the number of occurrences of each unique value in a Series</option>
+        <option>To count the number of missing values in a DataFrame</option>
+        <option>To count the number of rows and columns in a DataFrame</option>
+        <option>To count the number of non-null values in a DataFrame</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>How can you select specific columns from a DataFrame in Pandas?</text>
+        <option>Using the [] operator with the column names</option>
+        <option>Using the loc accessor with column labels</option>
+        <option>Using the iloc accessor with column positions</option>
+        <option>All of the above</option>
+        <correct>3</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the iterrows() method in Pandas?</text>
+        <option>To iterate over DataFrame rows as (index, Series) pairs</option>
+        <option>To iterate over DataFrame columns as (index, Series) pairs</option>
+        <option>To iterate over DataFrame rows as (index, row) pairs</option>
+        <option>To iterate over DataFrame columns as (index, column) pairs</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the to_csv() method in Pandas?</text>
+        <option>To write a DataFrame to a CSV file</option>
+        <option>To read data from a CSV file into a DataFrame</option>
+        <option>To append data to an existing CSV file</option>
+        <option>To create a new CSV file</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the describe() method in Pandas?</text>
+        <option>To generate descriptive statistics of the DataFrame</option>
+        <option>To display the first few rowsof the DataFrame</option>
+        <option>To display the last few rows of the DataFrame</option>
+        <option>To display the summary information of the DataFrame</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the sort_values() method in Pandas?</text>
+        <option>To sort the DataFrame by specified column(s)</option>
+        <option>To sort the DataFrame by index</option>
+        <option>To sort the DataFrame by values in descending order</option>
+        <option>All of the above</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>What is the purpose of the drop() method in Pandas?</text>
+        <option>To drop specified rows or columns from the DataFrame</option>
+        <option>To drop missing values from the DataFrame</option>
+        <option>To drop duplicate rows from the DataFrame</option>
+        <option>All of the above</option>
+        <correct>0</correct>
+    </question>
+    <question id="pandas">
+        <text>How can you rename columns in a DataFrame in Pandas?</text>
+        <option>Using the rename() method with a dictionary of old and new column names</option>
+        <option>Using the rename() method with a list of new column names</option>
+        <option>Using the columns attribute with a list of new column names</option>
+        <option>All of the above</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is backend web development?</text>
+        <option>The development of the client-side part of a web application</option>
+        <option>The development of the server-side part of a web application</option>
+        <option>The development of the user interface of a web application</option>
+        <option>The development of the database schema of a web application</option>
+        <correct>1</correct>
+    </question>
+    <question id="backend_web">
+        <text>Which programming languages are commonly used for backend web development?</text>
+        <option>Python, Ruby, JavaScript</option>
+        <option>Java, C++, PHP</option>
+        <option>Python, JavaScript, PHP</option>
+        <option>Java, C#, Swift</option>
+        <correct>2</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is an API (Application Programming Interface) in the context of backend development?
+        </text>
+        <option>A set of rules and protocols for building user interfaces</option>
+        <option>A set of tools for analyzing performance of backend systems</option>
+        <option>A set of functions and procedures for building software applications</option>
+        <option>A set of rules and protocols for building server-side functionalities</option>
+        <correct>3</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is a database in backend web development?</text>
+        <option>A collection of frontend files used to style a website</option>
+        <option>A collection of server-side scripts used to handle user requests</option>
+        <option>A collection of user interface elements used to interact with a web application
+        </option>
+        <option>A collection of structured data used to store and retrieve information</option>
+        <correct>3</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of a web server in backend web development?</text>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To execute server-side scripts and generate dynamic content</option>
+        <option>To store and manage structured data in a database</option>
+        <option>To design the user interface of a web application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is a RESTful API?</text>
+        <option>An API that follows the principles of Representational State Transfer (REST)
+        </option>
+        <option>An API that is used exclusively for testing purposes</option>
+        <option>An API that supports real-time data communication</option>
+        <option>An API that is restricted to a specific set of users</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of authentication in backend web development?</text>
+        <option>To verify the identity of users accessing a web application</option>
+        <option>To optimize the performance of server-side code</option>
+        <option>To encrypt sensitive data transmitted between client and server</option>
+        <option>To design the user interface of a web application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of a web framework in backend web development?</text>
+        <option>To provide a structured way of building web applications</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To manage the communication between frontend and backend systems</option>
+        <option>To optimize the performance of server-side code</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of middleware in backend web development?</text>
+        <option>To provide common functionalities across different parts of an application</option>
+        <option>To serve static files such as HTML, CSS, and JavaScript</option>
+        <option>To store and manage structured data in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of a reverse proxy server in backend web development?</text>
+        <option>To distribute incoming requests across multiple backend servers</option>
+        <option>To serve as a gateway between a client and a backend server</option>
+        <option>To cache frequently accessed data to improve performance</option>
+        <option>To provide an additional layer of security for backend systems</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of a relational database management system (RDBMS) in backend web
+            development?
+        </text>
+        <option>To store and manage structured data using tables with predefined relationships
+        </option>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To provide a structured way of building web applications</option>
+        <option>To manage the communication between frontend and backend systems</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of a NoSQL database in backend web development?</text>
+        <option>To store and manage unstructured or semi-structured data</option>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of server-side rendering in backend web development?</text>
+        <option>To generate HTML pages on the server and send them to the client</option>
+        <option>To execute client-side scripts in the browser to generate dynamic content</option>
+        <option>To optimize the performance of server-side code</option>
+        <option>To design the user interface of a web application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of session management in backend web development?</text>
+        <option>Tomanage user sessions and maintain state between HTTP requests</option>
+        <option>To optimize the performance of server-side code</option>
+        <option>To generate dynamic content based on user requests</option>
+        <option>To provide common functionalities across different parts of an application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of caching in backend web development?</text>
+        <option>To store frequently accessed data in memory or disk to improve performance</option>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of message queues in backend web development?</text>
+        <option>To enable communication between different parts of an application asynchronously
+        </option>
+        <option>To serve as a gateway between a client and a backend server</option>
+        <option>To cache frequently accessed data to improve performance</option>
+        <option>To provide an additional layer of security for backend systems</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of containerization (e.g., Docker) in backend web development?</text>
+        <option>To package applications and their dependencies into standardized units for
+            deployment
+        </option>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of microservices architecture in backend web development?</text>
+        <option>To decompose large, monolithic applications into smaller, loosely coupled services
+        </option>
+        <option>To optimize the performance of server-side code</option>
+        <option>To generate dynamic content based on user requests</option>
+        <option>To provide common functionalities across different parts of an application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of a web socket in backend web development?</text>
+        <option>To enable real-time, bidirectional communication between a client and server
+        </option>
+        <option>To serve static files such as HTML, CSS, and JavaScript</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of load balancing in backend web development?</text>
+        <option>To distribute incoming requests across multiple backend servers to improve performance and reliability
+        </option>
+        <option>To execute server-side scripts and generate dynamic content</option>
+        <option>To store and manage structured data in a database</option>
+        <option>To design the user interface of a web application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of a web application firewall (WAF) in backend web development?
+        </text>
+        <option>To monitor, filter, and block HTTP traffic to and from a web application</option>
+        <option>To optimize the performance of server-side code</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of continuous integration (CI) in backend web development?</text>
+        <option>To automatically build and test code changes in a shared repository</option>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the role of a content delivery network (CDN) in backend web development?
+        </text>
+        <option>To cache and deliver content to users from servers located closer to their geographical location
+        </option>
+        <option>To execute server-side scripts and generate dynamic content</option>
+        <option>To store and manage structured data in a database</option>
+        <option>To design the user interface of a web application</option>
+        <correct>0</correct>
+    </question>
+    <question id="backend_web">
+        <text>What is the purpose of version control systems (e.g., Git) in backend web development?
+        </text>
+        <option>To track changes to code and collaborate with other developers on a shared codebase
+        </option>
+        <option>To handle incoming HTTP requests and serve HTML pages to clients</option>
+        <option>To provide a visual representation of data stored in a database</option>
+        <option>To generate dynamic content based on user requests</option>
+        <correct>0</correct>
+    </question>
+
+
+        <question id="kotlin_app">
+            <text>What is Kotlin?</text>
+            <option>A statically-typed programming language for modern multiplatform applications</option>
+            <option>A dynamic programming language for web development</option>
+            <option>An operating system for mobile devices</option>
+            <option>A markup language for designing user interfaces</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>Which platform is Kotlin primarily used for app development?</text>
+            <option>Android</option>
+            <option>iOS</option>
+            <option>Windows</option>
+            <option>Linux</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the main advantage of using Kotlin for Android app development?</text>
+            <option>Interoperability with existing Java code</option>
+            <option>Native support for iOS development</option>
+            <option>Integration with Microsoft Visual Studio</option>
+            <option>Compatibility with C# libraries</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the recommended development environment for Kotlin Android development?</text>
+            <option>Android Studio</option>
+            <option>Xcode</option>
+            <option>Eclipse</option>
+            <option>IntelliJ IDEA</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the entry point of an Android app written in Kotlin?</text>
+            <option>The MainActivity class</option>
+            <option>The AppDelegate class</option>
+            <option>The Application class</option>
+            <option>The Layout XML file</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the recommended way to declare layouts in Android apps using Kotlin?</text>
+            <option>Using XML files</option>
+            <option>Using HTML files</option>
+            <option>Using Java code</option>
+            <option>Using Kotlin DSL</option>
+            <correct>3</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is an Activity in Android app development?</text>
+            <option>A user interface component that represents a single screen with a user interface</option>
+            <option>A background service that performs long-running operations without a user interface</option>
+            <option>A data model that holds the application's business logic and state</option>
+            <option>A library that provides access to the device's hardware features</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of the AndroidManifest.xml file in Android development?</text>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To store application resources such as strings, colors, and dimensions</option>
+            <option>To configure the build process and dependencies of the app</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of the build.gradle file in Android development?</text>
+            <option>To define the project configuration, dependencies, and build settings</option>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To store application resources such as strings, colors, and dimensions</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the Android Jetpack library?</text>
+            <option>A set of libraries, tools, and guidance to help developers write high-quality apps more easily</option>
+            <option>A popular Kotlin framework for web development</option>
+            <option>An operating system for wearable devices</option>
+            <option>A tool for designing user interfaces</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of an Intent in Android development?</text>
+            <option>To perform inter-component communication, such as starting activities, services, or delivering broadcasts</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To store application resources such as strings, colors, and dimensions</option>
+            <option>To configure the build process and dependencies of the app</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of the ViewModel class in Android architecture?</text>
+            <option>To store and manage UI-related data in a lifecycle-aware way that survives configuration changes</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of LiveData in Android development?</text>
+            <option>To hold and observe data that can be observed within a given lifecycle</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of the RecyclerView in Android development?</text>
+            <option>To display a large dataset of items efficiently by recycling views as they scroll off screen</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+            <text>What is the purpose of the Retrofit library in Android development?</text>
+            <option>To make it easy to consume RESTful web services by translating HTTP API into Kotlin interfaces</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="kotlin_app">
+        <text>What is the purpose of the Room Persistence Library in Android development?</text>
+        <option>To provide an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To declare the components of the app such as activities, services, and permissions</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of Coroutines in Kotlin?</text>
+        <option>To simplify asynchronous programming by avoiding callback hell and managing concurrency</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the ViewModelScope in Android development?</text>
+        <option>To manage the lifecycle of the ViewModel and survive configuration changes</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the SharedPreferences in Android development?</text>
+        <option>To store key-value pairs of simple data types persistently</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the ConstraintLayout in Android development?</text>
+        <option>To create complex layouts with a flat view hierarchy while avoiding nesting layouts</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the ViewBinding feature in Android development?</text>
+        <option>To provide compile-time safety and easy access to view elements in the layout files</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the DataBinding feature in Android development?</text>
+        <option>To establish a two-way connection between the UI components and the underlying data model</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the Navigation component in Android development?</text>
+        <option>To simplify navigation between different destinations within an app and handle common navigation patterns</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the Material Design Components library in Android development?</text>
+        <option>To provide pre-built UI components following the Material Design guidelines for consistent and beautiful user interfaces</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the WorkManager in Android development?</text>
+        <option>To manage and schedule background tasks that need to run under various conditions, such as network availability and device charging status</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+    <question id="kotlin_app">
+        <text>What is the purpose of the Android Asset Packaging Tool (AAPT) in Android development?</text>
+        <option>To compile and package resources, such as XML files and images, into binary assets that can be used by the Android system and applications</option>
+        <option>To define the layout of the app's user interface</option>
+        <option>To declare the components of the app such as activities, services, and permissions</option>
+        <option>To handle background tasks without blocking the main thread</option>
+        <correct>0</correct>
+    </question>
+            <question id="jetpack_compose">
+            <text>What is Jetpack Compose?</text>
+            <option>A modern toolkit for building native Android UI</option>
+            <option>A server-side framework for Kotlin applications</option>
+            <option>A JavaScript library for web development</option>
+            <option>An iOS framework for developing user interfaces</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>Which programming language is primarily used with Jetpack Compose?</text>
+            <option>Kotlin</option>
+            <option>Java</option>
+            <option>Swift</option>
+            <option>JavaScript</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the main advantage of Jetpack Compose over traditional Android UI development?</text>
+            <option>Declarative UI programming model</option>
+            <option>Imperative UI programming model</option>
+            <option>Support for XML layouts</option>
+            <option>Compatibility with Java</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is a Composable function in Jetpack Compose?</text>
+            <option>A function that defines a UI component</option>
+            <option>A function that handles network requests</option>
+            <option>A function that manages database operations</option>
+            <option>A function that performs background tasks</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of @Composable annotation in Jetpack Compose?</text>
+            <option>To mark a function as a Composable function</option>
+            <option>To mark a function as asynchronous</option>
+            <option>To mark a function as deprecated</option>
+            <option>To mark a function as private</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is a ConstraintLayout in Jetpack Compose?</text>
+            <option>A composable layout that allows you to create complex UIs with flexible constraints</option>
+            <option>A composable layout that displays items in a vertical or horizontal arrangement</option>
+            <option>A composable layout that displays a list of items with recycling capabilities</option>
+            <option>A composable layout that displays items in a grid-like arrangement</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Scaffold composable in Jetpack Compose?</text>
+            <option>To provide a layout structure for common UI components like AppBar, BottomAppBar, and FloatingActionButton</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of State in Jetpack Compose?</text>
+            <option>To hold and manage UI-related data that can change over time</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of ViewModel in Jetpack Compose?</text>
+            <option>To store and manage UI-related data in a lifecycle-aware way that survives configuration changes</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Modifier class in Jetpack Compose?</text>
+            <option>To apply styling and layout constraints to composable functions</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the LazyColumn composable in Jetpack Compose?</text>
+            <option>To display a vertically scrolling list of items efficiently by lazily loading items as they become visible on the screen</option>
+            <option>To display a horizontally scrolling list of items efficiently</option>
+            <option>To display a grid of items with recycling capabilities</option>
+            <option>To display a list of items with support for multiple columns</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Box composable in Jetpack Compose?</text>
+            <option>To create a simple container that can hold a single composable</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Row composable in Jetpack Compose?</text>
+            <option>To display items in a horizontal arrangement</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Column composable in Jetpack Compose?</text>
+            <option>To display items in a vertical arrangement</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Button composable in Jetpack Compose?</text>
+            <option>To display a clickable button</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+        <text>What is the purpose of the Text composable in Jetpack Compose?</text>
+            <option>To display text in the user interface</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Image composable in Jetpack Compose?</text>
+            <option>To display an image in the user interface</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the TextField composable in Jetpack Compose?</text>
+            <option>To allow users to input text</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the MaterialTheme composable in Jetpack Compose?</text>
+            <option>To apply the Material Design styling to the entire UI hierarchy</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the CircularProgressIndicator composable in Jetpack Compose?</text>
+            <option>To display a circular progress indicator for tasks that have a known duration</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+
+        <question id="jetpack_compose">
+            <text>What is the purpose of the FloatingActionButton composable in Jetpack Compose?</text>
+            <option>To display a floating action button for primary user actions</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Checkbox composable in Jetpack Compose?</text>
+            <option>To allow users to select one or more options from a list of choices</option>
+            <option>To display a checkbox that can be toggled on or off</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Switch composable in Jetpack Compose?</text>
+            <option>To allow users to toggle between two states, such as on/off or true/false</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the Slider composable in Jetpack Compose?</text>
+            <option>To allow users to select a value from a range by sliding a thumb along a track</option>
+            <option>To display a horizontal or vertical slider that can be adjusted by the user</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the TopAppBar composable in Jetpack Compose?</text>
+            <option>To display a top app bar that can contain navigation icons, title, and actions</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+        <question id="jetpack_compose">
+            <text>What is the purpose of the BottomAppBar composable in Jetpack Compose?</text>
+            <option>To display a bottom app bar that can contain navigation icons, actions, and a floating action button</option>
+            <option>To define the layout of the app's user interface</option>
+            <option>To manage navigation between different screens</option>
+            <option>To handle background tasks without blocking the main thread</option>
+            <correct>0</correct>
+        </question>
+    </questions>
+

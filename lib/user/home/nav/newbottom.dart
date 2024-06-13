@@ -1,13 +1,11 @@
 import "package:fluentui_system_icons/fluentui_system_icons.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
 import "package:kiit_connect/user/home/nav/newhomescreen.dart";
 import "package:kiit_connect/user/member/job/jobposting.dart";
 import "package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart";
-
-import "../../member/chat/feed.dart";
-import "../../member/chat/uploadproject.dart";
-import "../../member/setting/timeline.dart";
+import "../Project/koncatSocial.dart";
+import "../Project/projectupload.dart";
+import "../usersettings/profileScreen.dart";
 
 class MyNewBottomNavBar extends StatelessWidget {
   MyNewBottomNavBar({super.key});
@@ -21,16 +19,18 @@ class MyNewBottomNavBar extends StatelessWidget {
               title: "Home"),
         ),
         PersistentTabConfig(
-          screen: const UploadProjectPage(),
+          // screen: const UploadProjectPage(),
+          screen: const AddProjectFeed(),
           item: ItemConfig(
               activeForegroundColor: Colors.orange,
               icon: const Icon(FluentIcons.add_48_regular, size: 23),
               title: "Project"),
         ),
         PersistentTabConfig(
-          screen: const SocialFeed(),
+          // screen: const SocialFeed(),
+          screen: const KoncatSocial(),
           item: ItemConfig(
-              activeForegroundColor: Colors.blue,
+              activeForegroundColor: Colors.redAccent,
               icon: const Icon(FluentIcons.chat_multiple_16_regular, size: 23),
               title: "Feed"),
         ),
@@ -43,7 +43,7 @@ class MyNewBottomNavBar extends StatelessWidget {
               title: "Internship"),
         ),
         PersistentTabConfig(
-          screen: TimelineScreen(),
+          screen: ProfileScreen(),
           item: ItemConfig(
               activeForegroundColor: Colors.purple,
               icon: const Icon(FluentIcons.person_48_regular, size: 23),
