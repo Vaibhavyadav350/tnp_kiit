@@ -50,6 +50,7 @@ class MyApp extends StatelessWidget {
         theme: theme,
         darkTheme: theme.copyWith(brightness: Brightness.dark),
         themeMode: ThemeMode.dark,
+        // home: Wrapper());
         home: MyNewBottomNavBar());
   }
 }
