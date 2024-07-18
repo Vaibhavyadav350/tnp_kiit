@@ -46,7 +46,7 @@ class _SocialFeedState extends State<SocialFeed> {
                             imageUrl: project['imageUrl'],
                             tags: List<String>.from(project['tags']),
                             status: project['status'],
-                            links: List<String>.from(project['links']),
+                            link: project['link'],
                             userImage: project['uploaded_by_image'],
                             userEmail:project['uploaded_by']
                           ),
@@ -55,6 +55,7 @@ class _SocialFeedState extends State<SocialFeed> {
                     );
                   },
                 ),
+
               ],
             ),
           ),

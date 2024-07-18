@@ -50,8 +50,7 @@ class MyNewBottomNavBar extends StatelessWidget {
               title: "Profile"),
         ),
       ];
-  PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
+  PersistentTabController _controller =  PersistentTabController(initialIndex: 2);
 
   @override
   Widget build(BuildContext context) => PersistentTabView(
